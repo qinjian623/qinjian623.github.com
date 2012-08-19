@@ -1,0 +1,16 @@
+#+BEGIN_HTML
+---
+---
+layout: default
+title: 中文测试
+comments: true
+---
+{% include JB/setup %}
+
+#+END_HTML
+* 中文的测试文档
+* asf
+* asdf
+* gog2
+** test
+*** he
