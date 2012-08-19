@@ -26,6 +26,7 @@
 
   <body>
 
+
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -40,20 +41,15 @@
     </div>
 
     <div class="container">
-
       <div class="content">
         {{ content }}
       </div>
-
+    </div> <!-- /container -->
       <footer>
-        <p>&copy; {{ site.author.name }} 2012 
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+       <p>&copy; {{ site.author.name }} 2012 如无特殊说明,文章版权默认<a href="http://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
         </p>
       </footer>
-
-    </div> <!-- /container -->
-
+      
     {% include JB/analytics %}
   </body>
 </html>
