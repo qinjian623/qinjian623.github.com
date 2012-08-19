@@ -1,0 +1,45 @@
+---
+layout: post
+title: 改个地方
+tags: [share, blog]
+---
+
+<p>
+自己实在是个折腾不止的人,发现blogger上传的org-mode格式不太好看,竟然自己就换到github上来了,其实也是自己的早就想弄个静态的玩下,之前nodejs试了下,果然js还是太可怕.
+</p>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">步骤上</h3>
+<div class="outline-text-3" id="text-1">
+
+<ol>
+<li>github建立项目,然后自己完全删除了里面的内容
+</li>
+<li>把Jekyll-bootstrap clone了过来,手动拷贝内容到自己的github项目里面
+</li>
+<li>配置emacs,保证生成html的时候只是body, 这里在org-mode里面的wong项目(是这个名字么?)有说明,直接拿来用了.
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">发布步骤</h3>
+<div class="outline-text-3" id="text-2">
+
+<ol>
+<li>emacs 写org-mode,注意前面要有个用于jekyll识别的文件头信息
+</li>
+<li>导出成html
+</li>
+<li>git add/commit/push
+</li>
+<li>完成
+</li>
+</ol>
+
+</div>
+</div>
