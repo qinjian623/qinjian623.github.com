@@ -1,19 +1,15 @@
 ---
 layout: page
-title: Hello World!
+title: 不用怀疑,此乃首页
 ---
 {% include JB/setup %}
 
     
-## Sample Posts
+刚换过来,首页简单奔放点:
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
-
-    $ rm -rf _posts/core-samples
-
-Here's a sample "posts list".
-
+<p>favicon也咩有...</p>
+<p>得先弄个可爱点的404......</p>
+<p>列表清单</p>
 <ul class="posts">
   {% for post in site.posts %}
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>

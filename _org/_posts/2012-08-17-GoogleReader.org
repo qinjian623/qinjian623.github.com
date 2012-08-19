@@ -2,10 +2,16 @@
 ---
 layout: post
 title: Google Reader订阅
-
+tags: [share, reading]
 ---
 
 #+END_HTML
+
+* 说明
+没想到竟然有这么多,很多都是订阅的时候可能还有更新,不过目前不再更新的了.
+
+_加下划线的是自己重点看,或者质量比较高的._
+
 * 我的Google Reader订阅
 + _4G spaces:_ http://blog.youxu.info 
 + _A Geek's Page:_ http://wangcong.org/blog
@@ -101,9 +107,6 @@ title: Google Reader订阅
 + 陈硕的Blog:http://blog.csdn.net/blogrss.aspx?username=Solstice
 + 陈贤安:http://cxa.im/blog
 + 韩寒-新浪博客:http://blog.sina.com.cn/twocold
-
-* 说明
-没想到竟然有这么多,很多都是订阅的时候可能还有更新,不过目前不再更新的了.
 
 * XML可以导入的版本
 
