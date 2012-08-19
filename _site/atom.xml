@@ -4,7 +4,7 @@
  <title>K.I.S.S</title>
  <link href="http://qinjian623.github.com/atom.xml" rel="self"/>
  <link href="http://qinjian623.github.com"/>
- <updated>2012-08-19T17:10:09+08:00</updated>
+ <updated>2012-08-19T18:03:57+08:00</updated>
  <id>http://qinjian623.github.com</id>
  <author>
    <name>Qin Jian</name>
@@ -13,414 +13,483 @@
 
  
  <entry>
-   <title>asdf</title>
-   <link href="http://qinjian623.github.com/2012/08/19/asdf"/>
-   <updated>2012-08-19T00:00:00+08:00</updated>
-   <id>http://qinjian623.github.com/2012/08/19/asdf</id>
-   <content type="html">&lt;p&gt;asdf asdf asdf asdf asdf&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>中文测试</title>
-   <link href="http://qinjian623.github.com/2012/08/17/test"/>
+   <title>Google Reader订阅</title>
+   <link href="http://qinjian623.github.com/2012/08/17/GoogleReader"/>
    <updated>2012-08-17T00:00:00+08:00</updated>
-   <id>http://qinjian623.github.com/2012/08/17/test</id>
-   <content type="html">
-
-
-&lt;div id=&quot;outline-container-1&quot; class=&quot;outline-2&quot;&gt;
-&lt;h2 id=&quot;sec-1&quot;&gt;中文的测试文档 &lt;/h2&gt;
+   <id>http://qinjian623.github.com/2012/08/17/GoogleReader</id>
+   <content type="html">&lt;div id=&quot;outline-container-1&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;sec-1&quot;&gt;我的Google Reader订阅&lt;/h2&gt;
 &lt;div class=&quot;outline-text-2&quot; id=&quot;text-1&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;4G spaces:&lt;/span&gt; &lt;a href=&quot;http://blog.youxu.info&quot;&gt;http://blog.youxu.info&lt;/a&gt; 
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;A Geek's Page:&lt;/span&gt; &lt;a href=&quot;http://wangcong.org/blog&quot;&gt;http://wangcong.org/blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;C++博客-λ-calculus（惊愕到手了欧耶，GetBlogPostIds.aspx）:&lt;a href=&quot;http://www.cppblog.com/vczh/&quot;&gt;http://www.cppblog.com/vczh/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;Chun Tian (binghe):&lt;/span&gt; &lt;a href=&quot;http://tianchunbinghe.blog.163.com&quot;&gt;http://tianchunbinghe.blog.163.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Coding in Dreams:&lt;a href=&quot;http://blog.tomtung.com/&quot;&gt;http://blog.tomtung.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;DBA Notes - 网站架构性能优化技术评论:&lt;/span&gt; &lt;a href=&quot;http://www.dbanotes.net/&quot;&gt;http://www.dbanotes.net/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;demo@virushuo:&lt;a href=&quot;http://blog.devep.net/virushuo/&quot;&gt;http://blog.devep.net/virushuo/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;dm:&lt;a href=&quot;http://hi.baidu.com/int3&quot;&gt;http://hi.baidu.com/int3&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Dutor - 人生天地之间，如白驹过隙忽然而已:&lt;a href=&quot;http://www.dutor.net&quot;&gt;http://www.dutor.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;edsionte|新手区:&lt;/span&gt;   &lt;a href=&quot;http://edsionte.com/techblog&quot;&gt;http://edsionte.com/techblog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;Emacs中文网:&lt;/span&gt;  &lt;a href=&quot;http://emacser.com&quot;&gt;http://emacser.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Ever 17:&lt;a href=&quot;http://blog.csdn.net/winterttr&quot;&gt;http://blog.csdn.net/winterttr&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;Free Mind:&lt;/span&gt; &lt;a href=&quot;http://freemind.pluskid.org&quot;&gt;http://freemind.pluskid.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Google 黑板报 - Google + （谷歌）中国的博客网志，走近我们的产品、技术和文化:&lt;a href=&quot;http://googlechinablog.blogspot.com/&quot;&gt;http://googlechinablog.blogspot.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;HelloGcc Working Group:&lt;/span&gt; &lt;a href=&quot;http://hellogcc.blogbus.com&quot;&gt;http://hellogcc.blogbus.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;HoH的阅读分享:&lt;a href=&quot;http://www.google.com/reader/view/feed/http://feed.feedsky.com/hohcn-share&quot;&gt;http://www.google.com/reader/view/feed%2Fhttp%3A%2F%2Ffeed.feedsky.com%2Fhohcn-share&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;IBM developerWorks 中国 : Linux : Articles,Tutorials:&lt;a href=&quot;http://www.ibm.com/developerworks/cn/&quot;&gt;http://www.ibm.com/developerworks/cn/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;IUSR's Unnamed Seraph Reborn:&lt;a href=&quot;http://blog.iusr.me&quot;&gt;http://blog.iusr.me&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Ken Wu's Blog:&lt;a href=&quot;http://kenwublog.com&quot;&gt;http://kenwublog.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;kgdb:&lt;/span&gt; &lt;a href=&quot;http://www.kgdb.info&quot;&gt;http://www.kgdb.info&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;LinuxTOY:&lt;a href=&quot;http://linuxtoy.org&quot;&gt;http://linuxtoy.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Linux内核之旅:&lt;a href=&quot;http://www.kerneltravel.net&quot;&gt;http://www.kerneltravel.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;linux大棚-roclinux.cn:&lt;a href=&quot;http://roclinux.cn&quot;&gt;http://roclinux.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;little wonders:&lt;a href=&quot;http://wyest.blogbus.com&quot;&gt;http://wyest.blogbus.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;LLVM Project Blog:&lt;a href=&quot;http://blog.llvm.org/&quot;&gt;http://blog.llvm.org/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;loop&lt;sub&gt;in&lt;/sub&gt;&lt;sub&gt;codes&lt;/sub&gt;:&lt;a href=&quot;http://codemacro.com/&quot;&gt;http://codemacro.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;Matrix67:&lt;/span&gt;  My Blog:&lt;a href=&quot;http://www.matrix67.com/blog&quot;&gt;http://www.matrix67.com/blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Nooidea.com | 装傻充愣:&lt;a href=&quot;http://www.nooidea.com&quot;&gt;http://www.nooidea.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Paul Graham: Essays:&lt;a href=&quot;http://www.paulgraham.com/&quot;&gt;http://www.paulgraham.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;Publications by Googlers:&lt;/span&gt; &lt;a href=&quot;http://research.google.com/pubs/papers.html&quot;&gt;http://research.google.com/pubs/papers.html&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;R2S:&lt;a href=&quot;http://www.road2stat.com/cn&quot;&gt;http://www.road2stat.com/cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Tim[后端技术]:&lt;a href=&quot;http://timyang.net&quot;&gt;http://timyang.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;tombkeeper的和谐Blog:&lt;a href=&quot;http://hi.baidu.com/tombkeeper&quot;&gt;http://hi.baidu.com/tombkeeper&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;typeof.net:&lt;a href=&quot;http://typeof.net&quot;&gt;http://typeof.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Vimer:&lt;a href=&quot;http://www.vimer.cn&quot;&gt;http://www.vimer.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;What's in johnc's mind:&lt;a href=&quot;http://www.googies.info/blog&quot;&gt;http://www.googies.info/blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;YIFEIYANG:&lt;a href=&quot;http://www.yifeiyang.net&quot;&gt;http://www.yifeiyang.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Yume:&lt;a href=&quot;http://blog.kghost.info&quot;&gt;http://blog.kghost.info&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;yumengkk的专栏:&lt;a href=&quot;http://blog.csdn.net/yumengkk&quot;&gt;http://blog.csdn.net/yumengkk&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;丕子:&lt;a href=&quot;http://www.zhizhihu.com&quot;&gt;http://www.zhizhihu.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;世纪心理沙龙:&lt;a href=&quot;http://www.xlxcn.net&quot;&gt;http://www.xlxcn.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;云存储技术博客：光头老蒋(云存储技术，虚拟化，IP存储， 数据库容灾等）:&lt;a href=&quot;http://www.click2earth.com/&quot;&gt;http://www.click2earth.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;云风的BLOG:&lt;a href=&quot;http://blog.codingnow.com/&quot;&gt;http://blog.codingnow.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;仰空冥思:&lt;a href=&quot;http://www.lupaworld.com/?uid-26540&quot;&gt;http://www.lupaworld.com/?uid-26540&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;刘未鹏 | Mind Hacks:&lt;/span&gt; &lt;a href=&quot;http://mindhacks.cn&quot;&gt;http://mindhacks.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;刘未鹏(pongba) 的收藏:&lt;a href=&quot;http://www.douban.com/people/pongba/&quot;&gt;http://www.douban.com/people/pongba/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;励志人生(LzTopic):&lt;a href=&quot;http://www.lztopic.com&quot;&gt;http://www.lztopic.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;博客园-Dbger的技术博客:&lt;a href=&quot;http://www.cnblogs.com/baiyanhuang/&quot;&gt;http://www.cnblogs.com/baiyanhuang/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;博客园-Milo的游戏开发:&lt;a href=&quot;http://www.cnblogs.com/miloyip/&quot;&gt;http://www.cnblogs.com/miloyip/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;博客园-SoftwareTeacher:&lt;a href=&quot;http://www.cnblogs.com/xinz/&quot;&gt;http://www.cnblogs.com/xinz/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;博客园-leftnoteasy:&lt;a href=&quot;http://www.cnblogs.com/LeftNotEasy/&quot;&gt;http://www.cnblogs.com/LeftNotEasy/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;大嘴彼得 | Loud Mouth Peter:&lt;a href=&quot;http://xzpeter.org&quot;&gt;http://xzpeter.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;大风起兮云飞扬:&lt;a href=&quot;http://hi.baidu.com/aullik5&quot;&gt;http://hi.baidu.com/aullik5&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;天堂的模样应该是科幻世界:&lt;a href=&quot;http://blog.sina.com.cn/liguangyi&quot;&gt;http://blog.sina.com.cn/liguangyi&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;学而时嘻之:&lt;/span&gt; &lt;a href=&quot;http://www.geekonomics10000.com&quot;&gt;http://www.geekonomics10000.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;宇宙的心弦:&lt;a href=&quot;http://www.eaglefantasy.com&quot;&gt;http://www.eaglefantasy.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;小北的家:&lt;a href=&quot;http://blog.csdn.net/ijuliet&quot;&gt;http://blog.csdn.net/ijuliet&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;并行实验室 | Parallel Labs:&lt;/span&gt; &lt;a href=&quot;http://www.parallellabs.com&quot;&gt;http://www.parallellabs.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;康华的专栏:&lt;a href=&quot;http://blog.csdn.net/kanghua&quot;&gt;http://blog.csdn.net/kanghua&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;张五常的空间:&lt;a href=&quot;http://zhangwuchang.blog.sohu.com/&quot;&gt;http://zhangwuchang.blog.sohu.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;张哲的博客(zhangzhe's blogs):&lt;a href=&quot;http://zhangzhe.heroku.com/blogs&quot;&gt;http://zhangzhe.heroku.com/blogs&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;弯曲评论:&lt;a href=&quot;http://www.tektalk.org&quot;&gt;http://www.tektalk.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;微软、Google等面试题:&lt;a href=&quot;http://zhedahht.blog.163.com&quot;&gt;http://zhedahht.blog.163.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;微软亚洲研究院:&lt;a href=&quot;http://blog.sina.com.cn/msra&quot;&gt;http://blog.sina.com.cn/msra&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;我爱Podcast | Podcast中文站:&lt;a href=&quot;http://52podcast.com&quot;&gt;http://52podcast.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;我爱正则表达式:&lt;a href=&quot;http://iregex.org&quot;&gt;http://iregex.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;我的黒纱裙:&lt;/span&gt; &lt;a href=&quot;http://blog.sina.com.cn/yingpeng332&quot;&gt;http://blog.sina.com.cn/yingpeng332&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;我自然:&lt;a href=&quot;http://www.elcorp.com.cn&quot;&gt;http://www.elcorp.com.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;晨枫小苑:&lt;a href=&quot;http://zhouf601117.blog.163.com&quot;&gt;http://zhouf601117.blog.163.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;有{間}客栈:&lt;a href=&quot;http://imcc.blogbus.com&quot;&gt;http://imcc.blogbus.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;极限手指:&lt;a href=&quot;http://ahei.info&quot;&gt;http://ahei.info&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;林健的BLOG:&lt;a href=&quot;http://blog.linjian.org&quot;&gt;http://blog.linjian.org&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;枪炮世界 / 装备与生存:&lt;/span&gt; &lt;a href=&quot;http://blog.163.com/gunworld@126&quot;&gt;http://blog.163.com/gunworld@126&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;武志红的BLOG:&lt;a href=&quot;http://blog.sina.com.cn/wuzii&quot;&gt;http://blog.sina.com.cn/wuzii&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;游戏人生:&lt;a href=&quot;http://www.yulefox.com&quot;&gt;http://www.yulefox.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;潇水的博客:&lt;a href=&quot;http://blog.sina.com.cn/xiaoshuiblog&quot;&gt;http://blog.sina.com.cn/xiaoshuiblog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;牛来疯:&lt;a href=&quot;http://www.duniuniu.com&quot;&gt;http://www.duniuniu.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;科罗廖夫的军事客厅:&lt;/span&gt; &lt;a href=&quot;http://gaosga.blog.163.com&quot;&gt;http://gaosga.blog.163.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;笑对人生，傲立寰宇:&lt;a href=&quot;http://dahuasky.wordpress.com&quot;&gt;http://dahuasky.wordpress.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;简单的龙浩:&lt;a href=&quot;http://www.longtask.com/blog&quot;&gt;http://www.longtask.com/blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;结构之法 算法之道:&lt;a href=&quot;http://blog.csdn.net/v_july_v&quot;&gt;http://blog.csdn.net/v_july_v&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;编译点滴:&lt;/span&gt; &lt;a href=&quot;http://www.lingcc.com&quot;&gt;http://www.lingcc.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;胖子康:&lt;a href=&quot;http://www.moorekang.com&quot;&gt;http://www.moorekang.com&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;褪墨|时间管理、个人提升和演讲技巧:&lt;/span&gt; &lt;a href=&quot;http://www.mifengtd.cn&quot;&gt;http://www.mifengtd.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;许小年:&lt;a href=&quot;http://xuxiaonian.blog.sohu.com/&quot;&gt;http://xuxiaonian.blog.sohu.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;谢国忠:&lt;a href=&quot;http://xieguozhong.blog.sohu.com/&quot;&gt;http://xieguozhong.blog.sohu.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;赖勇浩的编程私伙局- CSDN博客:&lt;a href=&quot;http://blog.csdn.net/blogrss.aspx?username=lanphaday&quot;&gt;http://blog.csdn.net/blogrss.aspx?username=lanphaday&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;郭凯经济笔记:&lt;/span&gt; &lt;a href=&quot;http://www.kaieconblog.net&quot;&gt;http://www.kaieconblog.net&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;酷壳– CoolShell.cn:&lt;/span&gt; &lt;a href=&quot;http://coolshell.cn&quot;&gt;http://coolshell.cn&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration:underline;&quot;&gt;阮一峰的网络日志:&lt;/span&gt; &lt;a href=&quot;http://www.ruanyifeng.com/blog/&quot;&gt;http://www.ruanyifeng.com/blog/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;陈志武:&lt;a href=&quot;http://chenzhiwu.blog.sohu.com/&quot;&gt;http://chenzhiwu.blog.sohu.com/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;陈硕的Blog:&lt;a href=&quot;http://blog.csdn.net/blogrss.aspx?username=Solstice&quot;&gt;http://blog.csdn.net/blogrss.aspx?username=Solstice&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;陈贤安:&lt;a href=&quot;http://cxa.im/blog&quot;&gt;http://cxa.im/blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;韩寒-新浪博客:&lt;a href=&quot;http://blog.sina.com.cn/twocold&quot;&gt;http://blog.sina.com.cn/twocold&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
 
 &lt;/div&gt;
 
 &lt;/div&gt;
 
 &lt;div id=&quot;outline-container-2&quot; class=&quot;outline-2&quot;&gt;
-&lt;h2 id=&quot;sec-2&quot;&gt;asf &lt;/h2&gt;
+&lt;h2 id=&quot;sec-2&quot;&gt;说明&lt;/h2&gt;
 &lt;div class=&quot;outline-text-2&quot; id=&quot;text-2&quot;&gt;
 
+&lt;p&gt;没想到竟然有这么多,很多都是订阅的时候可能还有更新,不过目前不再更新的了.
+&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 
 &lt;div id=&quot;outline-container-3&quot; class=&quot;outline-2&quot;&gt;
-&lt;h2 id=&quot;sec-3&quot;&gt;asdf &lt;/h2&gt;
+&lt;h2 id=&quot;sec-3&quot;&gt;XML可以导入的版本&lt;/h2&gt;
 &lt;div class=&quot;outline-text-2&quot; id=&quot;text-3&quot;&gt;
 
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div id=&quot;outline-container-4&quot; class=&quot;outline-2&quot;&gt;
-&lt;h2 id=&quot;sec-4&quot;&gt;gog2 &lt;/h2&gt;
-&lt;div class=&quot;outline-text-2&quot; id=&quot;text-4&quot;&gt;
 
 
-&lt;/div&gt;
-
-&lt;div id=&quot;outline-container-4.1&quot; class=&quot;outline-3&quot;&gt;
-&lt;h3 id=&quot;sec-4.1&quot;&gt;test &lt;/h3&gt;
-&lt;div class=&quot;outline-text-3&quot; id=&quot;text-4.1&quot;&gt;
 
 
-&lt;/div&gt;
+&lt;pre class=&quot;example&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;opml version=&quot;1.0&quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;title&amp;gt;毛毛 subscriptions in Google Reader&amp;lt;/title&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;outline title=&quot;RSS源&quot; text=&quot;RSS源&quot;&amp;gt;
+            &amp;lt;outline text=&quot;4G spaces&quot; title=&quot;4G spaces&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.youxu.info/feed/&quot; htmlUrl=&quot;http://blog.youxu.info&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;A Geek's Page&quot; title=&quot;A Geek's Page&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://wangcong.org/blog/?feed=rss2&quot; htmlUrl=&quot;http://wangcong.org/blog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Android Developers Blog&quot;
+                title=&quot;Android Developers Blog&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://android-developers.blogspot.com/feeds/posts/default&quot; htmlUrl=&quot;http://android-developers.blogspot.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;AnyShare&quot; title=&quot;AnyShare&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.anyshare.org/feed&quot; htmlUrl=&quot;http://www.anyshare.org&quot;/&amp;gt;
+            &amp;lt;outline
+                text=&quot;C++博客-λ-calculus（惊愕到手了欧耶，GetBlogPostIds.aspx）&quot;
+                title=&quot;C++博客-λ-calculus（惊愕到手了欧耶，GetBlogPostIds.aspx）&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://www.cppblog.com/vczh/rss.aspx&quot; htmlUrl=&quot;http://www.cppblog.com/vczh/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Chun Tian (binghe)&quot;
+                title=&quot;Chun Tian (binghe)&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://tianchunbinghe.blog.163.com/rss/&quot; htmlUrl=&quot;http://tianchunbinghe.blog.163.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Coding in Dreams&quot; title=&quot;Coding in Dreams&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.tomtung.com/feed/atom.xml&quot; htmlUrl=&quot;http://blog.tomtung.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;DBA Notes - 网站架构性能优化技术评论&quot;
+                title=&quot;DBA Notes - 网站架构性能优化技术评论&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.dbanotes.net/atom.xml&quot; htmlUrl=&quot;http://www.dbanotes.net/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;demo@virushuo&quot; title=&quot;demo@virushuo&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds2.feedburner.com/virushuo&quot; htmlUrl=&quot;http://blog.devep.net/virushuo/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;dm&quot; title=&quot;dm&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://hi.baidu.com/int3/rss&quot; htmlUrl=&quot;http://hi.baidu.com/int3&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Dutor - 人生天地之间，如白驹过隙忽然而已&quot;
+                title=&quot;Dutor - 人生天地之间，如白驹过隙忽然而已&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedburner.com/dutor&quot; htmlUrl=&quot;http://www.dutor.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;edsionte|新手区&quot; title=&quot;edsionte|新手区&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://edsionte.com/techblog/feed&quot; htmlUrl=&quot;http://edsionte.com/techblog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Emacs中文网&quot; title=&quot;Emacs中文网&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://emacser.com/feed&quot; htmlUrl=&quot;http://emacser.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Ever 17&quot; title=&quot;Ever 17&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.csdn.net/winterTTr/rss/list&quot; htmlUrl=&quot;http://blog.csdn.net/winterttr&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Free Mind&quot; title=&quot;Free Mind&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://freemind.pluskid.org/rss.xml&quot; htmlUrl=&quot;http://freemind.pluskid.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Free Mind&quot; title=&quot;Free Mind&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.pluskid.org/?feed=rss2&quot; htmlUrl=&quot;http://blog.pluskid.org&quot;/&amp;gt;
+            &amp;lt;outline
+                text=&quot;Google 黑板报 - Google （谷歌）中国的博客网志，走近我们的产品、技术和文化&quot;
+                title=&quot;Google 黑板报 - Google （谷歌）中国的博客网志，走近我们的产品、技术和文化&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.google.com.hk/ggblog/googlechinablog/atom.xml&quot; htmlUrl=&quot;http://googlechinablog.blogspot.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;HelloGcc Working Group&quot;
+                title=&quot;HelloGcc Working Group&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://hellogcc.blogbus.com/index.rdf&quot; htmlUrl=&quot;http://hellogcc.blogbus.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;HoH的阅读分享&quot; title=&quot;HoH的阅读分享&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/hohcn-share&quot; htmlUrl=&quot;http://www.google.com/reader/view/feed%2Fhttp%3A%2F%2Ffeed.feedsky.com%2Fhohcn-share&quot;/&amp;gt;
+            &amp;lt;outline
+                text=&quot;IBM developerWorks 中国 : Linux : Articles,Tutorials&quot;
+                title=&quot;IBM developerWorks 中国 : Linux : Articles,Tutorials&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.ibm.com/developerworks/cn/views/rss/customrssatom.jsp?zone_by=Linux&amp;amp;amp;type_by=Articles&amp;amp;amp;type_by=Tutorials&amp;amp;amp;search_by=&amp;amp;amp;day=1&amp;amp;amp;month=01&amp;amp;amp;year=2005&amp;amp;amp;max_entries=20&amp;amp;amp;feed_by=rss&amp;amp;amp;isGUI=true&amp;amp;amp;Submit.x=34&amp;amp;amp;Submit.y=9&quot; htmlUrl=&quot;http://www.ibm.com/developerworks/cn/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;IUSR's Unnamed Seraph Reborn&quot;
+                title=&quot;IUSR's Unnamed Seraph Reborn&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.iusr.me/feed/&quot; htmlUrl=&quot;http://blog.iusr.me&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Ken Wu's Blog&quot; title=&quot;Ken Wu's Blog&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://feed.kenwublog.com/&quot; htmlUrl=&quot;http://kenwublog.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;kgdb&quot; title=&quot;kgdb&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.kgdb.info/feed/&quot; htmlUrl=&quot;http://www.kgdb.info&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;LinuxTOY&quot; title=&quot;LinuxTOY&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedburner.com/linuxtoy&quot; htmlUrl=&quot;http://linuxtoy.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Linux内核之旅&quot; title=&quot;Linux内核之旅&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.kerneltravel.net/?feed=rss2&quot; htmlUrl=&quot;http://www.kerneltravel.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;linux大棚-roclinux.cn&quot;
+                title=&quot;linux大棚-roclinux.cn&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/roclinux&quot; htmlUrl=&quot;http://roclinux.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;little wonders&quot; title=&quot;little wonders&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://wyest.blogbus.com/index.rdf&quot; htmlUrl=&quot;http://wyest.blogbus.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;LLVM Project Blog&quot; title=&quot;LLVM Project Blog&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.llvm.org/feeds/posts/default&quot; htmlUrl=&quot;http://blog.llvm.org/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;loop_in_codes&quot; title=&quot;loop_in_codes&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://codemacro.com/feed&quot; htmlUrl=&quot;http://codemacro.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Matrix67: My Blog&quot; title=&quot;Matrix67: My Blog&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.matrix67.com/blog/feed.asp&quot; htmlUrl=&quot;http://www.matrix67.com/blog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Nooidea.com | 装傻充愣&quot;
+                title=&quot;Nooidea.com | 装傻充愣&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.nooidea.com/feed&quot; htmlUrl=&quot;http://www.nooidea.com&quot;/&amp;gt;
+            &amp;lt;outline
+                text=&quot;O'Reilly Radar - Insight, analysis, and research about emerging technologies.&quot;
+                title=&quot;O'Reilly Radar - Insight, analysis, and research about emerging technologies.&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedburner.com/oreilly/radar/atom&quot; htmlUrl=&quot;http://radar.oreilly.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Paul Graham: Essays&quot;
+                title=&quot;Paul Graham: Essays&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.aaronsw.com/2002/feeds/pgessays.rss&quot; htmlUrl=&quot;http://www.paulgraham.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Publications by Googlers&quot;
+                title=&quot;Publications by Googlers&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://research.google.com/pubs/atom.xml&quot; htmlUrl=&quot;http://research.google.com/pubs/papers.html&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;R2S&quot; title=&quot;R2S&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/road2stat?source=ignitionfork&quot; htmlUrl=&quot;http://www.road2stat.com/cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Rough Type: Nicholas Carr's Blog&quot;
+                title=&quot;Rough Type: Nicholas Carr's Blog&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedburner.com/roughtype/unGc&quot; htmlUrl=&quot;http://www.roughtype.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Tim[后端技术]&quot; title=&quot;Tim[后端技术]&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://timyang.net/feed/&quot; htmlUrl=&quot;http://timyang.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;tombkeeper的和谐Blog&quot; title=&quot;tombkeeper的和谐Blog&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://hi.baidu.com/tombkeeper/rss&quot; htmlUrl=&quot;http://hi.baidu.com/tombkeeper&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;typeof.net&quot; title=&quot;typeof.net&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://typeof.net/feed/&quot; htmlUrl=&quot;http://typeof.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Vimer&quot; title=&quot;Vimer&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/vimer&quot; htmlUrl=&quot;http://www.vimer.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;What's in johnc's mind&quot;
+                title=&quot;What's in johnc's mind&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/Googies&quot; htmlUrl=&quot;http://www.googies.info/blog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;YIFEIYANG&quot; title=&quot;YIFEIYANG&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.yifeiyang.net/feed/&quot; htmlUrl=&quot;http://www.yifeiyang.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;Yume&quot; title=&quot;Yume&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.kghost.info/index.php/feed/&quot; htmlUrl=&quot;http://blog.kghost.info&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;yumengkk的专栏&quot; title=&quot;yumengkk的专栏&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.csdn.net/yumengkk/rss/list&quot; htmlUrl=&quot;http://blog.csdn.net/yumengkk&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;丕子&quot; title=&quot;丕子&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.zhizhihu.com/feed&quot; htmlUrl=&quot;http://www.zhizhihu.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;世纪心理沙龙&quot; title=&quot;世纪心理沙龙&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.xlxcn.net/feed&quot; htmlUrl=&quot;http://www.xlxcn.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;云存储技术博客：光头老蒋(云存储技术，虚拟化，IP存储， 数据库容灾等）&quot;
+                title=&quot;云存储技术博客：光头老蒋(云存储技术，虚拟化，IP存储， 数据库容灾等）&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.click2earth.com/rss.xml&quot; htmlUrl=&quot;http://www.click2earth.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;云风的BLOG&quot; title=&quot;云风的BLOG&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.codingnow.com/atom.xml&quot; htmlUrl=&quot;http://blog.codingnow.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;从三味书屋到百草园&quot; title=&quot;从三味书屋到百草园&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/1569777711.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/yinwang0&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;仰空冥思&quot; title=&quot;仰空冥思&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.lupaworld.com/26540/action-rss-type-blog.html&quot; htmlUrl=&quot;http://www.lupaworld.com/?uid-26540&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;刘未鹏 | Mind Hacks&quot; title=&quot;刘未鹏 | Mind Hacks&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://mindhacks.cn/feed/&quot; htmlUrl=&quot;http://mindhacks.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;刘未鹏(pongba) 的收藏&quot; title=&quot;刘未鹏(pongba) 的收藏&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.douban.com/feed/people/pongba/interests&quot; htmlUrl=&quot;http://www.douban.com/people/pongba/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;励志人生(LzTopic)&quot; title=&quot;励志人生(LzTopic)&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://feed.lztopic.com/&quot; htmlUrl=&quot;http://www.lztopic.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;博客园-Dbger的技术博客&quot; title=&quot;博客园-Dbger的技术博客&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.debuggingnow.com/blog/atom.xml&quot; htmlUrl=&quot;http://www.cnblogs.com/baiyanhuang/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;博客园-Milo的游戏开发&quot; title=&quot;博客园-Milo的游戏开发&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://www.cnblogs.com/miloyip/rss&quot; htmlUrl=&quot;http://www.cnblogs.com/miloyip/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;博客园-SoftwareTeacher&quot;
+                title=&quot;博客园-SoftwareTeacher&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.cnblogs.com/xinz/rss&quot; htmlUrl=&quot;http://www.cnblogs.com/xinz/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;博客园_leftnoteasy&quot; title=&quot;博客园_leftnoteasy&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.cnblogs.com/blog/u/62514/rss&quot; htmlUrl=&quot;http://www.cnblogs.com/LeftNotEasy/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;大嘴彼得 | Loud Mouth Peter&quot;
+                title=&quot;大嘴彼得 | Loud Mouth Peter&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://xzpeter.org/?feed=rss2&quot; htmlUrl=&quot;http://xzpeter.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;大风起兮云飞扬&quot; title=&quot;大风起兮云飞扬&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://hi.baidu.com/aullik5/rss&quot; htmlUrl=&quot;http://hi.baidu.com/aullik5&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;天堂的模样应该是科幻世界&quot; title=&quot;天堂的模样应该是科幻世界&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/liguangyi.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/liguangyi&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;学而时嘻之&quot; title=&quot;学而时嘻之&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.geekonomics10000.com/feed&quot; htmlUrl=&quot;http://www.geekonomics10000.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;宇宙的心弦&quot; title=&quot;宇宙的心弦&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/eaglefantasy&quot; htmlUrl=&quot;http://www.eaglefantasy.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;小北的家&quot; title=&quot;小北的家&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.csdn.net/ijuliet/rss/list&quot; htmlUrl=&quot;http://blog.csdn.net/ijuliet&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;并行实验室 | Parallel Labs&quot;
+                title=&quot;并行实验室 | Parallel Labs&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.parallellabs.com/feed/&quot; htmlUrl=&quot;http://www.parallellabs.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;康华的专栏&quot; title=&quot;康华的专栏&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.csdn.net/kanghua/rss/list&quot; htmlUrl=&quot;http://blog.csdn.net/kanghua&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;张五常的空间&quot; title=&quot;张五常的空间&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://zhangwuchang.blog.sohu.com/rss&quot; htmlUrl=&quot;http://zhangwuchang.blog.sohu.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;张哲的博客(zhangzhe's blogs)&quot;
+                title=&quot;张哲的博客(zhangzhe's blogs)&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://zhangzhe.heroku.com/blogs.rss&quot; htmlUrl=&quot;http://zhangzhe.heroku.com/blogs&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;弯曲评论&quot; title=&quot;弯曲评论&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/tektalk&quot; htmlUrl=&quot;http://www.tektalk.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;微软、Google等面试题&quot; title=&quot;微软、Google等面试题&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://zhedahht.blog.163.com/rss/&quot; htmlUrl=&quot;http://zhedahht.blog.163.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;微软亚洲研究院&quot; title=&quot;微软亚洲研究院&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/msra.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/msra&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;我爱Podcast | Podcast中文站&quot;
+                title=&quot;我爱Podcast | Podcast中文站&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/52podcast&quot; htmlUrl=&quot;http://52podcast.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;我爱正则表达式&quot; title=&quot;我爱正则表达式&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://iregex.org/feed&quot; htmlUrl=&quot;http://iregex.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;我的黒纱裙&quot; title=&quot;我的黒纱裙&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/1823702565.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/yingpeng332&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;我自然&quot; title=&quot;我自然&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.yankay.com/feed/&quot; htmlUrl=&quot;http://www.yankay.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;效率天阶&quot; title=&quot;效率天阶&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.elcorp.com.cn/elcorprss.xml&quot; htmlUrl=&quot;http://www.elcorp.com.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;晨枫小苑&quot; title=&quot;晨枫小苑&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://zhouf601117.blog.163.com/rss/&quot; htmlUrl=&quot;http://zhouf601117.blog.163.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;有{間}客栈&quot; title=&quot;有{間}客栈&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://imcc.blogbus.com/index.rdf&quot; htmlUrl=&quot;http://imcc.blogbus.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;极限手指&quot; title=&quot;极限手指&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://ahei.info/feed&quot; htmlUrl=&quot;http://ahei.info&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;林健的BLOG&quot; title=&quot;林健的BLOG&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.linjian.org/feed/&quot; htmlUrl=&quot;http://blog.linjian.org&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;枪炮世界 / 装备与生存&quot; title=&quot;枪炮世界 / 装备与生存&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.163.com/gunworld@126/rss/&quot; htmlUrl=&quot;http://blog.163.com/gunworld@126&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;武志红的BLOG&quot; title=&quot;武志红的BLOG&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/wuzii&quot; htmlUrl=&quot;http://blog.sina.com.cn/wuzii&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;游戏人生&quot; Title=&quot;游戏人生&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.yulefox.com/?feed=rss2&quot; htmlUrl=&quot;http://www.yulefox.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;潇水的博客&quot; title=&quot;潇水的博客&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/xiaoshuiblog.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/xiaoshuiblog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;牛来疯&quot; title=&quot;牛来疯&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/od7d&quot; htmlUrl=&quot;http://www.duniuniu.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;科罗廖夫的军事客厅&quot; title=&quot;科罗廖夫的军事客厅&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://gaosga.blog.163.com/rss/&quot; htmlUrl=&quot;http://gaosga.blog.163.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;笑对人生，傲立寰宇&quot; title=&quot;笑对人生，傲立寰宇&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://cid-1ab3bc993db84fd7.users.api.live.net/Users(1924088832168841175)/Main?$format=rss20&quot; htmlUrl=&quot;http://dahuasky.wordpress.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;简单的龙浩&quot; title=&quot;简单的龙浩&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/longhao&quot; htmlUrl=&quot;http://www.longtask.com/blog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;结构之法 算法之道&quot; title=&quot;结构之法 算法之道&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.csdn.net/v_JULY_v/rss/list&quot; htmlUrl=&quot;http://blog.csdn.net/v_july_v&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;编译点滴&quot; title=&quot;编译点滴&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.lingcc.com/feed/&quot; htmlUrl=&quot;http://www.lingcc.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;胖子康&quot; title=&quot;胖子康&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feed.feedsky.com/moorekang&quot; htmlUrl=&quot;http://www.moorekang.com&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;褪墨|时间管理、个人提升和演讲技巧&quot; title=&quot;褪墨|时间管理、个人提升和演讲技巧&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://www.mifengtd.cn/feed&quot; htmlUrl=&quot;http://www.mifengtd.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;许小年&quot; title=&quot;许小年&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://xuxiaonian.blog.sohu.com/rss&quot; htmlUrl=&quot;http://xuxiaonian.blog.sohu.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;谢国忠&quot; title=&quot;谢国忠&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://xieguozhong.blog.sohu.com/rss&quot; htmlUrl=&quot;http://xieguozhong.blog.sohu.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;赖勇浩的编程私伙局- CSDN博客&quot; title=&quot;赖勇浩的编程私伙局- CSDN博客&quot;
+                type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedsky.com/csdn.net/lanphaday&quot; htmlUrl=&quot;http://blog.csdn.net/blogrss.aspx?username=lanphaday&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;郭凯经济笔记&quot; title=&quot;郭凯经济笔记&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://www.kaieconblog.net/feed/&quot; htmlUrl=&quot;http://www.kaieconblog.net&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;酷壳– CoolShell.cn&quot; title=&quot;酷壳– CoolShell.cn&quot;
+                type=&quot;rss&quot; xmlUrl=&quot;http://coolshell.cn/feed&quot; htmlUrl=&quot;http://coolshell.cn&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;阮一峰的网络日志&quot; title=&quot;阮一峰的网络日志&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedburner.com/ruanyifeng&quot; htmlUrl=&quot;http://www.ruanyifeng.com/blog/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;陈志武&quot; title=&quot;陈志武&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://chenzhiwu.blog.sohu.com/rss&quot; htmlUrl=&quot;http://chenzhiwu.blog.sohu.com/&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;陈硕的Blog&quot; title=&quot;陈硕的Blog&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://feeds.feedsky.com/csdn.net/Solstice&quot; htmlUrl=&quot;http://blog.csdn.net/blogrss.aspx?username=Solstice&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;陈贤安&quot; title=&quot;陈贤安&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://cxa.im/blog/feed/&quot; htmlUrl=&quot;http://cxa.im/blog&quot;/&amp;gt;
+            &amp;lt;outline text=&quot;韩寒_新浪博客&quot; title=&quot;韩寒_新浪博客&quot; type=&quot;rss&quot;
+                xmlUrl=&quot;http://blog.sina.com.cn/rss/1191258123.xml&quot; htmlUrl=&quot;http://blog.sina.com.cn/twocold&quot;/&amp;gt;
+        &amp;lt;/outline&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/opml&amp;gt;
+&lt;/pre&gt;
 
-&lt;div id=&quot;outline-container-4.1.1&quot; class=&quot;outline-4&quot;&gt;
-&lt;h4 id=&quot;sec-4.1.1&quot;&gt;he &lt;/h4&gt;
-&lt;div class=&quot;outline-text-4&quot; id=&quot;text-4.1.1&quot;&gt;
 
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Test</title>
-   <link href="http://qinjian623.github.com/org/2012/08/17/test"/>
-   <updated>2012-08-17T00:00:00+08:00</updated>
-   <id>http://qinjian623.github.com/org/2012/08/17/test</id>
-   <content type="html">layout: default
-title: 中文测试
-comments: true
----
-
-
-#+END_HTML
-* 中文的测试文档
-* asf
-* asdf
-* gog2
-** test
-*** he
-</content>
- </entry>
- 
- <entry>
-   <title>Jekyll Introduction</title>
-   <link href="http://qinjian623.github.com/lessons/2011/12/29/jekyll-introduction"/>
-   <updated>2011-12-29T00:00:00+08:00</updated>
-   <id>http://qinjian623.github.com/lessons/2011/12/29/jekyll-introduction</id>
-   <content type="html">&lt;p&gt;This Jekyll introduction will outline specifically what Jekyll is and why you would want to use it. Directly following the intro we&amp;#8217;ll learn exactly &lt;em&gt;how&lt;/em&gt; Jekyll does what it does.&lt;/p&gt;
-
-&lt;h2 id='overview'&gt;Overview&lt;/h2&gt;
-
-&lt;h3 id='what_is_jekyll'&gt;What is Jekyll?&lt;/h3&gt;
-
-&lt;p&gt;Jekyll is a parsing engine bundled as a ruby gem used to build static websites from dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as &amp;#8220;a simple, blog aware, static site generator&amp;#8221;.&lt;/p&gt;
-
-&lt;h3 id='examples'&gt;Examples&lt;/h3&gt;
-
-&lt;p&gt;This website is created with Jekyll. &lt;a href='https://github.com/mojombo/jekyll/wiki/Sites'&gt;Other Jekyll websites&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id='what_does_jekyll_do'&gt;What does Jekyll Do?&lt;/h3&gt;
-
-&lt;p&gt;Jekyll is a ruby gem you install on your local system. Once there you can call &lt;code&gt;jekyll --server&lt;/code&gt; on a directory and provided that directory is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files, compute categories, tags, permalinks, and construct your pages from layout templates and partials.&lt;/p&gt;
-
-&lt;p&gt;Once parsed, Jekyll stores the result in a self-contained static &lt;code&gt;_site&lt;/code&gt; folder. The intention here is that you can serve all contents in this folder statically from a plain static web-server.&lt;/p&gt;
-
-&lt;p&gt;You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags on each request, Jekyll does this once &lt;em&gt;beforehand&lt;/em&gt; and caches the &lt;em&gt;entire website&lt;/em&gt; in a folder for serving statically.&lt;/p&gt;
-
-&lt;h3 id='jekyll_is_not_blogging_software'&gt;Jekyll is Not Blogging Software&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Jekyll is a parsing engine.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Jekyll does not come with any content nor does it have any templates or design elements. This is a common source of confusion when getting started. Jekyll does not come with anything you actually use or see on your website - you have to make it.&lt;/p&gt;
-
-&lt;h3 id='why_should_i_care'&gt;Why Should I Care?&lt;/h3&gt;
-
-&lt;p&gt;Jekyll is very minimalistic and very efficient. The most important thing to realize about Jekyll is that it creates a static representation of your website requiring only a static web-server. Traditional dynamic blogs like Wordpress require a database and server-side code. Heavily trafficked dynamic blogs must employ a caching layer that ultimately performs the same job Jekyll sets out to do; serve static content.&lt;/p&gt;
-
-&lt;p&gt;Therefore if you like to keep things simple and you prefer the command-line over an admin panel UI then give Jekyll a try.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Developers like Jekyll because we can write content like we write code:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ability to write content in markdown or textile in your favorite text-editor.&lt;/li&gt;
-
-&lt;li&gt;Ability to write and preview your content via localhost.&lt;/li&gt;
-
-&lt;li&gt;No internet connection required.&lt;/li&gt;
-
-&lt;li&gt;Ability to publish via git.&lt;/li&gt;
-
-&lt;li&gt;Ability to host your blog on a static web-server.&lt;/li&gt;
-
-&lt;li&gt;Ability to host freely on GitHub Pages.&lt;/li&gt;
-
-&lt;li&gt;No database required.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id='how_jekyll_works'&gt;How Jekyll Works&lt;/h1&gt;
-
-&lt;p&gt;The following is a complete but concise outline of exactly how Jekyll works.&lt;/p&gt;
-
-&lt;p&gt;Be aware that core concepts are introduced in rapid succession without code examples. This information is not intended to specifically teach you how to do anything, rather it is intended to give you the &lt;em&gt;full picture&lt;/em&gt; relative to what is going on in Jekyll-world.&lt;/p&gt;
-
-&lt;p&gt;Learning these core concepts should help you avoid common frustrations and ultimately help you better understand the code examples contained throughout Jekyll-Bootstrap.&lt;/p&gt;
-
-&lt;h2 id='initial_setup'&gt;Initial Setup&lt;/h2&gt;
-
-&lt;p&gt;After &lt;a href='/index.html#start-now'&gt;installing jekyll&lt;/a&gt; you&amp;#8217;ll need to format your website directory in a way jekyll expects. Jekyll-bootstrap conveniently provides the base directory format.&lt;/p&gt;
-
-&lt;h3 id='the_jekyll_application_base_format'&gt;The Jekyll Application Base Format&lt;/h3&gt;
-
-&lt;p&gt;Jekyll expects your website directory to be laid out like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
-|-- _config.yml
-|-- _includes
-|-- _layouts
-|   |-- default.html
-|   |-- post.html
-|-- _posts
-|   |-- 20011-10-25-open-source-is-good.markdown
-|   |-- 20011-04-26-hello-world.markdown
-|-- _site
-|-- index.html
-|-- assets
-    |-- css
-        |-- style.css
-    |-- javascripts&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;_config.yml&lt;/strong&gt;&lt;br /&gt;Stores configuration data.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;_includes&lt;/strong&gt;&lt;br /&gt;This folder is for partial views.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;_layouts&lt;/strong&gt; &lt;br /&gt;This folder is for the main templates your content will be inserted into. You can have different layouts for different pages or page sections.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;_posts&lt;/strong&gt;&lt;br /&gt;This folder contains your dynamic content/posts. the naming format is required to be &lt;code&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;_site&lt;/strong&gt;&lt;br /&gt;This is where the generated site will be placed once Jekyll is done transforming it.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;assets&lt;/strong&gt;&lt;br /&gt;This folder is not part of the standard jekyll structure. The assets folder represents &lt;em&gt;any generic&lt;/em&gt; folder you happen to create in your root directory. Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(read more: &lt;a href='https://github.com/mojombo/jekyll/wiki/Usage'&gt;https://github.com/mojombo/jekyll/wiki/Usage&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h3 id='jekyll_configuration'&gt;Jekyll Configuration&lt;/h3&gt;
-
-&lt;p&gt;Jekyll supports various configuration options that are fully outlined here: &lt;a href='https://github.com/mojombo/jekyll/wiki/Configuration'&gt;https://github.com/mojombo/jekyll/wiki/Configuration&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id='content_in_jekyll'&gt;Content in Jekyll&lt;/h2&gt;
-
-&lt;p&gt;Content in Jekyll is either a post or a page. These content &amp;#8220;objects&amp;#8221; get inserted into one or more templates to build the final output for its respective static-page.&lt;/p&gt;
-
-&lt;h3 id='posts_and_pages'&gt;Posts and Pages&lt;/h3&gt;
-
-&lt;p&gt;Both posts and pages should be written in markdown, textile, or HTML and may also contain Liquid templating syntax. Both posts and pages can have meta-data assigned on a per-page basis such as title, url path, as well as arbitrary custom meta-data.&lt;/p&gt;
-
-&lt;h3 id='working_with_posts'&gt;Working With Posts&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Creating a Post&lt;/strong&gt; &lt;br /&gt;Posts are created by properly formatting a file and placing it the &lt;code&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;&lt;br /&gt;A post must have a valid filename in the form &lt;code&gt;YEAR-MONTH-DATE-title.MARKUP&lt;/code&gt; and be placed in the &lt;code&gt;_posts&lt;/code&gt; directory. If the data format is invalid Jekyll will not recognize the file as a post. The date and title are automatically parsed from the filename of the post file. Additionally, each file must have &lt;a href='https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter'&gt;YAML Front-Matter&lt;/a&gt; prepended to its content. YAML Front-Matter is a valid YAML syntax specifying meta-data for the given file.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Order&lt;/strong&gt;&lt;br /&gt;Ordering is an important part of Jekyll but it is hard to specify a custom ordering strategy. Only reverse chronological and chronological ordering is supported in Jekyll.&lt;/p&gt;
-
-&lt;p&gt;Since the date is hard-coded into the filename format, to change the order, you must change the dates in the filenames.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Tags&lt;/strong&gt; &lt;br /&gt;Posts can have tags associated with them as part of their meta-data. Tags may be placed on posts by providing them in the post&amp;#8217;s YAML front matter. You have access to the post-specific tags in the templates. These tags also get added to the sitewide collection.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Categories&lt;/strong&gt; &lt;br /&gt;Posts may be categorized by providing one or more categories in the YAML front matter. Categories offer more significance over tags in that they can be reflected in the URL path to the given post. Note categories in Jekyll work in a specific way. If you define more than one category you are defining a category hierarchy &amp;#8220;set&amp;#8221;. Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
-title :  Hello World
-categories : [lessons, beginner]
----&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This defines the category hierarchy &amp;#8220;lessons/beginner&amp;#8221;. Note this is &lt;em&gt;one category&lt;/em&gt; node in Jekyll. You won&amp;#8217;t find &amp;#8220;lessons&amp;#8221; and &amp;#8220;beginner&amp;#8221; as two separate categories unless you define them elsewhere as singular categories.&lt;/p&gt;
-
-&lt;h3 id='working_with_pages'&gt;Working With Pages&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Creating a Page&lt;/strong&gt;&lt;br /&gt;Pages are created by properly formatting a file and placing it anywhere in the root directory or subdirectories that do &lt;em&gt;not&lt;/em&gt; start with an underscore.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;&lt;br /&gt;In order to register as a Jekyll page the file must contain &lt;a href='https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter'&gt;YAML Front-Matter&lt;/a&gt;. Registering a page means 1) that Jekyll will process the page and 2) that the page object will be available in the &lt;code&gt;site.pages&lt;/code&gt; array for inclusion into your templates.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Categories and Tags&lt;/strong&gt;&lt;br /&gt;Pages do not compute categories nor tags so defining them will have no effect.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sub-Directories&lt;/strong&gt;&lt;br /&gt;If pages are defined in sub-directories, the path to the page will be reflected in the url. Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
-|-- people
-    |-- bob
-        |-- essay.html&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This page will be available at &lt;code&gt;http://yourdomain.com/people/bob/essay.html&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Recommended Pages&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;index.html&lt;/strong&gt;&lt;br /&gt;You will always want to define the root index.html page as this will display on your root URL.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;404.html&lt;/strong&gt;&lt;br /&gt;Create a root 404.html page and GitHub Pages will serve it as your 404 response.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;sitemap.html&lt;/strong&gt;&lt;br /&gt;Generating a sitemap is good practice for SEO.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;about.html&lt;/strong&gt;&lt;br /&gt;A nice about page is easy to do and gives the human perspective to your website.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id='templates_in_jekyll'&gt;Templates in Jekyll&lt;/h2&gt;
-
-&lt;p&gt;Templates are used to contain a page&amp;#8217;s or post&amp;#8217;s content. All templates have access to a global site object variable: &lt;code&gt;site&lt;/code&gt; as well as a page object variable: &lt;code&gt;page&lt;/code&gt;. The site variable holds all accessible content and metadata relative to the site. The page variable holds accessible data for the given page or post being rendered at that point.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Create a Template&lt;/strong&gt;&lt;br /&gt;Templates are created by properly formatting a file and placing it in the &lt;code&gt;_layouts&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;&lt;br /&gt;Templates should be coded in HTML and contain YAML Front Matter. All templates can contain Liquid code to work with your site&amp;#8217;s data.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Rending Page/Post Content in a Template&lt;/strong&gt;&lt;br /&gt;There is a special variable in all templates named : &lt;code&gt;content&lt;/code&gt;. The &lt;code&gt;content&lt;/code&gt; variable holds the page/post content including any sub-template content previously defined. Render the content variable wherever you want your main content to be injected into your template:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;...
-&amp;lt;body&amp;gt;
-  &amp;lt;div id=&quot;sidebar&quot;&amp;gt; ... &amp;lt;/div&amp;gt;
-  &amp;lt;div id=&quot;main&quot;&amp;gt;
-    &amp;#123;{content}&amp;#125;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/body&amp;gt;
-...&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id='subtemplates'&gt;Sub-Templates&lt;/h3&gt;
-
-&lt;p&gt;Sub-templates are exactly templates with the only difference being they define another &amp;#8220;root&amp;#8221; layout/template within their YAML Front Matter. This essentially means a template will render inside of another template.&lt;/p&gt;
-
-&lt;h3 id='includes'&gt;Includes&lt;/h3&gt;
-
-&lt;p&gt;In Jekyll you can define include files by placing them in the &lt;code&gt;_includes&lt;/code&gt; folder. Includes are NOT templates, rather they are just code snippets that get included into templates. In this way, you can treat the code inside includes as if it was native to the parent template.&lt;/p&gt;
-
-&lt;p&gt;Any valid template code may be used in includes.&lt;/p&gt;
-
-&lt;h2 id='using_liquid_for_templating'&gt;Using Liquid for Templating&lt;/h2&gt;
-
-&lt;p&gt;Templating is perhaps the most confusing and frustrating part of Jekyll. This is mainly due to the fact that Jekyll templates must use the Liquid Templating Language.&lt;/p&gt;
-
-&lt;h3 id='what_is_liquid'&gt;What is Liquid?&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href='https://github.com/Shopify/liquid'&gt;Liquid&lt;/a&gt; is a secure templating language developed by &lt;a href='http://shopify.com'&gt;Shopify&lt;/a&gt;. Liquid is designed for end-users to be able to execute logic within template files without imposing any security risk on the hosting server.&lt;/p&gt;
-
-&lt;p&gt;Jekyll uses Liquid to generate the post content within the final page layout structure and as the primary interface for working with your site and post/page data.&lt;/p&gt;
-
-&lt;h3 id='why_do_we_have_to_use_liquid'&gt;Why Do We Have to Use Liquid?&lt;/h3&gt;
-
-&lt;p&gt;GitHub uses Jekyll to power &lt;a href='http://pages.github.com/'&gt;GitHub Pages&lt;/a&gt;. GitHub cannot afford to run arbitrary code on their servers so they lock developers down via Liquid.&lt;/p&gt;
-
-&lt;h3 id='liquid_is_not_programmerfriendly'&gt;Liquid is Not Programmer-Friendly.&lt;/h3&gt;
-
-&lt;p&gt;The short story is liquid is not real code and its not intended to execute real code. The point being you can&amp;#8217;t do jackshit in liquid that hasn&amp;#8217;t been allowed explicitly by the implementation. What&amp;#8217;s more you can only access data-structures that have been explicitly passed to the template.&lt;/p&gt;
-
-&lt;p&gt;In Jekyll&amp;#8217;s case it is not possible to alter what is passed to Liquid without hacking the gem or running custom plugins. Both of which cannot be supported by GitHub Pages.&lt;/p&gt;
-
-&lt;p&gt;As a programmer - this is very frustrating.&lt;/p&gt;
-
-&lt;p&gt;But rather than look a gift horse in the mouth we are going to suck it up and view it as an opportunity to work around limitations and adopt client-side solutions when possible.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Aside&lt;/strong&gt; &lt;br /&gt;My personal stance is to not invest time trying to hack liquid. It&amp;#8217;s really unnecessary &lt;em&gt;from a programmer&amp;#8217;s&lt;/em&gt; perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code) you are better off sticking with ruby. Toward that end I&amp;#8217;ve built &lt;a href='http://github.com/plusjade/mustache-with-jekyll'&gt;Mustache-with-Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id='static_assets'&gt;Static Assets&lt;/h2&gt;
-
-&lt;p&gt;Static assets are any file in the root or non-underscored subfolders that are not pages. That is they have no valid YAML Front Matter and are thus not treated as Jekyll Pages.&lt;/p&gt;
-
-&lt;p&gt;Static assets should be used for images, css, and javascript files.&lt;/p&gt;
-
-&lt;h2 id='how_jekyll_parses_files'&gt;How Jekyll Parses Files&lt;/h2&gt;
-
-&lt;p&gt;Remember Jekyll is a processing engine. There are two main types of parsing in Jekyll.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Content parsing.&lt;/strong&gt; &lt;br /&gt;This is done with textile or markdown.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;Template parsing.&lt;/strong&gt; &lt;br /&gt;This is done with the liquid templating language.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And thus there are two main types of file formats needed for this parsing.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Post and Page files.&lt;/strong&gt;&lt;br /&gt;All content in Jekyll is either a post or a page so valid posts and pages are parsed with markdown or textile.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;Template files.&lt;/strong&gt; &lt;br /&gt;These files go in &lt;code&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax. Since include files are simply injected into templates they are essentially parsed as if they were native to the template.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Arbitrary files and folders.&lt;/strong&gt; &lt;br /&gt;Files that &lt;em&gt;are not&lt;/em&gt; valid pages are treated as static content and pass through Jekyll untouched and reside on your blog in the exact structure and format they originally existed in.&lt;/p&gt;
-
-&lt;h3 id='formatting_files_for_parsing'&gt;Formatting Files for Parsing.&lt;/h3&gt;
-
-&lt;p&gt;We&amp;#8217;ve outlined the need for valid formatting using &lt;strong&gt;YAML Front Matter&lt;/strong&gt;. Templates, posts, and pages all need to provide valid YAML Front Matter even if the Matter is empty. This is the only way Jekyll knows you want the file processed.&lt;/p&gt;
-
-&lt;p&gt;YAML Front Matter must be prepended to the top of template/post/page files:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
-layout: post
-category : pages
-tags : [how-to, jekyll]
----
-
-... contents ...&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Three hyphens on a new line start the Front-Matter block and three hyphens on a new line end the block. The data inside the block must be valid YAML.&lt;/p&gt;
-
-&lt;p&gt;Configuration parameters for YAML Front-Matter is outlined here: &lt;a href='https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter'&gt;A comprehensive explanation of YAML Front Matter&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id='defining_layouts_for_posts_and_templates_parsing'&gt;Defining Layouts for Posts and Templates Parsing.&lt;/h4&gt;
-
-&lt;p&gt;The &lt;code&gt;layout&lt;/code&gt; parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into. If a template file specifies its own layout, it is effectively being used as a &lt;code&gt;sub-template.&lt;/code&gt; That is to say loading a post file into a template file that refers to another template file with work in the way you&amp;#8217;d expect; as a nested sub-template.&lt;/p&gt;
-
-&lt;h2 id='how_jekyll_generates_the_final_static_files'&gt;How Jekyll Generates the Final Static Files.&lt;/h2&gt;
-
-&lt;p&gt;Ultimately, Jekyll&amp;#8217;s job is to generate a static representation of your website. The following is an outline of how that&amp;#8217;s done:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Jekyll collects data.&lt;/strong&gt; &lt;br /&gt;Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Jekyll computes data.&lt;/strong&gt; &lt;br /&gt;Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one big &lt;code&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata. At this stage your site is one big computed ruby object.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Jekyll liquifies posts and templates.&lt;/strong&gt;&lt;br /&gt;Next jekyll loops through each post file and converts (through markdown or textile) and &lt;strong&gt;liquifies&lt;/strong&gt; the post inside of its respective layout(s). Once the post is parsed and liquified inside the the proper layout structure, the layout itself is &amp;#8220;liquified&amp;#8221;. &lt;br /&gt;&lt;strong&gt;Liquification&lt;/strong&gt; is defined as follows: Jekyll initiates a Liquid template, and passes a simpler hash representation of the ruby site object as well as a simpler hash representation of the ruby post object. These simplified data structures are what you have access to in the templates.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Jekyll generates output.&lt;/strong&gt; &lt;br /&gt;Finally the liquid templates are &amp;#8220;rendered&amp;#8221;, thereby processing any liquid syntax provided in the templates and saving the final, static representation of the file.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Notes.&lt;/strong&gt;&lt;br /&gt;Because Jekyll computes the entire site in one fell swoop, each template is given access to a global &lt;code&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you&amp;#8217;ll iterate through and format using the Liquid tags and filters in order to render it onto a given page.&lt;/p&gt;
-
-&lt;p&gt;Remember, in Jekyll you are an end-user. Your API has only two components:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;The manner in which you setup your directory.&lt;/li&gt;
-
-&lt;li&gt;The liquid syntax and variables passed into the liquid templates.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;All the data objects available to you in the templates via Liquid are outlined in the &lt;strong&gt;API Section&lt;/strong&gt; of Jekyll-Bootstrap. You can also read the original documentation here: &lt;a href='https://github.com/mojombo/jekyll/wiki/Template-Data'&gt;https://github.com/mojombo/jekyll/wiki/Template-Data&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id='conclusion'&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;I hope this paints a clearer picture of what Jekyll is doing and why it works the way it does. As noted, our main programming constraint is the fact that our API is limited to what is accessible via Liquid and Liquid only.&lt;/p&gt;
-
-&lt;p&gt;Jekyll-bootstrap is intended to provide helper methods and strategies aimed at making it more intuitive and easier to work with Jekyll =)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Thank you&lt;/strong&gt; for reading this far.&lt;/p&gt;
-
-&lt;h2 id='next_steps'&gt;Next Steps&lt;/h2&gt;
-
-&lt;p&gt;Please take a look at &lt;a href='' /&gt; or jump right into &lt;a href=''&gt;Usage&lt;/a&gt; if you&amp;#8217;d like.&lt;/p&gt;</content>
  </entry>
  
  

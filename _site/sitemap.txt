@@ -7,7 +7,4 @@ http://qinjian623.github.com/pages.html
 http://qinjian623.github.com/sitemap.txt
 http://qinjian623.github.com/tags.html
 
-http://qinjian623.github.com/2012/08/19/asdf
-http://qinjian623.github.com/2012/08/17/test
-http://qinjian623.github.com/org/2012/08/17/test
-http://qinjian623.github.com/lessons/2011/12/29/jekyll-introduction
+http://qinjian623.github.com/2012/08/17/GoogleReader
