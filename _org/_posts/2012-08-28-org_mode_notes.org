@@ -16,11 +16,19 @@ _以下内容为2012-08-28_
 
    + shift+上/下 优先级的变化
 
-** 记录完成时间
+** DONE 记录完成时间
+   CLOSED: [2012-08-29 Wed 22:01]
 #+BEGING_SRC lisp
 (setq org-log-done 'time)
 #+END_SRC
 
+** DONE 计算时间投入
+   CLOSED: [2012-08-29 Wed 22:01]
+   *这个很重要的样子*
+
+   开始:control-c control-x control-i
+   
+   结束:control-c control-x control-o
 ** TODO 自定义状态
    暂时用不上,记了也早晚会忘记.
 
