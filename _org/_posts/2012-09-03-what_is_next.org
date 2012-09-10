@@ -5,6 +5,7 @@ title: 写些什么东西?
 tags: [thoughts]
 ---
 #+END_HTML
+
 * 想想这里最近的几个主题应该是什么
 ** org-mode
    自己得用这个来弄GTD管理,
