@@ -1,0 +1,149 @@
+---
+layout: post
+title: Baking Pi - Operating Systems Development Lesson 1
+tags: [os]
+---
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">课时1 OK01</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+本课时主要在于说明最基本的起步和怎样打开Raspberry Pi上的'OK' LED灯,灯的
+位置在RCA和USB接口附近.
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">起步</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+我假设你已经访问了 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/downloads.html">下载</a><sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup> 页面获得了其中的GNU的工具链.同时在该页面上,也
+存在一个叫做 OS Template<sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup>的文件.请把它下载下来,解压到新建的文件夹内.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">开始</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>目前为止,你应该已经完成解压模板文件了.请在其'source'文件夹中创建一个名称
+为'main.s'的文件.改文件会包含带开发的操作系统的代码.用文本编辑器打开,准
+备向其中写入汇编代码.Raspberry Pi使用的是ARMv6的汇编代码,因此,我们也需要
+根据ARMv6的语法和要求来写代码.
+</p>
+<p>
+拷贝如下代码:
+</p>
+
+
+<pre class="src src-MASM">.section .init
+.globl _start
+_start:
+</pre>
+
+<p>
+当然,目前什么都不会发生,这些代码都是等待给汇编器的指令.汇编器是翻译汇编
+代码到二进制代码的程序.汇编代码中,每行就是一个新的指令.其中第一行告诉汇
+编器<sup><a class="footref" name="fnr.3" href="#fn.3">3</a></sup>放置我们代码的位置.OS模板文件会让 <b>.init</b> 的模块首先输出.这里比较
+重要,因为我们需要控制具体哪段代码首先执行.不这么做的话,代码根据字典顺序
+来执行. <b>.senction</b> 指令就是告诉汇编器把代码放哪里,代码范围是从该点开始
+一直到下个 <b>.section</b> 或者文件尾.
+</p>
+<p>
+后面两行只是为了防止警告信息,没有重要意义.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">第一行代码</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>现在我们开始真正的编写代码.代码的作用是告诉处理器将 0x20200000存入寄存器
+r0.显然会涉及两个问题,寄存器是什么和为什么是0x20200000这个数字.
+</p>
+<p>
+寄存器是处理器内部的一小片存储单元,用于存储处理器目前工作中需要使用的数
+字.他们的数量很少,且基本都有特定的作用,具体作用稍后再说.共有13个通用寄存
+器,分别编号为(r0&hellip;r12),其不具有特定作用,可以随意使用.例子中,我们按照顺
+序,就使用了第一个寄存器,不过随便用其中的任何一个也没有关系.当然,随后的代
+码中使用寄存器就需要保持一致.
+</p>
+<p>
+0x20200000是个16进制形式的数字.具体16进制数字,可以见下面的介绍:
+等待处理<sup><a class="footref" name="fnr.4" href="#fn.4">4</a></sup>
+</p>
+<p>
+所以第一个指令就是将数字20200000<sub>16</sub> 载入r0寄存器.看起来没什么作用,其实不
+然.在计算机中,有很多设备和内存块.为了能够访问他们,我们就给其中每个都赋予
+一个地址.如同邮编或者网址,为的是能够让我们识别设备或者内存块的位置.计算
+机中的地址都是数字编码,所以20200000<sub>16成为GPIO控制器的地址</sub>.这其实是硬件
+制造商设计的地址,制造商可以随意指定地址,只要地址没有冲突就可以.具体的地
+址信息可以从硬件的手册中获得, <del>这些地址没有被别的系统指定,而且一般都是很 大的约整数</del> <sup><a class="footref" name="fnr.5" href="#fn.5">5</a></sup>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">成功输出</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>读过手册后,我就知道我们需要发送两个消息给GPIO控制器.我们必须让控制器能够
+理解我们的消息,一旦这样,控制器就会按照我们所愿打开OK LED灯.由于这是个十
+分简单的芯片,所以我们只用很简单的发送几个数字就可以了.
+</p>
+
+
+
+<pre class="src src-MASM">mov r1,#1
+lsl r1,#18f
+str r1,[r0,#4]
+</pre>
+
+<p>
+以上的代码就能够输出到GPIO的第16个针脚上.首先我们向r1寄存器写入一个数字,
+然后发给GPIO控制器.
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> 译注:目前指向依然是课程的下载地址,未镜像该位置.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> 译注:以后叫做OS模板
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn.3" href="#fnr.3">3</a></sup> 
+</p>
+
+<p class="footnote"><sup><a class="footnum" name="fn.4" href="#fnr.4">4</a></sup> 译注:TODO等待处理
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn.5" href="#fnr.5">5</a></sup> 译注:TODO没有理解
+</p>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
