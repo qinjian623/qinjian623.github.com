@@ -1,15 +1,15 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: ¸öÈËÖ®ÓÚ»·¾³
+title: ä¸ªäººä¹‹äºŽçŽ¯å¢ƒ
 tags: [thoughts, share]
 ---
 #+END_HTML
 
-* »·¾³¶Ô¸öÈËµÄÓ°Ïì
+* çŽ¯å¢ƒå¯¹ä¸ªäººçš„å½±å“
 
-* ¸öÈË¶ÀÉÆÆäÉíµÄ¿ÉÄÜÐÔ
+* ä¸ªäººç‹¬å–„å…¶èº«çš„å¯èƒ½æ€§
 
-* Î¨ÓÐÆðÉí¸Ä±ä
+* å”¯æœ‰èµ·èº«æ”¹å˜
 
-* ÒÔ"ËáÆÏÌÑ"ÎªÀíÓÉµÄÅúÆÀÈçºÎ¶Ô´ý
+* ä»¥"é…¸è‘¡è„"ä¸ºç†ç”±çš„æ‰¹è¯„å¦‚ä½•å¯¹å¾…
