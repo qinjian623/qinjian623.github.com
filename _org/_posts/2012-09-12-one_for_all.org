@@ -1,0 +1,15 @@
+#+BEGIN_HTML
+---
+layout: post
+title: 个人之于环境
+tags: [thoughts, share]
+---
+#+END_HTML
+
+* 环境对个人的影响
+
+* 个人独善其身的可能性
+
+* 唯有起身改变
+
+* 以"酸葡萄"为理由的批评如何对待
