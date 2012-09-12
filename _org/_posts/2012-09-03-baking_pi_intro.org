@@ -1,12 +1,12 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: Baking Pi - Operating Systems Development Lesson 0
+title: Baking Pi - Operating Systems Development
 tags: [os]
 ---
 
 #+END_HTML
-* 第一节,介绍[fn:1]
+* 介绍[fn:1]
 欢迎来到本课程,课程作者为[[awc32@cam.ac.uk][Alex Chadwick.]]
 
 这个网站旨在帮助你完成在Raspberry Pi上进行一个基本的操作系统的开发.目标读者是16岁以上,当然更小的读者也能够进行,如果有其他人的帮助当然更好.
