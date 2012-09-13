@@ -1,0 +1,107 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Introduction for non-cs.
+tags: [intro]
+---
+#+END_HTML
+** 简单声明:
+本文的原文位置在
+http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/introduction.html 
+作者发布的版权为[[http://creativecommons.org/licenses/by-sa/3.0/deed.en_GB][Creative Commons Attribution-ShareAlike 3.0 Unported
+License]],因此本文以以上协议发布.
+
+*一个简单的介绍,在此基础上扩展一下,写成一个简单科普文*
+目前先以脚注形式加入
+
+** 操作系统
+操作系统是一种复杂的程序,用来管理在一台计算机上的各个程序,比如说分配计算
+机的CPU时间片,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括
+GNU/Linux[fn:3] [fn:7], Mac OS X[fn:4]和微软的Windows.其他的一些设备也是需要操
+作系统的,比如手机就会使用Android[fn:5], iOS和Windows Phone这类的系
+统.[fn:1] [fn:6]
+由于操作系统直接与计算机的硬件交互,所以它需要知道具体硬件的一些信息.为了
+方便操作系统可以广泛的应用在各种计算机上, *驱动* 的概念被引入.驱动的作用
+就是为了使操作系统可以方便的与一个特定的硬件设备进行通讯, 它也是一段代码,但
+是可以很容易的加入或者移出操作系统.本课程不涉及如何创建这类可移出的驱动,而
+仅仅集中于Raspberry Pi相关的设备驱动.
+
+** 汇编代码
+本课程的代码基本都是汇编代码.它的特点就是十分接近计算机硬件层,易于被机器
+所"理解".计算机的工作是通过处理器和内存来实现的,处理器可以做一些数字的加
+减法这类的简单工作,内存则负责存储这些数字.计算机通电后,处理器就通过执行
+程序员交给它的指令来改变内存中的数字和与硬件交互.汇编代码就是这些指令被
+翻译成方便人类读取的形式.
+
+一般编程,程序员都会使用一门编程语言,譬如C++,Java,C#,Basic等等.之后再调用
+编译器将这些由程序员编写的代码翻译成为汇编代码,之后会再进一步翻译成为二
+进制代码[fn:2].二进制代码是计算机实际能够理解的语言,只不过实在不适合人类阅读.汇
+编代码就相对易读,但是供程序员使用的指令也依然很少. 请谨记每个使用汇编代
+码编写的指令,都是计算机可以直接理解的,因此这些指令是受下层硬件决定的,每
+个指令都会被实际上的电路直接使用.
+
+[图片占位符]
+
+和一般的上层编程一样,汇编语言也有多种.当然,多样的原因不是像上层语言那样,
+而是因为世界上存在多种不同的处理器,每种处理器往往都设计成理解某一个语言.因
+此,一个程序员如果用汇编语言给一个机器编写程序,那么不同类的机器就不能够使
+用这一程序.一般而言,这种每个不同架构都需要重新编写程序的情况实在是个大灾
+难,不过对于操作系统来说,这就无所谓了,因为它本身就要为不同的硬件重新编写.不
+过,不是操作系统的所有部分都需要重写,因为操作系统的大部分也是由c++或者c语
+言这种上层语言来编写,以方便转化到不同的架构上,需要重写的只是那些必须通过
+汇编语言来实现的部分.
+
+目前,已经可以进入第一课时了.
+
+
+* Footnotes
+
+[fn:1] 更完整的操作系统清单,请参考
+  [[http://en.wikipedia.org/wiki/List_of_operating_systems][ List of operating systems - Wikipedia, the free encyclopedia]]
+
+[fn:2] 在这里,对"一般编程"是简化了描述,事实上,它与语言和机器都息息相关,
+深入了解,可以参考
+[[http://en.wikipedia.org/wiki/Compiler][ Compiler - Wikipedia, the free encyclopedia]]
+
+[fn:3] Linux受Minix影响,两者之间也是一段恩怨情仇,Linux的作者[[http://en.wikipedia.org/wiki/Linus_Torvalds][Linus]] 在开发
+Linux初期,就是使用的Minix,其设计也受到了Minix很大影响,但是两者之间在宏内
+核和微内核结构上的分歧,还引发了两个作者的一次论战,可以参考
+[[http://en.wikipedia.org/wiki/Tanenbaum%E2%80%93Torvalds_debate][Tanenbaum–Torvalds debate]],当然两者的设计思想各有千秋,结合两者的优点在一
+起往往是工程实践上的折中,Linux引入的内核模块设计,Windows NT内核则是所谓
+的混合模式.如果想要学习下OS,minix显然是很好的选择,Minix的作者的
+[[http://en.wikipedia.org/wiki/Andrew_S._Tanenbaum#Books][出版物]]都是在CS上很重要和著名的,如操作系统和计算机网络相关的大部头.
+
+[fn:4] Mac OS X与BSD系的系统也有一定的关系,具体可参看[[http://en.wikipedia.org/wiki/Mac_OS_X][wiki]],同时其内核
+Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形界面(GUI)一直
+被人称道,不过一直"为他人作嫁衣裳"的Xerox PARC对于GUI,对CS的多个重要领
+域的共享,实在是一部悲情剧.
+
+[fn:5] 对于Android,可以理解为Linux,其在Linux内核上层构建了一层接口,并且
+提供了Dalvik这个虚拟机,其执行代码从Java的虚拟机执行码转化.因此Android的
+持有者Google与Java当前的持有者Oracle有了关于Java的版权的诉讼.当然,Java其
+实并不是Oracle发明,而是被Oracle收购的Sun公司推出,相比Oracle而言,或许Sun
+公司更容易被人们称为"伟大",是的,伟大与否与公司成败没有什么必然联系.Sun公
+司的历史同样值得一看,<浪潮之巅>这本书介绍了多个公司的历史.
+
+[fn:6] unix-like的系统在CS历史上的地位难以撼动,其发展史也是CS这门学科应
+用于人类社会的一个缩影,爱读史的人错过这样一篇文章一定会很惋惜
+http://coolshell.cn/articles/2322.html .是的,纯历史,无技术.想要接触点技
+术的,<unix编程艺术>很精彩.其作者Eric S. Raymond出版物都丰富多彩:
+学会如何问问题:http://www.catb.org/~esr/faqs/smart-questions.html ,无论
+是否技术人员,都值得一看.
+如何成为黑客:http://www.catb.org/esr/faqs/hacker-howto.html
+有关hacker(黑客)和cracker(骇客)的区别,相信交给Baidu就可以.另外<黑客与画
+家>及其作者,都值得一看.
+
+[fn:7] 有关GNU/Linux的名称也稍有讲究,GNU项目和Linux项目没有必然的联系,GNU是
+Richard Matthew Stallman发起的一个项目,作为开放源码运动的重要一部分.提到
+RMS往往会联想到另外两个事务,GNU Emacs和MIT的人工智能实验室.Emacs作为"神的编辑
+器",其被大量广泛的应用,即使是非CS专业的人,譬如有代表性的文章
+http://www.gtdstudy.com/?p=2634 .当然,存在Emacs的地方是不能没有"编辑器之
+神"的Vim的.两者论战已经连绵N年,而两者最初始版本都比大部分renren用户的年
+纪大.Google "editor war"即可,当然,这里说的是Google而不是Baidu.在这一论战
+上的恶搞更是层出不穷.是的,在CS领域里,自由精神熠熠生辉.恶搞正是其体现之
+一.GNU项目中著名的软件譬如gdb\gcc对整个计算机领域的影响是难以想象的.所以
+去他的官方网站逛一圈还是值得的,总比人人网上的"不转不是人***"值得些,
+网址:http://www.gnu.org 
+
