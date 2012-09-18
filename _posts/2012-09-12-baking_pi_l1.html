@@ -5,6 +5,25 @@ tags: [os]
 ---
 
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 课时1 OK01</a>
+<ul>
+<li><a href="#sec-1-1">1.1 起步</a></li>
+<li><a href="#sec-1-2">1.2 开始</a></li>
+<li><a href="#sec-1-3">1.3 第一行代码</a></li>
+<li><a href="#sec-1-4">1.4 成功输出</a></li>
+<li><a href="#sec-1-5">1.5 让机器动起来</a></li>
+<li><a href="#sec-1-6">1.6 收尾工作</a></li>
+<li><a href="#sec-1-7">1.7 在Pi上执行</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-1" class="outline-2">
 <h2 id="sec-1">课时1 OK01</h2>
 <div class="outline-text-2" id="text-1">
@@ -23,8 +42,8 @@ tags: [os]
 
 
 <p>
-我假设你已经访问了 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/downloads.html">下载</a><sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup> 页面获得了其中的GNU的工具链.同时在该页面上,也
-存在一个叫做 OS Template<sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup>的文件.请把它下载下来,解压到新建的文件夹内.
+我假设你已经访问了 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/downloads.html">下载</a><sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup> 页面获得了其中的GNU的工具链.同时在该页面上,也
+存在一个叫做 OS Template<sup><a class="footref" name="fnr-.2" href="#fn-.2">2</a></sup>的文件.请把它下载下来,解压到新建的文件夹内.
 </p>
 
 </div>
@@ -45,7 +64,7 @@ tags: [os]
 </p>
 
 
-<pre class="src src-MASM">.section .init
+<pre class="example">.section .init
 .globl _start
 _start:
 </pre>
@@ -53,7 +72,7 @@ _start:
 <p>
 当然,目前什么都不会发生,这些代码都是等待给汇编器的指令.汇编器是翻译汇编
 代码到二进制代码的程序.汇编代码中,每行就是一个新的指令.其中第一行告诉汇
-编器<sup><a class="footref" name="fnr.3" href="#fn.3">3</a></sup>放置我们代码的位置.OS模板文件会让 <b>.init</b> 的模块首先输出.这里比较
+编器<sup><a class="footref" name="fnr-.3" href="#fn-.3">3</a></sup>放置我们代码的位置.OS模板文件会让 <b>.init</b> 的模块首先输出.这里比较
 重要,因为我们需要控制具体哪段代码首先执行.不这么做的话,代码根据字典顺序
 来执行. <b>.senction</b> 指令就是告诉汇编器把代码放哪里,代码范围是从该点开始
 一直到下个 <b>.section</b> 或者文件尾.
@@ -81,7 +100,7 @@ r0.显然会涉及两个问题,寄存器是什么和为什么是0x20200000这个
 </p>
 <p>
 0x20200000是个16进制形式的数字.具体16进制数字,可以见下面的介绍:
-等待处理<sup><a class="footref" name="fnr.4" href="#fn.4">4</a></sup>
+等待处理<sup><a class="footref" name="fnr-.4" href="#fn-.4">4</a></sup>
 </p>
 <p>
 所以第一个指令就是将数字20200000<sub>16</sub> 载入r0寄存器.看起来没什么作用,其实不
@@ -89,7 +108,7 @@ r0.显然会涉及两个问题,寄存器是什么和为什么是0x20200000这个
 一个地址.如同邮编或者网址,为的是能够让我们识别设备或者内存块的位置.计算
 机中的地址都是数字编码,所以20200000<sub>16成为GPIO控制器的地址</sub>.这其实是硬件
 制造商设计的地址,制造商可以随意指定地址,只要地址没有冲突就可以.具体的地
-址信息可以从硬件的手册中获得, <del>这些地址没有被别的系统指定,而且一般都是很 大的约整数</del> <sup><a class="footref" name="fnr.5" href="#fn.5">5</a></sup>
+址信息可以从硬件的手册中获得, <del>这些地址没有被别的系统指定,而且一般都是很 大的约整数</del> <sup><a class="footref" name="fnr-.5" href="#fn-.5">5</a></sup>
 </p>
 </div>
 
@@ -106,39 +125,187 @@ r0.显然会涉及两个问题,寄存器是什么和为什么是0x20200000这个
 
 
 
-<pre class="src src-MASM">mov r1,#1
-lsl r1,#18f
+<pre class="example">mov r1,#1
+lsl r1,#18
 str r1,[r0,#4]
 </pre>
 
 <p>
 以上的代码就能够输出到GPIO的第16个针脚上.首先我们向r1寄存器写入一个数字,
-然后发给GPIO控制器.
+然后发给GPIO控制器.前两个命令是为了往r1里写个数字,其实我们也可以用之前用
+过的那个 <b>ldr</b> 的命令,不过现在这么做是为了方便以后指定任意针脚.直接写值
+不如通过表达式来指定值来的灵活. OK LED是连接到GPIO的第16个针脚处.所以我
+们需要发送命令激活第16个针脚.
+</p>
+<p>
+r1中的数字用来激活LED的针脚.第一行将1<sub>10</sub> 放入r1. <b>mov</b> 指令比 <b>ldr</b> 指令
+快,因为它不涉及内存操作.不过 <b>mov</b> 只能用来载入确定值<sup><a class="footref" name="fnr-.6" href="#fn-.6">6</a></sup>.在ARM的汇编
+代码中,基本所有指令都由三个字母打头.这种方式被称作助记符,表明该命令实际
+执行的操作.比如 <b>mov</b> 是 move的简写, <b>ldr</b> 是 load register的简写. <b>mov</b>
+指令将第二个参数 <b>#1</b> 移入到第一个参数的 <b>r1</b>.一般来说, <b>#</b> 必须用来指定
+数字,不过我们已经看到过反例了<sup><a class="footref" name="fnr-.7" href="#fn-.7">7</a></sup>.
+</p>
+<p>
+第二条指令是 <b>lsl</b> 其实是逻辑左移运算. 表示将第一个参数的二进制值向左移
+动第二个参数代表的位数. 在我们这,就是将1<sub>10</sub>(二进制表示1<sub>2</sub>)左移18位(这样
+就变成了1000000000000000000<sub>2</sub> = 262144<sub>10</sub>)
+</p>
+<p>
+不熟悉二进制的,展开以下内容:
+</p>
+<p>
+!!!!二进制说明的占位符.
+</p>
+<p>
+这些命令中固定的数字也是我从硬件说明手册上找到的.手册上说了,GPIO控制器有
+一24b的空间,用于决定GIIO的设定.前四个设定前十个GPIO pin, 第五到八设定第
+十一到二十个GPIO pin,以此类推.总共54个针脚,所以需要6*4个byte,总共24个.在
+每四个byte中,有三个bits用来指定某一个GPIO pin.如果我们需要第16个pin,那么就要
+设定第五到八byte.因为我们在处理10-19范围类的pin.我们处理的是3bits中的第6
+个.所以需要移位18.
+</p>
+<p>
+最后, <b>str</b> (store register的简写)命令将第一个参数 <b>r1</b> 存储到第二个参数
+运算结果指定的内存地址中.第二个参数可以直接是寄存器, 在这里是 <b>r0</b>,我们
+之前用来指定了GPIO控制器的地址,然后加上一个数值,在这里是 <b>#4</b>.所以结果就
+是我们在GPIO控制器的地址基础上加上4,在这里写入 <b>r1</b> 的值.其实就是第二个
+4bytes,前面说了6*4bytes的原理.到此为止我们发送了第一个消息给GPIO控制器,
+告诉它让第十六个pin做好输出准备.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">让机器动起来</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+<p>
+现在,LED已经准备好被打开,但是我们还需要打开它.也即发送一个消息让GPIO控制
+器将pin 16 关上.  <i>没错,是关上</i> .芯片制造商决定这么设计的<sup><a class="footref" name="fnr-.8" href="#fn-.8">8</a></sup>,当GPIO的
+pin关闭的时候,LED打开.硬件工程师经常会有这样的决定,让OS开发人员忙活个不
+停.自己要注意.
+</p>
+
+
+
+<pre class="example">mov r1,#1
+lsl r1,#16
+str r1,[r0,#40]
+</pre>
+
+<p>
+按说这上面的命令不用多说了,只是参数上稍有不同.第一行和之前一样, <b>r1</b> 赋
+值为1.第二行左移16位.因为要关闭pin16,所以我们需要在第16bit上置一(同理,其
+他位置就是操作其他pin了).最后还是GPIO的地址加40<sub>10</sub>.用来关闭pin(28用来打
+开pin)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">收尾工作</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<p>到这里工作也就结束了,不过不幸的是,处理器还不知道我们已经完成工作了.实际
+上,处理器也是不停工作的.只要供电,处理器就不停工作.所以么,我们得给个任务
+让它一直做下去,否则Raspberry Pi就要崩溃了(在这里其实也没什么关系,因为灯
+已经打开了.)
+</p>
+
+
+<pre class="example">loop$:
+b loop$
+
+</pre>
+
+<p>
+第一行不是指令,只是一个标签.用于命名接下来的一行为 <b>loop$</b>. 这样的话我们
+就可以直接通过名称来指定某一行了.这就叫做标签.标签在翻译成二进制后就不再
+使用,不过对我们来说,通过名字来指定某一行代码要比直接用数字方便的多.按照
+惯例,我们在标签中加了一个 <b>$</b> ,表明这个标签只在这段代码里有作用,其他人就
+会明白,这一标签在更大范围内没有重要意义. <b>b</b> (branch)命令就是让程
+序执行到标签的位置上去,而不再按照顺序执行.不过,下一行又是 <b>b</b>,又来一遍,
+结果就是一直循环下去.这样,处理器就可以一直执行这个无限循环,一直到它被安
+全关掉.
+最后的一段空行可不是自己不小心的回车.GNU的工具链希望所有的汇编代码都能够
+以空行结束.以确保程序已经结束而不是一个大文件被切分后的一部分.如果不放空
+行,汇编器工作的时候会有警告的.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7">在Pi上执行</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<p>完成代码后,我们就得把代码放到Pi上执行了.在你的计算机上打开一个终端,将工
+作路径改变到源代码目录的上级目录上. 输入命令 <b>make</b>,回车.要是出了错误,请
+到troubleshooting那一章节去找好.没错的话,应该就生成三个文件
+了.kernel.img是你的操作系统镜像.kernel.list是你写的汇编代码的清单,是自动
+生成的,方便将来检查是否生成成功. kernel.map文件是所有的标签的生成的一个
+对照文件,可以方便我们查找各个值.
+</p>
+<p>
+安装操作系统,第一步就是要准备好一个已经安装了系统的SD卡.SD卡里,你可以看
+到一个kernel.img的文件.随便改个名字,比如kernel<sub>linux</sub>.img.然后将你自己通
+过 <b>make</b> 生成的kernel.img拷到SD卡上去.现在就把现有的操作系统替换成你自
+己的了.最好还是要备份好原先的操作系统,免得你将来还用得上.
+</p>
+<p>
+插回SD卡,通电.OK LED灯应该已经打开.没有的话还是请去troubleshooting页上找
+找.打开的话,那么恭喜你,你完成了你的第一个操作系统.去 [Lesson 2: OK02]看
+看让LED灯闪烁的方法吧.
 </p>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> 译注:目前指向依然是课程的下载地址,未镜像该位置.
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> 译注:目前指向依然是课程的下载地址,未镜像该位置.
 </p>
 
 
-<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> 译注:以后叫做OS模板
+<p class="footnote"><sup><a class="footnum" name="fn-.2" href="#fnr-.2">2</a></sup> 译注:以后叫做OS模板
 </p>
 
 
-<p class="footnote"><sup><a class="footnum" name="fn.3" href="#fnr.3">3</a></sup> 
+<p class="footnote"><sup><a class="footnum" name="fn-.3" href="#fnr-.3">3</a></sup> 
 </p>
 
-<p class="footnote"><sup><a class="footnum" name="fn.4" href="#fnr.4">4</a></sup> 译注:TODO等待处理
-</p>
-
-
-<p class="footnote"><sup><a class="footnum" name="fn.5" href="#fnr.5">5</a></sup> 译注:TODO没有理解
+<p class="footnote"><sup><a class="footnum" name="fn-.4" href="#fnr-.4">4</a></sup> 译注:TODO等待处理
 </p>
 
 
+<p class="footnote"><sup><a class="footnum" name="fn-.5" href="#fnr-.5">5</a></sup> 译注:TODO没有理解
+</p>
 
 
+<p class="footnote"><sup><a class="footnum" name="fn-.6" href="#fnr-.6">6</a></sup> 译注,这里的脚注未理解.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.7" href="#fnr-.7">7</a></sup> 译注:反例在哪里?
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.8" href="#fnr-.8">8</a></sup> 一位好心的硬件工程师向我解释了原因:现代芯片使用CMOS来组合,全名是
+(Complementary Metal Oxide Semiconductor).Complementary 的意思就是每个信
+号都被连接到两个晶体管上,一个是由N-type semiconductor材料制作,用于处理低
+电压.一个由P-type材料制作,由于处理高电压.两者只能有一个处于打开状态,否则
+就短路了.P型的没有N型导电好,所以P型晶体管要提供相同电流需要比N型大三倍.所
+以LED经常是在低电压的时候打开,因为N型的低电压比P型在高电压下电流强[译注:
+是什么东西强?]
+还有另外一个原因,在二十世纪七十年代,芯片完全由N型材料制作(NMOS).P型的功能由电
+阻器来实现.这就是说,在低电压信号的时候芯片要消耗电力而且还越来越热,即使
+在芯片什么都不做的时候.如果你的电话放在你口袋什么都不做的时候还越来越热
+消耗电池,你就知道这有多糟糕了.所以信号被设计成低电压的时候激活,高电压的
+时候关闭,这样就不用浪费电力了.现在我们不再使用NMOS了,但是N型处理低电压还
+是要比P型处理高电压要快.一般低电压激活的时候总会在信号名字上面加一横以示
+说明,或者写做 SIGNAL <sub>n</sub> 或者是/SIGNAL.不过还是容易被混淆,哪怕硬件工程师
+也难逃.
+</p>
 
 
 </div>
