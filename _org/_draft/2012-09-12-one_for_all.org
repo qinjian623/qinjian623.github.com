@@ -6,6 +6,7 @@ tags: [thoughts, share]
 ---
 #+END_HTML
 
+我们总是在面对
 * 环境对个人的影响
 
 * 个人独善其身的可能性
