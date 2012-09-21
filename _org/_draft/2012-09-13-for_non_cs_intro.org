@@ -89,7 +89,9 @@ tex排版系统的作者,它的衍生版本如latex等被广泛应用于论文�
 
 ** 如何做研究
 http://www.cs.indiana.edu/mit.research.how.to.html
-这篇文章年代陈旧.但是价如瑰宝.如果本科入学就能看到该文,一定受益匪浅.中文版也广泛分布了.Baidu即可.
+
+来自MIT 人工智能实验室.
+这篇文章年代陈旧.但是依然价如瑰宝.如果本科入学就能看到该文,一定受益匪浅.中文版也广泛分布了.Baidu即可.
 不知道国内有没有学校的某个实验室能够有如此积累.
 
 ** 专业书本
@@ -125,7 +127,7 @@ Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形�
 
 [fn:6] unix-like的系统在CS历史上的地位难以撼动,其发展史也是CS这门学科应
 用于人类社会的一个缩影,这篇[[http://coolshell.cn/articles/2322.html][文章]] 对unix的历史有介绍,并不涉及技术,即使文科背景都可以理解.
-稍微设计一点技术的介绍<unix编程艺术>很精彩.其作者Eric S. Raymond出版物都丰富多彩,比如:
+稍微涉及一点技术的介绍<unix编程艺术>很精彩.其作者Eric S. Raymond出版物都丰富多彩,比如:
 学会如何问问题:http://www.catb.org/~esr/faqs/smart-questions.html ,无论
 是否技术人员,都值得一看.
 如何成为黑客:http://www.catb.org/esr/faqs/hacker-howto.html
