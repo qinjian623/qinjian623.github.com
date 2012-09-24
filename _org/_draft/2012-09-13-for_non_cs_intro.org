@@ -140,6 +140,11 @@ Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形�
 unix最初的两位作者Ken Thompson 和 Dennis Ritchie也同时是c语言的创造
 者.Ritchie在2011.10.12被发现逝世,具体时间未知(因为他一直单身),在Steve
 Jobs逝世之后一周.但其贡献只会在Jobs之上而不会在Jobs之下.
+产生unix的贝尔实验室在之后也在考虑unix的继承者,比如说
+Plan9,http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs 是wiki地址.看到
+该计划的吉祥物一定能够萌翻你.如果是Google的爱好者的话,会发现这个萌物竟然
+和Google GO语言的吉祥物十分接近,话说Go语言的作者也有Ken Thompson.
+
 
 [fn:7] 有关GNU/Linux的名称也稍有讲究,GNU项目和Linux项目没有必然的联系,GNU是
 Richard Matthew Stallman(RMS)发起的一个项目,作为开放源码运动的重要一部分.提到
