@@ -2,7 +2,7 @@
 ---
 layout: post
 title: 不确定性之于预测和机会
-tags: [share, thoughs]
+tags: [share, thoughts]
 ---
 #+END_HTML
 
