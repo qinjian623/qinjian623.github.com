@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>---</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-11-15 14:38:58 "/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">---</h1>
+
+
+layout: post
+title: 数独问题解决方法
+tags: [share, translation]
+---
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 说明 </a></li>
+<li><a href="#sec-2">2 Solving Every Sudoku Puzzle </a>
+<ul>
+<li><a href="#sec-2.1">2.1 迷题设定 </a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 约束传递 </a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 说明 </h3>
+<div class="outline-text-3" id="text-1">
+
+<p>英文原版来自Google的<a href="http://en.wikipedia.org/wiki/Peter_Norvig">Peter Norvig</a> 的 <a href="http://www.norvig.com/">blog</a>，中文版本转自 <a href="http://shenlizhu.blogspot.com/2007/10/solving-every-sudoku-puzzle.html">Shenli's Blog</a> .
+</p>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Solving Every Sudoku Puzzle </h3>
+<div class="outline-text-3" id="text-2">
+
+<p>by Peter Norvig
+</p>
+<p>
+在这篇文章里，我将提出一种数独(Sudoku)迷题的通用解法。它看上去相当简单（大约100行代码），并采用了两个思想：约束传递（<a href="http://en.wikipedia.org/wiki/Constraint_satisfaction">constraint propagation</a>）和搜索（<a href="http://en.wikipedia.org/wiki/Search_algorithm">search</a>）。
+</p>
+
+</div>
+
+<div id="outline-container-2.1" class="outline-4">
+<h4 id="sec-2.1"><span class="section-number-4">2.1</span> 迷题设定 </h4>
+<div class="outline-text-4" id="text-2.1">
+
+<p>首先，我们要确定问题符号。在查阅了一些数独(Sudoku)网站之后，我发现在符号上没有统一的规定，但大多数人喜欢行用A-I标记，列用1-9标记，将9个方块(squares)的集合（是这个方块所处的一行，一列，和3x3方块组成的区（box））称为一个unit，并将其他在同一个unit里面的方块称为这个方块的peers。所以，可以这样来命名方块：
+</p>
+
+
+
+<pre class="example"> A1 A2 A3 A4 A5 A6 A7 A8 A9
+ B1 B2 B3 B4 B5 B6 B7 B8 B9
+ C1 C2 C3 C4 C5 C6 C7 C8 C9
+---------+---------+---------
+ D1 D2 D3 D4 D5 D6 D7 D8 D9
+ E1 E2 E3 E4 E5 E6 E7 E8 E9
+ F1 F2 F3 F4 F5 F6 F7 F8 F9
+---------+---------+---------
+ G1 G2 G3 G4 G5 G6 G7 G8 G9
+ H1 H2 H3 H4 H5 H6 H7 H8 H9
+ I1 I2 I3 I4 I5 I6 I7 I8 I9
+</pre>
+
+
+
+
+<p>
+（译者注：在这篇文章里，将数独里的最小单位称为方块square，3x3方块称为区box，9x9方块称为数独盘面Sudoku board,，游戏规则和中文命名看<a href="http://www.sudoku.name/rules/cn">这里</a>）。
+</p>
+<p>
+我们可以在编程语言Python里实现这些：
+</p>
+
+
+
+<pre class="example">def cross(A, B):
+    return [a+b for a in A for b in B]
+
+rows = 'ABCDEFGHI'
+cols = '123456789'
+digits   = '123456789'
+squares  = cross(rows, cols)
+unitlist = ([cross(rows, c) for c in cols] +
+            [cross(r, cols) for r in rows] +
+            [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')])
+units = dict((s, [u for u in unitlist if s in u])
+             for s in squares)
+peers = dict((s, set(s2 for u in units[s] for s2 in u if s2 != s))
+             for s in squares)
+</pre>
+
+
+
+
+
+<p>
+现在，A1的units和peers可以定义为：
+</p>
+
+
+
+<pre class="example">&gt;&gt;&gt; units['A1']
+[['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1'],
+ ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'],
+ ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']]
+&gt;&gt;&gt; peers['A1']
+set(['A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9',
+     'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1',
+     'B2', 'B3', 'C2', 'C3'])
+</pre>
+
+
+
+
+<p>
+简而言之，方块A1有三个unit: 列1，行A，以及左上角区。方块A1有20个peers（行上8个，列上8个，区里且不包括行和列上4个）。所有其他的方块有同样数目的unit和peer。
+</p>
+<p>
+接下来是设计数独盘面。像符号一样，在初始盘面上也没有统一的规定，但是一个较好的折中（common denominator）是一串字符，如1-9代表数字，0或句号或破折号代表空方块（但是在一些符号命名中，破折号被用于分隔区，而不是标记空方块）。空格以及其它的字符要被忽略。我们将这样的一个字符串称为grid。
+</p>
+<p>
+我们想要向一个容易操作的数据结构读入这样一个字符串。有人可能认为一个9x9的矩阵是正确的数据结构。由于我们决定用像A1这样字符来标记方块，而不是用[0,0]，所以我们如果希望改用二维数组的话只能改符号标记了。并且，Python不直接支持二维数组（它支持数组的数组），但是它却支持像带有键A1那样的字典dictionaries（hash tables），所以我们将用dict来代表数独盘面。这个dict的键是方块的序号（如A1），而每一个键对应的值是这个方块的所有可能值。而如何来表示这样一个数字集合呢？我们可以用Python内置的set或list，但是我选择这些数字的字符串（我们将在下面看到为什么要这么做）。例如，表示将7填入方块A1，而A2为空，我们可以用一个dict[‘A1’ : 7, ‘A2’ : ‘123456789’, …]。
+</p>
+<p>
+以下是将一个grid读入dict的程序:
+</p>
+
+
+
+<pre class="example">def parse_grid(grid):
+    "Given a string of 81 digits (or . or 0 or -), return a dict of {cell:values}"
+    grid = [c for c in grid if c in '0.-123456789']
+    values = dict((s, digits) for s in squares) ## To start, every square can be any digit
+    for s,d in zip(squares, grid):
+        if d in digits and not assign(values, s, d):
+     return False
+    return values
+</pre>
+
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 约束传递 </h3>
+<div class="outline-text-3" id="text-3">
+
+<p>函数parse<sub>grid调用assign</sub>(values,s,d)来将数字d赋予方块s的值。所以，我们希望以values[s]=d来结束，但是我们还是想要用一些其他的方法来改变values。特别是我们希望在s的peers里消除所有可能的d。如果消除d导致其中的一个peer变成一种可能（译者注：即只有一个数字），我们称之为d2，那么我们希望从这个peer的peer消除所有可能的d2，（译者注：这里好像和代码有些出入？，代码里是消除d导致方块s的值变成一种可能），等等。以上被称为约束传递(constraint propagation)：将某个约束置于一个方块之上会引发蝴蝶效应，即将更多的约束递推到了其它方块上。
+</p>
+<p>
+这里还有第二种约束传递。比如说我们刚刚将6从方块A1的所有可能值中消去。而假如我们看到包含A1的第一个unit里面所有的方块里，只有C1将6作为它的可能值。我们可以将6赋给C1。所以我们需要两个函数：assign(values,s,d) 和eliminate(values,s,d)，它们会互相调用来实现约束传递（我们将这种函数称为mutually recusive）。虽然不是很明显，但是我们有可能会犯一个错误：我们会试图将一个不符合数独规则的数赋给方块。在这种情况下，我们希望assign()和eliminate()返回False来指示错误。在通常情况下，每一个函数都会用传递来的约束稍稍改变一下数值，然后返回给另一个函数。以下是实现代码：
+</p>
+
+
+
+
+<pre class="example">def assign(values, s, d):
+    "Eliminate all the other values (except d) from values[s] and propagate."
+    if all(eliminate(values, s, d2) for d2 in values[s] if d2 != d):
+        return values
+    else:
+        return False
+
+
+
+
+
+
+def eliminate(values, s, d):
+    "Eliminate d from values[s]; propagate when values or places &lt;= 2."
+    if d not in values[s]:
+        return values ## Already eliminated
+    values[s] = values[s].replace(d,'')
+    if len(values[s]) == 0:
+        return False ## Contradiction: removed last value
+    elif len(values[s]) == 1:
+        ## If there is only one value (d2) left in square, remove it from peers
+        d2, = values[s]
+        if not all(eliminate(values, s2, d2) for s2 in peers[s]):
+            return False
+    ## Now check the places where d appears in the units of s
+    for u in units[s]:
+        dplaces = [s for s in u if d in values[s]]
+        if len(dplaces) == 0:
+            return False
+        elif len(dplaces) == 1:
+            # d can only be in one place in unit; assign it there
+            if not assign(values, dplaces[0], d):
+                return False
+    return values
+
+</pre>
+
+
+
+
+<p>
+这里有一种有用的设计模式，好像从没有人提过。这个模式是：
+</p>
+<p>
+如果你有两个mutually-recursive的函数分别影响一个对象的状态，请试着将所有的功能代码移到其中一个函数去。否则，你最后会发现有许多重复代码。
+</p>
+<p>
+我是在许多年的Lisp编程后发现这个设计模式的，在Lisp里mutually-recursive函数很常见。看看我们怎么样在这个问题里应用这个模式：有人会认为assign()将包含赋值语句values[s]=d，而且会包含传递约束。你可以试着写这样一个函数。我想，你最后会发现你是在重复eliminate()里的代码。所以为了避免绕这么个弯子，我推论assign()函数做的就是消去方块s里除了d以外所有的数字，所以我将所有的功能代码写到了eliminate()里。
+</p>
+<p>
+在我们探索更远之前，我们需要能够检验一下数独盘面的状态。以下就是printboard()的代码：
+</p></div>
+</div>
+<div id="postamble">
+<p class="author"> Author: 
+<a href="mailto:qinjian@JS2-QINJIAN">&lt;qinjian@JS2-QINJIAN&gt;</a>
+</p>
+<p class="date"> Date: 2012-11-15 14:38:58 </p>
+<p class="creator">HTML generated by org-mode 6.33x in emacs 23</p>
+</div>
+</div>
+</body>
+</html>
