@@ -1,0 +1,48 @@
+
+** ROC和PR定义
+*** 混淆矩阵(True即代表猜测正确，False代表猜测错误)
+    | 分类结果\实际结果 | Positive       | Negative       |
+    | Y(Positive)       | True Positive  | False Positive |
+    | N(Negative)       | False Negative | True Negative  |
+
++ 类似于杀毒软件误报率和漏报率：
+
+  误报率：非病毒，被认定为病毒，在FP位置。
+  漏报率：病毒，被认定为安全，在FN位置。
+
++ 在IR中：
+  
+  Recall和Precision：
+    Recall：TP/(TP+FN) (所有P的结果中被获取的比率)
+    Precision: TP/(TP+FP) (所有被获取的结果中，是实际需要获取的比率)
+
++ 最简单的计算：
+  
+  准确率：(TP+TN)/ALL
+  
+  *单纯的准确率显然是无作用的，特别是数据偏移情况严重的，根据先验概率直接猜一个结果，准确率也会很高*
+
+*** ROC
+    先引入FPR和TPR两个东西：两个数值都集中在被分为Y的数据。
+    + FPR：FP/N 其中 N=TN+FP (所有N的数据中被错分的比率)(1 - specificity)
+    + TPR: TP/P 其中 P=TP+FN (所有P的数据中被正确区分的比率)(sensitivity)
+     
+    ROC是将FPR和TPR作为x、y轴的曲线，显然范围在1*1中。每个测试结果其中的一个点。最好的结果是左上角。FPR为0，TPR为1，完全正确。（感觉最右下角也是最佳结果，因为100%都分错了，这个其实和分对是一个性质的了）。
+    随机猜测的话应该是y=x的直线[fn:1]，这是在不考虑先验概率的情况下的。直线下的弱于随机猜测，直线上的强于随机猜测。（由上面的注释可以清楚，在这里要注意弱于随机猜测不代表该分类器就一定差，而是要看与随机猜测线的距离，因为最右下角也是最优结果）。
+
+*** 如何处理非平均分布的情况下的ROC曲线
+    *计算下，在先验概率差的情况下的问题.*
+    
+
+** 参考来源：
+http://www.zhizhihu.com/html/y2011/3126.html
+http://www.zhizhihu.com/html/y2012/4076.html
+http://en.wikipedia.org/wiki/Receiver_operating_characteristic
+http://en.wikipedia.org/wiki/Area_under_curve
+
+* Footnotes
+
+[fn:1] 为什么？
+
+
+
