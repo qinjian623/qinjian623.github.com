@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: <谁会认错><乔布斯传>笔记
+title: '谁会认错''乔布斯传'笔记
 tags: [笔记]
 ---
 #+END_HTML
