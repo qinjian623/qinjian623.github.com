@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: 谁会认错和乔布斯转笔记
+title: 谁会认错和乔布斯传笔记
 tags: [笔记]
 ---
 #+END_HTML
