@@ -1,0 +1,488 @@
+---
+layout: post
+title: 4clojure's elementary and easy solutions
+tags: [pl]
+---
+
+<p>
+学clojure玩,就跌跌撞撞把4clojure上的elementary和easy的题目都写完了,没错,柿子就是要捡软的捏,目前依然任重道远&hellip;&hellip;做这个才真正知道什么叫做行百里者半九十.如今我还在以龟速出门中&hellip;
+</p>
+<p>
+很多代码屎一般,因为实在不熟悉语言.自己除了括号就知道map和reduce两个东西.看着别人高富帅的代码顿时自己缩小了一万倍.性能什么的都不在考虑范围内,解决问题才是关键.这又让自己回想起了刚看的一篇有关目标的短文,忘了在哪看的了,说的就是定目标其实也有缺点的,比如不择手段啊,十分功利啊&hellip;&hellip;都是需要克服才能发挥更好作用的.
+</p>
+
+
+
+<pre class="example">;;1
+true
+
+;;2
+4
+
+;;3
+"HELLO WORLD"
+
+;;4
+:a :b :c
+
+;;5
+'(1 2 3 4)
+'(1 2 3 4)
+
+;;6
+:a :b :c
+
+;;7
+[1 2 3 4]
+[1 2 3 4]
+
+;;8
+(set '(:a :b :c :d))
+(set '(:a :b :c :d))
+
+;;9
+2
+
+;;10
+20
+20
+
+;;11
+[:b 2]
+
+;;12
+3
+3
+3
+
+;;13
+[20 30 40]
+
+;;14
+8
+
+;;15
+* 2
+
+;;16
+(fn [x] (str "Hello, " x "!"))
+
+;;17
+'(6 7 8)
+
+;;18
+'(6 7)
+
+;;35
+7
+
+;;36
+[z 1, y 3, x 7]
+
+;;37
+"ABC"
+
+;;64
++
+ORG-LIST-END-MARKER
+
+;;57
+'(5,4,3,2,1)
+
+;;71
+last
+
+;;72
+#(apply + %)
+
+;;134
+(fn [k,m]
+  (let [v (m k)
+        containsk (contains? m k)]
+    (if containsk
+        (if (= v nil)
+          true
+          false
+        )
+        false)))
+
+;;145
+'(1 5 9 13 17 21 25 29 33 37)
+
+;;162
+1
+
+;;161
+#{1 2}
+
+;;156
+#(reduce (fn [m v]
+            (assoc m v %1))
+        {} %2)
+
+;;166
+(fn [op x y] (cond (op x y) :lt (op y x) :gt :else :eq))
+
+;;19
+(fn [x] (nth x (- (count x) 1)))
+
+;;20
+(fn [x] (nth x (- (count x) 2)))
+
+;;21
+(fn [l, n] 
+  (loop [n n
+      l l]
+    (if (= n 0)
+        (first l)
+        (recur (dec n)(next l)))))
+
+;;22
+#(reduce + (map (fn [x] 1) %))
+
+;;24
+#(reduce + %)
+
+;;25
+#(filter odd? %)
+
+;;23
+#(reduce conj () %)
+
+;;27
+(fn [coll]
+  (let [rc (reverse coll) n (count coll)]
+    (every? identity 
+      (map #(= (nth coll %) (nth rc %)) (range (/ (dec n) 2))))))
+
+;;26
+(fn [x]
+  (take x
+    ((fn fib [a b]
+        (cons a (lazy-seq (fib b (+ a b))))) 
+      1 1)))
+
+;;38
+(fn [&amp; l]
+    (reduce (fn [x,y] (if (&gt; x y) x y)) l ))
+
+;;29
+#(apply str (re-seq #"[A-Z]+" %))
+
+;;48
+6
+
+;;32
+reduce #(conj %1 %2 %2) []
+
+;;34
+(fn [s e]
+  (take (- e s) (iterate inc s)))
+
+;;42
+#(apply * (range 1 (inc %)))
+
+;;47
+4
+
+;;45
+'(1 4 7 10 13)
+
+;;28
+(fn[x]
+  (filter (complement sequential?)
+          (rest (tree-seq sequential? seq x))))
+
+;;30
+(fn xxxx[x]
+  (reverse
+  (reduce (fn [a b]
+            (if (not (= (first a) b))
+              (conj a b)
+              a)
+            )
+          ()
+          x)))
+
+;;39
+(fn [x y] (mapcat #(list %1 %2) x y))
+
+;;33
+(fn replicates [l n]
+  (reverse
+  (reduce (fn [x y] (
+                      into x (repeat n y) 
+                      )) () l)))
+
+;;40
+(fn [se l](rest
+                        (mapcat #(list se %) l
+                        )
+                        ))
+
+;;31
+(fn cap[l]
+  (reverse
+  (reduce (fn [x y]
+            ;(println (first (first x)) (next x) y) 
+            (if (= (first (first x)) y)
+              (conj (next x) (conj (first x) y))
+              (conj x (list y))
+              )
+            ) 
+          (list (list (first l))) 
+          (next l)
+  )))
+
+;;52
+[c e]
+
+;;41
+(fn asdf
+  [coll n]
+  (mapcat #(take (dec n) %) (partition-all n coll))
+  )
+
+;;49
+#(list (take %1 %2)
+(drop %1 %2))
+
+;;51
+(list 1 2 3 4 5)
+
+;;83
+(fn [&amp; args]
+            (let [n (reduce #(if (= true %2)
+                               (+ 1 %1)
+                               %1) 0 args)]
+              (and (&gt; n 0)
+                   (&lt; n (count args)))))
+
+;;61
+(fn  
+  [keys vals]
+    (loop [map {}
+           ks (seq keys)
+           vs (seq vals)]
+      (if (and ks vs)
+        (recur (assoc map (first ks) (first vs))
+               (next ks)
+               (next vs))
+        map)))
+
+;;66
+(fn [a b]                                                  
+  (loop [x (min a b)]                                            
+    (if (or (not= 0 (mod b x)) (not= 0 (mod a x)))             
+      (do                                                        
+        (println x)                                             
+        (recur (- x 1)))                                        
+      x)))
+
+;;81
+(fn [s1 s2]
+  (reduce #(if (nil? (get s2 %2))
+             %1
+             (conj %1 %2))
+          #{} s1))
+
+;;62
+(fn iter [f x]
+  (cons x (lazy-seq (iter f (f x)))))
+
+;;107
+(fn[n] #(int (Math/pow %1 n)))
+
+;;99
+(fn [a b] (map #(- (int %) 48) (seq (String/valueOf (* a b)))))
+
+;;90
+(fn [a b]
+  (set (mapcat #(map
+                 (fn [x]
+                   (list x %)) a)
+               b)))
+
+;;63
+(fn
+  [f coll]
+  (persistent!
+   (reduce
+    (fn [ret x]
+      (let [k (f x)]
+        (assoc! ret k (conj (get ret k []) x))))
+    (transient {})
+    coll)))
+
+;;88
+(fn __ [a b]
+  (reduce #(if (contains? %1 %2)
+             (disj %1 %2)
+             (conj %1 %2))
+          a
+          b))
+
+;;122
+(fn [s]
+  (Integer/parseInt s 2))
+
+;;126
+Class
+
+;;143
+(fn [a b]
+   (apply + (map * a b)))
+
+;;97
+(fn pascal [n]
+  (if (= n 1)
+    [1]
+    (map #(apply + %)
+      (partition 2 1
+        (concat [2] (pascal (- n 1)) [2])))))
+
+;;135
+(fn __ [&amp; l]
+  (reduce #(if (number? %2)
+             (%1 %2)
+             (fn [i]
+               (%2 %1 i))
+             )
+          l))
+
+;;95
+(fn __ [tree]
+  (if (and (or (vector? tree)
+               (seq? tree))
+           (= (count tree) 3))
+    (and (__ (second tree)) (__ (second (rest tree))))
+    (if (and (not (vector? tree)) (not (seq? tree)))
+      (if (= false tree)
+        false
+        true)
+      false
+      )))
+
+;;118
+(fn mymap [f coll]
+  (if (false? (empty? coll))
+        (lazy-seq
+          (cons (f (first coll)) (mymap f (rest coll))))))
+
+;;120
+(fn __ [l]
+  (reduce 
+   (fn inside-reduce [a b]
+  (if (&lt; b ((fn sum_square [l]
+  (reduce #(+ %1 (* %2 %2))
+          0
+          l)) ((fn seq_number [n]
+  (map #(- (int %) 48)
+       (seq (String/valueOf n)))) b)))
+    (+ a 1)
+    a))
+
+          0
+          l))
+
+;;128
+(fn __ [s]
+  (let [suit-table {"D" :diamond, "H" :heart, "C" :club, "S" :spades}
+        rank-table {"A" 12,
+                    "K" 11,
+                    "Q" 10,
+                    "J" 9,
+                    "T" 8,
+                    "9" 7,
+                    "8" 6,
+                    "7" 5,
+                    "6" 4,
+                    "5" 3,
+                    "4" 2,
+                    "3" 1,
+                    "2" 0}
+        ss (seq s)]
+    (println (first ss)
+             (second ss))
+    (assoc {}
+      :suit (suit-table (str (first ss)))
+      :rank (rank-table (str (second ss))))))
+
+;;100
+(fn __ [&amp; args] 
+  (reduce (fn lcm [a b]
+            (/  (* a b)((fn gcd [a b]
+                          (if (= b 0)
+                            a
+                            (gcd b (mod a b)))) a b) ))
+          args))
+
+;;157
+(fn __[coll]
+  (loop [x (- (count coll) 1)
+         l []]
+    (if (&gt;= x 0)
+      (recur (- x 1)
+             (conj l (list (nth coll x) x)))
+      (reverse l)
+    )))
+
+;;96
+(fn __ [tree]
+  (let [[v l r] tree]
+    (= l ((fn reflect [tree]
+            (if (nil? tree)
+              tree
+              (let [[v l r] tree]
+                (list v (reflect r) (reflect l)))))
+          r))))
+
+;;147
+(fn __ [coll]
+  (cons coll (lazy-seq (__ ((fn next-pacscal [coll]
+    (conj (loop [length (- (count coll) 1) 
+                 i 0
+                 l [(first coll)]]
+            (if (&lt; i length)
+              (recur
+               length
+               (inc i)
+               (conj l (bigint (+ (nth  coll i) (nth coll (inc i))))))
+              l))
+          (last coll))) coll )) ) ))
+
+;;146
+#(reduce (fn [a b](assoc a (first b) (second b))) 
+        {}
+        (mapcat (fn [x]
+                  (let [[k v] x]
+                    (mapcat (fn [x]
+                              (let [[kin vin] x]
+                                {[k kin] vin}
+                                )) 
+                            v)))
+                %))
+
+;;153
+(fn __ [coll]
+  (let [x (mapcat #((fn [t] (mapcat (fn [y] (list y)) t)) %) coll)]
+    (= 0 (count (filter #(&gt; % 1) (mapcat #(list (count (filter ((fn [a] (fn [b] (= a b)))
+
+                                                                %) x))) x )))) 
+    ))
+
+;;173
+op n
+</pre>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> DEFINITION NOT FOUND: 1
+</p>
+
+<p class="footnote"><sup><a class="footnum" name="fn-.2" href="#fnr-.2">2</a></sup> DEFINITION NOT FOUND: 0
+</p>
+</div>
+</div>
