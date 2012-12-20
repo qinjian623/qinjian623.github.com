@@ -11,13 +11,6 @@ RSS:
 <img src="http://buttons.googlesyndication.com/fusion/add.gif" alt="Add to Google Reader"/>
 </a>
 
-<p>tag表如下:</p>
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}  
-  {% include JB/tags_list %}
-</ul>
-
-
 <p>列表清单:</p>
 <ul class="posts">
   {% for post in site.posts %}
