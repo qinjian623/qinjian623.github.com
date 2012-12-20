@@ -5,10 +5,11 @@ title: 不用怀疑,此乃首页
 {% include JB/setup %}
 
     
-刚换过来,首页简单奔放点:
-
-<p>favicon也咩有...</p>
-<p>得先弄个可爱点的404......</p>
+<p>首页简单奔放点:<p>
+RSS:
+<a href="http://fusion.google.com/add?source=atgs&feedurl=blog.qinjian.me/atom.xml">
+<img src="http://buttons.googlesyndication.com/fusion/add.gif" alt="Add to Google Reader"/>
+</a>
 
 <p>tag表如下:</p>
 <ul class="tag_box inline">
