@@ -5,7 +5,7 @@ title: 不用怀疑,此乃首页
 {% include JB/setup %}
 
     
-<p>首页简单奔放点:<p>
+<p>首页简单奔放点:</p>
 RSS:
 <a href="http://fusion.google.com/add?source=atgs&feedurl=blog.qinjian.me/atom.xml">
 <img src="http://buttons.googlesyndication.com/fusion/add.gif" alt="Add to Google Reader"/>
