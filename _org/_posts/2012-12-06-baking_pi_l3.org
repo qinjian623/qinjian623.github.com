@@ -59,8 +59,68 @@ mov pc,lr
 
 现在，不要急着用，下一小节我们就会用到它。
 
-* TODO 一个大函数
+* DONE 一个大函数
+  Now we're going to implement a bigger function. Our first job was to enable output on GPIO pin 16. It would be nice if this was a function. We could simply specify a pin and a function as the input, and the function would set the function of that pin to that value. That way, we could use the code to control any GPIO pin, not just the LED.
+
+Copy the following commands below the GetGpioAddress function in gpio.s.
+现在开始我们要完成一个大点的函数。第一项工作就是打开GPIO pin16的输出。这个功能比较时候写成一个函数。这样我们就可以指定一个pin的位置和函数的输入，TODO
+
+复制以下的GetGpioAddress函数到gpio.s中去
+#+BEGIN_SRC masm
+.globl SetGpioFunction
+SetGpioFunction:
+cmp r0,#53
+cmpls r1,#7
+movhi pc,lr
+#+END_SRC
+One of the first things we should always think about when writing functions is our inputs. What do we do if they are wrong? In this function, we have one input which is a GPIO pin number, and so must be a number between 0 and 53, since there are 54 pins. Each pin has 8 functions, numbered 0 to 7 and so the function code must be too. We could just assume that the inputs will be correct, but this is very dangerous when working with hardware, as incorrect values could cause very bad side effects. Therefore, in this case, we wish to make sure the inputs are in the right ranges.
+写函数第一件事情就是要考虑函数的输入。如果输入错误应该如何处理？在这个函数中，我们只有输入，就是GPIO的pin的编号，而且必须是0到53之间的数值，因为总共只有54个pin。每个pin，有8个functions，从0到7编号，所以参数也应该在这个范围内。我们可以简单的假设输入是正确的，但是与硬件交互的代码中出现这样的假设是比较危险的，因为错误的值可能会产生很严重的副作用。所以，这里我们需要确保数值都在正确范围内。
+
+To do this we need to check that r0 <= 53 and r1 <= 7. First of all, we can use the comparison we've seen before to compare the value of r0 with 53. The next instruction, cmpls is a normal comparison instruction that will only be run if r0 was lower than or the same as 53. If that was the case, it compares r1 with 7, otherwise the result of the comparison is the same as before. Finally we go back to the code that ran the function if the result of the last comparison was that the register was higher than the number.
+
+为此，我们需要检查r0 <= 53 而 r1 <= 7. 首先我们可以用之前提到过的比较操作来将r0和53比较。下一个指令 *cmpls* 一个常用的比较指令，其只有在r0小于等于53的条件下才会运行。满足条件的情况下，它会比较r1和7，否则保持之前的比较的结果不变。最后我们会返回到处理最后的比较中寄存器值比数值大的情况下的代码。
+
+这一代码的结果就满足我们之前的意图。如果r0比53大，那么 *cmpls* 就不会运行，但是 *movhi* 会运行。如果 r0 <= 53 ，那么 *cmpls* 就会运行，然后比较r1和7，如果比7大， *movhi* 运行，函数结束，否则 *movhi* 则不会运行，我们也就完成了 r0<=53 而且r1<=7的检查。
+
+对于 *ls* (lower or same) 和 *le* （less or qual）后缀有一些小差别，我们随后会细说这一问题， *hi* （high） 和 *gt* （greater）后缀也一样。
+
+继续拷贝如下代码：
+#+BEGIN_SRC masm
+push {lr}
+mov r2,r0
+bl GetGpioAddress
+#+END_SRC
+
+接下来的这三个指令主要用于调用我们的第一个方法。 *push {lr}* 命令拷贝 *lr* 中的值到栈顶，这样我们随后才能在此找到值。之所以我们要做这一步，是因为我们调用GetGpioAddress的时候，我们需要使用 *lr* 来保存函数的返回值[fn:1]。
+
+如果我们不清楚GetGpioAddress函数，我们应该假定他会修改r0-r3的寄存器，需要将值移动到r4和r5以保证执行完毕后还能保存下值来。不过，我们很清楚GetGpioAddress的内部，知道它值改动r0，不影响r1-r3的寄存器。所以，我们就只需要将r0的值保存下来以免被覆盖掉。其实我们直接将值移动到r2中了，因为GetGpioAddress不改变r2的值。
+
+最后我们使用 *bl* 指令来运行GetGpioAddress。一般来说我们使用‘调用’一次来表示运行一个函数，我们从现在开始就使用这一名词了。之前就说过， *bl* 会通过改变lr的值，将其设置为下一个要执行的地址来调用一个函数，然后跳转到函数处执行。
+
+函数执行完成后，就会‘返回’。到调用的GetGpioAddress地址返回后，我们知道r0保存的是GPIO的地址，r1保存的是功能编码（function code），r2保存的是GPIO的pin值。之前我们提到过[OK1中]，GPIO的功能编码都是10个10个的组织在一起的，我们首先就需要考虑是应该会落到第几个10个的区域。这里看起来需要一个除法，但是除法的操作很慢，所以这种小数值可以通过重复的减法来实现除法。
+
+拷贝代码：
+#+BEGIN_SRC masm
+functionLoop$:
+    cmp r2,#9
+    subhi r2,#10
+    addhi r0,#4
+    bhi functionLoop$
+#+END_SRC
+这里的循环代码的判断条件就是不断的将pin编号和0对比，如果比9大，就从中减去10，然后在GPIO控制器的地址上增加4，然后继续循环。
+The effect of this is that r2 will now contain a number from 0 to 9 which represents the remainder of dividing the pin number by 10. r0 will not contain the address in the GPIO controller of this pin's function settings. This would be the same as GPIO Controller Address + 4 × (GPIO Pin Number ÷ 10).
+运行的结果就是r2会保存一个0-9的数值，代表的是pin值除以10的余数，
+
+
+
+
+
 
 * TODO 另一个函数
 
 * TODO 新的开始
+
+* Footnotes
+
+[fn:1] 原文有个ot是什么东西？
+
