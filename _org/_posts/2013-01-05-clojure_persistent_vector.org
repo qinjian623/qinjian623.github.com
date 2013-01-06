@@ -9,9 +9,8 @@ tags: [pl, clojure]
 有关Clojure中的PersistentVector的记录,主要的参考来源是
 http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/
 
-
 自己感冒头晕,昨晚看American Horror Story又没有休息好. 于是就脑抽点了clojure的源码实现看,wc -l排序完,就想着先看个802行的吧.
-#+BEGIN_SRC 
+#+BEGIN_SRC shell
 $ wc -l * | sort -n
      13 Sequential.java
      14 IRecord.java
@@ -256,7 +255,7 @@ http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
     }
 #+END_SRC
 
-
+   完成添加后,数据是没有拷贝的,只是在原来树的后面添加了元素,然后成为一个新的树.性能上自然没有太大差别.
 ** pop
 #+BEGIN_SRC java
     public PersistentVector pop(){
@@ -272,15 +271,21 @@ http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 		System.arraycopy(tail, 0, newTail, 0, newTail.length);
 		return new PersistentVector(meta(), cnt - 1, shift, root, newTail);
             }
-        //不能的情况下,就从树里pop出来一个,当然,同时把剩下的31个不完整的抽出来当做tail.
+        //不能的情况下,就从树里pop出来一个,当然,同时就需要把剩下的31个不完整的抽出来当做newtail.
+        //为什么要以cnt-2开始,因为前面的判断是tail.length > 1,tail里面有可能还有一个孤零零的元素.
 	Object[] newtail = arrayFor(cnt - 2);
 
+        //以下的代码就是从树中删除newtail的过程了.
+
+        //新树的root也有可能需要做变更.
 	Node newroot = popTail(shift, root);
 	int newshift = shift;
+        //这里如果一路都是单枝,结果是一路都删除路径到root,应该其实就是长度为32/33的情况.
 	if(newroot == null)
             {
 		newroot = EMPTY_NODE;
             }
+        //层次大于1,但是root的第二子树已经是空的话,就需要降低层次了.
 	if(shift > 5 && newroot.array[1] == null)
             {
 		newroot = (Node) newroot.array[0];
@@ -291,11 +296,14 @@ http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 
     //
     private Node popTail(int level, Node node){
+        //倒数第二个位置的元素在最底层的index
 	int subidx = ((cnt-2) >>> level) & 0x01f;
         //一直往底层走
 	if(level > 5)
             {
+                //去下层, level-5, 以subidx所在的array开始.
 		Node newchild = popTail(level - 5, (Node) node.array[subidx]);
+                //上层依然是单枝,需要继续删除路径的情况
 		if(newchild == null && subidx == 0)
                     return null;
 		else
@@ -305,17 +313,21 @@ http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 			return ret;
                     }
             }
-        //这种情况可能不?
+        //到达底层,位置却是0,这里到达的不是包含叶子的底层,而是最后一个树枝层.
+        //到达底树枝层,正好是一个单枝,因为下一步叶子层的index是0,如果要提出来当tail,这个单枝就需要删除了.而且要一路删除到上层不再是单枝路径为止.
 	else if(subidx == 0)
             return null;
-        //到达底层
+        //到达底树枝层
 	else
             {
-                // 
 		Node ret = new Node(root.edit, node.array.clone());
+                //显然,直接将要pop出来的tail删掉了.
 		ret.array[subidx] = null;
 		return ret;
             }
     }
 #+END_SRC
+   这里pop影响的范围都会重新clone.都是新的,原来的数据则还是保持.基本可以简单的认为是写时复制了.
+
+   还有个APersistentVector的抽象类,不管了.
 
