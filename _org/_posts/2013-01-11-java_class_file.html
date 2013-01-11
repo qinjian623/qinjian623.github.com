@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>---</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="---"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-01-11T16:51+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">---</h1>
+
+
+---
+layout: post
+title: Java Class File Format
+tags: [pl, java]
+---
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Reference</a></li>
+<li><a href="#sec-2">2 文件头</a>
+<ul>
+<li><a href="#sec-2-1">2.1 magic<sub>number</sub></a></li>
+<li><a href="#sec-2-2">2.2 minor<sub>version</sub> and major<sub>version</sub></a></li>
+<li><a href="#sec-2-3">2.3 constant<sub>pool</sub><sub>count</sub> and constant<sub>pool</sub></a>
+<ul>
+<li><a href="#sec-2-3-1">2.3.1 CONSTANT<sub>Class</sub></a></li>
+<li><a href="#sec-2-3-2">2.3.2 CONSTANT<sub>*</sub>ref<sub>info</sub></a></li>
+<li><a href="#sec-2-3-3">2.3.3 CONSTANT<sub>String</sub><sub>info</sub></a></li>
+<li><a href="#sec-2-3-4">2.3.4 CONSTANT<sub>Integer</sub><sub>info</sub> and CONSTANT<sub>Float</sub><sub>info</sub></a></li>
+<li><a href="#sec-2-3-5">2.3.5 CONSTANT_Long_info and CONSTANT_Double_info</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Reference</h2>
+<div class="outline-text-2" id="text-1">
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Java_class_file">http://en.wikipedia.org/wiki/Java_class_file</a>
+</li>
+<li>Java Specification Request-202 Chapter 4
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 文件头</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+
+<pre class="example">struct Class_File_Format {
+   u4 magic_number;   
+
+   u2 minor_version;   
+   u2 major_version;   
+
+   u2 constant_pool_count;   
+
+   cp_info constant_pool[constant_pool_count - 1];
+
+   u2 access_flags;
+
+   u2 this_class;
+   u2 super_class;
+
+   u2 interfaces_count;   
+
+   u2 interfaces[interfaces_count];
+
+   u2 fields_count;   
+   field_info fields[fields_count];
+
+   u2 methods_count;
+   method_info methods[methods_count];
+
+   u2 attributes_count;   
+   attribute_info attributes[attributes_count];
+}
+</pre>
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> magic<sub>number</sub></h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>   固定值 "0xcafebabe",但是在一个文件中看到的竟然是 <b>c38a c3be c2ba c2be</b> ,只好换一个文件看了.
+</p><blockquote>
+
+<p>  A Java virtual machine implementation can support a class
+ﬁle format of version v if and only if v lies in some contiguous
+range Mi.0 ≤ v ≤Mj.m. Only Sun can specify what range of
+versions a Java virtual machine implementation conforming to a
+certain release level of the Java platform may support.
+</p>
+</blockquote>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> minor<sub>version</sub> and major<sub>version</sub></h3>
+<div class="outline-text-3" id="text-2-2">
+
+<p>   看到的两个都是 <b>0000 0032</b> ,
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> constant<sub>pool</sub><sub>count</sub> and constant<sub>pool</sub></h3>
+<div class="outline-text-3" id="text-2-3">
+
+<p>   constant<sub>pool</sub> 范围是 1~constant<sub>pool</sub><sub>count</sub>-1,
+   constant<sub>pool中的数据结构是变长的</sub>:
+</p>
+
+
+<pre class="example">cp_info {
+  u1 tag;
+  u2 info[];
+}
+</pre>
+
+<p>
+   前面的tag表明类型.类型表格:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left">Constant Type</td><td class="right">Value</td></tr>
+<tr><td class="left">CONSTANT<sub>Class</sub></td><td class="right">7</td></tr>
+<tr><td class="left">CONSTANT<sub>Fieldref</sub></td><td class="right">9</td></tr>
+<tr><td class="left">CONSTANT<sub>Methodref</sub></td><td class="right">10</td></tr>
+<tr><td class="left">CONSTANT<sub>InterfaceMethorref</sub></td><td class="right">11</td></tr>
+<tr><td class="left">CONSTANT<sub>String</sub></td><td class="right">8</td></tr>
+<tr><td class="left">CONSTANT<sub>Integer</sub></td><td class="right">3</td></tr>
+<tr><td class="left">CONSTANT<sub>Float</sub></td><td class="right">4</td></tr>
+<tr><td class="left">CONSTANT<sub>Long</sub></td><td class="right">5</td></tr>
+<tr><td class="left">CONSTANT<sub>Double</sub></td><td class="right">6</td></tr>
+<tr><td class="left">CONSTANT<sub>NameAndType</sub></td><td class="right">12</td></tr>
+<tr><td class="left">CONSTANT<sub>Utf8</sub></td><td class="right">1</td></tr>
+</tbody>
+</table>
+
+   后面跟随的是则是根据tag不同的结构.
+
+
+</div>
+
+<div id="outline-container-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> CONSTANT<sub>Class</sub></h4>
+<div class="outline-text-4" id="text-2-3-1">
+
+
+
+
+<pre class="example">CONSTANT_Class_info {
+  u1 tag;
+  u2 name_index;
+}
+</pre>
+
+<p>
+    注意,这里代表的是cp<sub>info的整个</sub>,所以也包括了tag.name<sub>index则代表的具体的名称的index</sub>,具体的名称同样也会在pool里面,指向的类型应该是 CONSTANT<sub>Utf8</sub><sub>info</sub> 的类型.
+</p>
+<p>
+    数组也是对象,表示形式比较特殊:
+</p>
+
+
+<pre class="example">int[][] =&gt; [[I
+Thread[] =&gt; [Ljava/lang/Thread;
+</pre>
+
+<blockquote>
+
+<p>An array type descriptor is valid only if it represents 255 or fewer dimensions.
+</p>
+</blockquote>
+
+
+<p>
+    这句是什么意思呢?最多只支持255维度?
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> CONSTANT<sub>*</sub>ref<sub>info</sub></h4>
+<div class="outline-text-4" id="text-2-3-2">
+
+<p>    *代表的是Field/Method/Interface,这几个结构一致.
+</p>
+
+
+<pre class="example">CONSTANT_*ref_info {
+  u1 tag;
+  u2 class_index;
+  u2 name_and_type_index;
+}
+</pre>
+
+<ul>
+<li id="sec-2-3-2-1">class<sub>index</sub><br/>
+     指向的内容,必须是 CONSTANT<sub>Class</sub><sub>info</sub> 的结构. 而Methodref指向的不能是interface而只能是class.Interfaceref的只能是interface. Fieldref的则两种随便.
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-3-2-2">name<sub>and</sub><sub>type</sub><sub>index</sub><br/>
+     指向的则是 CONSTANT<sub>NameAndType</sub><sub>info</sub>, 这个表述的是method/field的名字和描述<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>.field的必须是一个field descriptor. CONSTANT<sub>Methodref</sub><sub>info的名字如果以</sub> '&lt;' 开始, 就需要是固定的 &lt;init&gt; ,表示 an instance initialization method, 其返回值必须是void.
+<ul>
+<li id="sec-2-3-2-2-1">field descriptor<br/>
+<blockquote>
+
+<p>  A field descriptor represents the type of a class, instance, or local variable. It is a series of characters generated by the grammar
+FieldDescriptor:
+  FieldType
+ComponentType:
+  FieldType
+FieldType:
+  BaseType
+ObjectType
+  ArrayType
+BaseType:
+  <b>B</b>
+  <b>C</b>
+  <b>D</b>
+  <b>F</b>
+  <b>I</b>
+  <b>J</b>
+  <b>S</b>
+  <b>Z</b>
+ObjectType:
+  L Classname;
+ArrayType:
+  [ComponentType
+</p>
+</blockquote>
+
+
+<p>
+      /BaseType/的对应表格如下:
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">BaseType Character</td><td class="left">Type</td><td class="left">Interpretation</td></tr>
+<tr><td class="left">B</td><td class="left">byte</td><td class="left">signed byte</td></tr>
+<tr><td class="left">C</td><td class="left">char</td><td class="left">Unicode character</td></tr>
+<tr><td class="left">D</td><td class="left">double</td><td class="left">double-precision floating-point value</td></tr>
+<tr><td class="left">F</td><td class="left">float</td><td class="left">single-precision floating-point value</td></tr>
+<tr><td class="left">I</td><td class="left">int</td><td class="left">integer</td></tr>
+<tr><td class="left">J</td><td class="left">long</td><td class="left">long integer</td></tr>
+<tr><td class="left">L Classname;</td><td class="left">reference</td><td class="left">an instance of class &lt;classname&gt;</td></tr>
+<tr><td class="left">S</td><td class="left">short</td><td class="left">signed short</td></tr>
+<tr><td class="left">Z</td><td class="left">boolean</td><td class="left">true or false</td></tr>
+<tr><td class="left">[</td><td class="left">reference</td><td class="left">one array dimension</td></tr>
+</tbody>
+</table>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-3-2-2-2">剩下的都要是method descriptor<br/>
+      直接引用吧:
+<blockquote>
+
+<p>MethodDescriptor:
+  ( ParameterDescriptor* ) ReturnDescriptor
+A parameter descriptor represents a parameter passed to a method:
+ParameterDescriptor:
+  FieldType
+A return descriptor represents the type of the value returned from a method. It is a
+series of characters generated by the grammar:
+</p>
+<p>
+ReturnDescriptor:
+  FieldType
+  VoidDescriptor
+</p>
+<p>
+VoidDescriptor:
+  <b>V</b>
+</p>
+</blockquote>
+
+
+<p>
+这里,parameters的length要少于等于255.具体的length计算要包括所有的parameters的和, <b>long</b> 或者 <b>double</b> 代表两个单元,而其他的都代表一个单元<sup><a class="footref" name="fnr-.2" href="#fn-.2">2</a></sup>.还要注意,实体类和接口方法调用的时候,this这个参数也是要算进去的<sup><a class="footref" name="fnr-.3" href="#fn-.3">3</a></sup>.
+</p>
+<blockquote>
+
+<p>  Object mymethod(int i, double d, Thread t)
+=&gt; (IDLjava/lang/Thread;)Ljava/lang/Object;
+</p>
+</blockquote>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> CONSTANT<sub>String</sub><sub>info</sub></h4>
+<div class="outline-text-4" id="text-2-3-3">
+
+
+
+
+<pre class="example">CONSTANT_String_info {
+  u1 tag;
+  u2 string_index;
+}
+</pre>
+
+
+<p>
+比较简单,index指向的必须是 CONSTANT<sub>Utf8</sub><sub>info</sub>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-3-4" class="outline-4">
+<h4 id="sec-2-3-4"><span class="section-number-4">2.3.4</span> CONSTANT<sub>Integer</sub><sub>info</sub> and CONSTANT<sub>Float</sub><sub>info</sub></h4>
+<div class="outline-text-4" id="text-2-3-4">
+
+
+
+
+<pre class="example">CONSTANT_*_info {
+  u1 tag;
+  u4 bytes;
+}
+</pre>
+
+
+<p>
+bytes中保存是常量的值,其中float的是IEEE 754 floating-point single format.都是big-endian.
+表示float的value,首先转换为int,直接引用:
+</p><blockquote>
+
+<ul>
+<li>If bits is 0x7f800000, the float value will be positive inﬁnity.
+</li>
+<li>If bits is 0xff800000, the float value will be negative inﬁnity.
+</li>
+<li>If bits is in the range 0x7f800001 through 0x7fffffff or in the range 0xff800001 through 0xffffffff, the float value will be NaN.
+</li>
+<li>In all other cases, let s, e, and m be three values that might be computed from bits:
+<ul>
+<li>int s = ((bits &gt;&gt; 31) == 0) ? 1 : -1;
+</li>
+<li>int e = ((bits &gt;&gt; 23) &amp; 0xff);
+</li>
+<li>int m = (e == 0) ?
+       (bits &amp; 0x7fffff) &lt;&lt; 1 :
+       (bits &amp; 0x7fffff) | 0x800000;
+</li>
+<li>Then the float value equals the result of the mathematical expression . s * m* 2<sup>(e-150)</sup>
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+</blockquote>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3-5" class="outline-4">
+<h4 id="sec-2-3-5"><span class="section-number-4">2.3.5</span> CONSTANT_Long_info and CONSTANT_Double_info</h4>
+<div class="outline-text-4" id="text-2-3-5">
+
+
+
+
+<pre class="example">CONSTANT_*_info {
+  u1 tag;
+  u4 high_bytes;
+  u4 low_bytes;
+}
+</pre>
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> 描述是什么东西?Doc?
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.2" href="#fnr-.2">2</a></sup> 为什么double和long有特殊呢?
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn-.3" href="#fnr-.3">3</a></sup> 原来Java也是要传this的&hellip;&hellip;
+</p>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-01-11T16:51+0800</p>
+<p class="author">Author: </p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
