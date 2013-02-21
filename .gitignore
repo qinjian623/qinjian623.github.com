@@ -9,3 +9,7 @@ Thumbs.db
 
 .rbenv-version
 .rvmrc
+
+.DS_Store
+
+_posts/.DS_Store
