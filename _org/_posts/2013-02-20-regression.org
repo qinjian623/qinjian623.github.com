@@ -101,12 +101,13 @@ for the JavaScript code below.
 #+AUTHOR: Qin Jian
 #+LATEX_HEADER: \usepackage{xeCJK}
 #+LATEX_HEADER: \setCJKmainfont{SimSun}
+
 有关回归的杂东西.
 超级初始版本，以后慢慢改思密达。
 ** 回归是什么?
    将多个点X映射为一个函数f(x)来表示.但是由于不一定所有的点已经能够准确在f(x)上,所以存在误差问题,将误差最小化自然 /拟合/ 的比较好,于是就是个最优化问题.
 
-   有关误差函数,其实可以随便定义,不过平方误差用的比较多: $\sum_{i} \left(y_i - f(x_i)\right)^2$, 更符合直觉上的情况是,直接相减的误差: $\sum_{i} \left|y_i - f(x_i)\right|$[fn:1]
+   有关误差函数,其实可以随便定义,不过平方误差用的比较多: $\sum_{i} \left(y_i - f(x_i)\right)^2$, 更符合直觉上的情况是,直接相减的误差: $\sum_{i} \left|y_i - f(x_i)\right|$ [fn:1]
 ** 简单线性回归
    一元的线性回归,用$f(x) = \omega_1 x + \omega_0$来模拟.使用的方法是Least Square.就是最小化误差,而误差函数使用的是平方误差.由于假设了函数形式和待解的参数,可以带入方程来处理.$$ SSE = \sum_{i=1}^N \left[ y_i -f(x_i)\right]^2 = \sum_{i=1}^N \left[ y_i -\omega_1 x - \omega_0\right]^2 $$
    然后需要求解的就是SSE的最小值,其实就是这个函数的最小值.常规过程,求导\得0\解结果.SSE有两个变量,所以会有两个偏导:

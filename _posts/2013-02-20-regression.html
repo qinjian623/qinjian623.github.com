@@ -95,6 +95,7 @@ for the JavaScript code below.
 /*]]>*///-->
 </script>
 
+
 <p>
 有关回归的杂东西.
 超级初始版本，以后慢慢改思密达。
@@ -106,7 +107,7 @@ for the JavaScript code below.
 <p>   将多个点X映射为一个函数f(x)来表示.但是由于不一定所有的点已经能够准确在f(x)上,所以存在误差问题,将误差最小化自然 <i>拟合</i> 的比较好,于是就是个最优化问题.
 </p>
 <p>
-   有关误差函数,其实可以随便定义,不过平方误差用的比较多: \(\sum_{i} \left(y_i - f(x_i)\right)^2\), 更符合直觉上的情况是,直接相减的误差: $&sum;<sub>i</sub> \left|y<sub>i</sub> - f(x<sub>i</sub>)\right|$[fn:1]
+   有关误差函数,其实可以随便定义,不过平方误差用的比较多: \(\sum_{i} \left(y_i - f(x_i)\right)^2\), 更符合直觉上的情况是,直接相减的误差: \(\sum_{i} \left|y_i - f(x_i)\right|\) <sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>
 </p></div>
 
 </div>
@@ -214,7 +215,17 @@ for the JavaScript code below.
    \begin{eqnarray}
      \Omega = 
    \end{eqnarray}
+
+</p><div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> 为什么是用平方用得特别多呢?应该还有更进一步的原因.
 </p>
+
+
+
+</div>
+</div>
 
 </div>
 </div>
