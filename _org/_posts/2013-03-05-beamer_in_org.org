@@ -1,0 +1,34 @@
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{SimSun}
+#+TITLE:     2013-03-05-beamer_in_org.org
+#+AUTHOR:    
+#+EMAIL:     qinjian@JS2-QINJIAN
+#+DATE:      2013-03-05 星期二
+#+latex_header: \mode<beamer>{\usetheme{Madrid}}
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+** A simple slide
+   This slide consists of some text with a number of bullet points:
+
+- the first, very @important@, point!
+- the previous point shows the use of the special markup which
+  translates to the Beamer specific /alert/ command for highlighting
+  text.
+
+
+   The above list could be numbered or any other type of list and may
+include sub-lists.
+** IO
+可以用org写pdf，然后就想着写slide玩，是的，人都是这么贱，没事找事。
+
+** 参考
+   * http://orgmode.org/worg/exporters/beamer/tutorial.html
+
+
+** Beamer
+
+   NOTHING HERE
