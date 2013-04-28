@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>回归问题</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="回归问题"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-04-29T04:58+0800"/>
+<meta name="author" content="Qin Jian"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">回归问题</h1>
+
+
+---
+layout: post
+title: 回归问题
+tags: [ml,math]
+---
+
+<p>
+有关回归的杂东西.
+超级初始版本，以后慢慢改思密达。
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 回归是什么?</a></li>
+<li><a href="#sec-2">2 简单线性回归</a></li>
+<li><a href="#sec-3">3 误差问题</a></li>
+<li><a href="#sec-4">4 多元线性回归</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 回归是什么?</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>   将多个点X映射为一个函数f(x)来表示.但是由于不一定所有的点已经能够准确在f(x)上,所以存在误差问题,将误差最小化自然 <i>拟合</i> 的比较好,于是就是个最优化问题.
+</p>
+<p>
+   有关误差函数,其实可以随便定义,不过平方误差用的比较多: \(\sum_{i} \left(y_i - f(x_i)\right)^2\), 更符合直觉上的情况是,直接相减的误差: \(\sum_{i} \left|y_i - f(x_i)\right|\) <sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 简单线性回归</h3>
+<div class="outline-text-3" id="text-2">
+
+<p>   一元的线性回归,用$f(x) = &omega;<sub>1</sub> x + &omega;<sub>0</sub>$来模拟.使用的方法是Least Square.就是最小化误差,而误差函数使用的是平方误差.由于假设了函数形式和待解的参数,可以带入方程来处理.$$ SSE = \sum_{i=1}^N \left[ y_i -f(x_i)\right]^2 = \sum_{i=1}^N \left[ y_i -\omega_1 x - \omega_0\right]^2 $$
+   然后需要求解的就是SSE的最小值,其实就是这个函数的最小值.常规过程,求导\得0\解结果.SSE有两个变量,所以会有两个偏导:
+   $$\frac{\partial E}{\partial \omega_0} = -2 \sum_{i=1}^N \left[y_i - \omega_1 x_i - \omega_0 \right] = 0$$
+   $$\frac{\partial E}{\partial \omega_1} = -2 \sum_{i=1}^N \left[y_i - \omega_1 x_i - \omega_0 \right]x_i = 0$$
+   两方程解的两个未知数,看着也不是线性相关,自然可以解出来.不过,还可以蛋疼的用矩阵来解这样的方程组,因为这样以后如果方程组多了也说得过去.
+   \begin{equation}
+   \begin{pmatrix} 
+   N & \sum_i x_i \\ 
+   \sum_i x_i & \sum_i x_i^2\end{pmatrix}
+   \begin{pmatrix}
+     \omega_0 \\
+     \omega_1
+   \end{pmatrix}
+   =
+   \begin{pmatrix} 
+   \sum_i y_i \\
+   \sum_i x_i y_i \end{pmatrix}
+   \end{equation}
+   还可以证明,这样的方程有个通解,
+   \begin{eqnarray}
+   \hat{\omega_0} = \bar{y} - \hat{\omega_1}\bar{x} \\
+   \hat{\omega_1} = \frac{\sigma_{xy}}{\sigma_{xx}}
+   \end{eqnarray}
+   其中:
+   \begin{eqnarray}
+   && \bar{x} = \sum_i x_i / N \\
+   && \bar{y} = \sum_i y_i / N \\
+   && \sigma_{xy} = \sum_i (x_i - \bar{x})(y_i - \bar{y}) \\
+   && \sigma_{xx} = \sum_i (x_i - \bar{x})^2 \\
+   && \sigma_{yy} = \sum_i (y_i - \bar{y})^2 \\
+   \end{eqnarray}
+</p>
+<p>   
+   公式怎么这么多&hellip;&hellip;然后就可以将通解带入最开始的函数了.不写公式了,都是些超级水的公式.浪费时间.但是资料里有这么一句话:
+</p><blockquote>
+
+<p><b>线性模型是具有连续导数的任意函数的一阶泰勒级数近似</b>
+</p>
+</blockquote>
+
+
+<p>
+   什么叫做赤裸裸的讨厌.
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 误差问题</h3>
+<div class="outline-text-3" id="text-3">
+
+<p>   误差无处不在,所以回归的时候自然要考虑误差对数据的影响,而且在误差面前,人类实在太渺小,都是假定误差是随机独立的,在函数外面加一个噪音数据.
+   \begin{equation}
+   y = f(X) + \epsilon
+   \end{equation}
+   如果假定是正态分布,就需要分布如下:
+   \begin{equation}
+     P(\epsilon | x,\Omega ) = \frac{1}{\sqrt{2\pi\sigma^2}}
+     e^{-\frac{[y-f(x,\Omega)]^2}
+     {2\sigma^2}}
+   \end{equation}
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 多元线性回归</h3>
+<div class="outline-text-3" id="text-4">
+
+<p>   继续变 X = (1 x) ,有:
+   \begin{equation}
+   X^T X = \begin{pmatrix}
+             1^T 1 & 1^Tx \\
+             x^T 1 & x^Tx \\
+           \end{pmatrix}
+          =    
+   \begin{pmatrix} 
+   N & \sum_i x_i \\ 
+   \sum_i x_i & \sum_i x_i^2\end{pmatrix}
+   \end{equation}
+   \begin{equation}
+     (1 x)^T y = \begin{pmatrix}
+                   1^Ty \\
+                   x^Ty \\
+                 \end{pmatrix}
+                 =    \begin{pmatrix} 
+                 \sum_i y_i \\
+                 \sum_i x_i y_i \end{pmatrix}
+   \end{equation}
+   再将这些变换代回去,
+   \begin{eqnarray}
+   && X^TX\Omega = X^Ty
+   && \Omega = (\omega_0, \omega_1)^T
+   \end{eqnarray}
+   解方程的结果:
+   \begin{eqnarray}
+     \Omega = 
+   \end{eqnarray}
+
+</p><div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> 为什么是用平方用得特别多呢?应该还有更进一步的原因.
+</p>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-04-29T04:58+0800</p>
+<p class="author">Author: Qin Jian</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
