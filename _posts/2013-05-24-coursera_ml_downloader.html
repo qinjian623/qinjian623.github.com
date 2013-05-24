@@ -1,0 +1,59 @@
+---
+layout: post
+title: Coursera的机器学习课程下载器
+tags: [tools]
+---
+
+<div id="content">
+  <p>
+    虽说现在也都是在线看的课程的视频，说不定自己哪天蛋疼了就有线下看的需求<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>。
+  </p>
+  <div class="org-src-container">
+
+    <pre class="src src-bash">base_subtitles_url='https://class.coursera.org/ml-003/lecture/subtitles?q=SMTM_en&amp;format=srt'
+      base_mp4_url='https://class.coursera.org/ml-003/lecture/download.mp4?lecture_id=SMTM'
+
+      for i in `seq $1 $2`
+      do
+      subtitles_url=`echo $base_subtitles_url| sed "s/SMTM/$i/g" `
+      mp4_url=`echo $base_mp4_url| sed "s/SMTM/$i/g"`
+
+      echo "Downloading video: "$i
+      wget --progress=bar:force -q -c $mp4_url -O $i'.mp4' 2&gt;&amp;1 
+      echo "Downloading subtitle: "$i
+      wget --progress=bar:force -q -c $subtitles_url -O $i'.srt' 2&gt;&amp;1 
+      done
+    </pre>
+  </div>
+
+  <p>
+    使用方法么：
+  </p>
+  <div class="org-src-container">
+
+    <pre class="src src-bash">./download_ml.sh start end
+    </pre>
+  </div>
+  <p>
+    会下载[start end]闭区间的视频和字幕，视频的编号是从1开始的。现在应该有57个视频了。本身不是并行下载的，不过shell里面多跑几个就变成并行的了，比如：
+  </p>
+  <div class="org-src-container">
+
+    <pre class="src src-bash">for ((i=0;i&lt;5;i++));do { s=`echo $i*10+1|bc -l`; e=`echo $i*10+10|bc -l`; ./download_ml.sh $s $e &amp;} done;
+    </pre>
+  </div>
+  <p>
+    这个就是4并发，每发10个。
+  </p>
+  <div id="footnotes">
+    <h2 class="footnotes">Footnotes: </h2>
+    <div id="text-footnotes">
+
+      <div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+          不作就不会死啊。我觉得我也是早晚要去领便当的人啊。
+      </p></div>
+
+
+    </div>
+  </div>
+</div>
