@@ -10,6 +10,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : K.I.S.S
+name : K.I.S.S
 tagline: Site Tagline
 author :
   name : Qin Jian
@@ -100,10 +101,6 @@ JB :
     provider : google 
     google : 
         tracking_id : 'UA-34189274-1'
-    getclicky :
-      site_id : 
-    mixpanel :
-        token : '_MIXPANEL_TOKEN_'
 
   # Settings for sharing helper. 
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.

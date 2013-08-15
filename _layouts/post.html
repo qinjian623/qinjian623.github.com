@@ -1,5 +1,17 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/twitter/post.html %}
+{% if page.math %}
+{% include math %}
+{% endif %}
+{% include highlight %}
+<h2>{{ page.title }}</h2>
+
+<p class="meta">{{ page.date | date_to_string }}</p>
+
+<div class="post">
+  {{ content }}
+  <div>
+    {% include comments %}
+  </div>
+</div>
