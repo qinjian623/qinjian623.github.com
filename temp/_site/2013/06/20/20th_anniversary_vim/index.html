@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>20年的高效：纪念Vim 20周年</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- Personal CSS -->
+        <link rel="stylesheet" href="/css/personal.css">
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">K.I.S.S</a></h1>
+              <a class="extra" href="/">home</a>
+              <a class="extra" href="/about.html">about</a>
+              <a class="extra" href="/atom.xml">RSS</a>
+            </div>
+
+                
+
+<h2>20年的高效：纪念Vim 20周年</h2>
+
+<p class="meta">20 Jun 2013</p>
+
+<div class="post">
+  <div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 翻译来源</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+arstechnica.com/information-technology/2011/11/two-decades-of-productivity-vims-20th-anniversary/
+</p>
+
+<p>
+一个程序员，用着Emacs来翻译这篇没有什么技术含量的软文，毫无利己的动机，把Vim的宣传事业当作自己的事业，这是什么精神？这绝对是吃饱了撑的慌，闲得蛋疼没事干，脱了裤子才放屁的共产主义奋斗终身的精神。
+</p>
+
+<p>
+当然，后面那些为什么人们用Vim的理由把其中所有的Vim机械的替换成Emacs也成立。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 前言</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+vim首发于1991.11.2,恰好20年前的今天。虽然最初不过只为Amiga的vi克隆，不过很快就被移植于多个平台，迅速成长为最流行的vi兼容的编辑器。至今依然开发活跃，广泛使用在各个操作系统上。
+</p>
+
+<p>
+这篇文章，我们只一窥vi简史以及其后裔，然后再谈vim的诞生。同时也会一探使得vim如今依然光彩不减的那些让人拜倒的技术特性。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 前传</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+vi最初由Bill Joy开发于70年代后期。Bill是早期BSD开发者之一，后来更是和他人联合创建了Sun。vi是为类似ed的行编辑器ex开发的可交互的“可视”模式。于一个旧的ADM-3A的终端上开发，大约在鼠标流行的10年前。用户都依赖命令和通过键盘导航来和编辑器交互。
+</p>
+
+<p>
+ADM-3A的物理限制和特性造就了很多vi最为特立独行的特点。比如，vi使用h,j,k,l来作为方向键，那是因为ADM-3A的键盘上这些按键上都刻了代表方向的箭头。虽说这个设计不过是历史的偶然，但是却最后变成了十分高效的移动方式。这些按键的组合已经成为vi用户们的最爱了。同时这一导航模式已经被广泛应用在其他程序中，比如Gmail和Twitter在Mac OS X上的客户端。
+</p>
+
+<p>
+vi编辑器已经是UNIX世界里不可分割的一部分。Joy将其随BSD一起发布，ATT也将其放入SystemV中。vi最核心的功能和表现都已经成为POSIX的标准，自然也就成为很多主流的UNIX系统的一部分。
+</p>
+
+<p>
+vi的克隆，在80年代末到90年代初开始出现，并且都采用了更宽松的许可。Joy的vi实现基于ATT版本的ed，其代码不能自由分发。也只能用于那些从ATT获得UNIX许可的商业伙伴。
+</p>
+
+<p>
+最先异军突起的两个克隆是Stevie和Elvis。Stevie，为vi爱好者设计的ST编辑器，首先在1987年为Atari ST所开发，下一年就被移植到UNIX上，虽说还是比较原始，但也吸引了一些跟随者。Elvis，1990年首发，更加完善，设计能够提供更多的功能。她也是第一个支持语法高亮的vi克隆。
+</p>
+
+<p>
+尽管Elvis有不少用户，也一直在Slackware社区中流行，但是03年后就没有大更新了。Elvis先是替代了BSD在386的移植版本中的Joy的vi，不过后来BSD开发者又开发了一个新的克隆，nvi，他可以更好的符合Joy版本的行为。BSD大家庭中也还一直提供nvi编辑器。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 历史</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+最早的vim是Bram Moolenaar 于1988年在Amiga机器上开发的。Moolenaar不太满意Amiga平台上的各种vi克隆，于是决定自己写一个可以更加符合vi功能的。他在Stevie的基础上进行修改，据他自己说这是他当时在Amiga上能够找到的最好的vi克隆了。
+</p>
+
+<p>
+一个公开发布的vim版本是1991.11.2发布的1.14。在Fish Disk #591上发行，这是Fred Fish的Amiga免费软件集合的一部分。随着首次登场，用户们就开始提交补丁了。
+</p>
+
+<p>
+“很早之前我自己弄了个Amiga计算机。因为我之前一直使用Vi，所我希望能够找到一个类似Vi的Amiga程序。虽说找到了一些，但是都不够好，于是我找了其中最好的那个开始改进。刚开始只为能够完成所有Vi可以实现的功能。后来我就慢慢的加入一些新特性，比如多层撤销，”这是2001年 Moolenaar在《Free Software》杂志第一期上说的。“我开始写Vim的时候只是为了自己用的舒服。后来我发现其实它对其他人也有用处，于是就把它发布出来了。之后我就一直努力让这个有巨大用户群的软件越来越好。能够创造有用的事物真的是很有意思的事情。而且，还有一群非常棒的共同作者和高级用户，这特别能够激励我。”
+</p>
+
+<p>
+Moolenaar 自己摆弄了一份宽松的copyleft的软件许可。许可允许用户自由的使用、分发、重用代码，但是同时给了维护者要求别人贡献回项目的权利。6.0版本中也已经加入了一些新的说明，确保之前的预科与GNU的GPL协议能够兼容。
+</p>
+
+<p>
+Vim是一个开源软件项目，同时也是一个慈善项目。 Moolenaar在荷兰帮助建立了一个叫做ICCF的基金会，旨在帮助一个乌干达的儿童救助中心。他鼓励用户考虑对ICCF或者是Kibaale儿童基金进行捐助。作为基金会的赞助人，他几乎每年都会拜访Uganda，监督中心的运行进展。
+</p>
+
+<p>
+Vim名称本来意思是Vi模拟（IMitation），不过后来变成了Vi加强(IMproved)。名字是在1.22版本发布的时候改变的，那次发布包括了很多吸引人的新特性和UNIX的一直。1994年的3.0版本实现了多缓冲区。96年的4.0版本则提供的图形用户界面。98年的5.0版本增加了语法高亮，2001年的6.0则支持垂直的窗口分割和用来简化脚本载入的插件系统。
+</p>
+
+<p>
+之后很多很多其他的特性也都加入进来。Vim也已经被一直到了很多其他的平台上，包括Linux、BeOS、Windows、Mac OS X还有QNX。尽管Vim最初是设计工作在终端下的，目前也已经有很多利用各种用户界面工具包开发的的图形界面前端了，有方便的菜单、工具栏、滚动条。
+</p>
+
+<p>
+Vim最新的主版本是于2006发布的7。包括了很多十分让人耳目一新的特性，包括支持本地内容的拼写检查，自动完成系统，tab界面，撤销分支。最新的次版本是7.3,去年发布，引入了持久撤销功能、Python3支持。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 如今的Vim</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+由于克隆的广泛使用，“vi”这一名称已经被用来描述任何与vi兼容的编辑器了，这些编辑器或多或少都实现了POSIX标准中的特性。如今，Joy的vi的直接后裔只存在于少数的商业UNIX环境中。所有现代BSD和Linux系统包含的都是某个克隆版本，而非vi原始版本了。
+</p>
+
+<p>
+BSD发新版依然使用nvi，Mac OS X和大部分主流Linux系统都是Vim。很多情况下，vi命令不过就是直接启动Vim的符号链接，或者是启动Vim的vi兼容模式的脚本。如果在过去的10年里，你用过Linux系统上的vi，很有可能你用的就是Vim。
+</p>
+
+<p>
+不像其他优秀的vi克隆，Vim一直处于活跃的开发状态，也有很多贡献者。每年新的特性都在被开发和加入，让Vim越来越强大。 Moolenaar也一直作为首席维护做着大量工作确保贡献的补丁的功能运行良好，集成如Vim正确。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 为何人们使用Vim</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+使用一个基于命令的编辑器第一眼开上去似乎有点老古董，不过Vim丰富的特性和可以深度扩展已经让很多高级计算机用户一直坚持使用。它始终是一个流行的编辑器，在计算机程序员、Web开发者、科学家还有系统管理员群体中，更是如此。
+</p>
+
+
+<p>
+Vim的优势有时很难在不熟悉编辑器的用户群面前描述清楚。当然，如何使用Vim工作实在不是这篇文章的篇幅能够覆盖的，以下只是对一些有用功能的简短描述：
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 顺畅的多文档界面：</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+在Vim中，你的文件和未保存的文档都是在缓冲区中。编辑器则给你了你很大的空间来控制这些缓冲区的显示方法。你可以横向或者垂直分割窗口任意多次，这样你就可以同时查看多个缓冲区了。你也可以在多个窗口中现实同一个缓冲区，这样就可以让你同时查看同一文档的不同部分了。你也可以将各种不同的分割方式组织成tab。这些布局和状态也可以保存在一个“session”中，随后还可以恢复。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> 使用巧妙的键盘快捷键进行编辑：</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Vim对输入和编辑有区分不同的模式。插入模式就如同普通的文本编辑器，命令可以通过简单的快捷键执行你按键后字符都会被加入缓冲区。在普通模式中，按键的组合会执行相应命令。最有用的命令就是你可以快速的在文本中游走还能够操作文本。你还可以自由定制自己的按键绑定和命令。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 多剪切板：</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+不同于简单的剪切板，Ｖim利用叫做寄存器的机制。标准的剪切和删除操作会保存在默认的寄存器中，用户也可以指定一个特别的寄存器来存储他剪切和拷贝的内容。这就像是多个剪切板一样。寄存器中的内容在退出的时候会持久保存。你可以退出编辑器，等到重新打开编辑器的时候，你还是可以获得之前的寄存器中的内容。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> 宏：</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+Vim有宏的功能，可以允许你录制键盘按键方便随后重复。宏可以简单通过键盘创建，包含多个模式下的操作。宏是保存在寄存器中的，如同剪切板中的内容，这样，你可以像上条所说的一样，可以在之久保存方便不同的应用中通用。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> 十分强大的搜索功能：</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+Vim提供很智能的工具来搜索和替换，包括对正则表达式的扩展支持。也有一个内置的grep命令，可以和Vim方便的quickfix功能结合在一起，可以在一个特殊的缓冲区里显示结果列表，允许你方便的在其间跳来跳去。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-6" class="outline-3">
+<h3 id="sec-6-6"><span class="section-number-3">6.6</span> 超级丰富的扩展：</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+Vim十分适于脚本化，也非常适合自动化。它有自己的脚本语言，语言里包括容器、类型、独特的变量作用域模型，还有很多有用的Vim的功能函数。它也有内置的脚本引擎和绑定，可以方便允许通过其他的主流编程语言来自定义功能，这些语言包括：Perl、Python、Ruby、Tcl和Lua。Vim也可以为其他的语言扩展语法高亮的功能，或者也可以自定义颜色组合。用户都会广泛的通过在线的代码库分享他们的脚本或者将其打包成插件的形式。如之前所述的那样，为Vim安装一些简单的插件和脚本可以让Vim具备很多继承开发环境所具有的功能。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-7" class="outline-3">
+<h3 id="sec-6-7"><span class="section-number-3">6.7</span> 可移植性：</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+Vim可以在几乎任何地方使用。已经被广泛的使用在Windowd,Linux,Mac OS X上，还有其他很多平台。用户在这三个主流系统中都可以从终端中或者本地图形界面上运行Vim。很多系统管理员喜欢Vim就是因为当他们通过ssh在终端上连接到Linux或者Mac OS X上时，Vim可以提供一个十分高效的文本编辑环境。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> 总结</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+我自1998年开始使用Vim，也就是我把Linux作为我自己的主要的桌面操作系统后一年。我已经用它写了好几千的文章，还有很多很多行代码。尽管我体验过各种方便的现代文本编辑器，我从没有找到一个可以匹敌Vim的效率。这么多年来我天天都用Vim，现如今我还是可以发现新特性、功能、有用的行为可以进一步提升我的效率。
+</p>
+
+<p>
+Vim已经有20多年历史。但他可不是白胡子的老爷爷，他依然与之前一样风采依旧，始终吸引新用户。虽然学习续签陡峭，但是从中获得的效率绝对可以收回那些付出的学习成本。
+</p>
+
+<p>
+你是否还记得自己第一次使用vi或者Vim？为了纪念这珍贵的编辑器20周年，分享你的记忆和最爱的特性到留言区去吧。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2013-06-20 四 16:49</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.2.1 (<a href="http://orgmode.org">Org</a> mode 8.0.3)</p>
+<p class="xhtml-validation"><a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a></p>
+</div>
+
+  <div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+  
+  var disqus_developer = 1;
+  
+  var disqus_shortname = 'qinjian623-blogger';
+  // required    : replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>  
+
+  </div>
+</div>
+
+
+            <div class="footer">
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+        <footer class="footer">
+          <p>&copy; Qin Jian 2012 如无特殊说明,所有产生内容默认<a href="http://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
+          </p>
+        </footer>
+        
+         <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-34189274-1']);
+   _gaq.push(['_trackPageview']);
+
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ </script>    
+
+    </body>
+</html>

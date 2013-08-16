@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: Tanenbaum-Torvalds Debate: Part II
+title: Tanenbaum-Torvalds Debate, Part II
 tags: [nothing, thoughts]
 ---
 #+END_HTML

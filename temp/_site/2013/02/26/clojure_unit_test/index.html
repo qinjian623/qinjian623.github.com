@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Unit Test in Clojure</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- Personal CSS -->
+        <link rel="stylesheet" href="/css/personal.css">
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">K.I.S.S</a></h1>
+              <a class="extra" href="/">home</a>
+              <a class="extra" href="/about.html">about</a>
+              <a class="extra" href="/atom.xml">RSS</a>
+            </div>
+
+                
+
+<h2>Unit Test in Clojure</h2>
+
+<p class="meta">26 Feb 2013</p>
+
+<div class="post">
+  <p>
+其实语言显然也是有 <b>用户友好</b> 一说的&#x2026;&#x2026;比如说,包管理呀,测试框架呀,调试支持呀,外围库呀等等思密达,让我严密的想一想:
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 包管理、名字空间</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+没有这个东西显然是不可能的,不过用起来是不是方便还是稍微有点区别.动态语言的特别重要，因为没有编译过程，最好可以随时导入包、库什么的，特别是repl上，代码有变动了就可以立即再重新导入，而且不会遇上诡异问题。Coursera上的Programming Language里面的ML的repl上貌似就可能有问题，课程材料上还专门说明了。当然，我没管，也没遇上问题。包管理还有就是rails的库，maven的库等等这样的，安装的时候一个命令就OK，否则，你还得自己找官网，下载，解压，拷项目里面，也不方便管理，出了新版本半年了，你哪天闲的蛋疼去看了下才发现，呀，有新版了，得用，继续下载，解压，拷项目里面。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 测试框架或者说是框架</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+有一个固定的方便的测试框架，可以在项目里面组织好测试代码，特别是，用户只需要直接写测试代码就可以，不需要管理测试代码，切换测试环境等等思密达，貌似这说的是RoR，直接区分好了生产环境和测试环境，而且其他什么都给框架好了，少了多少麻烦，关于框架会影响了解底层的问题，哈哈哈，能指望说这话的去了解底层么，只要是开源的，你看或是不看，代码就在那里，只增不减。还有xUNIT这种单元测试框架那是一定得有,否则&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 调试支持</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+调试器不是万能的,但是没有调试器是万万不能的,总有碰上倒霉时刻的时候,没有调试器,那就等着吃屎吧.当然比吃屎更惨的,运行的错误信息没法定位,比如来个这种的@5x23f或者function ce786xf,这就是吃所有人的屎了.是不是松鼠会的文章?说是吃自己的屎更安全点,因为菌群都是自己的,但是,肠胃病人菌群失调的,不是应该多吃别人的屎么?我想起来了,在哪读到的,有实验,用别人的菌群治疗肠胃病的,这个不就是等价于吃别人的屎么&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 外围库</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+虽说这实在怪不得语言,但是没有外裤只有内裤,又不是镁铝,是镁铝的话,没有内裤更好&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 文档和教程系统</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+教程这个东西,入门必备,属于可持续发展的问题.文档这个东西,没有文档,有外裤也没用啊,而且文档也有良好的框架,结构化的文档,方便parse和处理,这样对IDE的设计也友好。文档似乎可以和语言没关系，但是集成进去又不会死的，比如Python的内省什么的。想了想,貌似文档也可以弄成sexps的形式,再想想,xml格式的文档不就是这个思密达么?最好有个生成器,可以把文档生成xml格式一类的,应该不会有地球人原因亲自用xml写文档的.文学编程应该以结构化为基础,否则,地球人谁愿意读那么无聊的小说.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 打断的可能性</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+就是传说中的"流",就是不要烦人,要是语言里面一堆需要按着shift才能打出来的乱七八糟的符号,特别是还要在键盘上找一下的,或者容易打错的,打错了还得删,这样的&#x2026;哈哈哈&#x2026;那还是让我吃屎去吧。果然,语法设计、关键词设计都是艺术思密达啊。编译的天生具有打断光环，所以要是能背后自动识别和编译，一定不错，但是&#x2026;这个世界还有一种名叫“编译时间要按照小时算”的怪物，貌似有并行化编译技术。不过，依赖关系得处理的好，否则，并你妹去吧。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> IDE或者说DE</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+终于发现，DE才是以上各种问题的终极解决方案，比如包管理，可以自动导入包、自动识别系统已经安装的包、自动组织好项目内的包，比如框架，可以一键生成测试代码框架，自动化部署，因为框架都是固定的，文件组织也都是固定的，全世界的物种，都只需要一种部署工具。比如调试支持和错误信息，现在的IDE都是集成好了的，出错了直接点到错误处处理下，最好还要能够dump当时的数据，点过去就显示出来，而且最好还能够回退几步，时间机器在计算机里应该有部分地方是可以实现的，反正计算机又没有波函数，之前的苹果的那个可视化的编程的示例，写的过程中，就自动执行，显示数据情况出来，这个一定也得要，堪比英国管家。比如外围库，这个&#x2026;貌似真不是DE能做的，不过方便外围库的加入使用这个是义不容辞的责任。比如文档和教程，教程可以利用DE做成交互式的，该怎么做也算是一目了然，哪里不懂点哪里，so easy，文档这种，自动提示，自动完成，eclipse思密达，写文档也要够方便，语义上能分析出来的东西，都不用人写，用户方便，用户的用户也开心。比如打断，DE要够简约，别一天到晚一堆窗口，该多窗口的时候要多窗口，该单窗的时候就单窗，而且要有全屏功能，主题也要够方便，都是插件型的，要什么装什么，而且要都可以背后执行，像Chrome那样，自动背后升级思密达，eclipse有时候装个插件就可以去练习2000m了，不支持插件的DE&#x2026;&#x2026;那都是练葵花宝典的。
+</p>
+
+
+
+<p>
+综上，DE才是王道，用户友好的DE至关重要，没有用户友好的DE，就等着死吧，或者，就等着半死不活吧。
+</p>
+
+<p>
+然后，进入主题：主题就是，主题写错了。
+</p>
+</div>
+</div>
+
+  <div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+  
+  var disqus_developer = 1;
+  
+  var disqus_shortname = 'qinjian623-blogger';
+  // required    : replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>  
+
+  </div>
+</div>
+
+
+            <div class="footer">
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+        <footer class="footer">
+          <p>&copy; Qin Jian 2012 如无特殊说明,所有产生内容默认<a href="http://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
+          </p>
+        </footer>
+        
+         <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-34189274-1']);
+   _gaq.push(['_trackPageview']);
+
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ </script>    
+
+    </body>
+</html>

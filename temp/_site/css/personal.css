@@ -1,0 +1,13 @@
+.site {
+    width: 70%;
+}
+
+.footer{
+    width: 100%;
+}
+
+.aboutSection{
+    width:50%;
+    float:left;
+    overflow:hidden;
+}

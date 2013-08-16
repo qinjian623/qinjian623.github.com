@@ -10,7 +10,7 @@ tags: [pl, clojure]
 http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/
 
 自己感冒头晕,昨晚看American Horror Story又没有休息好. 于是就脑抽点了clojure的源码实现看,wc -l排序完,就想着先看个802行的吧.
-#+BEGIN_SRC shell
+#+BEGIN_SRC sh
 $ wc -l * | sort -n
      13 Sequential.java
      14 IRecord.java

@@ -4,156 +4,140 @@ title: Introduction for non-cs.
 tags: [intro]
 ---
 
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">给非计算机专业的介绍性文章</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 给非计算机专业的介绍性文章</h2>
 <div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1">简单说明:</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 简单说明:</h3>
 <div class="outline-text-3" id="text-1-1">
-
-
 <p>
 本文的原文位置在
 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/introduction.html">http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/introduction.html</a> 
-作者发布的版权为<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_GB">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>,本文同样以以上协议发布,相对原文有部分演绎.
+作者发布的版权为<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_GB">Creative Commons Attribution-ShareAlike 3.0 Unported
+License</a>,本文同样以以上协议发布,相对原文有部分演绎.
 </p>
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2">操作系统</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 操作系统</h3>
 <div class="outline-text-3" id="text-1-2">
-
-<p>操作系统是一种复杂的程序,用来管理一台计算机上的各个程序,比如说分配计算
-机的CPU时间片<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括
-GNU/Linux<sup><a class="footref" name="fnr-.2" href="#fn-.2">2</a></sup> <sup><a class="footref" name="fnr-.3" href="#fn-.3">3</a></sup>, Mac OS X<sup><a class="footref" name="fnr-.4" href="#fn-.4">4</a></sup>和微软的Windows.其他的一些设备也是需要操
-作系统的,比如手机就会使用Android<sup><a class="footref" name="fnr-.5" href="#fn-.5">5</a></sup>, iOS和Windows Phone这类的系
-统.<sup><a class="footref" name="fnr-.6" href="#fn-.6">6</a></sup> <sup><a class="footref" name="fnr-.7" href="#fn-.7">7</a></sup>
+<p>
+操作系统是一种复杂的程序,用来管理一台计算机上的各个程序,比如说分配计算
+机的CPU时间片<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括
+GNU/Linux<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup> <sup>, </sup><sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>, Mac OS X<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>和微软的Windows.其他的一些设备也是需要操
+作系统的,比如手机就会使用Android<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>, iOS和Windows Phone这类的系
+统.<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup> <sup>, </sup><sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup>
 由于操作系统直接与计算机的硬件交互,所以它需要知道具体硬件的一些信息.为了
 方便操作系统可以广泛的应用在各种计算机上, <b>驱动</b> 的概念被引入.驱动的作用
 就是为了使操作系统可以方便的与一个特定的硬件设备进行通讯, 它也是一段代码,但
 是可以很容易的加入或者移出操作系统.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3">汇编代码</h3>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 汇编代码</h3>
 <div class="outline-text-3" id="text-1-3">
-
-<p>汇编代码的特点就是十分接近计算机硬件层,易于被机器所"理解"<sup><a class="footref" name="fnr-.8" href="#fn-.8">8</a></sup>.计算机的
+<p>
+汇编代码的特点就是十分接近计算机硬件层,易于被机器所"理解"<sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup>.计算机的
 工作是通过处理器和内存来实现的,处理器可以做一些数字的加减法这类的简单工
 作,内存则负责存储这些数字.计算机通电后,处理器就通过执行程序员交给它的指
 令来改变内存中的数字和与硬件交互.汇编代码就是这些指令被翻译成方便人类读
-取的形式<sup><a class="footref" name="fnr-.9" href="#fn-.9">9</a></sup>.
+取的形式<sup><a id="fnr.9" name="fnr.9" class="footref" href="#fn.9">9</a></sup>.
 </p>
+
 <p>
 一般编程,程序员都会使用一门编程语言,譬如C++,Java,C#,Basic等等.之后再调用
 编译器将这些由程序员编写的代码翻译成为汇编代码,之后会再进一步翻译成为二
-进制代码<sup><a class="footref" name="fnr-.10" href="#fn-.10">10</a></sup>.二进制代码是计算机实际能够理解的语言,只不过实在不适合人类
-阅读<sup><a class="footref" name="fnr-.11" href="#fn-.11">11</a></sup>.汇编代码就相对易读,但是供程序员使用的指令也依然很少. 请谨记
+进制代码<sup><a id="fnr.10" name="fnr.10" class="footref" href="#fn.10">10</a></sup>.二进制代码是计算机实际能够理解的语言,只不过实在不适合人类
+阅读<sup><a id="fnr.11" name="fnr.11" class="footref" href="#fn.11">11</a></sup>.汇编代码就相对易读,但是供程序员使用的指令也依然很少. 请谨记
 每个使用汇编代码编写的指令,都是计算机可以直接理解的,因此这些指令是受下层
 硬件决定的,每个指令都会被实际上的电路直接使用.
 </p>
+
 <p>
 [图片占位符]
 </p>
+
 <p>
-和一般的上层编程一样,汇编语言也有多种.当然,多样的原因不是像上层语言<sup><a class="footref" name="fnr-.12" href="#fn-.12">12</a></sup>那样,
-而是因为世界上存在多种不同的处理器<sup><a class="footref" name="fnr-.13" href="#fn-.13">13</a></sup>,每种处理器往往都设计成理解某一个语言.因
+和一般的上层编程一样,汇编语言也有多种.当然,多样的原因不是像上层语言<sup><a id="fnr.12" name="fnr.12" class="footref" href="#fn.12">12</a></sup>那样,
+而是因为世界上存在多种不同的处理器<sup><a id="fnr.13" name="fnr.13" class="footref" href="#fn.13">13</a></sup>,每种处理器往往都设计成理解某一个语言.因
 此,一个程序员如果用汇编语言给一个机器编写程序,那么不同类的机器就不能够使
 用这一程序.一般而言,这种每个不同架构都需要重新编写程序的情况实在是个大灾
-难<sup><a class="footref" name="fnr-.14" href="#fn-.14">14</a></sup>,不过对于操作系统来说,这就无所谓了,因为它本身就要为不同的硬件重新编写.不
+难<sup><a id="fnr.14" name="fnr.14" class="footref" href="#fn.14">14</a></sup>,不过对于操作系统来说,这就无所谓了,因为它本身就要为不同的硬件重新编写.不
 过,不是操作系统的所有部分都需要重写,因为操作系统的大部分也是由c++或者c语
 言这种上层语言来编写,以方便转化到不同的架构上,需要重写的只是那些必须通过
 汇编语言来实现的部分.
 </p>
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4">再提几个CS历史上的有意思的人物:</h3>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 再提几个CS历史上的有意思的人物:</h3>
 <div class="outline-text-3" id="text-1-4">
-
-
-</div>
-
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1">图灵</h4>
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 图灵</h4>
 <div class="outline-text-4" id="text-1-4-1">
-
-<p>wiki地址:<a href="http://zh.wikipedia.org/wiki/艾伦·图灵">http://zh.wikipedia.org/wiki/%E8%89%BE%E4%BC%A6%C2%B7%E5%9B%BE%E7%81%B5</a> 
+<p>
+wiki地址:<a href="http://zh.wikipedia.org/wiki/%E8%89%BE%E4%BC%A6%C2%B7%E5%9B%BE%E7%81%B5">http://zh.wikipedia.org/wiki/%E8%89%BE%E4%BC%A6%C2%B7%E5%9B%BE%E7%81%B5</a> 
 </p>
+
 <p>
 八卦点在于其男同性恋取向.09年,英国政府才对政府当年针对其同性恋的迫害道歉.提
 出了图灵机.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2">约翰·冯·诺伊曼</h4>
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 约翰·冯·诺伊曼</h4>
 <div class="outline-text-4" id="text-1-4-2">
-
-<p>wiki地址:<a href="http://zh.wikipedia.org/wiki/约翰·冯·诺伊曼">http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC</a> 
+<p>
+wiki地址:<a href="http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC">http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC</a> 
 </p>
+
 <p>
 现代计算机组成结构的提出者.同时还对量子力学有重要贡献.(数学家真的是万能的)
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3">阿隆佐·邱奇</h4>
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> 阿隆佐·邱奇</h4>
 <div class="outline-text-4" id="text-1-4-3">
-
-<p>wiki地址:<a href="http://zh.wikipedia.org/wiki/阿隆佐·邱奇">http://zh.wikipedia.org/wiki/%E9%98%BF%E9%9A%86%E4%BD%90%C2%B7%E9%82%B1%E5%A5%87</a>
+<p>
+wiki地址:<a href="http://zh.wikipedia.org/wiki/%E9%98%BF%E9%9A%86%E4%BD%90%C2%B7%E9%82%B1%E5%A5%87">http://zh.wikipedia.org/wiki/%E9%98%BF%E9%9A%86%E4%BD%90%C2%B7%E9%82%B1%E5%A5%87</a>
 </p>
+
 <p>
 图灵的导师,lambda演算的提出者,这一系统被证明和图灵机等价,函数式编程的基
 础.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4">约翰·麦卡锡</h4>
+<div id="outline-container-sec-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> 约翰·麦卡锡</h4>
 <div class="outline-text-4" id="text-1-4-4">
-
-<p>wiki地址:<a href="http://zh.wikipedia.org/wiki/约翰·麦卡锡">http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E9%BA%A6%E5%8D%A1%E9%94%A1</a>
+<p>
+wiki地址:<a href="http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E9%BA%A6%E5%8D%A1%E9%94%A1">http://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%C2%B7%E9%BA%A6%E5%8D%A1%E9%94%A1</a>
 </p>
+
 <p>
 人工智能概念的提出者,函数式编程语言Lisp的发明人.LISP语言也是emacs编辑器
-的配置语言.可以说是括号最多的一门语言.语法结构很像<a href="http://zh.wikipedia.org/wiki/éæ³¢å">逆波兰式</a>.
+的配置语言.可以说是括号最多的一门语言.语法结构很像<a href="http://zh.wikipedia.org/wiki/%E9%80%86%E6%B3%A2%E5%85">逆波兰式</a>.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5">高德纳</h4>
+<div id="outline-container-sec-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> 高德纳</h4>
 <div class="outline-text-4" id="text-1-4-5">
-
-<p>wiki地址:<a href="http://zh.wikipedia.org/wiki/高德纳">http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3</a>
+<p>
+wiki地址:<a href="http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3">http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3</a>
 </p>
+
 <p>
 tex排版系统的作者,它的衍生版本如latex等被广泛应用于论文写作.Tex的bug奖励
 规则和版本号也是很有意思.wiki上有说明.
 </p>
+
 
 <p>
 注意以上的简历会发现,他们都被称为数学家,或者专业是数学专业.原因很简单,当
@@ -163,34 +147,36 @@ tex排版系统的作者,它的衍生版本如latex等被广泛应用于论文�
 </p>
 </div>
 </div>
-
 </div>
-
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5">如何做研究</h3>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 如何做研究</h3>
 <div class="outline-text-3" id="text-1-5">
-
-<p><a href="http://www.cs.indiana.edu/mit.research.how.to.html">http://www.cs.indiana.edu/mit.research.how.to.html</a>
+<p>
+<a href="http://www.cs.indiana.edu/mit.research.how.to.html">http://www.cs.indiana.edu/mit.research.how.to.html</a>
 </p>
+
 <p>
 来自MIT 人工智能实验室.
 这篇文章年代陈旧.但是依然价如瑰宝.如果本科入学就能看到该文,一定受益匪浅.中文版也广泛分布了.Baidu即可.
 不知道国内有没有哪个学校的某个实验室能够有如此积累.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6">专业书本</h3>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 专业书本</h3>
 <div class="outline-text-3" id="text-1-6">
-
-<p>   暂空
+<p>
+暂空
 </p>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> CPU时间片是用来分配程序执行时间的基本单位,对于一个简化后的CPU来说,程序是
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+CPU时间片是用来分配程序执行时间的基本单位,对于一个简化后的CPU来说,程序是
 不能够并行执行的,一次只能执行一个,如果同时运行多个程序,程序共用一个CPU,
 只能在一段时间里执行一个程序,多个程序就会排队等待,结束这段时间片后会再交
 给别的程序来执行.之所以平时使用上感觉是多个程序同时执行,那是因为这个时间
@@ -201,20 +187,20 @@ tex排版系统的作者,它的衍生版本如latex等被广泛应用于论文�
 配给下一个程序.非抢占式是更多的交给程序来决定是否执行完毕可以交出CPU.目
 前PC上的操作系统一般都是抢占式,因为非抢占式可能会造成一个程序占用过多
 CPU时间,其他程序就没法执行,给人的感觉就是别的程序死掉了.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.2" href="#fnr-.2">2</a></sup> Linux受Minix影响,两者之间也是一段恩怨情仇,Linux的作者<a href="http://en.wikipedia.org/wiki/Linus_Torvalds">Linus</a> 在开发
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+Linux受Minix影响,两者之间也是一段恩怨情仇,Linux的作者<a href="http://en.wikipedia.org/wiki/Linus_Torvalds">Linus</a> 在开发
 Linux初期,就是使用的Minix,其设计也受到了Minix很大影响,但是两者之间在宏内
 核和微内核结构上的分歧,还引发了两个作者的一次论战,可以参考
-<a href="http://en.wikipedia.org/wiki/Tanenbaum–Torvalds_debate">Tanenbaum–Torvalds debate</a>,当然两者的设计思想各有千秋,结合两者的优点在一
+<a href="http://en.wikipedia.org/wiki/Tanenbaum%E2%80%93Torvalds_debate">Tanenbaum–Torvalds debate</a>,当然两者的设计思想各有千秋,结合两者的优点在一
 起往往是工程实践上的折中,Linux引入的内核模块设计,Windows NT内核则是所谓
 的混合模式.如果想要学习下OS,minix显然是很好的选择,Minix的作者的
 <a href="http://en.wikipedia.org/wiki/Andrew_S._Tanenbaum#Books">出版物</a> 都是在CS上很重要和著名的,如操作系统和计算机网络相关的大部头.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.3" href="#fnr-.3">3</a></sup> 有关GNU/Linux的名称也稍有讲究,GNU项目和Linux项目没有必然的联系,GNU是
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+有关GNU/Linux的名称也稍有讲究,GNU项目和Linux项目没有必然的联系,GNU是
 Richard Matthew Stallman(RMS)发起的一个项目,作为开放源码运动的重要一部分.提到
 RMS往往会联想到另外两个事物,GNU Emacs和MIT的人工智能实验室.Emacs作为"神的编辑
 器",其被大量广泛的应用,即使是非CS专业的人,譬如有代表性的文章
@@ -225,31 +211,31 @@ RMS往往会联想到另外两个事物,GNU Emacs和MIT的人工智能实验室.
 一.GNU项目中著名的软件譬如gdb\gcc对整个计算机领域的影响是难以想象的.所以
 去他的官方网站逛一圈还是值得的,网址:<a href="http://www.gnu.org">http://www.gnu.org</a> .MIT人工智能实验
 室则与黑客的诞生相关,之后会提到的Eric S.Raymond的五部曲中就有黑客历史介绍.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.4" href="#fnr-.4">4</a></sup> Mac OS X与BSD系的系统也有一定的关系,具体可参看<a href="http://en.wikipedia.org/wiki/Mac_OS_X">wiki</a>,同时其内核
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+Mac OS X与BSD系的系统也有一定的关系,具体可参看<a href="http://en.wikipedia.org/wiki/Mac_OS_X">wiki</a>,同时其内核
 Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形界面(GUI)一直
 被人称道,不过一直"为他人作嫁衣裳"的<a href="http://en.wikipedia.org/wiki/PARC_(company)">Xerox PARC</a>对于GUI,对CS的多个重要领
 域的"无私"贡献,实在是一部悲情剧,这个研究中心的历史和成果也值得八卦.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.5" href="#fnr-.5">5</a></sup> 对于Android,可以理解为Linux,其在Linux内核上层构建了一层接口,并且
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+对于Android,可以理解为Linux,其在Linux内核上层构建了一层接口,并且
 提供了Dalvik这个虚拟机,其执行代码从Java的虚拟机执行码转化.因此Android的
 持有者Google与Java当前的持有者Oracle有了关于Java的版权的诉讼.当然,Java其
 实并不是Oracle发明,而是被Oracle收购的Sun公司推出,相比Oracle而言,或许Sun
 公司更容易被人们称为"伟大",是的,伟大与否与公司成败没有什么必然联系.Sun公
 司的历史同样值得一看,&lt;浪潮之巅&gt;这本书介绍了多个公司的历史.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.6" href="#fnr-.6">6</a></sup> 更完整的操作系统清单,请参考
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p class="footpara">
+更完整的操作系统清单,请参考
   <a href="http://en.wikipedia.org/wiki/List_of_operating_systems"> List of operating systems - Wikipedia, the free encyclopedia</a>
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.7" href="#fnr-.7">7</a></sup> unix-like的系统在CS历史上的地位难以撼动,其发展史也是CS这门学科应
+<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p class="footpara">
+unix-like的系统在CS历史上的地位难以撼动,其发展史也是CS这门学科应
 用于人类社会的一个缩影,这篇<a href="http://coolshell.cn/articles/2322.html">文章</a> 对unix的历史有介绍,并不涉及技术,即使文科背景都可以理解.
 稍微涉及一点技术的介绍&lt;unix编程艺术&gt;很精彩.其作者Eric S. Raymond出版物都丰富多彩,比如:
 学会如何问问题:<a href="http://www.catb.org/~esr/faqs/smart-questions.html">http://www.catb.org/~esr/faqs/smart-questions.html</a> ,无论
@@ -257,13 +243,30 @@ Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形�
 如何成为黑客:<a href="http://www.catb.org/esr/faqs/hacker-howto.html">http://www.catb.org/esr/faqs/hacker-howto.html</a>
 </p>
 
+<p class="footpara">
+还有大教堂与集市等等,他的黑客五部曲(包括《黑客道简史》、《大教堂和集市》、
+《如何成为一名黑客》、《开拓智域》、《魔法大锅炉》)闻名于世,<a href="http://master-zhdoc.googlecode.com/files/ericraymondfive-0.8.0.pdf">中文版本</a> 不
+是最新版本,但无碍阅读. 有关hacker(黑客)和cracker(骇客)的区别,可以交给Baidu.
+另外&lt;黑客与画家&gt;及其作者,都值得一看.
+</p>
 
-<p class="footnote"><sup><a class="footnum" name="fn-.8" href="#fnr-.8">8</a></sup> 计算机不能够理解任何东西,起码到目前为止.包括siri,也不能够
+<p class="footpara">
+unix最初的两位作者Ken Thompson 和 Dennis Ritchie也同时是c语言的创造
+者.Ritchie在2011.10.12被发现逝世,具体时间未知(因为他一直单身),在Steve
+Jobs逝世之后一周.但其贡献只会在Jobs之上而不会在Jobs之下.
+产生unix的贝尔实验室在之后也在考虑unix的继承者,比如说
+Plan9,<a href="http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs">http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs</a> 是wiki地址.看到
+该计划的吉祥物一定能够萌翻你.如果是Google的爱好者的话,会发现这个萌物竟然
+和Google GO语言的吉祥物十分接近,话说Go语言的作者也有Ken Thompson.
+</p></div>
+
+<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p class="footpara">
+计算机不能够理解任何东西,起码到目前为止.包括siri,也不能够
 理解任何东西.但是,到目前为止计算机领域在人工智能上的发展仍然创造了巨大
 价值,比如,最近的Google的自动驾驶汽车,已经行驶到万公里级别仍然没有出现
 过交通意外,当然,价值不菲.装自动驾驶系统的价格能赶上一辆豪车了.不过技术的
 进步是超乎人类想象的.特别是在计算机硬件的成本上,想想几年前硬盘和内存
-的价格就知道了.在计算机芯片上就存在<a href="http://zh.wikipedia.org/wiki/摩尔定律">摩尔定律</a>, 到目前为止,相同价格上,电
+的价格就知道了.在计算机芯片上就存在<a href="http://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B">摩尔定律</a>, 到目前为止,相同价格上,电
 脑性能每18个月就会翻一翻.我们可以对比下改革开放后的中国经济发展速度,就
 知道这一增长的力量.回到人工智能,其中的机器学习就能够利用统计规律分析现有的历史数据,
 获得对新数据的处理能力,而其中的数学原理却并不复杂.具有一般工学数学背景
@@ -272,16 +275,16 @@ Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形�
 或者Coursera公开课内的相关课
 程. <a href="https://www.coursera.org/course/neuralnets">https://www.coursera.org/course/neuralnets</a> 和
 <a href="https://www.coursera.org/course/ml">https://www.coursera.org/course/ml</a>
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.9" href="#fnr-.9">9</a></sup> 汇编语言基本与机器指令一一对应.所以基本每个写下的指令,机器都会
+<div class="footdef"><sup><a id="fn.9" name="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p class="footpara">
+汇编语言基本与机器指令一一对应.所以基本每个写下的指令,机器都会
 照例执行.相比上层语言编写的程序,性能和文件大小上都有很大的优势.在某些
 情况下会有数量级的提升.因此在一些对性能要求较高的功能上,会有使用汇编代
 码的编写的情况.也即,上层语言和低层语言混用.没错,程序语言经常会有混用的
 情况发生,一个程序并不一定只包涵一种语言.有些"无聊"的人会比赛看谁的一个
 程序中混用的语言最多.说到这里,还有一个更加"无聊"的比赛,看谁的代码写的
-最难看, <a href="http://zh.wikipedia.org/wiki/国际C语言混乱代码大赛">国际C语言混乱代码大赛</a> 可以让有c语言基础的大饱眼福.计算机语言和
+最难看, <a href="http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85C%E8%AF%AD%E8%A8%80%E6%B7%B7%E4%B9%B1%E4%BB%A3%E7%A0%81%E5%A4%A7%E8%B5%9B">国际C语言混乱代码大赛</a> 可以让有c语言基础的大饱眼福.计算机语言和
 人类语言类似,可以把每个程序员看做写作文的.如果是命题作文的话,不同人写
 出来的自然也不同,有的人文字简练,有的人段落清晰,有的人辞藻华美.同样对于
 程序员也一样.而且还有不同的语言之分,譬如人类社会中英语\中文\法文等等.这
@@ -291,16 +294,16 @@ Darwin也是开源的.当然内核上层的软件没有开源.Mac OS X的图形�
 后了解其他更多的语言是最好的.因为语言可以很好开拓人的视野,学会一门,往
 往就打开了新的一扇门,这扇门并不能通往财富\名誉,只是通往另外的一个未知
 世界,最终都是通往你自己的内心.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.10" href="#fnr-.10">10</a></sup> 在这里,对"一般编程"是简化了描述,事实上,它与语言和机器都息息相关,
+<div class="footdef"><sup><a id="fn.10" name="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p class="footpara">
+在这里,对"一般编程"是简化了描述,事实上,它与语言和机器都息息相关,
 深入了解,可以参考
 <a href="http://en.wikipedia.org/wiki/Compiler"> Compiler - Wikipedia, the free encyclopedia</a>
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.11" href="#fnr-.11">11</a></sup> 二进制代码真的是这样的"0101010110100010111101011101",当然别指望
+<div class="footdef"><sup><a id="fn.11" name="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p class="footpara">
+二进制代码真的是这样的"0101010110100010111101011101",当然别指望
 直接用记事本打开会是这样.因为这里你看到的一个0/1其实代表的是8个机器码的
 01.即使是最基本的文本文件都是被编码解码后展现给人类的.最简单的文本编码是
 ASCII编码,历史可以参见<a href="http://en.wikipedia.org/wiki/ASCII">http://en.wikipedia.org/wiki/ASCII</a> ,不能支持中文,
@@ -310,31 +313,31 @@ ASCII编码,历史可以参见<a href="http://en.wikipedia.org/wiki/ASCII">http:
 在计算机中很多也涉及编解码问题,"语音识别","自然语言处理","头像识别"都可
 以认为是一种编解码.当然,密码破解也是如此.学习&lt;信息论&gt;这门课应该可以对编
 码相关有一些了解.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.12" href="#fnr-.12">12</a></sup> 也有叫做高级语言和低级语言的.不过考虑到"高级"可能会给人们带来
+<div class="footdef"><sup><a id="fn.12" name="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p class="footpara">
+也有叫做高级语言和低级语言的.不过考虑到"高级"可能会给人们带来
 错觉:"高级"语言一定比"低级"语言好,事实情况是,在不同的应用背景下,上层语言
 和底层语言会有不同的优势和劣势,纯粹单一的看待一门语言比另外一门好/优秀,
 是没有意义的.即使在某些已经死亡的语言上,也会有值得借鉴的地方.这其实在现
 实中是经常出现的,对于某项事物,我们不能简单的以一个指标直接评价,如何结合
 应用场景扬长避短往往是一门艺术.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.13" href="#fnr-.13">13</a></sup> 最广为人知的就是intel的产品,然后就是AMD的处理器.而在这之外还有很
+<div class="footdef"><sup><a id="fn.13" name="fn.13" class="footnum" href="#fnr.13">13</a></sup> <p class="footpara">
+最广为人知的就是intel的产品,然后就是AMD的处理器.而在这之外还有很
 多应用广泛但是人们并没有意识到其存在.比如ARM架构的处理器,目前几乎所有的
 智能手机使用的都是ARM架构的处理器.其实intel和AMD的处理器产品属于同一架构,x86或
 者是x86-64位,也因此,运行在这两者产品上的软件是互相兼容的,从来不会有谁会
 碰到"xx软件for intel cpu","xx软件 for amd cpu",相同cpu架构上的程序都是可
 以互相兼容的.而ARM架构的设计公司不同于intel/amd的是它只是负责设计cpu架构而不
-自己生产,生产商有兴趣的,可以购买架构的授权,<a href="http://zh.wikipedia.org/wiki/ARM架構#ARM_.E5.85.A7.E6.A0.B8.E7.9A.84.E6.8E.88.E6.AC.8A.E8.88.87.E6.87.89.E7.94.A8">wiki</a> 有介绍,智能手机上基本使
+自己生产,生产商有兴趣的,可以购买架构的授权,<a href="http://zh.wikipedia.org/wiki/ARM%E6%9E%B6%E6%A7%8B#ARM_.E5.85.A7.E6.A0.B8.E7.9A.84.E6.8E.88.E6.AC.8A.E8.88.87.E6.87.89.E7.94.A8">wiki</a> 有介绍,智能手机上基本使
 用的都是ARM架构,比如iphone/ipad,绝大部分的Android产品.MIPS架构也不能忘记
 提下,因为中国的"龙芯"使用的就是MIPS的架构.
-</p>
+</p></div>
 
-
-<p class="footnote"><sup><a class="footnum" name="fn-.14" href="#fnr-.14">14</a></sup> 这里就体现了上层语言的优势.由于上层语言更加集中于程序设计的逻辑,
+<div class="footdef"><sup><a id="fn.14" name="fn.14" class="footnum" href="#fnr.14">14</a></sup> <p class="footpara">
+这里就体现了上层语言的优势.由于上层语言更加集中于程序设计的逻辑,
 而不是具体的硬件等等,编写程序的人可以更好的设计程序结构,减少不必要的时间
 耗费,提高编写程序的速度.一些接近下层的编译型的上层语言(比较拗口,因为上层语言也有更上层的和相对下层的)在编写完成后,会通过编译器汇编器
 的一系列工作将程序的源代码翻译成为机器代码,而汇编语言其实是机器二进制码
@@ -349,10 +352,9 @@ ASCII编码,历史可以参见<a href="http://en.wikipedia.org/wiki/ASCII">http:
 算机的万金油解法,被广泛应用,有人说过大意如此"如果有个问题没法解决,就加个
 抽象层吧".但是分层也有缺点,最明显的就是速度会变慢,&lt;盗梦空间&gt;是个很不错的
 体现.在硬件的分层上,有一张最直观的图片,&lt;深入理解计算机系统&gt;封面上的
-那幅图就是计算机的存储系统的分层的明显展示.
+那幅图就是计算机的存储系统的分层的明显展示. 
 </p></div>
-</div>
-</div>
+
 
 </div>
 </div>

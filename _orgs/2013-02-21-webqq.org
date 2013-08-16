@@ -18,7 +18,7 @@ tags: [security]
    GET方法的https://ssl.ptlogin2.qq.com/login ，但是似乎没有使用https协议。
 **** 可能的分析
      以下是GET方法中传递的参数。
-#+BEGIN_SRC shell
+#+BEGIN_SRC python
      action=3-22-67651
      aid=1003903
      dumy=
@@ -29,26 +29,26 @@ tags: [security]
      js_type=0
      js_ver=10021
      login2qq=1
-#这个签名可能有作用
+ #这个签名可能有作用
      login_sig=f34BxoLH*o9XFnZJwZA2QPGJ94nQ0aFl55FqbM-a6647vQkl4ZL-QKRtOhe-OSPn
      mibao_css=m_webqq
-#这个应该是md5加密后的用户密码,但是需要知道密码的转换方法
+ #这个应该是md5加密后的用户密码,但是需要知道密码的转换方法
      p=7BB11BE08A1923E1F2704BFA4D40F6F0
      ptlang=2052
      ptredirect=0
      pttype=1
      remember_uin=1
      t=1
-#用户qq号
+ #用户qq号
      u=569945030
      u1=http://web.qq.com/loginproxy.html?login2qq=1&webqq_type=10
-#验证码
+ #验证码
      verifycode=!QSG
      webqq_type=10
 #+END_SRC
 *** 加密方法定位
     发起登陆请求的代码位置,由Chrome开发者工具完成定位.其中搜索md5,可以找到的代码段,猜测代码加密方法为此,继续查找相关函数.
-#+BEGIN_SRC java_script
+#+BEGIN_SRC js
 if(C[J].name=="p"){
 		var M=C.p.value;
 		var I=hexchar2bin(md5(M));
@@ -70,7 +70,7 @@ if(C[J].name=="p"){
 *** 相关函数
 **** hexchar2bin
 动态语言就是这么流氓...没辙啊...
-#+BEGIN_SRC java_script
+#+BEGIN_SRC js
 function hexchar2bin(str){
 	var arr=[];
 	for(var i=0;i<str.length;i=i+2){
@@ -80,7 +80,7 @@ function hexchar2bin(str){
 	return temp}
 #+END_SRC
 **** md5
-#+BEGIN_SRC java_script
+#+BEGIN_SRC js
 var chrsz=8;
 
 function md5(A){
@@ -206,7 +206,7 @@ function str2binl(D){
 
 *** 猜测密码转换过程
     基本不用猜了,很明显,从之前的if语句中可以看到转换算法了,但是缺一个pt.uin不知道,找了找,要用这个函数,函数的参数就是uin,其实就是qq号:
-#+BEGIN_SRC java_script
+#+BEGIN_SRC js
 function uin2hex(str){
   var maxLength=16;
   str=parseInt(str);

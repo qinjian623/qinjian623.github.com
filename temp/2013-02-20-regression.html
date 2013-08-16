@@ -1,0 +1,140 @@
+---
+layout: post
+title: 回归问题
+tags: [ml,math]
+math: true
+---
+
+<p>
+有关回归的杂东西.
+超级初始版本，以后慢慢改思密达。
+</p>
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">回归是什么?</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>   将多个点X映射为一个函数f(x)来表示.但是由于不一定所有的点已经能够准确在f(x)上,所以存在误差问题,将误差最小化自然 <i>拟合</i> 的比较好,于是就是个最优化问题.
+</p>
+<p>
+   有关误差函数,其实可以随便定义,不过平方误差用的比较多: \(\sum_{i} \left(y_i - f(x_i)\right)^2\), 更符合直觉上的情况是,直接相减的误差: \(\sum_{i} \left|y_i - f(x_i)\right|\) <sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">简单线性回归</h3>
+<div class="outline-text-3" id="text-2">
+
+<p>   一元的线性回归,用$f(x) = &omega;<sub>1</sub> x + &omega;<sub>0</sub>$来模拟.使用的方法是Least Square.就是最小化误差,而误差函数使用的是平方误差.由于假设了函数形式和待解的参数,可以带入方程来处理.$$ SSE = \sum_{i=1}^N \left[ y_i -f(x_i)\right]^2 = \sum_{i=1}^N \left[ y_i -\omega_1 x - \omega_0\right]^2 $$
+   然后需要求解的就是SSE的最小值,其实就是这个函数的最小值.常规过程,求导\得0\解结果.SSE有两个变量,所以会有两个偏导:
+   $$\frac{\partial E}{\partial \omega_0} = -2 \sum_{i=1}^N \left[y_i - \omega_1 x_i - \omega_0 \right] = 0$$
+   $$\frac{\partial E}{\partial \omega_1} = -2 \sum_{i=1}^N \left[y_i - \omega_1 x_i - \omega_0 \right]x_i = 0$$
+   两方程解的两个未知数,看着也不是线性相关,自然可以解出来.不过,还可以蛋疼的用矩阵来解这样的方程组,因为这样以后如果方程组多了也说得过去.
+   \begin{equation}
+   \begin{pmatrix} 
+   N & \sum_i x_i \\ 
+   \sum_i x_i & \sum_i x_i^2\end{pmatrix}
+   \begin{pmatrix}
+     \omega_0 \\
+     \omega_1
+   \end{pmatrix}
+   =
+   \begin{pmatrix} 
+   \sum_i y_i \\
+   \sum_i x_i y_i \end{pmatrix}
+   \end{equation}
+   还可以证明,这样的方程有个通解,
+   \begin{eqnarray}
+   \hat{\omega_0} = \bar{y} - \hat{\omega_1}\bar{x} \\
+   \hat{\omega_1} = \frac{\sigma_{xy}}{\sigma_{xx}}
+   \end{eqnarray}
+   其中:
+   \begin{eqnarray}
+   && \bar{x} = \sum_i x_i / N \\
+   && \bar{y} = \sum_i y_i / N \\
+   && \sigma_{xy} = \sum_i (x_i - \bar{x})(y_i - \bar{y}) \\
+   && \sigma_{xx} = \sum_i (x_i - \bar{x})^2 \\
+   && \sigma_{yy} = \sum_i (y_i - \bar{y})^2 \\
+   \end{eqnarray}
+</p>
+<p>   
+   公式怎么这么多&hellip;&hellip;然后就可以将通解带入最开始的函数了.不写公式了,都是些超级水的公式.浪费时间.但是资料里有这么一句话:
+</p><blockquote>
+
+<p><b>线性模型是具有连续导数的任意函数的一阶泰勒级数近似</b>
+</p>
+</blockquote>
+
+
+<p>
+   什么叫做赤裸裸的讨厌.
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3">误差问题</h3>
+<div class="outline-text-3" id="text-3">
+
+<p>   误差无处不在,所以回归的时候自然要考虑误差对数据的影响,而且在误差面前,人类实在太渺小,都是假定误差是随机独立的,在函数外面加一个噪音数据.
+   \begin{equation}
+   y = f(X) + \epsilon
+   \end{equation}
+   如果假定是正态分布,就需要分布如下:
+   \begin{equation}
+     P(\epsilon | x,\Omega ) = \frac{1}{\sqrt{2\pi\sigma^2}}
+     e^{-\frac{[y-f(x,\Omega)]^2}
+     {2\sigma^2}}
+   \end{equation}
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4">多元线性回归</h3>
+<div class="outline-text-3" id="text-4">
+
+<p>   继续变 X = (1 x) ,有:
+   \begin{equation}
+   X^T X = \begin{pmatrix}
+             1^T 1 & 1^Tx \\
+             x^T 1 & x^Tx \\
+           \end{pmatrix}
+          =    
+   \begin{pmatrix} 
+   N & \sum_i x_i \\ 
+   \sum_i x_i & \sum_i x_i^2\end{pmatrix}
+   \end{equation}
+   \begin{equation}
+     (1 x)^T y = \begin{pmatrix}
+                   1^Ty \\
+                   x^Ty \\
+                 \end{pmatrix}
+                 =    \begin{pmatrix} 
+                 \sum_i y_i \\
+                 \sum_i x_i y_i \end{pmatrix}
+   \end{equation}
+   再将这些变换代回去,
+   \begin{eqnarray}
+   && X^TX\Omega = X^Ty
+   && \Omega = (\omega_0, \omega_1)^T
+   \end{eqnarray}
+   解方程的结果:
+   \begin{eqnarray}
+     \Omega = 
+   \end{eqnarray}
+
+</p><div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> 为什么是用平方用得特别多呢?应该还有更进一步的原因.
+</p>
+
+
+
+</div>
+</div>
+
+</div>
+</div>

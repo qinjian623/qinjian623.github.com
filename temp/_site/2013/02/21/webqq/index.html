@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>WebQQ逆向</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- Personal CSS -->
+        <link rel="stylesheet" href="/css/personal.css">
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">K.I.S.S</a></h1>
+              <a class="extra" href="/">home</a>
+              <a class="extra" href="/about.html">about</a>
+              <a class="extra" href="/atom.xml">RSS</a>
+            </div>
+
+                
+
+<h2>WebQQ逆向</h2>
+
+<p class="meta">21 Feb 2013</p>
+
+<div class="post">
+  <div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">部分参考资料</h3>
+<div class="outline-text-3" id="text-1">
+
+<ul>
+<li>Google的关键字 "webqq 协议"，有一篇文章，但是版本旧了，而且在密码生成上没有说明，自己动手。
+</li>
+<li><a href="http://jsbin.com/itiqef/1/edit">http://jsbin.com/itiqef/1/edit</a> 用来调试JS代码的。
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">目前的进展:</h3>
+<div class="outline-text-3" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1">确定了登陆接口位置:</h4>
+<div class="outline-text-4" id="text-2-1">
+
+<p>   GET方法的<a href="https://ssl.ptlogin2.qq.com/login">https://ssl.ptlogin2.qq.com/login</a> ，但是似乎没有使用https协议。
+</p><ul>
+<li id="sec-2-1-1">可能的分析<br/>
+     以下是GET方法中传递的参数。
+
+
+
+<pre class="example">     action=3-22-67651
+     aid=1003903
+     dumy=
+     fp=loginerroralert
+     from_ui=1
+     g=1
+     h=1
+     js_type=0
+     js_ver=10021
+     login2qq=1
+#这个签名可能有作用
+     login_sig=f34BxoLH*o9XFnZJwZA2QPGJ94nQ0aFl55FqbM-a6647vQkl4ZL-QKRtOhe-OSPn
+     mibao_css=m_webqq
+#这个应该是md5加密后的用户密码,但是需要知道密码的转换方法
+     p=7BB11BE08A1923E1F2704BFA4D40F6F0
+     ptlang=2052
+     ptredirect=0
+     pttype=1
+     remember_uin=1
+     t=1
+#用户qq号
+     u=569945030
+     u1=http://web.qq.com/loginproxy.html?login2qq=1&amp;webqq_type=10
+#验证码
+     verifycode=!QSG
+     webqq_type=10
+</pre>
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2">加密方法定位</h4>
+<div class="outline-text-4" id="text-2-2">
+
+<p>    发起登陆请求的代码位置,由Chrome开发者工具完成定位.其中搜索md5,可以找到的代码段,猜测代码加密方法为此,继续查找相关函数.
+</p>
+
+
+<pre class="example">if(C[J].name=="p"){
+                var M=C.p.value;
+                var I=hexchar2bin(md5(M));
+                var H=md5(I+pt.uin);
+                var G=md5(H+C.verifycode.value.toUpperCase());
+                A+=G
+}else{
+        if(C[J].name=="u1"||C[J].name=="ep"){
+                var D=C[J].value;var L="";
+                if(g_appid=="1003903"&amp;&amp;B){
+                        L=/\?/g.test(D)?"&amp;":"?";
+                        var F=document.getElementById("webqq_type").value;
+                        L+="login2qq="+B.value+"&amp;webqq_type="+F
+                }
+                A+=encodeURIComponent(D+L)
+        }
+}
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3">相关函数</h4>
+<div class="outline-text-4" id="text-2-3">
+
+<ul>
+<li id="sec-2-3-1">hexchar2bin<br/>
+动态语言就是这么流氓&hellip;没辙啊&hellip;
+
+
+
+<pre class="example">function hexchar2bin(str){
+        var arr=[];
+        for(var i=0;i&lt;str.length;i=i+2){
+                arr.push("\\x"+str.substr(i,2))}
+        arr=arr.join("");
+        eval("var temp = '"+arr+"'");
+        return temp}
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-2-3-2">md5<br/>
+
+
+
+<pre class="example">var chrsz=8;
+
+function md5(A){
+        return hex_md5(A)}
+function hex_md5(A){return binl2hex(core_md5(str2binl(A),A.length*chrsz))}
+function binl2hex(C){
+        var B=hexcase?"0123456789ABCDEF":"0123456789abcdef";
+        var D="";
+        for(var A=0;A&lt;C.length*4;A++){
+                D+=B.charAt((C[A&gt;&gt;2]&gt;&gt;((A%4)*8+4))&amp;15)+B.charAt((C[A&gt;&gt;2]&gt;&gt;((A%4)*8))&amp;15)
+                }
+        return D}
+function str2binl(D){
+  var C=Array();
+  var A=(1&lt;&lt;chrsz)-1;
+  for(var B=0;B&lt;D.length*chrsz;B+=chrsz){
+    C[B&gt;&gt;5]|=(D.charCodeAt(B/chrsz)&amp;A)&lt;&lt;(B%32);}
+  return C;}
+function core_md5(K,F){
+        K[F&gt;&gt;5]|=128&lt;&lt;((F)%32);
+        K[(((F+64)&gt;&gt;&gt;9)&lt;&lt;4)+14]=F;
+        var J=1732584193;
+        var I=-271733879;
+        var H=-1732584194;
+        var G=271733878;
+        for(var C=0;C&lt;K.length;C+=16){
+                var E=J;var D=I;var B=H;var A=G;
+                J=md5_ff(J,I,H,G,K[C+0],7,-680876936);
+                G=md5_ff(G,J,I,H,K[C+1],12,-389564586);
+                H=md5_ff(H,G,J,I,K[C+2],17,606105819);
+                I=md5_ff(I,H,G,J,K[C+3],22,-1044525330);
+                J=md5_ff(J,I,H,G,K[C+4],7,-176418897);
+                G=md5_ff(G,J,I,H,K[C+5],12,1200080426);
+                H=md5_ff(H,G,J,I,K[C+6],17,-1473231341);
+                I=md5_ff(I,H,G,J,K[C+7],22,-45705983);
+                J=md5_ff(J,I,H,G,K[C+8],7,1770035416);
+                G=md5_ff(G,J,I,H,K[C+9],12,-1958414417);
+                H=md5_ff(H,G,J,I,K[C+10],17,-42063);
+                I=md5_ff(I,H,G,J,K[C+11],22,-1990404162);
+                J=md5_ff(J,I,H,G,K[C+12],7,1804603682);
+                G=md5_ff(G,J,I,H,K[C+13],12,-40341101);
+                H=md5_ff(H,G,J,I,K[C+14],17,-1502002290);
+                I=md5_ff(I,H,G,J,K[C+15],22,1236535329);
+                J=md5_gg(J,I,H,G,K[C+1],5,-165796510);
+                G=md5_gg(G,J,I,H,K[C+6],9,-1069501632);
+                H=md5_gg(H,G,J,I,K[C+11],14,643717713);
+                I=md5_gg(I,H,G,J,K[C+0],20,-373897302);
+                J=md5_gg(J,I,H,G,K[C+5],5,-701558691);
+                G=md5_gg(G,J,I,H,K[C+10],9,38016083);
+                H=md5_gg(H,G,J,I,K[C+15],14,-660478335);
+                I=md5_gg(I,H,G,J,K[C+4],20,-405537848);
+                J=md5_gg(J,I,H,G,K[C+9],5,568446438);
+                G=md5_gg(G,J,I,H,K[C+14],9,-1019803690);
+                H=md5_gg(H,G,J,I,K[C+3],14,-187363961);
+                I=md5_gg(I,H,G,J,K[C+8],20,1163531501);
+                J=md5_gg(J,I,H,G,K[C+13],5,-1444681467);
+                G=md5_gg(G,J,I,H,K[C+2],9,-51403784);
+                H=md5_gg(H,G,J,I,K[C+7],14,1735328473);
+                I=md5_gg(I,H,G,J,K[C+12],20,-1926607734);
+                J=md5_hh(J,I,H,G,K[C+5],4,-378558);
+                G=md5_hh(G,J,I,H,K[C+8],11,-2022574463);
+                H=md5_hh(H,G,J,I,K[C+11],16,1839030562);
+                I=md5_hh(I,H,G,J,K[C+14],23,-35309556);
+                J=md5_hh(J,I,H,G,K[C+1],4,-1530992060);
+                G=md5_hh(G,J,I,H,K[C+4],11,1272893353);
+                H=md5_hh(H,G,J,I,K[C+7],16,-155497632);
+                I=md5_hh(I,H,G,J,K[C+10],23,-1094730640);
+                J=md5_hh(J,I,H,G,K[C+13],4,681279174);
+                G=md5_hh(G,J,I,H,K[C+0],11,-358537222);
+                H=md5_hh(H,G,J,I,K[C+3],16,-722521979);
+                I=md5_hh(I,H,G,J,K[C+6],23,76029189);
+                J=md5_hh(J,I,H,G,K[C+9],4,-640364487);
+                G=md5_hh(G,J,I,H,K[C+12],11,-421815835);
+                H=md5_hh(H,G,J,I,K[C+15],16,530742520);
+                I=md5_hh(I,H,G,J,K[C+2],23,-995338651);
+                J=md5_ii(J,I,H,G,K[C+0],6,-198630844);
+                G=md5_ii(G,J,I,H,K[C+7],10,1126891415);
+                H=md5_ii(H,G,J,I,K[C+14],15,-1416354905);
+                I=md5_ii(I,H,G,J,K[C+5],21,-57434055);
+                J=md5_ii(J,I,H,G,K[C+12],6,1700485571);
+                G=md5_ii(G,J,I,H,K[C+3],10,-1894986606);
+                H=md5_ii(H,G,J,I,K[C+10],15,-1051523);
+                I=md5_ii(I,H,G,J,K[C+1],21,-2054922799);
+                J=md5_ii(J,I,H,G,K[C+8],6,1873313359);
+                G=md5_ii(G,J,I,H,K[C+15],10,-30611744);
+                H=md5_ii(H,G,J,I,K[C+6],15,-1560198380);
+                I=md5_ii(I,H,G,J,K[C+13],21,1309151649);
+                J=md5_ii(J,I,H,G,K[C+4],6,-145523070);
+                G=md5_ii(G,J,I,H,K[C+11],10,-1120210379);
+                H=md5_ii(H,G,J,I,K[C+2],15,718787259);
+                I=md5_ii(I,H,G,J,K[C+9],21,-343485551);
+                J=safe_add(J,E);I=safe_add(I,D);H=safe_add(H,B);G=safe_add(G,A)}
+        if(mode==16){
+                return Array(I,H)}
+        else{
+                return Array(J,I,H,G)
+                }
+        }
+function safe_add(A,D){
+  var C=(A&amp;65535)+(D&amp;65535);
+  var B=(A&gt;&gt;16)+(D&gt;&gt;16)+(C&gt;&gt;16);
+  return(B&lt;&lt;16)|(C&amp;65535);
+}
+function md5_cmn(F,C,B,A,E,D){
+  return safe_add(bit_rol(safe_add(safe_add(C,F),safe_add(A,D)),E),B);}
+function md5_ff(C,B,G,F,A,E,D){
+  return md5_cmn((B&amp;G)|((~B)&amp;F),C,B,A,E,D);}
+function md5_gg(C,B,G,F,A,E,D){return md5_cmn((B&amp;F)|(G&amp;(~F)),C,B,A,E,D);}
+function md5_hh(C,B,G,F,A,E,D){return md5_cmn(B^G^F,C,B,A,E,D);}
+function md5_ii(C,B,G,F,A,E,D){return md5_cmn(G^(B|(~F)),C,B,A,E,D);}
+function bit_rol(A,B){return(A&lt;&lt;B)|(A&gt;&gt;&gt;(32-B));}
+
+var chrsz=8;
+var hexcase=1;var b64pad="";var chrsz=8;var mode=32;
+function str2binl(D){
+  var C=Array();
+  var A=(1&lt;&lt;chrsz)-1;
+  for(var B=0;B&lt;D.length*chrsz;B+=chrsz){
+    C[B&gt;&gt;5]|=(D.charCodeAt(B/chrsz)&amp;A)&lt;&lt;(B%32);}
+  return C;}
+</pre>
+
+<p>
+当然,最后自己验证的结果就是,算的就是MD5.函数名字没起错,- -!
+</p>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4">猜测密码转换过程</h4>
+<div class="outline-text-4" id="text-2-4">
+
+<p>    基本不用猜了,很明显,从之前的if语句中可以看到转换算法了,但是缺一个pt.uin不知道,找了找,要用这个函数,函数的参数就是uin,其实就是qq号:
+</p>
+
+
+<pre class="example">function uin2hex(str){
+  var maxLength=16;
+  str=parseInt(str);
+  var hex=str.toString(16);
+  var len=hex.length;
+  for(var i=len;i&lt;maxLength;i++){hex="0"+hex;}
+  var arr=[];
+  for(var j=0;j&lt;maxLength;j+=2){arr.push("\\x"+hex.substr(j,2));}
+  var result=arr.join("");
+  eval('result="'+result+'"');
+  return result;}
+</pre>
+
+<p>
+    综上,md5混合着用户密码、用户qq号、验证码生成最后上传用于验证的加密后密码.
+</p></div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="todo TODO">TODO</span> 进一步的其他待猜测的数据</h4>
+<div class="outline-text-4" id="text-2-5">
+
+<p>    拼图上还缺的一些东西：
+</p><ul>
+<li>cookie中的内容的作用，不过考虑到在登录前cookie貌似没什么用，所以cookie应该就是意思意思，接受下服务器内容就没了。
+</li>
+<li>那个GET方法中的什么什么sig，怎么弄来的？
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+  <div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+  
+  var disqus_developer = 1;
+  
+  var disqus_shortname = 'qinjian623-blogger';
+  // required    : replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>  
+
+  </div>
+</div>
+
+
+            <div class="footer">
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+        <footer class="footer">
+          <p>&copy; Qin Jian 2012 如无特殊说明,所有产生内容默认<a href="http://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
+          </p>
+        </footer>
+        
+         <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-34189274-1']);
+   _gaq.push(['_trackPageview']);
+
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ </script>    
+
+    </body>
+</html>

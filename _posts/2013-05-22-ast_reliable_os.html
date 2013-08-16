@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 内核之辩2
+title: Tanenbaum-Torvalds Debate, Part II
 tags: [nothing, thoughts]
 ---
 
@@ -56,7 +56,7 @@ Tanenbaum-Torvalds Debate这个是N年前就已經闻名于世了，这个Part2�
 </p>
 
 <p>
-请千万记得，如今的MINIX 3可不再是你爷爷当年用的MINIX了。MINIX 1不过是教学用途，到现在还在很多大学里用着。Al Woodhull和我还专门为它写了<a href="http://www.amazon.com/gp/product/0131429388/sr=1-1/qid=1147293670/ref=sr_1_1/104-9514733-5370326?_encoding=UTF8">本书</a> 。MINIX 3可不止于此，目标就是为了建一个超可靠的、能够自愈、而且<a href="http://www.tech2.com/india/news/internet/linux-too-bloated-for-$100-laptop/101/0">不会越来越来臃肿</a> 的操作系统，而且可能在<a href="http://laptop.org/">100刀笔记本项目</a> 上能用上，造福第三世界的孩子们，还有嵌入式系统。MINIX 1和MINIX 3的关系就像Windows 3.1和Windows XP的关系：同名不同姓的熊孩子。所以，你要是大学时用过MINIX 1，试试3吧，包你满意。它完全是小而精的UNIX系统，包括了X、bash、pdksh、zsh、cc、gcc、perl、python、awk、emacs、vi、pine、ssh、ftp、GNU工具链还有其他400多别的程序。全靠那个小小的微内核，现在马上立刻你就可以拥有！
+请千万记得，如今的MINIX 3可不再是你爷爷当年用的MINIX了。MINIX 1不过是教学用途，到现在还在很多大学里用着。Al Woodhull和我还专门为它写了<a href="http://www.amazon.com/gp/product/0131429388/sr=1-1/qid=1147293670/ref=sr_1_1/104-9514733-5370326?%5Fencoding=UTF8">本书</a> 。MINIX 3可不止于此，目标就是为了建一个超可靠的、能够自愈、而且<a href="http://www.tech2.com/india/news/internet/linux-too-bloated-for-$100-laptop/101/0">不会越来越来臃肿</a> 的操作系统，而且可能在<a href="http://laptop.org/">100刀笔记本项目</a> 上能用上，造福第三世界的孩子们，还有嵌入式系统。MINIX 1和MINIX 3的关系就像Windows 3.1和Windows XP的关系：同名不同姓的熊孩子。所以，你要是大学时用过MINIX 1，试试3吧，包你满意。它完全是小而精的UNIX系统，包括了X、bash、pdksh、zsh、cc、gcc、perl、python、awk、emacs、vi、pine、ssh、ftp、GNU工具链还有其他400多别的程序。全靠那个小小的微内核，现在马上立刻你就可以拥有！
 </p>
 
 <p>
@@ -81,7 +81,7 @@ Linus<a href="http://www.realworldtech.com/forums/index.cfm?action=detail&id=666
 <h2 id="sec-5"><span class="section-number-2">5</span> Linus的论点</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-Linus的基本观点是微内核需要分布式算法，但是目前分布式算法都很屎。尽管我和<a href="http://www.cs.vu.nl/~steen">Maarten van Steen</a>一起写了一<a href="http://www.amazon.com/gp/product/0130888931/sr=1-1/qid=1147294749/ref=sr_1_1/104-9514733-5370326?_encoding=UTF8">本书</a> 专门解决分布式算法惨不忍睹的问题，我还是得承认分布式算法确实是个大坑。过去十年我也设计、编写和公布了两个分布式系统，<a href="http://www.cs.vu.nl/pub/amoeba">Amoeba</a> （LAN环境）和<a href="http://www.cs.vu.nl/globe">Globe</a> （WAN环境）。分布式算法的主要问题是由于可能会中途丢失消息还有其他一些不确定的事情，比如远程进程死掉了或者仅仅是运行缓慢，造成缺少一个共同的时间基准。但是呢，这些问题对于一个单机上运行的微内核系统环境都不存在。所以，我同意Linus说的分布式算法难度比较大，但是这个和我们讨论的问题没什么关系。
+Linus的基本观点是微内核需要分布式算法，但是目前分布式算法都很屎。尽管我和<a href="http://www.cs.vu.nl/~steen">Maarten van Steen</a>一起写了一<a href="http://www.amazon.com/gp/product/0130888931/sr=1-1/qid=1147294749/ref=sr_1_1/104-9514733-5370326?%5Fencoding=UTF8">本书</a> 专门解决分布式算法惨不忍睹的问题，我还是得承认分布式算法确实是个大坑。过去十年我也设计、编写和公布了两个分布式系统，<a href="http://www.cs.vu.nl/pub/amoeba">Amoeba</a> （LAN环境）和<a href="http://www.cs.vu.nl/globe">Globe</a> （WAN环境）。分布式算法的主要问题是由于可能会中途丢失消息还有其他一些不确定的事情，比如远程进程死掉了或者仅仅是运行缓慢，造成缺少一个共同的时间基准。但是呢，这些问题对于一个单机上运行的微内核系统环境都不存在。所以，我同意Linus说的分布式算法难度比较大，但是这个和我们讨论的问题没什么关系。
 </p>
 
 <p>

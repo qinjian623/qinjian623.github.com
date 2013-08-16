@@ -8,12 +8,13 @@ tags: [pl, clojure]
 有关Clojure中的PersistentVector的记录,主要的参考来源是
 <a href="http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/">http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/</a>
 </p>
+
 <p>
 自己感冒头晕,昨晚看American Horror Story又没有休息好. 于是就脑抽点了clojure的源码实现看,wc -l排序完,就想着先看个802行的吧.
 </p>
+<div class="org-src-container">
 
-
-<pre class="example">$ wc -l * | sort -n
+<pre class="src src-sh">$ wc -l * | sort -n
      13 Sequential.java
      14 IRecord.java
      14 IType.java
@@ -131,248 +132,242 @@ tags: [pl, clojure]
    4014 Numbers.java
    4104 RestFn.java
    8420 Compiler.java
-  35118 总用量
+  35118 &#24635;&#29992;&#37327;
 </pre>
+</div>
 
-
-
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1">查找</h3>
-<div class="outline-text-3" id="text-1">
-
-<p>在文件里面梦游,看到个眼熟的 <b>nth</b> 于是就仔细看看,位操作是每个人的噩梦,但是还有前面的arrayFor没看,然后发现噩梦都是一个连一个的.
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 查找</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+在文件里面梦游,看到个眼熟的 <b>nth</b> 于是就仔细看看,位操作是每个人的噩梦,但是还有前面的arrayFor没看,然后发现噩梦都是一个连一个的.
 </p>
+<div class="org-src-container">
 
-
-<pre class="example">
-public Object[] arrayFor(int i){
-    if(i &gt;= 0 &amp;&amp; i &lt; cnt)
+<pre class="src src-java"><span style="color: #FBDE2D;">public</span> <span style="color: #D8FA3C;">Object</span>[] <span style="color: #ff1493;">arrayFor</span>(<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">i</span>){
+    <span style="color: #FBDE2D;">if</span>(i &gt;= 0 &amp;&amp; i &lt; cnt)
         {
-            if(i &gt;= tailoff())
-                return tail;
-            Node node = root;
-            for(int level = shift; level &gt; 0; level -= 5)
-                node = (Node) node.array[(i &gt;&gt;&gt; level) &amp; 0x01f];
-            return node.array;
+            <span style="color: #FBDE2D;">if</span>(i &gt;= tailoff())
+                <span style="color: #FBDE2D;">return</span> tail;
+            <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">node</span> = root;
+            <span style="color: #FBDE2D;">for</span>(<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">level</span> = shift; level &gt; 0; level -= 5)
+                node = (<span style="color: #D8FA3C;">Node</span>) node.array[(i &gt;&gt;&gt; level) &amp; 0x01f];
+            <span style="color: #FBDE2D;">return</span> node.array;
         }
-    throw new IndexOutOfBoundsException();
+    <span style="color: #FBDE2D;">throw</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">IndexOutOfBoundsException</span>();
 }
 
-public Object nth(int i){
-    Object[] node = arrayFor(i);
-    return node[i &amp; 0x01f];
+<span style="color: #FBDE2D;">public</span> <span style="color: #D8FA3C;">Object</span> <span style="color: #ff1493;">nth</span>(<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">i</span>){
+    <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">node</span> = arrayFor(i);
+    <span style="color: #FBDE2D;">return</span> node[i &amp; 0x01f];
 }
 </pre>
-
+</div>
 <p>
 自然不清楚为什么要取后五位.于是Google,找到了参考.因为数据结构可以理解为32叉树,所以后五位自然是找到最底层后的32个叶子节点后,根据后5位确定叶子.同理,上面的每次level为5,自然也是根据深度一步步往下找,shift大小自然就是树的深度相关,参考说是具体是5*(h+1),说是就是吧.Node的数据实际就是一个长度为32的array了.
 </p>
+<div class="org-src-container">
 
+<pre class="src src-java"><span style="color: #FBDE2D;">static</span> <span style="color: #FBDE2D;">class</span> <span style="color: #D8FA3C;">Node</span> <span style="color: #FBDE2D;">implements</span> <span style="color: #D8FA3C;">Serializable</span> {
+    <span style="color: #FBDE2D;">transient</span> <span style="color: #FBDE2D;">final</span> <span style="color: #D8FA3C;">AtomicReference</span>&lt;Thread&gt; edit;
+    <span style="color: #FBDE2D;">final</span> <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">array</span>;
 
-<pre class="example">static class Node implements Serializable {
-    transient final AtomicReference&lt;Thread&gt; edit;
-    final Object[] array;
-
-    Node(AtomicReference&lt;Thread&gt; edit, Object[] array){
-        this.edit = edit;
-        this.array = array;
+    Node(AtomicReference&lt;Thread&gt; edit, <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">array</span>){
+        <span style="color: #FBDE2D;">this</span>.edit = edit;
+        <span style="color: #FBDE2D;">this</span>.array = array;
     }
 
     Node(AtomicReference&lt;Thread&gt; edit){
-        this.edit = edit;
-        this.array = new Object[32];
+        <span style="color: #FBDE2D;">this</span>.edit = edit;
+        <span style="color: #FBDE2D;">this</span>.array = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Object</span>[32];
     }
 }
 </pre>
-
+</div>
 <p>
 然后突然发现还有 <b>&gt;&gt;&gt;</b> 和 <b>&gt;&gt;</b> 两种,前面的是unsigned后面的是signed,说明地址:
 <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html">http://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html</a>
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">final private int tailoff(){
-    if(cnt &lt; 32)
-        return 0;
-    return ((cnt-1) &gt;&gt;&gt; 5) &lt;&lt; 5;
+<pre class="src src-java"><span style="color: #FBDE2D;">final</span> <span style="color: #FBDE2D;">private</span> <span style="color: #D8FA3C;">int</span> <span style="color: #ff1493;">tailoff</span>(){
+    <span style="color: #FBDE2D;">if</span>(cnt &lt; 32)
+        <span style="color: #FBDE2D;">return</span> 0;
+    <span style="color: #FBDE2D;">return</span> ((cnt-1) &gt;&gt;&gt; 5) &lt;&lt; 5;
 }
 </pre>
-
+</div>
 <p>
-这里相当于检查的是length/32的int值再*32&hellip;&hellip;其实就是数据里面还有个tail,没凑够32个就先存这里.查找增加什么操作的,都需要考虑这个tail.
+这里相当于检查的是length/32的int值再*32&#x2026;&#x2026;其实就是数据里面还有个tail,没凑够32个就先存这里.查找增加什么操作的,都需要考虑这个tail.
 </p>
+
 <p>
 后面的assocN理解就自然了.
 </p>
 </div>
-
 </div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> cons</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
 
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2">cons</h3>
-<div class="outline-text-3" id="text-2">
-
-
-
-
-<pre class="example">public PersistentVector cons(Object val){
-      int i = cnt;
-      //room in tail?
-      //      if(tail.length &lt; 32)
-      //这里还是tail的特殊处理,tail的长度没有32,就先放tail里面.这里好理解.
-      if(cnt - tailoff() &lt; 32)
+<pre class="src src-java"><span style="color: #FBDE2D;">public</span> <span style="color: #D8FA3C;">PersistentVector</span> <span style="color: #ff1493;">cons</span>(<span style="color: #D8FA3C;">Object</span> <span style="color: #D8FA3C;">val</span>){
+      <span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">i</span> = cnt;
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">room in tail?</span>
+      <span style="color: #8B8989; font-style: italic;">//      </span><span style="color: #8B8989; font-style: italic;">if(tail.length &lt; 32)</span>
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#36824;&#26159;tail&#30340;&#29305;&#27530;&#22788;&#29702;,tail&#30340;&#38271;&#24230;&#27809;&#26377;32,&#23601;&#20808;&#25918;tail&#37324;&#38754;.&#36825;&#37324;&#22909;&#29702;&#35299;.</span>
+      <span style="color: #FBDE2D;">if</span>(cnt - tailoff() &lt; 32)
           {
-              Object[] newTail = new Object[tail.length + 1];
+              <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">newTail</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Object</span>[tail.length + 1];
               System.arraycopy(tail, 0, newTail, 0, tail.length);
               newTail[tail.length] = val;
-              return new PersistentVector(meta(), cnt + 1, shift, root, newTail);
+              <span style="color: #FBDE2D;">return</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">PersistentVector</span>(meta(), cnt + 1, shift, root, newTail);
           }
-      //full tail, push into tree 如前所述,满了32.
-      Node newroot;
-      Node tailnode = new Node(root.edit,tail);
-      int newshift = shift;
-      //overflow root?下面的一坨操作,要先看看pushTail和newPath
-      //树全满的情况下,重新升高一层树,新的tailnode要放在另外新建的深度如旧树的一棵树上
-      if((cnt &gt;&gt;&gt; 5) &gt; (1 &lt;&lt; shift))
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">full tail, push into tree &#22914;&#21069;&#25152;&#36848;,&#28385;&#20102;32.</span>
+      <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">newroot</span>;
+      <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">tailnode</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(root.edit,tail);
+      <span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">newshift</span> = shift;
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">overflow root?&#19979;&#38754;&#30340;&#19968;&#22376;&#25805;&#20316;,&#35201;&#20808;&#30475;&#30475;pushTail&#21644;newPath</span>
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#26641;&#20840;&#28385;&#30340;&#24773;&#20917;&#19979;,&#37325;&#26032;&#21319;&#39640;&#19968;&#23618;&#26641;,&#26032;&#30340;tailnode&#35201;&#25918;&#22312;&#21478;&#22806;&#26032;&#24314;&#30340;&#28145;&#24230;&#22914;&#26087;&#26641;&#30340;&#19968;&#26869;&#26641;&#19978;</span>
+      <span style="color: #FBDE2D;">if</span>((cnt &gt;&gt;&gt; 5) &gt; (1 &lt;&lt; shift))
           {
-              newroot = new Node(root.edit);
+              newroot = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(root.edit);
               newroot.array[0] = root;
               newroot.array[1] = newPath(root.edit,shift, tailnode);
               newshift += 5;
           }
-      //树没有全满,那么就往下找,有空就插入,没空就建新的枝.
-      else
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#26641;&#27809;&#26377;&#20840;&#28385;,&#37027;&#20040;&#23601;&#24448;&#19979;&#25214;,&#26377;&#31354;&#23601;&#25554;&#20837;,&#27809;&#31354;&#23601;&#24314;&#26032;&#30340;&#26525;.</span>
+      <span style="color: #FBDE2D;">else</span>
           newroot = pushTail(shift, root, tailnode);
-      //所有的增加都会直接保证加入位置的深度一致.因为只有叶子才存数据.
-      return new PersistentVector(meta(), cnt + 1, newshift, newroot, new Object[]{val});
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#25152;&#26377;&#30340;&#22686;&#21152;&#37117;&#20250;&#30452;&#25509;&#20445;&#35777;&#21152;&#20837;&#20301;&#32622;&#30340;&#28145;&#24230;&#19968;&#33268;.&#22240;&#20026;&#21482;&#26377;&#21494;&#23376;&#25165;&#23384;&#25968;&#25454;.</span>
+      <span style="color: #FBDE2D;">return</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">PersistentVector</span>(meta(), cnt + 1, newshift, newroot, <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Object</span>[]{val});
   }
 
-  private Node pushTail(int level, Node parent, Node tailnode){
-      //if parent is leaf, insert node,
-      // else does it map to an existing child? -&gt; nodeToInsert = pushNode one more level
-      // else alloc new path
-      //return  nodeToInsert placed in copy of parent
-      //
-      int subidx = ((cnt - 1) &gt;&gt;&gt; level) &amp; 0x01f;
-      Node ret = new Node(parent.edit, parent.array.clone());
-      Node nodeToInsert;
-      //parent is leaf的情况
-      if(level == 5)
+  <span style="color: #FBDE2D;">private</span> <span style="color: #D8FA3C;">Node</span> <span style="color: #ff1493;">pushTail</span>(<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">level</span>, <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">parent</span>, <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">tailnode</span>){
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">if parent is leaf, insert node,</span>
+      <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">else does it map to an existing child? -&gt; nodeToInsert = pushNode one more level</span>
+      <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">else alloc new path</span>
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">return  nodeToInsert placed in copy of parent</span>
+      <span style="color: #8B8989; font-style: italic;">//</span>
+      <span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">subidx</span> = ((cnt - 1) &gt;&gt;&gt; level) &amp; 0x01f;
+      <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">ret</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(parent.edit, parent.array.clone());
+      <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">nodeToInsert</span>;
+      <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">parent is leaf&#30340;&#24773;&#20917;</span>
+      <span style="color: #FBDE2D;">if</span>(level == 5)
           {
               nodeToInsert = tailnode;
           }
-      else
+      <span style="color: #FBDE2D;">else</span>
           {
-              Node child = (Node) parent.array[subidx];
-              //第二个判断情况,子树是null就新建一个单分支的子树到底层.不是的话就一直找到底层,然后加入.
-              nodeToInsert = (child != null)?
+              <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">child</span> = (<span style="color: #D8FA3C;">Node</span>) parent.array[subidx];
+              <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#31532;&#20108;&#20010;&#21028;&#26029;&#24773;&#20917;,&#23376;&#26641;&#26159;null&#23601;&#26032;&#24314;&#19968;&#20010;&#21333;&#20998;&#25903;&#30340;&#23376;&#26641;&#21040;&#24213;&#23618;.&#19981;&#26159;&#30340;&#35805;&#23601;&#19968;&#30452;&#25214;&#21040;&#24213;&#23618;,&#28982;&#21518;&#21152;&#20837;.</span>
+              nodeToInsert = (child != <span style="color: #4c83ff;">null</span>)?
                   pushTail(level-5,child, tailnode)
                   :newPath(root.edit,level-5, tailnode);
           }
       ret.array[subidx] = nodeToInsert;
-      return ret;
+      <span style="color: #FBDE2D;">return</span> ret;
   }
 
-  //一路新建单分支的子树
-  private static Node newPath(AtomicReference&lt;Thread&gt; edit,int level, Node node){
-      if(level == 0)
-          return node;
-      Node ret = new Node(edit);
+  <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#19968;&#36335;&#26032;&#24314;&#21333;&#20998;&#25903;&#30340;&#23376;&#26641;</span>
+  <span style="color: #FBDE2D;">private</span> <span style="color: #FBDE2D;">static</span> <span style="color: #D8FA3C;">Node</span> <span style="color: #ff1493;">newPath</span>(AtomicReference&lt;Thread&gt; edit,<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">level</span>, <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">node</span>){
+      <span style="color: #FBDE2D;">if</span>(level == 0)
+          <span style="color: #FBDE2D;">return</span> node;
+      <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">ret</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(edit);
       ret.array[0] = newPath(edit, level - 5, node);
-      return ret;
+      <span style="color: #FBDE2D;">return</span> ret;
   }
 </pre>
-
-
-<p>
-   完成添加后,数据是没有拷贝的,只是在原来树的后面添加了元素,然后成为一个新的树.性能上自然没有太大差别.
-</p></div>
-
 </div>
 
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3">pop</h3>
-<div class="outline-text-3" id="text-3">
+<p>
+完成添加后,数据是没有拷贝的,只是在原来树的后面添加了元素,然后成为一个新的树.性能上自然没有太大差别.
+</p>
+</div>
+</div>
 
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> pop</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
 
-
-
-<pre class="example">public PersistentVector pop(){
-    if(cnt == 0)
-        throw new IllegalStateException("Can't pop empty vector");
-    if(cnt == 1)
-        return EMPTY.withMeta(meta());
-    //if(tail.length &gt; 1)
-    //以直接在tail里面pop的,很容易.
-    if(cnt-tailoff() &gt; 1)
+<pre class="src src-java"><span style="color: #FBDE2D;">public</span> <span style="color: #D8FA3C;">PersistentVector</span> <span style="color: #ff1493;">pop</span>(){
+    <span style="color: #FBDE2D;">if</span>(cnt == 0)
+        <span style="color: #FBDE2D;">throw</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">IllegalStateException</span>(<span style="color: #61CE3C;">"Can't pop empty vector"</span>);
+    <span style="color: #FBDE2D;">if</span>(cnt == 1)
+        <span style="color: #FBDE2D;">return</span> EMPTY.withMeta(meta());
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">if(tail.length &gt; 1)</span>
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#20197;&#30452;&#25509;&#22312;tail&#37324;&#38754;pop&#30340;,&#24456;&#23481;&#26131;.</span>
+    <span style="color: #FBDE2D;">if</span>(cnt-tailoff() &gt; 1)
         {
-            Object[] newTail = new Object[tail.length - 1];
+            <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">newTail</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Object</span>[tail.length - 1];
             System.arraycopy(tail, 0, newTail, 0, newTail.length);
-            return new PersistentVector(meta(), cnt - 1, shift, root, newTail);
+            <span style="color: #FBDE2D;">return</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">PersistentVector</span>(meta(), cnt - 1, shift, root, newTail);
         }
-    //不能的情况下,就从树里pop出来一个,当然,同时就需要把剩下的31个不完整的抽出来当做newtail.
-    //为什么要以cnt-2开始,因为前面的判断是tail.length &gt; 1,tail里面有可能还有一个孤零零的元素.
-    Object[] newtail = arrayFor(cnt - 2);
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#19981;&#33021;&#30340;&#24773;&#20917;&#19979;,&#23601;&#20174;&#26641;&#37324;pop&#20986;&#26469;&#19968;&#20010;,&#24403;&#28982;,&#21516;&#26102;&#23601;&#38656;&#35201;&#25226;&#21097;&#19979;&#30340;31&#20010;&#19981;&#23436;&#25972;&#30340;&#25277;&#20986;&#26469;&#24403;&#20570;newtail.</span>
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#20026;&#20160;&#20040;&#35201;&#20197;cnt-2&#24320;&#22987;,&#22240;&#20026;&#21069;&#38754;&#30340;&#21028;&#26029;&#26159;tail.length &gt; 1,tail&#37324;&#38754;&#26377;&#21487;&#33021;&#36824;&#26377;&#19968;&#20010;&#23396;&#38646;&#38646;&#30340;&#20803;&#32032;.</span>
+    <span style="color: #D8FA3C;">Object</span>[] <span style="color: #D8FA3C;">newtail</span> = arrayFor(cnt - 2);
 
-    //以下的代码就是从树中删除newtail的过程了.
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#20197;&#19979;&#30340;&#20195;&#30721;&#23601;&#26159;&#20174;&#26641;&#20013;&#21024;&#38500;newtail&#30340;&#36807;&#31243;&#20102;.</span>
 
-    //新树的root也有可能需要做变更.
-    Node newroot = popTail(shift, root);
-    int newshift = shift;
-    //这里如果一路都是单枝,结果是一路都删除路径到root,应该其实就是长度为32/33的情况.
-    if(newroot == null)
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#26032;&#26641;&#30340;root&#20063;&#26377;&#21487;&#33021;&#38656;&#35201;&#20570;&#21464;&#26356;.</span>
+    <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">newroot</span> = popTail(shift, root);
+    <span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">newshift</span> = shift;
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#22914;&#26524;&#19968;&#36335;&#37117;&#26159;&#21333;&#26525;,&#32467;&#26524;&#26159;&#19968;&#36335;&#37117;&#21024;&#38500;&#36335;&#24452;&#21040;root,&#24212;&#35813;&#20854;&#23454;&#23601;&#26159;&#38271;&#24230;&#20026;32/33&#30340;&#24773;&#20917;.</span>
+    <span style="color: #FBDE2D;">if</span>(newroot == <span style="color: #4c83ff;">null</span>)
         {
             newroot = EMPTY_NODE;
         }
-    //层次大于1,但是root的第二子树已经是空的话,就需要降低层次了.
-    if(shift &gt; 5 &amp;&amp; newroot.array[1] == null)
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#23618;&#27425;&#22823;&#20110;1,&#20294;&#26159;root&#30340;&#31532;&#20108;&#23376;&#26641;&#24050;&#32463;&#26159;&#31354;&#30340;&#35805;,&#23601;&#38656;&#35201;&#38477;&#20302;&#23618;&#27425;&#20102;.</span>
+    <span style="color: #FBDE2D;">if</span>(shift &gt; 5 &amp;&amp; newroot.array[1] == <span style="color: #4c83ff;">null</span>)
         {
-            newroot = (Node) newroot.array[0];
+            newroot = (<span style="color: #D8FA3C;">Node</span>) newroot.array[0];
             newshift -= 5;
         }
-    return new PersistentVector(meta(), cnt - 1, newshift, newroot, newtail);
+    <span style="color: #FBDE2D;">return</span> <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">PersistentVector</span>(meta(), cnt - 1, newshift, newroot, newtail);
 }
 
-//
-private Node popTail(int level, Node node){
-    //倒数第二个位置的元素在最底层的index
-    int subidx = ((cnt-2) &gt;&gt;&gt; level) &amp; 0x01f;
-    //一直往底层走
-    if(level &gt; 5)
+<span style="color: #8B8989; font-style: italic;">//</span>
+<span style="color: #FBDE2D;">private</span> <span style="color: #D8FA3C;">Node</span> <span style="color: #ff1493;">popTail</span>(<span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">level</span>, <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">node</span>){
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#20498;&#25968;&#31532;&#20108;&#20010;&#20301;&#32622;&#30340;&#20803;&#32032;&#22312;&#26368;&#24213;&#23618;&#30340;index</span>
+    <span style="color: #D8FA3C;">int</span> <span style="color: #D8FA3C;">subidx</span> = ((cnt-2) &gt;&gt;&gt; level) &amp; 0x01f;
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#19968;&#30452;&#24448;&#24213;&#23618;&#36208;</span>
+    <span style="color: #FBDE2D;">if</span>(level &gt; 5)
         {
-            //去下层, level-5, 以subidx所在的array开始.
-            Node newchild = popTail(level - 5, (Node) node.array[subidx]);
-            //上层依然是单枝,需要继续删除路径的情况
-            if(newchild == null &amp;&amp; subidx == 0)
-                return null;
-            else
+            <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#21435;&#19979;&#23618;, level-5, &#20197;subidx&#25152;&#22312;&#30340;array&#24320;&#22987;.</span>
+            <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">newchild</span> = popTail(level - 5, (<span style="color: #D8FA3C;">Node</span>) node.array[subidx]);
+            <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#19978;&#23618;&#20381;&#28982;&#26159;&#21333;&#26525;,&#38656;&#35201;&#32487;&#32493;&#21024;&#38500;&#36335;&#24452;&#30340;&#24773;&#20917;</span>
+            <span style="color: #FBDE2D;">if</span>(newchild == <span style="color: #4c83ff;">null</span> &amp;&amp; subidx == 0)
+                <span style="color: #FBDE2D;">return</span> <span style="color: #4c83ff;">null</span>;
+            <span style="color: #FBDE2D;">else</span>
                 {
-                    Node ret = new Node(root.edit, node.array.clone());
+                    <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">ret</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(root.edit, node.array.clone());
                     ret.array[subidx] = newchild;
-                    return ret;
+                    <span style="color: #FBDE2D;">return</span> ret;
                 }
         }
-    //到达底层,位置却是0,这里到达的不是包含叶子的底层,而是最后一个树枝层.
-    //到达底树枝层,正好是一个单枝,因为下一步叶子层的index是0,如果要提出来当tail,这个单枝就需要删除了.而且要一路删除到上层不再是单枝路径为止.
-    else if(subidx == 0)
-        return null;
-    //到达底树枝层
-    else
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#21040;&#36798;&#24213;&#23618;,&#20301;&#32622;&#21364;&#26159;0,&#36825;&#37324;&#21040;&#36798;&#30340;&#19981;&#26159;&#21253;&#21547;&#21494;&#23376;&#30340;&#24213;&#23618;,&#32780;&#26159;&#26368;&#21518;&#19968;&#20010;&#26641;&#26525;&#23618;.</span>
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#21040;&#36798;&#24213;&#26641;&#26525;&#23618;,&#27491;&#22909;&#26159;&#19968;&#20010;&#21333;&#26525;,&#22240;&#20026;&#19979;&#19968;&#27493;&#21494;&#23376;&#23618;&#30340;index&#26159;0,&#22914;&#26524;&#35201;&#25552;&#20986;&#26469;&#24403;tail,&#36825;&#20010;&#21333;&#26525;&#23601;&#38656;&#35201;&#21024;&#38500;&#20102;.&#32780;&#19988;&#35201;&#19968;&#36335;&#21024;&#38500;&#21040;&#19978;&#23618;&#19981;&#20877;&#26159;&#21333;&#26525;&#36335;&#24452;&#20026;&#27490;.</span>
+    <span style="color: #FBDE2D;">else</span> <span style="color: #FBDE2D;">if</span>(subidx == 0)
+        <span style="color: #FBDE2D;">return</span> <span style="color: #4c83ff;">null</span>;
+    <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#21040;&#36798;&#24213;&#26641;&#26525;&#23618;</span>
+    <span style="color: #FBDE2D;">else</span>
         {
-            Node ret = new Node(root.edit, node.array.clone());
-            //显然,直接将要pop出来的tail删掉了.
-            ret.array[subidx] = null;
-            return ret;
+            <span style="color: #D8FA3C;">Node</span> <span style="color: #D8FA3C;">ret</span> = <span style="color: #FBDE2D;">new</span> <span style="color: #D8FA3C;">Node</span>(root.edit, node.array.clone());
+            <span style="color: #8B8989; font-style: italic;">//</span><span style="color: #8B8989; font-style: italic;">&#26174;&#28982;,&#30452;&#25509;&#23558;&#35201;pop&#20986;&#26469;&#30340;tail&#21024;&#25481;&#20102;.</span>
+            ret.array[subidx] = <span style="color: #4c83ff;">null</span>;
+            <span style="color: #FBDE2D;">return</span> ret;
         }
 }
 </pre>
+</div>
+<p>
+这里pop影响的范围都会重新clone.都是新的,原来的数据则还是保持.基本可以简单的认为是写时复制了.
+</p>
 
 <p>
-   这里pop影响的范围都会重新clone.都是新的,原来的数据则还是保持.基本可以简单的认为是写时复制了.
-</p>
-<p>
-   还有个APersistentVector的抽象类,不管了.
+还有个APersistentVector的抽象类,不管了.
 </p>
 </div>
 </div>

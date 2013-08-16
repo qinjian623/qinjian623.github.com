@@ -18,9 +18,9 @@ tags: [emacs]
 \setmainfont{SimSun}
 #+END_SRC
    里面的字体使用系统中的字体名字就可以,命令:
-#+BEGIN_SRC shell
-#这里是shell命令思密达
-fc-list
+#+BEGIN_SRC sh
+ #这里是shell命令思密达
+ fc-list
 #+END_SRC
    简直简单爆了,不过中英文字体得分开,否则就丑爆了.所以要用包,依然简单爆了:
 #+BEGIN_SRC tex
