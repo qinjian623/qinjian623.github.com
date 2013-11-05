@@ -1,0 +1,438 @@
+---
+layout: post
+title: 编写可读代码的艺术
+---
+
+<p>
+<b>前言</b>
+</p>
+<ul class="org-ul">
+<li>妈蛋,这书自己的可读性就坑爹,部分内容的标题按照字体大小区分,没有缩进和编号
+</li>
+<li>周末读了一半，最近到年底了又赶上开大会，查得紧，该填的坑都得填了，刚挖的就更得这样。最近我就被查了一次水表，392，4块钱一吨水。看着心里都打哆嗦，就那水也好意思这么贵。其中还有污水处理费，这我就搞不懂了，我喝了你的水，转成尿，怎么也得我管你收污水处理费吧，我这还高大上的生物降解呢。
+</li>
+<li>总共4个Part，15章。
+</li>
+</ul>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> C1 代码应当易于理解</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+代码的可读性，要大于性能、非核心功能。性能的问题不是利用代码的修改来实现的，而是通过实现逻辑或者说是算法来实现的。某些代码上的trick可能会带来性能提升，但是一旦影响到代码可读性就应该慎重考虑，要么放弃，要么增加注释。非核心功能和性能是一个道理，非核心功能不过是在需求上的trick。
+</p>
+
+<p>
+这个世界上往往trick的东西都是丑陋的。所有的trick都应该是服务于strategy的，而不是相反。
+</p>
+
+<p>
+这里提出的 <b>可读性基本原理</b> 就是：别人理解代码的时间最小化。需要注意的误区就是代码行数!=理解时间。有些人为了代码行数，牺牲可读性，实在是把别人当作编译器看待。换句话来说，代码首先是写给人看的，最后才是给编译器看的。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> P1 表面层次的改进</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+表面层次的改进都是集中于基本的代码层面的修正来提高可读性。
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> C2 信息装在名字里</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+“程序员花最多时间的地方就是变量的命名。” &#x2013; 加菲猫
+</p>
+
+<p>
+单想想看，如果水浒的108人分别是：小明、小黄、小红、小强&#x2026;你肯定要把作者的头拧下来。文中的注意事项如下：
+</p>
+<ol class="org-ol">
+<li>专业的词语
+
+<p>
+这个和业务关系比较紧密的代码更应该注意。专业的词语更有信息量，一个专业名词的背后可能就是一个公式或者流程，不用专业名词&#x2026;呵呵呵&#x2026;可以考虑多写点注释，写完了程序就可一直接把注释拿出来出书了。
+</p>
+</li>
+<li>避免泛泛的名字
+
+<p>
+书中有的例子是tmp、retval。 这个么，我们要辩证的看，有些情况下名字确实没必要，或者程序逻辑很明显，或者函数名称很明显，那么泛泛的名字就可以。但是泛泛的名字的作用域要控制好，你要是在class的fields里面弄个泛泛的名字。哈哈哈。
+循环中的循环变量，这个也一样，很明显的遍历，i,j,k就没有问题，或者很通用的程序，比如写个通用的冒泡排序，用i，j就没问题，因为算法大家都知道。
+</p>
+
+<p>
+这个其实可以用第一条来考虑，你可以使用一个泛泛的名字，前提是，这个泛泛的名字是专业的词语，所谓的专业的词语，就是行业的基础知识。你写个tmpStr给程序员看，那就是条件反射，你要是给个英文专业的看，WTF。
+</p>
+</li>
+<li>名字要具体
+其实还是一个目的，提供合理的信息量。什么是合理的？就是不包含不合理的&#x2026;比如反人类的匈牙利命名法。非得加个傻X类型放变量前面，这会严重影响代码阅读时的流畅性，爷爷我读代码不是为了知道你用的什么类型的，我是为了程序的实现逻辑才读的，然后才是类型。你非得加，唯一的结果也还是，读者选择性忽略前面的那坨前缀，和不加没什么区别。
+你要非说，“我最后还是要查看下类型，了解实现细节的”，这个，不用IDE确实是个人的选择，也无可厚非么。
+书中提到的主要是：
+<ol class="org-ol">
+<li>附带更多信息: id-&gt;hexId
+</li>
+<li>单位的值: start-&gt;startMs
+</li>
+<li>附带重要属性
+</li>
+</ol>
+</li>
+<li>前缀和后缀
+这个比较类似前面的名字要具体，前后缀可以利用来加入一些额外的信息。
+</li>
+<li>名字的长度
+<ul class="org-ul">
+<li>小范围内的可以是短名字：因为小范围，一眼就可以看到，名字短点也没有关系。自己的经验是10行左右的，可以比较随意一点。因为作用范围十行以内的局部变量如果读者需要关注，那么就说明读者基本在查看实现细节了，短小点的名字也不影响，哪怕真的换成i,j,k，也就是“名字起的也不注意点”，不会是“WTF”。
+</li>
+<li>利用IDE的补全：这个是解决长点的名字打字累人的神器，也属于专业基本了，在学校刚开始学c的时候竟然用的是TC2.0，语法高亮都没有，这是多么的惨无人道，把院长以反人类告上法庭都没问题。
+</li>
+<li>缩写：还是一样的原则，专业的词语，你写tmp, str可以，我因为手懒一篇笔记里写了个两个字母的简写，回头看的时候，满眼“WTF”，然后挣扎10分钟后默默含泪删掉文档的2B经历一定是不会公开的。
+</li>
+<li>丢掉没用的词语: doXXX -&gt; XXX
+</li>
+</ul>
+</li>
+<li>利用名字的格式来表达含义<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> C3 不会误解的文字</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+对于区间的注意应该都没什么问题，谁要是没有遇到过Index Out of Bounds Exception，那都不好意思出门打招呼。与使用者的期望一致，其实还是起名字的问题，符合事实的、具体的名字，谁会误会你么&#x2026;误会都是那些不负责任的玩暧昧的混蛋们的借口。前面这句表达的是嫉妒，不要误会。
+</p>
+<ul class="org-ul">
+<li>max/min，first/last表示极限
+</li>
+<li>begin/end表示半开区间
+</li>
+<li>与使用者的期望一致(getMean-&gt;computeMean)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> C4 审美</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+这个，这个么，和每个人的taste相关。我要是说太多就暴露我那低下的品味了，主要是换行\单行长度。我自己的空行一贯连我自己都看不下去。
+</p>
+<ol class="org-ol">
+<li>重新安排换行
+</li>
+<li>引入新的方法整理内容【这个其实就是重构的extract method】
+</li>
+<li>列对齐<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+</li>
+<li>空行来组织声明
+</li>
+<li>代码分段
+</li>
+<li>个人风格与一致性【要注意团队一致性高于个人观点】。
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> C5 注释</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+注释存在的目的是帮助读者理解作者
+</p>
+<ul class="org-ul">
+<li>不需要注释的情况
+<ol class="org-ol">
+<li>为注释而注释
+</li>
+<li>名字可读性优先于注释
+</li>
+</ol>
+</li>
+<li>利用代码来记录想法
+<ol class="org-ol">
+<li>注释下自己的考虑\未来可以改进的目标
+</li>
+<li>注释瑕疵，挖坑记得插红旗。
+</li>
+<li>常量注释的考虑，比如用作配置、阈值的常量，可以加注释说明下。
+</li>
+</ol>
+</li>
+<li>站在读者的角度
+<ol class="org-ol">
+<li>预料中的问题:读者可能的why和why not的回答。
+</li>
+<li>可能的陷阱
+</li>
+<li>全局观注释：
+帮助新人理解代码结构/数据流动,类似文档。如果文档详细的话，这个其实也没什么必要了。
+</li>
+<li>总结性注释：解释一下代码段的工作。
+</li>
+<li>克服作者心理阻滞：
+想什么就写下来/看是否需要改进/保持不断改进
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> C6 写出言简意赅的注释</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+需要保持注释的效率【信息量】，少说废话，多说干货，说出来能砸死人的，追求的就是密度。
+</p>
+<ol class="org-ol">
+<li>保持注释的紧凑 <br/>
+      要想注释紧凑，其实依靠的还是专业词语，那么就是所谓的：领域语言/团队规范。
+</li>
+<li>不明确的代词 <br/>
+      他和他的她在一起了，然后他很生气，找他和她对质，但是发现他还有另一个她，于是她和她闹了起来，没办法，他带走了她，而他带走了她的它，留下她一个人，她孤身一人只好找他，祂终于看不下去了，最后，他们都幸福的生活在一起。<br/>
+      或者，《水浒》&#x2013;108个他和她的创业史，《西游》&#x2013;在路上，它们和他，《红楼》&#x2013;他/她/她，《三国》&#x2013;他们和她们，还有他们仨
+</li>
+<li>润色句子
+</li>
+<li>精确描述函数
+</li>
+<li>举例子来解释
+</li>
+<li>申明代码的意图 <br/>
+      代码所做的操作!=代码的意图，所以要注意写意图。
+</li>
+<li>函数传参的注释
+</li>
+<li>信息量高的词语：专业名词
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> P2 简化循环和逻辑</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+上部分操作的代码层面，这部分开始考虑对逻辑层面简化。
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> C7 控制流易读</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li>if中的顺序
+左边变动,右边不变，尤达表示法是不提倡的，这个王垠大大有撰文吐槽。
+</li>
+<li>if/else的顺序
+<ol class="org-ol">
+<li>优先处理正逻辑
+</li>
+<li>优先处理简单的
+</li>
+<li>优先处理有趣的\可疑的
+</li>
+</ol>
+</li>
+<li>三元运算符：一句话，闲得没事也别碰它。
+</li>
+<li>避免do/while循环，我想了想，我就没用过这货。我连while都不怎么用。
+</li>
+<li>函数提前返回，书里是批评了过于看中函数返回位置只有一个的情况。不过提前返回的情况，应该在十分明显的地方，别函数走了十几行，for里面突然一个判断+返回，这个可以考虑用flag变量控制下返回的情况。
+</li>
+<li>GOTO：
+        <i>Linux 设备驱动</i> 这本书里说过一些GOTO的典型用法。某些情况是可以用的，不过“某些情况”的概率很小，所以就别用了。
+</li>
+<li>代码块嵌套的最小化，任谁都不会喜欢看穿着一层一层又一层的异性么。穿多了很烦心。
+</li>
+<li>理解执行的流程
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> C8 拆分超长的表达式</h3>
+<div class="outline-text-3" id="text-3-2">
+<ol class="org-ol">
+<li>解释变量：相当于一个中间的临时变量，虽然应该追求少点变量，但是要是出现 list.get(array[object.getIndex()].length)的时候，还是弄个明白点的变量。
+</li>
+<li>总结变量：同上
+</li>
+<li>使用德摩根定理：离散数学里面的东西，或或非非一类的，转成简单点的逻辑。
+</li>
+<li>避免短路逻辑的滥用
+</li>
+<li>例子中的宏使用：后面的例子里面举了个用宏来提高代码清晰度的情况，貌似QT的代码里面有不少这种情况，貌似而已，自己只是long long ago;碰了一下而已。
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> C9 变量的可读性</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li>越多越麻烦
+</li>
+<li>作用域越大越麻烦
+</li>
+<li>变动越频繁越麻烦
+</li>
+</ol>
+
+
+<p>
+以下是解决方法：
+</p>
+<ul class="org-ul">
+<li>减少变量，少了还少点起名字的麻烦。
+<ul class="org-ul">
+<li>没有价值的临时变量
+</li>
+<li>减少中间结果
+</li>
+<li>减少控制流变量，
+</li>
+</ul>
+</li>
+<li>变量作用域控制好，越小越好，否则你看代码的时候还得跳来跳去的。注意下Python和JS的情况。
+</li>
+<li>定义往下移，gcc编译的时候记得加上C99。
+</li>
+<li>只写一次，这段我真没看明白。
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> P3 重新组织代码</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+基本内容就是重构，基本方法就是：
+</p>
+<ol class="org-ol">
+<li>抽取方法
+</li>
+<li>分离方法
+</li>
+<li>变更成为更加简介的逻辑
+</li>
+</ol>
+
+
+<p>
+这个可以看《重构》那本书，说多了都是废话。
+</p>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> C10 抽取不相关的子问题</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+将不是直接解决函数问题的代码建立新的子问题，前提是代码行数足够影响了。
+而且，通过建立子问题和通用模块，可以形成自己的代码库。要注意代码的通用性，但是这个可以通过将来代码的不断的修正来进化。上层设计是有很大局限的，只有通过下层的需求变化，不断的推进代码进化，形成的体系才会更加高效、稳定。而作为体系的设计者，就有责任保证这一体系能够不断进化。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> C11 一次只做一件事情，基本同上。</h3>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> C12 想法变成实现</h3>
+<div class="outline-text-3" id="text-4-3">
+<ol class="org-ol">
+<li>自己需要清楚的知道逻辑，这样才能完成代码，起码凡是自己没弄清楚逻辑就动手的代码，我都得重写一遍，而且屡教不改。
+</li>
+<li>清楚的利用库函数<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> C13 少写代码</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+之前的是控制好代码的复杂度，这里是控制好需求的复杂度。没用的功能，该扔的就扔，过度设计的东西，可以留个坑、插个旗，将来真要用到再说。
+</p>
+
+<p>
+代码库大小的控制可以保证软件质量的可控。依赖、多用外部库、语言的标准库，保持DRY的习惯。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> P4 精选问题</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+真心不想再记下去了，简单糊弄糊弄吧。
+</p>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> C14 测试与可读性</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+测试代码可维护的意义：不好维护的话就不愿意修改和增删测试，简介降低软件质量。
+</p>
+<ol class="org-ol">
+<li>测试代码本身的可读性
+</li>
+<li>测试输出信息的可读性
+</li>
+<li>测试逻辑设计的可读性【覆盖度问题，但是不要过于追求100%】
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> C15 案例</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+不多废话。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 综上</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+在我看来，程序员更多的是接近作家，而不是那些傻X的工程师。所以，少年我看你骨骼奇特，就趁热干了这本《风格的要素》吧，亚马逊收你13，记得凑单免运费。
+综上，不想做一个好作家的程序员不是一个好工程师。比如说，我坚决讨厌的匈牙利命名法和“3行必须有注释”的2B说法。作为一个作家，我们，必须，在作品中，不论是形式还是内容上，都，强调，人文关怀！如果有谁哪天问我什么是人文关怀，我会充满人文关怀的回答他：“No idea”。
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+其实就是利用代码规范来传递通用\隐含的信息,比如python的私有与共有的成员的命名规范，还有使用Eclipse写Java的类名、常量名、变量的命名大小写规范。
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+emacs中的align 和align-regexp
+</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+其实，一旦自己觉得需要有一个通用函数来实现自己想要的功能，就可以查阅库函数，看是否有实现。没有也可以自己实现自己的库函数了。
+</p></div>
+
+
+</div>
+</div>
