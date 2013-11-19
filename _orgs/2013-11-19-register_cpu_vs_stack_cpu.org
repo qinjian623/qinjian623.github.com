@@ -76,7 +76,7 @@ title: 栈和寄存器虚拟机，Dalvik
 
 DEX将java的.class文件翻译成为.dex文件，dex文件体积更小，也正对Dalvik进行了优化。
 
-结束：
+** 结束
 
 具体两种VM孰优孰劣尚无定论。目前争议较多，也是一个有意思的研究领域。有一篇很有意思的[[https://docs.google.com/viewer?a=v&q=cache:cPOTbgQfSF8J:www.usenix.org/events/vee05/full_papers/p153-yunhe.pdf+register+based+virtual+machine&hl=en&pid=bl&srcid=ADGEESiVdT4IVONxVrmGg4g1OTIuXjFx1mi-ZbxXetvlWMJBpbFyVh6Sc0iqIK2oRbYZdUmLXyCothUPSozS1J64ReJvvGapPGAzVDz-76IbYfDlwtsUcRN6Ddoia_nJL2udF9BnS2VF&sig=AHIEtbSuiwC8NheRf2cA9a4Jc99xvBr2Tw][论文]] ，作者将JVM换成了寄存器实现，获得了很明显的性能提升。希望我在这里解释清楚了栈虚拟机和寄存器虚拟机的区别，以及Dalvik VM的一些细节。欢迎各位读者针对文中内容的反馈和提问。
 
