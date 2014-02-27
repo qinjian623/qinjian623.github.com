@@ -1,0 +1,67 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Destructuring in Clojure
+tags: [pl, clojure]
+---
+#+END_HTML
+
+
+* Reference
+1. http://clojure.org/special_forms#Special%20Forms--Binding%20Forms%20%28Destructuring%29
+2. http://blog.jayfields.com/2010/07/clojure-destructuring.html
+* What is Destructuring?
+One of Speical Froms in clojure.
+Kind of Syntactic sugar?
+#+begin_quote 
+Clojure supports abstract structural binding, often called destructuring, in let binding lists, fn parameter lists, and any macro that expands into a let or fn. The basic idea is that a binding-form can be a data structure literal containing symbols that get bound to the respective parts of the init-expr. The binding is abstract in that a vector literal can bind to anything that is sequential, while a map literal can bind to anything that is associative.
+#+end_quote
+** Vector binding.
+   Anything supports *nth* . *&* will bind the remainder of the sequence. *:as* will bind the whole sequence.
+#+BEGIN_SRC clojure
+(let [[a b c & d :as e] [1 2 3 4 5 6 7]]
+  [a b c d e])
+->[1 2 3 (4 5 6 7) [1 2 3 4 5 6 7]]
+
+(let [[[x1 y1][x2 y2]] [[1 2] [3 4]]]
+  [x1 y1 x2 y2])
+->[1 2 3 4]
+
+(let [[a b & c :as str] "asdjhhfdas"]
+  [a b c str])
+->[\a \s (\d \j \h \h \f \d \a \s) "asdjhhfdas"]
+#+END_SRC
+
+** Map binding.
+   Bind to /Associative/ things. map/vector/string/array(only integer keys except the map).
+   
+   *:as* works as in vector binding.What's more, *:or* followed by another map can be used for default values or not-exist keys in the original map(named init-expr).
+
+#+BEGIN_SRC clojure
+(let [{a :a, b :b, c :c, :as m :or {a 2 b 3}} {:a 5 :c 6}]
+  [a b c m])
+->[5 3 6 {:c 6, :a 5}]
+;; a is bound to the value of key ':a' in init-expr.
+;; c is bound to the default value
+#+END_SRC
+
+   *:keys* for a simpler situation: symbol's name is the same as the key. *:strs* and *:syms* for string and symbol keys.
+#+BEGIN_SRC clojure
+(let [{fred :fred ethel :ethel lucy :lucy} m] ...
+(let [{:keys [fred ethel lucy]} m] ...
+#+END_SRC
+
+Nested form, no need for special attention.
+#+BEGIN_SRC clojure
+(let [{j :j, k :k, i :i, [r s & t :as v] :ivec, :or {i 12 j 13}}
+{:j 15 :k 16 :ivec [22 23 24 25]}]
+[i j k r s t v])
+-> [12 15 16 22 23 (24 25) [22 23 24 25]]
+#+END_SRC
+
+
+
+
+* TODO How did this happen?
+
+  

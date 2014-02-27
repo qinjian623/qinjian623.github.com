@@ -1,0 +1,43 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Org-mode笔记
+tags: [share, emacs, org-mode]
+---
+
+#+END_HTML
+
+考虑到现在开始用org-mode写东西,干脆再稍微记录下org-mode的东西,虽说平时使用没有什么问题,但是某些自己不常用的记录下来也没有错.
+
+_以下内容为2012-08-28_
+* TODO-list的用法
+** DONE 变更状态
+   + shift+左/右 状态的变化
+
+   + shift+上/下 优先级的变化
+
+** DONE 记录完成时间
+   CLOSED: [2012-08-29 Wed 22:01]
+#+BEGING_SRC lisp
+(setq org-log-done 'time)
+#+END_SRC
+
+** DONE 计算时间投入
+   CLOSED: [2012-08-29 Wed 22:01]
+   *这个很重要的样子*
+
+   开始:control-c control-x control-i
+   
+   结束:control-c control-x control-o
+** TODO 自定义状态
+   暂时用不上,记了也早晚会忘记.
+
+** TODO 大项目拆分
+   目前用不上,没那么复杂的项目需要处理.
+   但是checkbox的快捷键可以记录下:
+
+   * control-c control-c 变化状态
+   * meta-shift-return 新增
+
+* 参考资料
+  1. http://emacser.com/org-mode.htm

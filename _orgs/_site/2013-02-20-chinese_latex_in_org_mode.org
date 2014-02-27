@@ -1,0 +1,51 @@
+#+BEGIN_HTML
+---
+layout: post
+title: org-mode中文导出latex解决方法
+tags: [emacs]
+---
+#+END_HTML
+#+TITLE: org-mode中文导出latex解决方法
+#+AUTHOR: Qin Jian
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{SimSun}
+
+为什么折腾这个?因为自己看文章看烦了.具体解决方法很简单,因为英文的导出org-mode一点问题都没有.
+** tex的中文支持
+   因为xelatex的中文支持没有问题了,所以只要按照xelatex的要求,在tex文件里面加一句,就可以:
+#+BEGIN_SRC tex
+%这里是tex文件思密达
+\setmainfont{SimSun}
+#+END_SRC
+   里面的字体使用系统中的字体名字就可以,命令:
+#+BEGIN_SRC sh
+ #这里是shell命令思密达
+ fc-list
+#+END_SRC
+   简直简单爆了,不过中英文字体得分开,否则就丑爆了.所以要用包,依然简单爆了:
+#+BEGIN_SRC tex
+%这里是tex文件思密达
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+%之前的setmainfont就不需要了.或者拿去设定英文字体?(这句我不负责任的).
+#+END_SRC
+
+** org-mode的中文支持
+   既然知道怎么处理tex的中文,org-mode的中文导出就一点问题都没有了.在header里面加两行内容就可以了:
+#+BEGIN_SRC tex
+#+这里是org文件思密达
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont{SimSun}
+#+END_SRC
+   然后,导出的tex文件就可以用xelatex直接生成pdf了.但是,org-mode可以直接顺便导出pdf的,所以要把默认的程序改成xelatex,改改配置文件,以下内容我不负责任的,因为自己在公司的XP上没弄好思密达.
+#+BEGIN_SRC lisp
+;;这里是emacs的配置文件思密达
+(setq org-latex-to-pdf-process '("xelatex %f"))
+#+END_SRC
+   里面的路径就看各自环境了,然后,就没有然后了.
+** 后来
+   懒人自然也可以直接把内容写到配置文件里面,以后就不用手动写.或者YASnippet里.自动填写.参考内容实在是没有记录下来对不起思密达.Google "latex export org-mode"是其中的一部分.好水思密达.用org写东西绝对比用tex写东西要爽歪歪,字体中文对齐等等细节问题就先不纠结了.
+
+   
+
+
