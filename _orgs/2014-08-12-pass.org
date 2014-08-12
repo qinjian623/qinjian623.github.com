@@ -1,0 +1,65 @@
+#+BEGIN_HTML
+---
+layout: post
+title: 使用pass管理密码
+---
+#+END_HTML
+** 资料
+   1. http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml
+   2. http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/
+   3. http://stackoverflow.com/questions/5587513/gnupg-encryption-how-to-export-private-secret-asc-key-to-decrypt-gpg-files-i
+   4. http://lists.gnupg.org/pipermail/gnupg-users/2004-July/022930.html
+   5. http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html
+   6. http://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE
+   7. http://www.ruanyifeng.com/blog/2013/07/gpg.html
+** 正文
+*** 需求
+    虽然我一直坚持大脑是最好的密码存储地，但是扛不住帐号越来越多，现在登陆一些网站偶尔还要试两下，因为把密码弄混了。
+
+    按说这事情1password可以搞定的，但是奈何自己没出息，心疼自己手上的肉钱，找找发现了个应用pass。后端用的gpg加密，而且自动支持git管理，作为程序员，有时候真恨不得把家都能放在git上，而且还能自动commit（这不是传说中的Time Machine么）。而且么，如今这个世道，东西放在手上才是王道，我要是有钱了，准买上金条塞后院里面埋着。
+    
+    之前自己也试过自己弄个文本文件gpg加密了事，但是麻烦到自己都懒得用，这个方便点，按说我 *貌似应该可能* 会坚持用一用...
+    
+*** 过程
+    整体过程是比较简单快速的，麻烦的是自己重新整理那么多的帐号和密码。
+
+#+begin_src bash
+# 首先pass需要一个密钥对来进行管理，具体可以看 http://www.ruanyifeng.com/blog/2013/07/gpg.html
+gpg --gen-key #一路默认就可以
+# 之后得用生成的密钥对来初始化pass
+pass init GPG-ID
+# 其中这里的GPG-ID通过命令获得，一排16进制的数字，在第二列中
+gpg --list-key
+# 再就是加入git，每次pass都会自动帮你commit了，但是放到远程库管理就得自己push了
+pass git init # pass后面直接跟git的命令就可以
+# 后面的可以直接man pass
+pass generate XX
+pass insert XX
+pass edit XX
+pass rm XX
+pass mv XX
+#+end_src
+
+*** 补充
+    1. 私钥拷贝导出，解密都要用这个，用pass的肯定不止一个地方。
+#+begin_src bash
+# 下面弄完了就保存密钥对在一个对称加密文件里了
+gpg --output pubkey.gpg --export {GPGID}
+gpg --output - --export-secret-key {GPGID} |\
+ cat pubkey.gpg - |\
+ gpg --armor --output keys.asc --symmetric --cipher-algo AES256
+
+# 新电脑导入的时候
+gpg --no-use-agent --output - keys.asc | gpg --import
+# 记得把git仓库也clone下来
+git clone XXX ~/.password-store
+#+end_src
+    2. 除了保存密码，还可以保存用户名用pass edit，反正都是文本文件，什么都能存。
+    3. mac os下brew install gpg pass
+
+*** 注意事项
+    1. 生成密钥对时候的私钥的保护密码得注意点，动动脑子想想，以后这么多的密码就全靠她了。
+    2. 密钥对还是要隔离好，新建一个专门给pass用，虽说其实都用一个也没多大区别...因为无数的革命先辈的经验和教训都告诉我们一个道理，“马甲多不坏菜”。唯一例外的可能就是某伍豪这个悲催的名字了。
+    3. 虽说是git管理，但是安全第一还是不要放github上了，当然，土豪付费闭源库例外。
+    4. 解密的时候出现no pinentry的问题，重启gpg-agent， kill后再gpg-agent --daemon启动
+
