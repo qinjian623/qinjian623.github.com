@@ -1,0 +1,474 @@
+---
+layout: post
+title: Python yield
+---
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 说明</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+原文：<a href="http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/</a>
+</p>
+
+<p>
+原文的代码格式都用下划线替代了，打下划线把我的指头都打抽了&#x2026;..
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 学习Python："yield"和Generator的解释</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在开新课程前，我都会让学生自我评估一下自己的对Python各概念的理解情况。一些内容（比如：if/else的控制流处理、函数的定义和使用）大部分学生在课程开始前都可以理解。但是，还是有一些内容几乎所有的学生都不理解或者理解有限。其中，"generators和yield"就是最大的问题之一，我估计这也是所有Python初学者的共同点。
+</p>
+
+<p>
+经常有人说，哪怕十分努力学习这个问题，还是不怎么理解。所以我来了，本文我就要解释下yield的作用、为何其有用以及如何使用它。
+</p>
+
+<p>
+注意：在最近这些年，PEP一直都在给generator增加特性，让它变的越来越强大。下篇文章，我会探索 <span class="underline">yield</span> 与协程、协同多任务、异步IO结合后的强大（特别是这些在GvR<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>的基础之一"<a href="https://code.google.com/p/tulip/">tulip</a> "的原型实现中的使用）。当然，首先我们需要很好的理解 <span class="underline">yield</span> 和 <span class="underline">generator</span> 的工作原理。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 协程和子程序</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+当我们调用函数的时候，执行都是从函数的第一行开始，一直遇到 <span class="underline">return</span> 、出现 <span class="underline">exception</span> 或者到达函数的结尾（相当是一个隐式的 <span class="underline">return None</span> ）。函数把控制权交给调用者后就彻底结束了。任何局部变量和函数的工作都会被丢弃。下一次新的调用又会重新开始。
+</p>
+
+<p>
+这个过程对计算机编程中的函数（或者任何<a href="http://en.wikipedia.org/wiki/Subroutine">子程序</a> ）来说都是很标准的。如果能够定义一个特殊的函数：不像普通函数那样简单的就这么返回一个值而是可以产生一系列的值。有些情况下就会对编程有好处。要实现这个结果，就需要函数能够保存自己的状态。
+</p>
+
+<p>
+我之所以说”产生一系列的值“，因为我们假定中的这个函数不是像普通情况下的 <b>返回</b> 。 <span class="underline">return</span> 意味着函数将控制流交回给调用自己的地方。而 <b>产生</b> ，意味着控制的转移是临时而自愿的，我们函数还希望后续能够再重新获得控制权。
+</p>
+
+<p>
+在Python里，这样的函数就被叫做 <span class="underline">generator</span> ，而且十分有用。 <span class="underline">generator</span> （还有 <span class="underline">yield</span> ）的引入最初是为了让程序员可以有一个更加简单直接的方式来编写会产生一系列值的代码。之前，写一个随机数产生器需要引入一个类或者模块，这样才能实现生成多个值并且还能记录上次调用时的内部状态。有了 <span class="underline">generator</span> ，这一问题变得很简单。
+</p>
+
+<p>
+为了更好的明白 <span class="underline">generator</span> 解决的问题，举个例子。在这个例子里，请注意被解决的核心问题： <b>生成一系列的值</b> 。
+</p>
+
+<p>
+<i>注意：Python以外，除了最简单的 <span class="underline">generator</span> ，其他的就都被称作 <span class="underline">协程</span> 。这个词语我们后面再说。请注意，在Python里，本文有关 <span class="underline">协程</span> 的说明都是指 <span class="underline">generator</span> 。Python严格定义了 <span class="underline">generator</span> ， <span class="underline">协程</span> 虽然也在本文中出现了，但是在Python里没有严格定义。</i>
+</p>
+</div>
+
+<div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> 例子：素数问题</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+假设我们的老大要我们写一个函数：输入是 <span class="underline">int</span> 的 <span class="underline">list</span> ，返回的是一个包含这一列表中是素数的元素的Iterable。
+记住，<a href="http://docs.python.org/3/glossary.html#term-iterable">Iterable</a> 就是一个可以一次返回一个成员的对象。
+”没问题“，我们说完就搞定如下的代码：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(input_list):
+    <span style="color: #4eee94;">result_list</span> = <span style="color: #f08080;">list</span>()
+    <span style="color: #00bfff;">for</span> element <span style="color: #00bfff;">in</span> input_list:
+        <span style="color: #00bfff;">if</span> is_prime(element):
+            result_list.append()
+
+    <span style="color: #00bfff;">return</span> result_list
+
+<span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">or better yet...</span>
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(input_list):
+    <span style="color: #00bfff;">return</span> (element <span style="color: #00bfff;">for</span> element <span style="color: #00bfff;">in</span> input_list <span style="color: #00bfff;">if</span> is_prime(element))
+
+<span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">not germane to the example, but here's a possible implementation of</span>
+<span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">is_prime...</span>
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">is_prime</span>(number):
+    <span style="color: #00bfff;">if</span> number &gt; <span style="color: #a2cd5a;">1</span>:
+        <span style="color: #00bfff;">if</span> number == <span style="color: #a2cd5a;">2</span>:
+            <span style="color: #00bfff;">return</span> <span style="color: #a2cd5a;">True</span>
+        <span style="color: #00bfff;">if</span> number % <span style="color: #a2cd5a;">2</span> == <span style="color: #a2cd5a;">0</span>:
+            <span style="color: #00bfff;">return</span> <span style="color: #a2cd5a;">False</span>
+        <span style="color: #00bfff;">for</span> current <span style="color: #00bfff;">in</span> <span style="color: #f08080;">range</span>(<span style="color: #a2cd5a;">3</span>, <span style="color: #f08080;">int</span>(math.sqrt(number) + <span style="color: #a2cd5a;">1</span>), <span style="color: #a2cd5a;">2</span>):
+            <span style="color: #00bfff;">if</span> number % current == <span style="color: #a2cd5a;">0</span>: 
+                <span style="color: #00bfff;">return</span> <span style="color: #a2cd5a;">False</span>
+        <span style="color: #00bfff;">return</span> <span style="color: #a2cd5a;">True</span>
+    <span style="color: #00bfff;">return</span> <span style="color: #a2cd5a;">False</span>
+</pre>
+</div>
+<p>
+上面的两个 <span class="underline">get_primes</span> 都搞定了需求，于是就交活给老大了。老大也说没问题就是她想要的。
+</p>
+</div>
+
+<ol class="org-ol"><li>处理无穷序列<br  /><div class="outline-text-5" id="text-2-1-1-1">
+<p>
+但是，世事难料。几天后，老大又来了，说遇到了个小问题：她想把这个函数用在一个非常大的列表上。而且，列表大到没法放入系统内存。为了解决这个问题，她希望能够给 <span class="underline">get_primes</span> 一个 <span class="underline">start</span> 值，然后获得所有比这个 <span class="underline">start</span> 大的素数（说不定她就是在解决<a href="http://projecteuler.net/problem=10">欧拉问题10</a>）。
+</p>
+
+<p>
+考虑下新需求，我们知道代码得大改了。显然，我们没法返回一个从 <span class="underline">start</span> 值到无穷大的所有素数的列表（但是对无穷序列的操作却有很多应用需求）。使用传统函数解决这个问题的机会渺茫。
+</p>
+
+<p>
+放弃之前，我们需要看下到底是什么核心原因阻碍了我们写一个满足老大需求的函数。考虑一下，问题就是这个： <b>函数只有一次返回机会，而且必须一次性返回所有值</b> 。貌似这句话很废话。”函数不就是这么工作的么，“我们会想，但是如果我们能多问一句就能看到蹊跷了，”如果函数换个方式工作呢？“
+</p>
+
+<p>
+想象下如果 <span class="underline">get_primes</span> 可以返回下一个值，而非一次性返回所有值。就不再需要构建一个列表了。没有列表，就没有内存问题了。由于我们老板就是把结果拿来迭代的，所以无所谓返回一个列表还是一个一个结果返回。
+</p>
+
+<p>
+可惜的是，这个方法貌似无法实现。就算我们假设有一个函数可以允许我们从 <span class="underline">n</span> 一直循环到 <span class="underline">无穷大</span> ，返回值的时候还是有问题。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(start):
+    <span style="color: #00bfff;">for</span> element <span style="color: #00bfff;">in</span> magical_infinite_range(start):
+        <span style="color: #00bfff;">if</span> is_prime(element):
+            <span style="color: #00bfff;">return</span> element
+</pre>
+</div>
+<p>
+假设get_primes如此被调用：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">solve_number_10</span>():
+    <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">She *is* working on Project Euler #10, I knew it!</span>
+    <span style="color: #4eee94;">total</span> = <span style="color: #a2cd5a;">2</span>
+    <span style="color: #00bfff;">for</span> next_prime <span style="color: #00bfff;">in</span> get_primes(<span style="color: #a2cd5a;">3</span>):
+        <span style="color: #00bfff;">if</span> next_prime &lt; <span style="color: #a2cd5a;">2000000</span>:
+            <span style="color: #4eee94;">total</span> += next_prime
+        <span style="color: #00bfff;">else</span>:
+            <span style="color: #00bfff;">print</span>(total)
+            <span style="color: #00bfff;">return</span>
+</pre>
+</div>
+<p>
+显然，在 <span class="underline">get_primes</span> 函数里， <span class="underline">number=3</span> 的时候，我们很快就会直接从第四行返回。相对直接的 <span class="underline">return</span> ，就需要一种方法产生一个值，然后下次调用的时候再继续返回下一个值。
+</p>
+
+<p>
+函数就无法实现这一功能了。他们执行 <span class="underline">return</span> 的时候，自己的工作就结束了。哪怕我们可以让函数再调用一次，也没法贯彻自己这样的想法："来吧宝贝，现在不像我们平时那样从头开始，咱们直接从第四行开始吧。"函数只有一个 <span class="underline">入口</span> ：第一行。
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 进入Generator</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+上面的这种问题是很常见的，所以Python里新加入了一个结构来解决这个问题： <span class="underline">generator</span> 。 <span class="underline">Generator</span> 不断的产生值。建立 <span class="underline">generator</span> 也尽量依照 <span class="underline">generator函数</span> 的概念，十分方便，我们会一起介绍。
+</p>
+
+<p>
+<span class="underline">Generator函数</span> 如同普通的函数，但是当需要一个值的时候，它会利用 <span class="underline">yield</span> 来产生，而不是直接 <span class="underline">return</span> 。如果一个函数的 <span class="underline">def</span> 代码里包括了 <span class="underline">yield</span> ，函数就自动成为了一个 <span class="underline">generator函数</span> （即使同时还包含 <span class="underline">return</span> ）, 不需要其他的额外工作。
+</p>
+
+<p>
+<span class="underline">generator函数</span> 创建的是 <span class="underline">generator迭代器</span> 。 <span class="underline">generator迭代器</span> 这个名字从此你就不会再看到了，因为这个名字几乎就是 <span class="underline">generator</span> 的别名。记住 <span class="underline">generator</span> 就是一种特殊形式的 <span class="underline">迭代器</span> 。作为 <span class="underline">迭代器</span> ， <span class="underline">generator</span> 必须定义一些方法，其中之一就是 <span class="underline">_next__(). 。为了获得 _generator</span> 中的下一个值，我们需要使用操作 <span class="underline">迭代器</span> 的内置函数: <span class="underline">next()</span> 。
+</p>
+
+<p>
+再说明白点： <b>为了从 <span class="underline">generator</span> 获得下个值，我们使用 <span class="underline">next()</span> 这个内置函数，而这个函数也是用来操作 <span class="underline">迭代器</span> 的</b> 。（ <span class="underline">next()</span> 负责调用 <span class="underline">generator</span> 中的__next__()方法）。由于 <span class="underline">generator</span> 是 <span class="underline">迭代器</span> 的一种，所以是可以直接用在 <span class="underline">for</span> 循环上的。
+</p>
+
+<p>
+所以当 <span class="underline">next()</span> 调用 <span class="underline">generator</span> 的时候， <span class="underline">generator</span> 负责返回一个值给任何调用 <span class="underline">next()</span> 的方法。具体的方法就是利用 <span class="underline">yield</span> 来将值传回去(比如， <span class="underline">yield 7</span>)。最容易记忆的方法就是认为 <span class="underline">yield</span> 是 <span class="underline">generator函数</span> 的 <span class="underline">return</span> 语句（只是稍微有点奇妙的不同）。
+同样，我们再说明白点： <b><span class="underline">yeild</span> 就是 <span class="underline">generator函数</span> 的 <span class="underline">return</span> 语句（稍微有点奇妙的不同）</b> 。
+来看看一个简单的 <span class="underline">generator函数</span> ：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #00bfff;">def</span> <span style="color: #daa520;">simple_generator_function</span>():
+&gt;&gt;&gt;    <span style="color: #00bfff;">yield</span> <span style="color: #a2cd5a;">1</span>
+&gt;&gt;&gt;    <span style="color: #00bfff;">yield</span> <span style="color: #a2cd5a;">2</span>
+&gt;&gt;&gt;    <span style="color: #00bfff;">yield</span> <span style="color: #a2cd5a;">3</span>
+</pre>
+</div>
+<p>
+还有调用它的两种方法：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #00bfff;">for</span> value <span style="color: #00bfff;">in</span> simple_generator_function():
+&gt;&gt;&gt;     <span style="color: #00bfff;">print</span>(value)
+<span style="color: #a2cd5a;">1</span>
+<span style="color: #a2cd5a;">2</span>
+<span style="color: #a2cd5a;">3</span>
+&gt;&gt;&gt; <span style="color: #4eee94;">our_generator</span> = simple_generator_function()
+&gt;&gt;&gt; <span style="color: #f08080;">next</span>(our_generator)
+<span style="color: #a2cd5a;">1</span>
+&gt;&gt;&gt; <span style="color: #f08080;">next</span>(our_generator)
+<span style="color: #a2cd5a;">2</span>
+&gt;&gt;&gt; <span style="color: #f08080;">next</span>(our_generator)
+<span style="color: #a2cd5a;">3</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> 奇妙的部分?</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+哪里是奇妙的部分呢？就等着你问这个问题，蛤蛤。 <span class="underline">generator函数</span> 调用 <span class="underline">yield</span> 的时候，函数的状态会被冻结；所有变量的状态都会保存下来，需要执行的下一行代码会被记录下来等待 <span class="underline">next()</span> 的下次调用。待到调用时， <span class="underline">generator函数</span> 又会回复如之前保存的状态。如果 <span class="underline">next()</span> 从此不再调用，保存的状态最终都会被丢弃。
+我们现在就可以重写 <span class="underline">get_primes</span> 成一个 <span class="underline">generator函数</span> 了。注意，我们不再需要 <span class="underline">magical_infinite_range</span> 函数了。使用简单的 <span class="underline">while</span> 循环，我们就可以建立自己的无穷序列了：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(number):
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #00bfff;">if</span> is_prime(number):
+            <span style="color: #00bfff;">yield</span> number
+        <span style="color: #4eee94;">number</span> += <span style="color: #a2cd5a;">1</span>
+</pre>
+</div>
+<p>
+如果 <span class="underline">generator函数</span> 执行 <span class="underline">return</span> 或者到达定义结尾的时候，会产生一个 <span class="underline">StopIteration</span> 异常。这个信号意味着 <span class="underline">generator</span> 的值都已经产生完了（这也是 <span class="underline">迭代器</span> 的正常行为）。这也是为什么在 <span class="underline">get_primes</span> 里面有个 <span class="underline">while True:</span> 死循环。如果没有的话，第一次调用 <span class="underline">next()</span> 的时候我们还可以检查这个数字是否是素数，然后用 <span class="underline">yield</span> 传出来。下一次调用的时候，我们会将 <span class="underline">number</span> 加1,然后就到达了函数的结尾（此时就会产生 <span class="underline">StopIteration</span> ）。一旦 <span class="underline">generator</span> 用尽了，下一次再调用 <span class="underline">next()</span> 就会产生错误，所以你只能获得所有的 <span class="underline">generator</span> 的值一次。下面的代码就没法正常工作：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #4eee94;">our_generator</span> = simple_generator_function()
+&gt;&gt;&gt; <span style="color: #00bfff;">for</span> value <span style="color: #00bfff;">in</span> our_generator:
+&gt;&gt;&gt;     <span style="color: #00bfff;">print</span>(value)
+
+&gt;&gt;&gt; <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">our_generator has been exhausted...</span>
+&gt;&gt;&gt; <span style="color: #00bfff;">print</span>(<span style="color: #f08080;">next</span>(our_generator))
+Traceback (most recent call last):
+  File <span style="color: #deb887;">"&lt;ipython-input-13-7e48a609051a&gt;"</span>, line <span style="color: #a2cd5a;">1</span>, <span style="color: #00bfff;">in</span> &lt;module&gt;
+    <span style="color: #f08080;">next</span>(our_generator)
+<span style="color: #98f5ff;">StopIteration</span>
+
+&gt;&gt;&gt; <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">however, we can always create a new generator</span>
+&gt;&gt;&gt; <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">by calling the generator function again...</span>
+
+&gt;&gt;&gt; <span style="color: #4eee94;">new_generator</span> = simple_generator_function()
+&gt;&gt;&gt; <span style="color: #00bfff;">print</span>(<span style="color: #f08080;">next</span>(new_generator)) <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">perfectly valid</span>
+<span style="color: #a2cd5a;">1</span>
+</pre>
+</div>
+<p>
+所以这里的 <span class="underline">while</span> 循环就是保证我们永远不会到达 <span class="underline">get_prime</span> 函数的结尾。这样我们就可以让 <span class="underline">next()</span> 调用 <span class="underline">generator</span> 的时候一直输出。这也是处理无穷序列的一般方法（也是 <span class="underline">generator</span> 的常用方法）。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 看看程序的控制流</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+我们回到调用 <span class="underline">get_primes</span> 的代码： <span class="underline">solve_number_10</span> 。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">solve_number_10</span>():
+    <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">She *is* working on Project Euler #10, I knew it!</span>
+    <span style="color: #4eee94;">total</span> = <span style="color: #a2cd5a;">2</span>
+    <span style="color: #00bfff;">for</span> next_prime <span style="color: #00bfff;">in</span> get_primes(<span style="color: #a2cd5a;">3</span>):
+        <span style="color: #00bfff;">if</span> next_prime &lt; <span style="color: #a2cd5a;">2000000</span>:
+            <span style="color: #4eee94;">total</span> += next_prime
+        <span style="color: #00bfff;">else</span>:
+            <span style="color: #00bfff;">print</span>(total)
+            <span style="color: #00bfff;">return</span>
+</pre>
+</div>
+<p>
+看看我们在 <span class="underline">solve_number_10</span> 函数 <span class="underline">for</span> 循环里调用 <span class="underline">get_primes</span> 时前面几个元素是如何产生的，这样也有助于我们更好的理解程序的流程。当 <span class="underline">for</span> 循环向 <span class="underline">get_primes</span> 请求第一个值的时候，我们就像普通函数一样的进入到 <span class="underline">get_primes</span> 里。
+</p>
+<ol class="org-ol">
+<li>我们在第三行进入 <span class="underline">while</span> 循环
+</li>
+<li>恰好 <span class="underline">if</span> 条件符合(3是素数)
+</li>
+<li>我们就产生值3，同时将控制流交回给 <span class="underline">solve_number_10</span>
+</li>
+</ol>
+
+<p>
+然后我们回到 <span class="underline">solve_number_10</span> :
+</p>
+
+<ol class="org-ol">
+<li>3被传回到了 <span class="underline">for</span> 循环中
+</li>
+<li><span class="underline">for</span> 循环把值赋给了 <span class="underline">next_prime</span>
+</li>
+<li><span class="underline">next_prime</span> 被加到了 <span class="underline">total</span> 上
+</li>
+<li><span class="underline">for</span> 循环从 <span class="underline">get_primes</span> 获得下一个值
+</li>
+</ol>
+
+<p>
+这次，我们不是从 <span class="underline">get_primes</span> 的最开始重新开始，而是直接从之前停下来的 <span class="underline">第五行</span> 继续。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(number):
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #00bfff;">if</span> is_prime(number):
+            <span style="color: #00bfff;">yield</span> number
+        <span style="color: #4eee94;">number</span> += <span style="color: #a2cd5a;">1</span> <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</pre>
+</div>
+<p>
+更重要的是， <i><span class="underline">number</span> 还是保持我们之前调用 <span class="underline">yield</span> 时的值（也就是3）</i> 。我们说过， <span class="underline">yield</span> 不仅仅是返回值给调用 <span class="underline">next()</span> 的方法，而且还会保存 <span class="underline">generator函数</span> 中的状态。显然，之后 <span class="underline">number</span> 就会增加到4,我们又到达 <span class="underline">while</span> 循环的开始，继续增加 <span class="underline">number</span> 直到我们到达下一个素数(5)。然后我们再一次的 <span class="underline">yield</span> ，将值传出到 <span class="underline">solve_number_10</span> 的 <span class="underline">for</span> 循环里。如此循环一直持续下去，直到 <span class="underline">for</span> 循环结束(代码中就是第一个大于2000000的素数)。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 更加强大的功能</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+在<a href="http://www.python.org/dev/peps/pep-0342/">PEP342</a> 中，还进一步的加入了将值传入到 <span class="underline">generator</span> 的支持。<a href="http://www.python.org/dev/peps/pep-0342/">PEP342</a> 让 <span class="underline">generator</span> 可以产生值（之前就可以），接受值，或者在一个语句中同时产生和接受(不同)值。
+为了说明如何将值传给 <span class="underline">generator</span> ，我们回到素数例子上。这次，不是简单的依次返回比 <span class="underline">number</span> 大的数字，我们要找到比一个连续的幂大的最小的素数（假设是10,我们就需要找到比10大的最小素数，然后是100，然后是1000，等等）。我们同样从 <span class="underline">get_primes</span> 开始：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">print_successive_primes</span>(iterations, base=<span style="color: #a2cd5a;">10</span>):
+    <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">like normal functions, a generator function</span>
+    <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">can be assigned to a variable</span>
+
+    <span style="color: #4eee94;">prime_generator</span> = get_primes(base)
+    <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">missing code...</span>
+    <span style="color: #00bfff;">for</span> power <span style="color: #00bfff;">in</span> <span style="color: #f08080;">range</span>(iterations):
+        <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">missing code...</span>
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(number):
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #00bfff;">if</span> is_prime(number):
+        <span style="color: #7f7f7f;"># </span><span style="color: #7f7f7f;">... what goes here?</span>
+</pre>
+</div>
+<p>
+<span class="underline">get_primes</span> 的下一行需要说明下， <span class="underline">yield number</span> 会将 <span class="underline">number</span> 的值传出， <span class="underline">other = yield foo</span> 的形式则是， <span class="underline">yield foo</span> ，同时如果有值传入给我，则将 <span class="underline">other</span> 设置为这个值。你可以通过 <span class="underline">generator</span> 的 <span class="underline">send</span> 方法传入值。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_primes</span>(number):
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #00bfff;">if</span> is_prime(number):
+            <span style="color: #4eee94;">number</span> = <span style="color: #00bfff;">yield</span> number
+        <span style="color: #4eee94;">number</span> += <span style="color: #a2cd5a;">1</span>
+</pre>
+</div>
+<p>
+这样，我们就是在每次 <span class="underline">generator</span> 产生值的时候将 <span class="underline">number</span> 设置为另外一个值。完整的代码如下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">def</span> <span style="color: #daa520;">print_successive_primes</span>(iterations, base=<span style="color: #a2cd5a;">10</span>):
+    <span style="color: #4eee94;">prime_generator</span> = get_primes(base)
+    prime_generator.send(<span style="color: #a2cd5a;">None</span>)
+    <span style="color: #00bfff;">for</span> power <span style="color: #00bfff;">in</span> <span style="color: #f08080;">range</span>(iterations):
+        <span style="color: #00bfff;">print</span>(prime_generator.send(base ** power))
+</pre>
+</div>
+<p>
+记住两件事：第一，我们可以打印 <span class="underline">generator.send</span> 的返回值，因为 <span class="underline">send</span> 函数在传值给 <span class="underline">generator</span> 的同时也返回了 <span class="underline">generator</span> 产生的值(和 <span class="underline">yield</span> 在 <span class="underline">generator 函数</span> 中的表现类似)。
+</p>
+
+<p>
+第二，注意 <span class="underline">prime_generator.send(None)</span> 这行。当使用 <span class="underline">send</span> 去启动一个 <span class="underline">generator</span> 时（也就是从 <span class="underline">generator</span> 的第一行一直执行到第一次遇到 <span class="underline">yield</span> ），需要传一次 <span class="underline">None</span> 。这是因为定义 <span class="underline">generator</span> 的时候代码还没有运行到第一个 <span class="underline">yield</span> ，所以如果我们这时候发送一个值就没有语句接收到这个值。等到 <span class="underline">generator</span> 启动后，就可以像上面那样直接发送值了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 复习与总结</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+在这个系列的下半场，我们会讨论各种加强 <span class="underline">generator</span> 的方法，还有这些方法带来的强大能力。 <span class="underline">yield</span> 也成为Python里最强大的关键字。现在我们对 <span class="underline">yield</span> 的工作原理已经有了很好的理解，我们现在已经可以理解更多 <span class="underline">yield</span> 的古怪用法。
+信不信由你，我们其实也只是了解了 <span class="underline">yield</span> 强大能力的皮毛。比如，像上面那样利用 <span class="underline">send</span> 传递值的方法，一般都不会用在我们例子里面这么简单的序列上。下面，我们贴了一段传递值的常用方法。我不会再说明这段代码具体如何工作及其工作原理，你们就当是第二部分的热身吧。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #00bfff;">import</span> random
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">get_data</span>():
+    <span style="color: #deb887;">"""Return 3 random integers between 0 and 9"""</span>
+    <span style="color: #00bfff;">return</span> random.sample(<span style="color: #f08080;">range</span>(<span style="color: #a2cd5a;">10</span>), <span style="color: #a2cd5a;">3</span>)
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">consume</span>():
+    <span style="color: #deb887;">"""Displays a running average across lists of integers sent to it"""</span>
+    <span style="color: #4eee94;">running_sum</span> = <span style="color: #a2cd5a;">0</span>
+    <span style="color: #4eee94;">data_items_seen</span> = <span style="color: #a2cd5a;">0</span>
+
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #4eee94;">data</span> = <span style="color: #00bfff;">yield</span>
+        <span style="color: #4eee94;">data_items_seen</span> += <span style="color: #f08080;">len</span>(data)
+        <span style="color: #4eee94;">running_sum</span> += <span style="color: #f08080;">sum</span>(data)
+        <span style="color: #00bfff;">print</span>(<span style="color: #deb887;">'The running average is {}'</span>.<span style="color: #f08080;">format</span>(running_sum / <span style="color: #f08080;">float</span>(data_items_seen)))
+
+<span style="color: #00bfff;">def</span> <span style="color: #daa520;">produce</span>(consumer):
+    <span style="color: #deb887;">"""Produces a set of values and forwards them to the pre-defined consumer</span>
+<span style="color: #deb887;">    function"""</span>
+    <span style="color: #00bfff;">while</span> <span style="color: #a2cd5a;">True</span>:
+        <span style="color: #4eee94;">data</span> = get_data()
+        <span style="color: #00bfff;">print</span>(<span style="color: #deb887;">'Produced {}'</span>.<span style="color: #f08080;">format</span>(data))
+        consumer.send(data)
+        <span style="color: #00bfff;">yield</span>
+
+<span style="color: #00bfff;">if</span> <span style="color: #f08080;">__name__</span> == <span style="color: #deb887;">'__main__'</span>:
+    consumer = consume()
+    consumer.send(<span style="color: #a2cd5a;">None</span>)
+    producer = produce(consumer)
+
+    <span style="color: #00bfff;">for</span> _ <span style="color: #00bfff;">in</span> <span style="color: #f08080;">range</span>(<span style="color: #a2cd5a;">10</span>):
+        <span style="color: #00bfff;">print</span>(<span style="color: #deb887;">'Producing...'</span>)
+        <span style="color: #f08080;">next</span>(producer)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> 重点</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+在这个文章里面请记得这些重点：
+</p>
+
+<ul class="org-ul">
+<li><span class="underline">generators</span> 用来产生一系列的值
+</li>
+<li><span class="underline">yield</span> 就像 <span class="underline">generator函数</span> 的 <span class="underline">return</span>
+</li>
+<li><span class="underline">yield</span> 唯一的不同就是会保存 <span class="underline">generator函数</span> 的状态
+</li>
+<li><span class="underline">generator</span> 只是一种特殊的 <span class="underline">iterator</span>
+</li>
+<li>如同 <span class="underline">iterator</span> ，我们可以通过调用 <span class="underline">next()</span> 获得 <span class="underline">generator</span> 的下一个值
+<ul class="org-ul">
+<li><span class="underline">for</span> 会隐式的调用 <span class="underline">next()</span>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>
+希望这篇文章能有所助益。如果你从没听说过 <span class="underline">generator</span> ，希望你能够明白他是什么、为什么有用还有如何使用。如果你已经熟悉了 <span class="underline">generator</span> ，希望这篇文章能为你解惑。
+老样子，任何部分不清楚的（或者存在错误的），请不吝指教。你可以在下面留言，或者邮件给我jeff@jeffknupp.com， 或者twitter上找我<a href="http://www.twitter.com/jeffknupp">@jeffknupp</a>。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+目测应该是这个<a href="http://gvr.sourceforge.net/index.php">http://gvr.sourceforge.net/index.php</a>
+</p></div>
+
+
+</div>
