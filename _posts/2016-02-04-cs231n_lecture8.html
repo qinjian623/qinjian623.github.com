@@ -1,0 +1,90 @@
+---
+layout: post
+title: CS231n Lecture 8
+---
+
+<p>
+昨天看了下CS231n课程视频的Lecture8，讲的主要是CNN在Detection的内容。实际上，主要讲的就是RCNN这块， 毕竟这是作者的亲儿子。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 任务分类</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+按照难度依次增加： Classfication =&gt; Classification + Localization =&gt; Object Detection =&gt; Instance Segmentation。
+</p>
+
+<p>
+RCNN做的主要是第三的内容，所以实际上这个一小时的视频主要还是第三个的内容。最后这块基本没有提，但是其实已经有论文发了用CNN做这块的内容了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> CNN的方法</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 分类</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+这个是CNN最开始的应用，所以没什么可提的。一般来说的区别就是调参，这也是黑魔法。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 分类与定位</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+说了一下可能的途径：
+</p>
+</div>
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Localization as Regression</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+回归模型来做，输出四个坐标位置。这个自己的工作上也用了， 效果还是可以的。
+</p>
+<ol class="org-ol">
+<li>训练的时候输出两个结果，一个分类，一个是定位的结果。
+</li>
+<li>Regression 层的位置。可以在FC后面，也可以在Conv的后面。这个问题其实没什么意义，其实在哪都可以。不过在我看来，因为涉及到了定位的信息，所以是需要知道整个图像的全局信息的。只要能够获得全局信息，然后通过学习，网络里面的参数还是会自己适应的。
+</li>
+<li></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Sliding Window</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+属于传统暴力方法了， 这个方法其实可以用来做第三部分的工作。例子是Overfeat。结果最后加权合并。然后讨论的怎样加速。其实就是把后面的FC转换成Conv的形式。之前我自己也说明过，其实Conv只是考虑空间信息的FC，所以两者没有区别。只要换一下数据格式就能互相换用。
+</p>
+
+<p>
+后面的ImageNet的数据里面还说了下微软的ResNet，不过Andrej考虑到定位方法不太一样没有细说。当然，看样子还是有点酸酸的感觉。Caffe好像已经支持ResNet了。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 目标检测</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+这块主要的问题是物体数目不定的情况。所以网络很难处理这个问题。或者就是前面的Sliding Window，其实对网络来说会很慢。然后提了一下传统的CV方法。HOG/DPM，这里Andrej也提到了有论文说明DPM和CNN其实是类似的，那篇论文还没读过，但是起码我支持CNN和DPM其实是等价的。
+</p>
+
+<p>
+然后就是RCNN的内容了， 先Region Proposals，然后CNN提取特征，最后SVM分类。之后是Fast RCNN。进一步的是Faster RCNN。这名字起得真是6。主要的工作就是一步步的将工作都交给CNN来完成。RCNN这个东西，从我开始读他的论文就觉得太恶心了，杂七杂八的东西组在一起，训练起来就是磨人的小妖精，当然，Andrej视频里也是这么觉得的。全部交给CNN来处理是很自然朴素的想法，毕竟CNN本身就肯定有这个能力。
+</p>
+
+<p>
+Faster RCNN先用Region Proposal Network出预选，然后在这个基础上分类加定位。这样对比我自己之前的工作，两者在结构上基本就是一致的，当然细节上有不同。考虑到我没读过Faster RCNN的资料（主要是RCNN的结构实在太丑了，之后就对这个没兴趣了，自己就不再关注这个了），自己的想法最后还是落到这个上，说明这个途径还是符合人的直觉和朴素想法的。当然，目前这个结构还是丑。我自己目前的工作之一就是考虑怎么把这些所有的东西都放入一个网络中，当然，这个其实已经有人做了，论文也有了。
+</p>
+
+<p>
+在后面的几分钟里面，还说了一个YOLO的网络。这个的性能非常好（能到145fps），而且准确率上也不差。
+</p>
+</div>
+</div>
+</div>
