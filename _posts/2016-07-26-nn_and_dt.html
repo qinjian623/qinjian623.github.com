@@ -1,0 +1,102 @@
+---
+layout: post
+title: 神经网络与决策树的分类能力等价的思考
+---
+
+<p>
+最近的观察和理解表明，神经网络即使只限制在分类任务上（据我所知目前决策树似乎还不能应用在其他种类的任务上），也具有不亚于决策树的表达能力。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 决策树的表达能力</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+我们已知决策树是通过二分法进行分类的一种方法，不断的选择属性进行划分，具有非常好的非线性的分类能力。因为每一步一般都是针对一个属性进行划分，我们决策树分类的平面图像化后都是一个个方块型的组成，这有点类似Minecraft，一个个的方块进行拟合（似乎离散世界对于连续世界的模拟都是这个结果）。对于离散型的变量，划分点十分容易解决，对于连续型变量，需要利用信息增益等方法决定划分点（当然， 这是其一个缺陷，因为如果出现在划分点附近的连续值可能最后的分类结果会因为在划分点左右的不同而完全不同，实际可能只有很小的差距）。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 神经网络对决策树划分能力的模拟</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+我们可以利用神经元或者几个神经元完成对决策树分别对离散型和连续性变量划分能力的模拟。可以分类如下：
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 二值离散变量</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+这是最简单的情况，可以假设数据属性如下（f<sub>0</sub>, f<sub>1</sub>, f<sub>b</sub>, f<sub>3</sub> ）, 其中f<sub>b为二值变量，取值（0，1）。</sub>
+</p>
+
+<p>
+单一神经元就具有这一分类能力：ReLU(0*f<sub>0</sub> + 0*f<sub>1</sub> + 1*f<sub>b</sub> + 0*f<sub>3</sub> + 0)， 这个神经元的能力是显而易见的。当然，实际中神经元的训练结果不会如此完全拟合，但是可以做到非常接近。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 连续变量</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+我们可以先跳过多值离散变量，首先考虑连续变量（因为多值离散变量的情况其实可以认为是连续变量的一种）。
+假设数据属性如下（f<sub>0</sub>, f<sub>1</sub>, f<sub>c</sub>, f<sub>3）</sub>,其中 f<sub>c</sub> 取值范围［1-100］，我们需要划分出［20-40］范围，那么首先，我们可以利用如下神经元：
+ReLU(0*f<sub>0</sub> + 0*f<sub>1</sub> + 0.05*f<sub>c</sub> + 0*f<sub>c</sub> - 1)，通过这一神经元后，我们会将［20-100］的区间映射到［0-4］。
+</p>
+
+<p>
+之后我们可以通过下一层的一个神经元将［40-100］的区间都映射到0值上，这里我们只关心这一属性，不再涉及其它属性（因为权值可以被学习成0，从而对结果无影响）:
+ReLU(-1*f + 1)
+</p>
+
+
+<p>
+事实上，我们已知三层神经网络的能力可以拟合任意函数，所以对于连续变量，其实可以通过一个驼峰形的函数完成拟合， 上面的例子不是驼峰型的函数，但是已经说明了网络的表达能力。对于连续变量上多个区间的情况，可以通过多个驼峰完成模拟。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 多值离散变量</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+这与连续变量一致，可以通过单驼峰或者多个驼峰的函数形状来完成区分。相信网络可能会学习出更加适合多值离散变量的区分方式，不过，既然连续变量的情况可以解决这一问题，那么已经证明神经网络对多值离散变量也具有类似决策树的表达能力
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 神经网络与决策树等价的讨论</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+从我的理解来看，以上内容可以推出以下几点：
+</p>
+<ol class="org-ol">
+<li>神经网络可以模拟决策树中所有的能力。
+</li>
+<li>对于连续型变量，决策树的分割是利用信息增益等启发式的搜索。而神经网络是通过自学习。
+</li>
+<li>神经网络还可以一次考虑多种属性，并且自学习出其中的关系。决策树可以通过增加树的深度，隔层重复考虑同一属性来实现这个能力。
+</li>
+<li>我们是否可以认为：神经网络可以在分类任务上表达能力不亚于决策树。当然，实际中的表达能力还与网络规模与结构，学习算法等因素有关。
+</li>
+<li>决策树的高效运行能力、可理解能力是强于黑盒一般的神经网络的。
+</li>
+<li>决策树可以非常快速的学习到很多层，网络为了学习到等价的能力，深度会超过决策树，带来的问题就是性能的下降、学习难度的增加，以及需要非常大量的数据。
+</li>
+<li>神经网络的结构有利于硬件层的各种优化。决策树由于考虑到了逻辑，利用简单的硬件架构进行优化的能力不足。
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 一个进一步的问题</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Dropout被神经网络用于提高泛化性能和鲁棒性，考虑到本文讨论的其于决策树的关系，这一结构让人自然的想到 Random Forests，这两者是否具有一定的关系甚至是否能够等价？
+</p>
+</div>
+</div>
