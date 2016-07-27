@@ -5,14 +5,14 @@ permalink: /:categories/:year/:month/:day/:title
 timezone: Asia/Shanghai
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
-pygments: true
+# pygments: true
+highlighter: rouge
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
-#
 title : K.I.S.S
 name : K.I.S.S
-tagline: Site Tagline
+# tagline: Site Tagline
 author :
   name : Qin Jian
   email : qinjian623@gmail.com
