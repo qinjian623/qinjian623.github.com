@@ -1,0 +1,134 @@
+---
+layout: post
+title: Dart && Atom
+---
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Dart是个好语言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+自己在几年前就关注了Dart,主要原因就是我实在是太讨厌JavaScript了.作为一名程序员,手上一点都不沾JS在这个时代似乎有点不现实, 于是我就在找寻JS替代这条不归路上渐行渐远.
+</p>
+
+<p>
+这货后来似乎遇到了一个打击,Chrome不打算集成dart的vm.当然,这个倒也不影响web上继续,因为这货本来就支持编译到JavaScript. 当然,感觉这伙一直也就这么半死不活的. 这几天决定给自己写个玩具玩玩. 于是就想到了这货. 打开一看, 嘿嘿嘿, 你这浓眉大眼的也开始闷声发大财了: flutter用的是dart. 再看看官网的几个方向: Web前端, Server端, 移动端, 嵌入式端. 这盘子开的有点大.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 为毛好</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+因为我觉得好, 因为好就是个主观的看法. 这世界上有很多东西无所谓好坏, 无所谓对错, 对我胃口就可以了.
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-1-0-1" name="sec-1-1-0-1"></a>类C语言语法<br  /><div class="outline-text-5" id="text-1-1-0-1">
+<p>
+无需陡峭的上手, 语法层面学习成本几近于零. 文档和教程都还算丰富. 
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-2" name="sec-1-1-0-2"></a>标准库支持<br  /><div class="outline-text-5" id="text-1-1-0-2">
+<p>
+本身有良好的标准库, 日常开发, 自己实现数据结构的需求几近于零.
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-3" name="sec-1-1-0-3"></a>类型系统与自动推断<br  /><div class="outline-text-5" id="text-1-1-0-3">
+<p>
+有类型系统, 从我个人的尿性来看, 这是多么好的一个特性. 更加好的是, 有自动的类型推断, 这还有什么好说的. 编译器算是能帮你做的都往死里给你做了.
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-4" name="sec-1-1-0-4"></a>OOP,泛型, traits<br  /><div class="outline-text-5" id="text-1-1-0-4">
+<p>
+虽说我对OOP没太多感情, 但是泛型这个东西我个人感情上很喜欢啊. 还有个traits(虽然我一直就不知道traits是个毛东西,反正我就一直当是interface).
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-5" name="sec-1-1-0-5"></a>可用的DE<br  /><div class="outline-text-5" id="text-1-1-0-5">
+<p>
+官方提供了开发环境支持, 包括, 算了够多了, 懒得写. 我用的是atom写dart, 插件工具我只能说是好好好. 虽然官网上说了atom插件不是官方支持, 但是我感觉这一定是官网太谦虚, 怎么看atom上的插件也是官方支持的水准.
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-6" name="sec-1-1-0-6"></a>包管理系统<br  /><div class="outline-text-5" id="text-1-1-0-6">
+<p>
+有个pub管理系统, 虽说看起来呆呆的, 我用起来也是一头雾水, 但是起码管用, pub可以自己安装项目模板工具, 新建项目也很简单(虽然我只是用来生成项目文件, 装下依赖, 最后还是自己亲手动一下项目结构). 
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-0-7" name="sec-1-1-0-7"></a>全软件栈&amp;多平台支持<br  /><div class="outline-text-5" id="text-1-1-0-7">
+<p>
+与NodeJS无异, 这对我等恨JS堪比国恨家仇的人来说, 简直了. 另外, Flutter要是能成了, 直接写iOS和Android应用.
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Cons</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+剩下的问题, 我觉得, 都不是问题, 没错.
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-2-0-1" name="sec-1-2-0-1"></a>编译速度<br  /><div class="outline-text-5" id="text-1-2-0-1">
+<p>
+编译到JS的速度有点慢, 特别是用的库多了以后, 我就一个一百行的小程序, 用了两个库, 编译就要十秒了. 要是能增量编译, 这dart, 夫复何求.
+</p>
+</div>
+</li>
+<li><a id="sec-1-2-0-2" name="sec-1-2-0-2"></a>编译警告<br  /><div class="outline-text-5" id="text-1-2-0-2">
+<ol class="org-ol">
+<li>因为动态性的原因, 一些静态语言里面的error, 编译器给的是warn. 
+</li>
+<li>还有变量没分配内存的问题, 编译器不检查, 结果会在运行时报null的错误, 结合上一个龟速编译, 真是一把心酸泪. 这个其实编译器肯定能检查出来, 起码局部变量没分配内存这种问题应该可以给个警告吧.
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 总结</h3>
+<div class="outline-text-3" id="text-1-3">
+<ol class="org-ol">
+<li>Dart是个好学校, 好语言.
+</li>
+<li>没有标新立异的地方, 语言核心不大, 语法糖足够, 生产率能保证. 是个好劳模.
+</li>
+<li>开发环境灵活多样, 按需选择.
+</li>
+<li>软件框架可有可无, 项目范围大小通吃.
+</li>
+<li>性能不差, 我看了看benchmark, 应该是Server端, 反正不差. 和NodeJS也算不相上下, NodeJS都能用得, Dart还能用不得?
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Atom是个好编辑器</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+21世纪的编辑器, 还算是配得上这个名号的. 我猜测, 应该编辑器的架构组织的很好, 所以插件编写上生产率可观.
+</p>
+
+<p>
+Github在后面支持着, 可以保证未来的用户流入速度. Atom的用户只会越来越多, 因为新的程序员都会从Github上开始自己的编码历险. 而且是商业公司支持, 而非完全的社区支持. 质量有保证, 维护有保证.
+</p>
+
+<p>
+软件这个东西和开淘宝店类似, 有入口-&gt;有流量-&gt;有用户-&gt;可变现-&gt;有财力. 马太效应能上天, 自从我知道同学的堂弟开淘宝店, 每年三个月, 顶我干三年, 我什么都要用淘宝店来比比看. 
+</p>
+
+<p>
+那么, 还剩下一个问题, Atom用CSS和JS配置. 不过反正我也不写插件, 眼不见为净.
+</p>
+
+<p>
+综上, Atom是个好编辑器. 替代Vim和Emacs, 指年可待. 谁说指日可待的, 那就是不客观.
+</p>
+</div>
+</div>
