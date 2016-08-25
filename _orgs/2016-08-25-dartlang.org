@@ -1,0 +1,10 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Dart && Atom
+---
+#+END_HTML
+
+自己在几年前就关注了Dart，主要原因就是我实在是太讨厌JavaScript了。作为一名程序员，手上一点都不沾JS在这个时代也没办法。
+这货后来似乎遇到了一个打击，Chrome不打算集成dart的vm。当然，这个倒也不影响web上继续，因为这货本来就支持编译到JavaScript。
+
