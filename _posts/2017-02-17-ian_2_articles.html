@@ -1,0 +1,95 @@
+<p>
+  Ian Goodfellow的两篇合作短文。主题是神经网络的安全相关问题。
+</p>
+
+<p>
+  GAN的论文我还没有开始看，所以这两篇短文是边看边脑洞的结果。
+  这个问题在训练网络的时候
+</p>
+
+
+<ol class="org-ol">
+  <li>反向训练的可能性？</li>
+</ol>
+
+
+<div id="outline-container-orgheadline3" class="outline-2">
+  <h2 id="orgheadline3"><span class="section-number-2">1</span> Breaking things is easy</h2>
+  <div class="outline-text-2" id="text-1">
+  </div><div id="outline-container-orgheadline1" class="outline-3">
+    <h3 id="orgheadline1"><span class="section-number-3">1.1</span> 内容</h3>
+    <div class="outline-text-3" id="text-1-1">
+      <p>
+        先说明的安全三要素,还好自己之前学的安全相关的,这些东西可以过得快点.
+      </p>
+
+      <p>
+        之后举例可能的攻击手段, 针对integrity的两个可能方法,以及应该是confidentiality的攻击:
+      </p>
+      <ol class="org-ol">
+        <li>毒化训练数据</li>
+        <li>adversarial examples进行模型的误导</li>
+        <li>隐私攻击</li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="outline-container-orgheadline2" class="outline-3">
+    <h3 id="orgheadline2"><span class="section-number-3">1.2</span> 我的废话</h3>
+    <div class="outline-text-3" id="text-1-2">
+      <p>
+        从自己的经验来看, ML本身有其非常明显的缺陷. 而且即使不同的模型和算法都有很大的倾向具有相同弱点. 这对于adversarial examples的应用是十分有利的. 我们甚至无需知道背后模型是NN还是SVM还是决策树, 在一个具体的数据集上训练, 这些方法都会产生一个相似的黑盒模型, 都会犯相似的错误. 可能是因为训练数据分布相同造成的决策边界接近. 所以, 我们可以利用SVM来模拟和试探NN的adversarial example.
+      </p>
+
+      <p>
+        当然,还有在已知模型的情况下更有针对性的对模型的gradient的攻击. 只要是本地运行的模型, 其本身的保密性是100%无法保证的. 换句话说, 你将模型部署到本地, 就意味着这个模型可以100%的被别人明文分析. 这样就可以非常轻松的产生针对性的adversarial examples. 我自己就逆向解密过别人的模型, 作为我们自己的训练数据的bootstrap的起步(这个其实不是太合法). 如果未来有关键任务依赖ML算法, 尤其是设备可以被物理访问的任务(比如自动驾驶任务), 分析模型后进行针对性的攻击是很轻松很轻松的(没错, 我说的是很轻松). 当然, 工程师会有各种措施保证关键任务的安全性, 但是却会影响到availability这个层面. 针对自动驾驶, 攻击可能不会造成车祸这种严重问题, 但是可以做到混乱ML模块, 让汽车被迫停下/减速. 后续再通过其他方法实现最终的攻击意图.
+      </p>
+
+      <p>
+        由于网络模型本身在confidentiality这里就不能保证, 这整个系统其实对于"有心人"来说, 是个大门敞开的情况的. 我们的私人手机/电脑可以通过随身携带保证物理安全. 但是, 汽车是没法保证的, 而且是长时间无法保证的, 而且有非常稳定的模式, 每天固定时间都会停在一个基本固定的地区. 第一天, 十分钟拷贝模型和程序. 第二天, 老地方, 十分钟, 部署攻击程序. 
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div id="outline-container-orgheadline5" class="outline-2">
+  <h2 id="orgheadline5">
+    <span class="section-number-2">2</span> Is attacking machine learning easier than defending it?</h2>
+  <div class="outline-text-2" id="text-2"></div>
+  <div id="outline-container-orgheadline4" class="outline-3">
+    <h3 id="orgheadline4"><span class="section-number-3">2.1</span> 内容参杂我的废话</h3>
+    <div class="outline-text-3" id="text-2-1">
+      <p>
+        首先, 当然是easier的. 如何增加模型的robust.
+      </p>
+      <ol class="org-ol">
+        <li>Adversarial training</li>
+        <li>Defensive distillation</li>
+      </ol>
+
+
+      <p>
+        一个是在训练过程中增加针对性的数据. 一个是后续增加一个网络对前面的网络分布进行修正, 让决策面能够更加平滑(然而, 这个在我看来没什么用).
+      </p>
+
+      <p>
+        一个失败案例的分析:“gradient masking”, 这个符合上面的我的废话中可以利用SVM模拟试探NN, 只要有一个可用的数据集, 模型是可以利用数据进行猜测的. 而且, 从我自己目前观察到的现象来看, 模型会倾向于犯相同的错误(尤其是NN这种自学习特征的, 人工特征可以利用人工这一步强行纠一下模型). 即使你通过隐藏模型的输出细节提高安全性(这里肯定是服务器上的模型, 本地模型没有隐藏细节的可能性), 攻击者也可以利用数据试探, 构建一个自己的数据集. 考虑到之前我自己观察到的现象, 如果数据上可以做到和训练数据有一定的相似性, 拟合服务器上的模型问题不大. 
+      </p>
+
+      <p>
+        "whack-a-mole"游戏, 讨论的是目前的安全手段没有太多可用的. 要么没什么作用, 有作用的也抗不长时间. 这个我觉得就是无解的, 即使现在的安全系统也这样, 何况ML的系统还加入这么一个概率模型在里面, 留给攻击者进行进化的手段更多了. 作者提到了一个differential privacy, 似乎也只是保证用户的隐私安全, 如果确实如此, 那么还是没有其他额外的安全保证的. 
+      </p>
+
+
+      <p>
+        作者对于这个问题原因的回答就是两个: 1. 非凸优化的理论不足, 没办法保证. 2. 模型本身不可能突破统计规律, 总会有特殊案例的存在. 
+      </p>
+
+      <p>
+        其他攻击的方法还有类比以及最后的总结不多说. 我个人的观点很简单, ML模型的安全在任何情况下都是无法保证的, 尤其在你是高价值目标的情况下. 
+      </p>
+    </div>
+  </div>
+</div>
+
