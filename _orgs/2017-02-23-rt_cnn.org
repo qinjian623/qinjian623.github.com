@@ -1,0 +1,22 @@
+#+BEGIN_HTML
+---
+layout: post
+title: 有关提升CNN运行速度的论文列表及极简单关键词摘要
+---
+#+END_HTML
+这还是年前读的几篇有关通过优化网络结构提升CNN运行速度的几篇论文。
+只是简单的列表，外加论文中提到的方法的关键词。
+
+这些还没有应用到自己的网络中，也是未来一段时间的试验方向。当然，未必会有理想结果。
+** Xception
+   + Separable Convolution Layer
+** QuickNet
+   + PReLu
+   + Simple Entry
+   + Xception
+** SqueezeNet
+   + 3x3 to 1x1
+   + Input channels
+** Aggregated Residual Transformations for Deep Neural Networks
+   + Group conv
+
