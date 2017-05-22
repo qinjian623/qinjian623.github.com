@@ -1,0 +1,60 @@
+#+BEGIN_HTML
+---
+layout: post
+title: 新日志系统回复的备忘录
+---
+#+END_HTML
+
+  旧的系统被荒废了很长一段时间，最近的一条记录貌似也在2015年了。旧系统内还存了不少记录和想法，看样子还得后续慢慢整理整理。
+
+  恢复日志系统这个事情一直说要弄没有弄，结果活生生拖了这么长时间。回头看自己之前的系统，有些东西搞得太复杂了，新手就是这个风格，恨不得一口吃成一个胖子，有什么功能都往里加。
+
+  写代码同理，代码搞得非常复杂，调用一层层的，回头看着就心烦，当然，当时肯定特别满意，感觉自己定义了一个这么有扩展性的系统，充满了智慧上的满足感。然而，根据我的新观点，第一次写一个领域里面的代码，就别考虑那么多了，越简单越好，其他的都是扯。
+
+  于是，我现在要重新恢复日志系统，越简单越好：
+  1. 依然依赖org-mode.
+  2. 记录时间
+  3. 分清工作和个人的内容
+  
+     
+  于是，我发现org默认的设置没什么要改的，就自己定义了两个命令方面看东西。
+
+  #+BEGIN_SRC emacs-lisp
+(setq org-log-done t)
+(global-set-key "\C-ca" 'org-agenda)
+(setq org-directory "~/Dropbox/log")
+(setq org-agenda-files 
+      (list "~/Dropbox/log/2017.org"))
+(setq org-agenda-custom-commands 
+      '(("o" "Office Lists"
+         ((agenda)
+          (tags "AAA")
+          (tags "BBB")))
+        ("h" "Home Lists"
+         ((agenda)
+          (tags "Home")))
+        ("d" "Daily Action List"
+         ((agenda "" ((org-agenda-ndays 1)
+                      (org-agenda-sorting-strategy
+                       (quote ((agenda time-up priority-down tag-up) )))
+                      (org-deadline-warning-days 0)
+                      ))))
+        ;; ...other commands here
+        ))
+  #+END_SRC
+
+
+  主要的几个流程就是：
+  1. 建各项目。
+  2. C-c C-t改TODO/DONE状态。
+  3. 设置下优先级，schedule。
+  4. Clock in/ Clock out记录时间。
+  5. Agenda view里面看看信息，主要就是l,R,w,d几个快捷键。
+  6. 自己设置了几个tag，可以过滤用的。
+
+
+  先用着，应该没什么问题，自己反正也懒的很，估计放着就不会动了。
+  
+  
+
+  

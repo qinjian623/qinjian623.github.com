@@ -1,0 +1,11 @@
+#+BEGIN_HTML
+---
+layout: post
+title: 生成模型与判别模型
+---
+#+END_HTML
+** Refs
+1. http://ai.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf
+2. http://stats.stackexchange.com/questions/12421/generative-vs-discriminative
+3. http://freemind.pluskid.org/machine-learning/discriminative-modeling-vs-generative-modeling/
+
