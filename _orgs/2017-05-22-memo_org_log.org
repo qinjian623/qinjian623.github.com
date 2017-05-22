@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: 新日志系统回复的备忘录
+title: 新日志系统恢复的备忘录
 ---
 #+END_HTML
 
