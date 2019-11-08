@@ -58,6 +58,7 @@ Andrew的 machine learning yearning中提到了一些方法，比如如何判断
    + Nonloca
 ## Extra
 3. Attention
+   +   
 
 
 
@@ -77,3 +78,5 @@ https://medium.com/neuralmachine/knowledge-distillation-dc241d7c2322
 https://papers.nips.cc/paper/7338-how-to-start-training-the-effect-of-initialization-and-architecture.pdf
 https://www.deeplearning.ai/ai-notes/initialization/
 https://www.deeplearning.ai/ai-notes/optimization/
+
+
