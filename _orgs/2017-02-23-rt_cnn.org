@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 有关提升CNN运行速度的论文列表及极简单关键词摘要
 ---
-#+END_HTML
+#+END_EXPORT
 这还是年前读的几篇有关通过优化网络结构提升CNN运行速度的几篇论文。
 只是简单的列表，外加论文中提到的方法的关键词。
 

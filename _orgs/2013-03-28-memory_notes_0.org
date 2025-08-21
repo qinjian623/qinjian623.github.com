@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: What Every Programmer Should Know About Memory Notes 0
 tags: [pl, 笔记]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: What Every Programmer Should Know About Memory Notes 0
 #+AUTHOR: Qin Jian
 #+LATEX_HEADER: \usepackage{xeCJK}

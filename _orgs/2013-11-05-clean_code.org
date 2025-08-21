@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 编写可读代码的艺术
 ---
-#+END_HTML
+#+END_EXPORT
 
 *前言*
   + 妈蛋,这书自己的可读性就坑爹,部分内容的标题按照字体大小区分,没有缩进和编号

@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 近期的工作总结
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 这一年竟然没有任何更新，只能说，我堕落了。要说工作内容紧张了，显然没有，起码没有多么紧张。那么，一个很大概率的推断就是：女友是个吃时间的大怪物。
@@ -16,9 +16,9 @@ title: 近期的工作总结
   整体过程自然是跌宕起伏，在我们开始这个项目的时候，公司内已经有一个一样的项目启动了一年了，真是搞不懂当时的老板是怎么想的。开始之后的将近4个月的扯皮就不表了，只想安心的写份代码，但是真的是因为各种扯皮和恶心没有这个心情。15年的9, 10月份更是被强行调入另外一组帮忙，理由竟然是，“你们都会写c”，当然，这些都是老板的要求，部门主管自然也没法说话，但是，之前和别的部门的经理商量好的是自愿先试一周再看，这到了老板那里就成了强制，可想而知抵触心理有多么严重。何况当时我们自己的工作也在一个重要的关头。
 
   所以虽说总共一年多的时间，但是交给我们自己的时间自然是没有那么多的。由于我们对arm的cpu的性能过于乐观，程序使用了不少运算量来获得更加稳定的结果，手机上的性能也只能做到5fps左右。当然，目前做了很多取舍后的性能能够在10fps以上，甚至能到16fps，但是结果已经不符合我自己的预期了。一年前的效果，当时刚刚结束完扯皮。
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <iframe height=498 width=510 src="http://player.youku.com/embed/XODkxMDkzODk2" frameborder=0 allowfullscreen></iframe>
-#+END_HTML
+#+END_EXPORT
 
   后续又因为小米手机的性能问题，花了两个月时间，最后，还是没有结论，我们手上能找到的小米手机，程序性能上都比同硬件或者相近硬件的别的牌子的手机慢一倍。当然，我个人是有结论的，以后我是不会买小米的任何一部手机或者平板的（虽然我也从来没买过， -_-）。
 
@@ -26,13 +26,13 @@ title: 近期的工作总结
 
   两个月前的技术原型可以在GTX Titan X上获得实时的性能，车道的识别速度可以达到95fps，车辆的也有50fps。我们正开始准备将两个任务合并到一个网络上并进一步优化的时候，工作重心又被变了。目前来看还有很多可以提高的空间，毕竟这只是刚出来的技术原型，车道的训练数据只不过几百帧视频，车辆的也只用了1000帧视频。
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <iframe height=498 width=510 src="http://player.youku.com/embed/XMTM4OTcwMTEyOA==" frameborder=0 allowfullscreen></iframe>
-#+END_HTML
+#+END_EXPORT
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <iframe height=498 width=510 src="http://player.youku.com/embed/XMTQzOTcwODg2MA==" frameborder=0 allowfullscreen></iframe>
-#+END_HTML
+#+END_EXPORT
 
 * 一些技术总结
 ** 卷积网络

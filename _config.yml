@@ -8,21 +8,22 @@ auto: true
 # pygments: true
 highlighter: rouge
 
-plugins:
-  - jekyll-feed
-  - jekyll-org
+# plugins:
+#   - jekyll-feed
+#   - jekyll-org
 
-collections:
-  orgs:
-    output: true
-    permalink: /:collection/:name
+# collections:
+#   orgs:
+#     output: true
+#     permalink: /:collection/:name
 
-defaults:
-  - scope:
-      path: ""
-      type: "orgs"
-    values:
-      layout: "post"
+# defaults:
+#   - scope:
+#       path: "_orgs"
+#       type: "orgs"
+#     values:
+#       layout: "post"
+    
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.

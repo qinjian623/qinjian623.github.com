@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Dart and Atom
 ---
-#+END_HTML
+#+END_EXPORT
 ** Dart是个好语言
    自己在几年前就关注了Dart,主要原因就是我实在是太讨厌JavaScript了.作为一名程序员,手上一点都不沾JS在这个时代似乎有点不现实, 于是我就在找寻JS替代这条不归路上渐行渐远.
    

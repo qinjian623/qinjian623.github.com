@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Pytorch
 ---
-#+END_HTML
+#+END_EXPORT
 
 目前来看, 我本人接触的DL的工具箱, 按照时间顺序包括了: torch, caffe, tensorflow, mxnet, pytorch. 当然, 有深有潜, 应该是有潜有更潜, 没深过. 可以总结下自己对这几个的简单印象.
 

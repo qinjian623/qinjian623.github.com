@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 tags: [nothing, thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

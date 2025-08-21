@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Pytorch短期使用回顾
 ---
-#+END_HTML
+#+END_EXPORT
 
 最近一段时间我都是在零散的看看pytorch的文档，顺便开始把之前的训练的代码和方法往pytorch上迁移，一些新训练的任务我也都直接改用了pytorch。
 

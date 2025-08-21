@@ -1,11 +1,11 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Google Reader订阅
 tags: [share, reading]
 ---
 
-#+END_HTML
+#+END_EXPORT
 
 * 说明
 没想到竟然有这么多,很多都是订阅的时候可能还有更新,不过目前不再更新的了.

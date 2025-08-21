@@ -3,124 +3,104 @@ layout: post
 title: LSTM
 math: t
 ---
-
-<div id="outline-container-sec-1" class="outline-2">
-  <h2 id="sec-1"><span class="section-number-2">1</span> 资料来源</h2>
-  <div class="outline-text-2" id="text-1">
-    <ol class="org-ol">
-      <li><a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">https://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>
-      </li>
-      <li>An Empirical Exploration of Recurrent Network Architectures
-      </li>
-      <li>cs231n-lecture-10
-      </li>
-    </ol>
-  </div>
+<div id="outline-container-org169e124" class="outline-2">
+<h2 id="org169e124"><span class="section-number-2">1.</span> 资料来源</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li><a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">https://colah.github.io/posts/2015-08-Understanding-LSTMs/</a></li>
+<li>An Empirical Exploration of Recurrent Network Architectures</li>
+<li>cs231n-lecture-10</li>
+</ol>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-  <h2 id="sec-2"><span class="section-number-2">2</span> RNN的理解</h2>
-  <div class="outline-text-2" id="text-2">
-    <p>
-      在我看来是一种针对时序数据的空间转换+遗忘系数的方法。随着新的数据的加入，旧数据会渐渐的被遗忘掉。
-      譬如，最基本的RNN的模式：
-      $$ h_t = tanh(W_{hh}h_{t-1} + W_{xh}x_t) $$
-      $$ y_t = W_{hy}h_{t} $$
-    </p>
-
-    <p>
-      其中涉及到加法的部分都可以看作是一个增加了遗忘系数的信号处理。如果将所有的矩阵都考虑成为单个数值， \(W_{hh}\) 就是遗忘系数，将之前一系列过程保留下来的 \(h_{t-1}\) （也就是历史信息）权重减弱， 之后加上新的数据 \(x_{t}\) . 当然，在矩阵情况下，这些矩阵还起了一个空间转换的作用。将输入和历史状态都进行了一个空间转换，当然，为了满足后续的加法，这个转换是受限制的，得能够保证加法能够实现（或者， 可以自定义个类似point wise加法的算子，实现不同的目的）。后面的 \(y_{h}\) 的生成就不多说了。
-    </p>
-
-    <p>
-      考虑到特征转换， 少不了的需要考虑CNN，毕竟，很多特征确实是通用的，CNN的这个复用特征的特性是很有意思的，当然，RNN这块的论文我还没有开始涉及，所以这些都是开脑洞，但是起码CNN处理后的数据作为RNN的输出是有的，image caption。但是，是不是可以在考虑RNN内部的结构中利用CNN进行特征提取与转换？我猜想已经有相关的工作了。
-    </p>
-  </div>
 </div>
+<div id="outline-container-orgf66604d" class="outline-2">
+<h2 id="orgf66604d"><span class="section-number-2">2.</span> RNN的理解</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在我看来是一种针对时序数据的空间转换+遗忘系数的方法。随着新的数据的加入，旧数据会渐渐的被遗忘掉。
+譬如，最基本的RNN的模式：
+\[ h_t = tanh(W_{hh}h_{t-1} + W_{xh}x_t) \]
+\[ y_t = W_{hy}h_{t} \]
+</p>
 
-<div id="outline-container-sec-3" class="outline-2">
-  <h2 id="sec-3"><span class="section-number-2">3</span> LSTM</h2>
-  <div class="outline-text-2" id="text-3">
-    <p>
-      LSTM看似复杂，结构很多。其实核心思想还是RNN的：遗忘系数。如何选择性的遗忘一些历史记录，同时选择性的增强新数据中的一部分。在此基础上Understanding LSTM中提到的各种变体都可以获得很好的解释。当然， LSTM具有的特性在于其类似ResNet的链接（也就是资料1里面的C这条线），整个时间序列的历史可以都保持住，不因为LSTM内部的各种空间转换而丢失。
-    </p>
+<p>
+其中涉及到加法的部分都可以看作是一个增加了遗忘系数的信号处理。如果将所有的矩阵都考虑成为单个数值， \(W_{hh}\) 就是遗忘系数，将之前一系列过程保留下来的 \(h_{t-1}\) （也就是历史信息）权重减弱， 之后加上新的数据 \(x_{t}\) . 当然，在矩阵情况下，这些矩阵还起了一个空间转换的作用。将输入和历史状态都进行了一个空间转换，当然，为了满足后续的加法，这个转换是受限制的，得能够保证加法能够实现（或者， 可以自定义个类似point wise加法的算子，实现不同的目的）。后面的 \(y_{h}\) 的生成就不多说了。
+</p>
 
-    <p>
-      <b>首先</b> ，最基本的选择性遗忘，需要针对历史数据做选择性遗忘，所以需要对C进行选择性遗忘。那么需要哪些信息来确认C中的哪一块需要被忘记? LSTM的设计是需要输入 \(x_{t}\) 以及上一次的隐藏信息 \(h_{t-1}\) ，结合这两个信息后，可以通过[0,1]之间的区间值来控制对C的遗忘/传递与否： $$ f_t = \sigma (W_{f} \cdot [h_{t-1}, x_t] + b_f) $$ 通过Sigmoid函数，保证了值域区间。通过结合 \(h_{t-1}\) 和 \(x_{t}\) ，我们可以学习出对于C的内容，哪些需要被忘记，那些需要保留。再通过pointwise的乘法，实现过滤。这里就相当于一个gate，控制信息通过情况。
-    </p>
-
-    <p>
-      <b>然后</b> ，我们需要考虑新的数据 \(x_t\) 中那些是重要的，那些是不重要的。在LSTM中，做法类似上面对C的过滤：
-    </p>
-    <ol class="org-ol">
-      <li>需要根据信息构建一个信息gate： $$ i_t = \sigma (W_{i} \cdot [h_{t-1}, x_t] + b_i) $$
-      </li>
-      <li>对需要更新的信息进行转换： $$ \tilde{C_t} = tanh(W_{C} \cdot [h_{t-1}, x_t] + b_C) $$
-      </li>
-    </ol>
-
-
-    <p>
-      <b>再然后</b> （我tm的为毛不用数字编号），我们有了历史信息 \(C_{t-1}\) ， 有了对历史信息的遗忘系数 \(f_t\) ，我们有了新的数据结合历史信息的转换结果 \(\tilde{C_t}\) 以及对新数据的重要性系数 \(i_t\) ，现在可以完成对历史信息 \(C\) 的更新:
-      $$ C_t = f_t * C_{t-1} + i_t * \tilde{C_t} $$
-    </p>
-
-    <p>
-      <b>再再然后</b> ， 我们还缺一个输出 \(h_t\) ， LSTM还是简单粗暴，先来一个gate： $$o_t = \sigma (W_{o} \cdot [h_{t-1}, x_t] + b_o)$$ 之后直接在历史信息上加一个 \(tanh\) 控制值域。最终的结果就是： $$h_t = o_t * tanh(C_t)$$ 。
-    </p>
-
-
-    <p>
-      <b>至此</b>, 整个LSTM的结构完成。 虽然看起来复杂， 但是大部分都是重复的构建gate以控制信息流动。分别针对：
-    </p>
-    <ol class="org-ol">
-      <li>输入数据 \(x_t\) 
-      </li>
-      <li>历史数据 \(C_{t-1}\) 
-      </li>
-      <li>输出数据 \(h_t\)
-      </li>
-    </ol>
-  </div>
+<p>
+考虑到特征转换， 少不了的需要考虑CNN，毕竟，很多特征确实是通用的，CNN的这个复用特征的特性是很有意思的，当然，RNN这块的论文我还没有开始涉及，所以这些都是开脑洞，但是起码CNN处理后的数据作为RNN的输出是有的，image caption。但是，是不是可以在考虑RNN内部的结构中利用CNN进行特征提取与转换？我猜想已经有相关的工作了。
+</p>
 </div>
-
-
-<div id="outline-container-sec-4" class="outline-2">
-  <h2 id="sec-4"><span class="section-number-2">4</span> LSTM的变体</h2>
-  <div class="outline-text-2" id="text-4">
-    <p>
-      这里我们就按照 <i>Understanding LSTM</i> 中的顺序一个个说：
-    </p>
-    <ol class="org-ol">
-      <li>我们单纯结合 \(h_{t-1}\) 来构建gate感觉有点不充分啊， 把 \(C_{t-1}\) 也加上，毕竟这个是真的原始历史记录（ \(h_{t-1}\) 的是 \(C_{t-1}\) 过滤加限制后的数据）， 注意其中最后一个gate是用的 \(C_{t}\) 的。
-      </li>
-      <li>前两个一个是C要忘记的gate，一个是x要加入的gate，这两个看着有点重复。第二个gate干脆直接就是 1-第一个gate不就可以了。（然而， 我感觉这个不科学， 历史要忘记的部分，很可能就是当前需要立即加强的部分，这个设计恰恰是反过来的）。
-      </li>
-      <li>两个中间输出似乎可以简化，但是历史数据不能丢，所以只能想办法把h的信息加到C上。为了保持历史数据，这条线上是不能有直接的空间转换的（这里可以看ResNet作者的一篇关于identity map的论文）， 只能有加法。 结构与上一个有很大的类似，有可能是从上一个进化来的。
-        <ul class="org-ul">
-          <li>历史信息加个gate和输入 \(x_t\) 做转换， 成为要加上的更新值。
-          </li>
-          <li>历史信息本身有一个gate作为遗忘系数。
-          </li>
-          <li>更新值往历史信息上增加，需要一个权重。
-          </li>
-        </ul>
-      </li>
-    </ol>
-
-
-
-    <p>
-      <i>An Empirical Exploration of Recurrent Network Architectures</i> 中的结论说是最终要的gate就是针对历史的遗忘系数，其次是针对输入的更新权重参数， 后面的针对输出的gate不是很重要。不过，在语言模型中，遗忘系数作用没有那么明显。
-    </p>
-  </div>
 </div>
+<div id="outline-container-org190903f" class="outline-2">
+<h2 id="org190903f"><span class="section-number-2">3.</span> LSTM</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+LSTM看似复杂，结构很多。其实核心思想还是RNN的：遗忘系数。如何选择性的遗忘一些历史记录，同时选择性的增强新数据中的一部分。在此基础上Understanding LSTM中提到的各种变体都可以获得很好的解释。当然， LSTM具有的特性在于其类似ResNet的链接（也就是资料1里面的C这条线），整个时间序列的历史可以都保持住，不因为LSTM内部的各种空间转换而丢失。
+</p>
 
-<div id="outline-container-sec-5" class="outline-2">
-  <h2 id="sec-5"><span class="section-number-2">5</span> 结束</h2>
-  <div class="outline-text-2" id="text-5">
-    <p>
-      这是我第一次开始接触LSTM，甚至是RNN。LSTM主要的特点就在gate的构建+历史数据的保留。后续的变体都是努力在这两个点上实现修改以更加符合自己的任务。
-    </p>
-  </div>
+<p>
+<b>首先</b> ，最基本的选择性遗忘，需要针对历史数据做选择性遗忘，所以需要对C进行选择性遗忘。那么需要哪些信息来确认C中的哪一块需要被忘记? LSTM的设计是需要输入 \(x_{t}\) 以及上一次的隐藏信息 \(h_{t-1}\) ，结合这两个信息后，可以通过[0,1]之间的区间值来控制对C的遗忘/传递与否： \[ f_t = \sigma (W_{f} \cdot [h_{t-1}, x_t] + b_f) \] 通过Sigmoid函数，保证了值域区间。通过结合 \(h_{t-1}\) 和 \(x_{t}\) ，我们可以学习出对于C的内容，哪些需要被忘记，那些需要保留。再通过pointwise的乘法，实现过滤。这里就相当于一个gate，控制信息通过情况。
+</p>
+
+<p>
+<b>然后</b> ，我们需要考虑新的数据 \(x_t\) 中那些是重要的，那些是不重要的。在LSTM中，做法类似上面对C的过滤：
+</p>
+<ol class="org-ol">
+<li>需要根据信息构建一个信息gate： \[ i_t = \sigma (W_{i} \cdot [h_{t-1}, x_t] + b_i) \]</li>
+<li>对需要更新的信息进行转换： \[ \tilde{C_t} = tanh(W_{C} \cdot [h_{t-1}, x_t] + b_C) \]</li>
+</ol>
+
+
+<p>
+<b>再然后</b> （我tm的为毛不用数字编号），我们有了历史信息 \(C_{t-1}\) ， 有了对历史信息的遗忘系数 \(f_t\) ，我们有了新的数据结合历史信息的转换结果 \(\tilde{C_t}\) 以及对新数据的重要性系数 \(i_t\) ，现在可以完成对历史信息 \(C\) 的更新:
+\[ C_t = f_t * C_{t-1} + i_t * \tilde{C_t} \]
+</p>
+
+<p>
+<b>再再然后</b> ， 我们还缺一个输出 \(h_t\) ， LSTM还是简单粗暴，先来一个gate： \[o_t = \sigma (W_{o} \cdot [h_{t-1}, x_t] + b_o)\] 之后直接在历史信息上加一个 \(tanh\) 控制值域。最终的结果就是： \[h_t = o_t * tanh(C_t)\] 。
+</p>
+
+
+<p>
+<b>至此</b>, 整个LSTM的结构完成。 虽然看起来复杂， 但是大部分都是重复的构建gate以控制信息流动。分别针对：
+</p>
+<ol class="org-ol">
+<li>输入数据 \(x_t\)</li>
+<li>历史数据 \(C_{t-1}\)</li>
+<li>输出数据 \(h_t\)</li>
+</ol>
 </div>
+</div>
+<div id="outline-container-org709783f" class="outline-2">
+<h2 id="org709783f"><span class="section-number-2">4.</span> LSTM的变体</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+这里我们就按照 <i>Understanding LSTM</i> 中的顺序一个个说：
+</p>
+<ol class="org-ol">
+<li>我们单纯结合 \(h_{t-1}\) 来构建gate感觉有点不充分啊， 把 \(C_{t-1}\) 也加上，毕竟这个是真的原始历史记录（ \(h_{t-1}\) 的是 \(C_{t-1}\) 过滤加限制后的数据）， 注意其中最后一个gate是用的 \(C_{t}\) 的。</li>
+<li>前两个一个是C要忘记的gate，一个是x要加入的gate，这两个看着有点重复。第二个gate干脆直接就是 1-第一个gate不就可以了。（然而， 我感觉这个不科学， 历史要忘记的部分，很可能就是当前需要立即加强的部分，这个设计恰恰是反过来的）。</li>
+<li>两个中间输出似乎可以简化，但是历史数据不能丢，所以只能想办法把h的信息加到C上。为了保持历史数据，这条线上是不能有直接的空间转换的（这里可以看ResNet作者的一篇关于identity map的论文）， 只能有加法。 结构与上一个有很大的类似，有可能是从上一个进化来的。
+<ul class="org-ul">
+<li>历史信息加个gate和输入 \(x_t\) 做转换， 成为要加上的更新值。</li>
+<li>历史信息本身有一个gate作为遗忘系数。</li>
+<li>更新值往历史信息上增加，需要一个权重。</li>
+</ul></li>
+</ol>
 
+
+
+<p>
+<i>An Empirical Exploration of Recurrent Network Architectures</i> 中的结论说是最终要的gate就是针对历史的遗忘系数，其次是针对输入的更新权重参数， 后面的针对输出的gate不是很重要。不过，在语言模型中，遗忘系数作用没有那么明显。
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb2bcb5" class="outline-2">
+<h2 id="orgdb2bcb5"><span class="section-number-2">5.</span> 结束</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+这是我第一次开始接触LSTM，甚至是RNN。LSTM主要的特点就在gate的构建+历史数据的保留。后续的变体都是努力在这两个点上实现修改以更加符合自己的任务。
+</p>
+</div>
+</div>

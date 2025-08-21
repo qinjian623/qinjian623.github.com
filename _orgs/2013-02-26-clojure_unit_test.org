@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Unit Test in Clojure
 tags: [pl]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: Unit Test in Clojure
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

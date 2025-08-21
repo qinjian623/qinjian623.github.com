@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: GPU server的一些经验
 ---
-#+END_HTML
+#+END_EXPORT
 
 目前自己因为工作的原因，也算是把乱七八糟的显卡都在手上过了一遍。总结一下需要注意的点：
 

@@ -1,11 +1,11 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Baking Pi - Operating Systems Development
 tags: [os]
 ---
 
-#+END_HTML
+#+END_EXPORT
 * 介绍[fn:1]
 欢迎来到本课程,课程作者为[[awc32@cam.ac.uk][Alex Chadwick.]]
 

@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 2016
 ---
-#+END_HTML
+#+END_EXPORT
 
 按照往常惯例, 又到了回顾与展望的时间...
 
@@ -48,9 +48,9 @@ title: 2016
 应用上, 网络2已经已经提供给其他部门使用. 另外, 为公司一个大客户提供的数据也应用的网络2, 目测未来换成网络1会性能更好, 更准确. 当然, 对外提供应用是其他同事负责的, 这些都需要很多额外的处理, 毕竟是到产品级, 不是demo. 之前的嵌入式ADAS也是在产品级优化和改进, 不过我已经基本脱离那条线, 除了自己的老代码非常少情况下我会帮着看下外.
 
 Demo情况如下:
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <iframe height=498 width=510 src='http://player.youku.com/embed/XMTkxMjQzNDA3Mg==' frameborder=0 'allowfullscreen'></iframe>
-#+END_HTML
+#+END_EXPORT
 另有多个场景下的结果:
 http://v.youku.com/v_show/id_XMTg4MDgyODUxNg==.html?spm=a2hzp.8253876.0.0.F3SGn7&f=29011331&from=y1.7-3#paction
 

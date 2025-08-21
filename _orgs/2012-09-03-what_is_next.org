@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 写些什么东西?
 tags: [thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 
 * 想想这里最近的几个主题应该是什么
 ** org-mode

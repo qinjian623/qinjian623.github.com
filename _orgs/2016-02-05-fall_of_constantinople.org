@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 君士坦丁堡的陷落
 ---
-#+END_HTML
+#+END_EXPORT
 
 已经是半月之前读的了。
 

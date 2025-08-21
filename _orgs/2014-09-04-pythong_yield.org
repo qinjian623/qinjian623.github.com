@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Python yield
 ---
-#+END_HTML
+#+END_EXPORT
 #+OPTIONS: ^:nil
 * 说明
   原文：http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/

@@ -10,8 +10,8 @@ title: 为什么需要分类器作为预训练
 <p>
 起码在我看来，这一过程是不可避免的，或者说，只要CNN进行其它复杂任务，都必须先学习分类模型。
 </p>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 人类的认知过程</h2>
+<div id="outline-container-orgf5e2e7a" class="outline-2">
+<h2 id="orgf5e2e7a"><span class="section-number-2">1.</span> 人类的认知过程</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 人类的学习过程是什么样子的？我们可以看到，都是首先学习概念。让人类可以回答：这是什么？
@@ -26,9 +26,8 @@ title: 为什么需要分类器作为预训练
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 分类＝概念学习</h2>
+<div id="outline-container-org1b03202" class="outline-2">
+<h2 id="org1b03202"><span class="section-number-2">2.</span> 分类＝概念学习</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 人类概念学习与机器的分类学习有异曲同工的地方。甚至是教学方法都是类似的，当然，我们不知道人类大脑具体的形成概念的方法，可是，我们却可以知道CNN是如何将概念保存在整个模型中的。相关的很多论文都关注可视化CNN网络内部，探索每个神经元对特别类别的激活情况，或者反向将激活情况传播到输入，还有DeepDream等等。
@@ -48,8 +47,8 @@ title: 为什么需要分类器作为预训练
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 更加复杂的任务：决策</h2>
+<div id="outline-container-org5e86f09" class="outline-2">
+<h2 id="org5e86f09"><span class="section-number-2">3.</span> 更加复杂的任务：决策</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 NN可以很好的学习到各种概念，从我的理解来看，对于大部分的概念区分的任务(或者说分类任务)，NN的能力将会不亚于人类。或许目前很多领域的分类任务没有达到人类水平，但是我认为这只是NN的训练者本身没有找到适合电脑学习这些领域的概念的方式。
@@ -63,32 +62,23 @@ NN可以很好的学习到各种概念，从我的理解来看，对于大部分
 那么，按照我的想法，
 </p>
 <ol class="org-ol">
-<li>低级脑的功能，NN可以做到非常好的模拟，并且获得不亚于人类的性能。所以，在未来的一段时间里，人类一部分低级脑的功能会移交给NN这一类的模式匹配。
-</li>
-<li>高级脑的功能，目前这种单纯的模式匹配无法做到。当然，符号方法肯定也没法做到。但通过一些专用的模型结构，应该可以学习到某个领域内高级脑的部分功能。
-</li>
-<li>人类的创新能力，目前的方法100%无法实现。或许可以增加模型运行中的随机化可以带来创新，随机的建立NN链接和神经元等。不过这只会变成科幻小说。
-</li>
+<li>低级脑的功能，NN可以做到非常好的模拟，并且获得不亚于人类的性能。所以，在未来的一段时间里，人类一部分低级脑的功能会移交给NN这一类的模式匹配。</li>
+<li>高级脑的功能，目前这种单纯的模式匹配无法做到。当然，符号方法肯定也没法做到。但通过一些专用的模型结构，应该可以学习到某个领域内高级脑的部分功能。</li>
+<li>人类的创新能力，目前的方法100%无法实现。或许可以增加模型运行中的随机化可以带来创新，随机的建立NN链接和神经元等。不过这只会变成科幻小说。</li>
 </ol>
 </div>
 </div>
-
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 总结</h2>
+<div id="outline-container-org171498e" class="outline-2">
+<h2 id="org171498e"><span class="section-number-2">4.</span> 总结</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 通篇的废话只是说明我的如下观点：
 </p>
 <ol class="org-ol">
-<li>NN依然只是简单的模式匹配方法。<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
-</li>
-<li>人类的低级脑的活动也是模式匹配。
-</li>
-<li>NN具有替代人类低级脑的潜力，并且做到不亚于低级脑的性能。
-</li>
-<li>高级脑的能力，NN依然望尘莫及。
-</li>
+<li>NN依然只是简单的模式匹配方法。<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></li>
+<li>人类的低级脑的活动也是模式匹配。</li>
+<li>NN具有替代人类低级脑的潜力，并且做到不亚于低级脑的性能。</li>
+<li>高级脑的能力，NN依然望尘莫及。</li>
 </ol>
 
 
@@ -105,7 +95,10 @@ NN可以很好的学习到各种概念，从我的理解来看，对于大部分
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 混用了CNN与NN，但是两者本质上没有不同。
-</p></div>
-</div></div>
+</p></div></div>
+
+
+</div>
+</div>

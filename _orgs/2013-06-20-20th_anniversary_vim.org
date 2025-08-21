@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 20年的高效：纪念Vim 20周年
 tags: [nothing, thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: 20年的高效：纪念Vim 20周年
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

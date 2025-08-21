@@ -2,9 +2,8 @@
 layout: post
 title: 针对Anders Hejlsberg的一次采访
 ---
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Intro</h2>
+<div id="outline-container-orge63ee45" class="outline-2">
+<h2 id="orge63ee45"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A Conversation with Anders Hejlsberg
@@ -16,21 +15,20 @@ A Conversation with Anders Hejlsberg
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> PART VII</h2>
+<div id="outline-container-orgd246609" class="outline-2">
+<h2 id="orgd246609"><span class="section-number-2">2.</span> PART VII</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 泛型简介</h3>
+</div>
+<div id="outline-container-org98cc803" class="outline-3">
+<h3 id="org98cc803"><span class="section-number-3">2.1.</span> 泛型简介</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 [编译期或者是运行期前的动态类型。静态类型语言对动态类型的实现方式。]
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> C#的问题</h3>
+<div id="outline-container-org80e47e2" class="outline-3">
+<h3 id="org80e47e2"><span class="section-number-3">2.2.</span> C#的问题</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 C#的泛型类型按照普通情况进行编译。但是会记录下泛型的一些信息。等到运行的时候，如果需要，会检查是否存在制定类型，没有则组装成为指定类型。
@@ -41,17 +39,15 @@ C#的泛型类型按照普通情况进行编译。但是会记录下泛型的一
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> C#泛型与Java的区别</h3>
+<div id="outline-container-orgd772311" class="outline-3">
+<h3 id="orgd772311"><span class="section-number-3">2.3.</span> C#泛型与Java的区别</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Java的目标是能够在不修改VM的前提下提供泛型支持。
 </p>
 <ol class="org-ol">
-<li>[其实本质只是将类型参数在编译器替换成Object类型]没有性能优势。
-</li>
-<li>缺失了类型信息后，运行期很多操作就无法进行了。
-</li>
+<li>[其实本质只是将类型参数在编译器替换成Object类型]没有性能优势。</li>
+<li>缺失了类型信息后，运行期很多操作就无法进行了。</li>
 </ol>
 
 
@@ -60,25 +56,21 @@ C#的实现可以避免以上两点，因此运行期可以进行各种操作，
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> C#与C++</h3>
+<div id="outline-container-orgf4aeb2a" class="outline-3">
+<h3 id="orgf4aeb2a"><span class="section-number-3">2.4.</span> C#与C++</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 C#的泛型相对更接近面向对象的类型。C++的模板则更接近于宏。
 </p>
 
 <ol class="org-ol">
-<li>C++在编译期进行了类型参数的替换。C#在运行时才进行替换。
-</li>
-<li>C#进行比较严格的类型检查，这样在运行的时候不会出现类型错误[主要应该是接口不符合，因为类型的标志就是接口]。C++可能会因为类型接口不存在出现运行时的错误。
-</li>
+<li>C++在编译期进行了类型参数的替换。C#在运行时才进行替换。</li>
+<li>C#进行比较严格的类型检查，这样在运行的时候不会出现类型错误[主要应该是接口不符合，因为类型的标志就是接口]。C++可能会因为类型接口不存在出现运行时的错误。</li>
 </ol>
 </div>
 </div>
-
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> C#泛型的限制条件</h3>
+<div id="outline-container-org52ff08a" class="outline-3">
+<h3 id="org52ff08a"><span class="section-number-3">2.5.</span> C#泛型的限制条件</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 C#可以制定泛型类型需要符合的条件[自然是接口，或者父类，其实也是接口的一种形式]
@@ -98,118 +90,134 @@ C#泛型限制条件可以支持限制一个类和多个接口[针对接口的�
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> PART VIII</h2>
+<div id="outline-container-orgae848a2" class="outline-2">
+<h2 id="orgae848a2"><span class="section-number-2">3.</span> PART VIII</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 主要的几个议题及其回应：
 </p>
 </div>
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 解释与优化</h3>
+<div id="outline-container-org1d0fce6" class="outline-3">
+<h3 id="org1d0fce6"><span class="section-number-3">3.1.</span> 解释与优化</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> 问题0</h4>
+</div>
+<div id="outline-container-org571ef6d" class="outline-4">
+<h4 id="org571ef6d"><span class="section-number-4">3.1.1.</span> 问题0</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 JVM的虚拟机的指令是区分类型的，IL的则不区分的原因。
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-1-1-1">
+<ol class="org-ol">
+<li><a id="org59d3419"></a>回应<br />
+<div class="outline-text-5" id="text-3-1-1-1">
 <p>
 对于虚拟机来说，区分类型可以提升效率。但是CRL本身的设计目的不是为了解释，其代码最后都是要编译的。而CRL中数据都是带类型标注的，所以IL上不考虑类型也没有增加复杂度，[因为无论如何都要检查类型然后编译到机器码与IL没有太多关系，而且数据本身也都有类型标注的]
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
-
-<div id="outline-container-sec-3-1-2" class="outline-4">
-<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> 问题1</h4>
+<div id="outline-container-org9d452fc" class="outline-4">
+<h4 id="org9d452fc"><span class="section-number-4">3.1.2.</span> 问题1</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 CLR是否支持解释运行。JVM可以边解释边编译热点代码提高性能。
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-1-2-1">
+<ol class="org-ol">
+<li><a id="orgaee3e8d"></a>回应<br />
+<div class="outline-text-5" id="text-3-1-2-1">
 <p>
 可以支持，但是不是主要目标，也不考虑这个方向的优化。因为JIT编译器已经可以避免这个问题。先弄一个快速编译的，然后发现热点代码后再将其用更优化的编译器编译。
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
-
-<div id="outline-container-sec-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> 问题2</h4>
+<div id="outline-container-org7b44116" class="outline-4">
+<h4 id="org7b44116"><span class="section-number-4">3.1.3.</span> 问题2</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
 non-virtual method在C#中是默认的，JVM则不同，默认不是final的。是因为性能问题，非final的方法是需要时间查找需要调用的方法的。JVM在运行中优化时可以内联正确的方法。
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-1-3-1">
+<ol class="org-ol">
+<li><a id="org77d126d"></a>回应<br />
+<div class="outline-text-5" id="text-3-1-3-1">
 <p>
 内联正确的方法也是需要之前跟踪调用情况的，这个也是要一些性能损耗的。
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 </div>
-
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Unsafe代码</h3>
+<div id="outline-container-org44e0f42" class="outline-3">
+<h3 id="org44e0f42"><span class="section-number-3">3.2.</span> Unsafe代码</h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> 问题0</h4>
+</div>
+<div id="outline-container-orgf372402" class="outline-4">
+<h4 id="orgf372402"><span class="section-number-4">3.2.1.</span> 问题0</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 IL C#里面有支持指针操作的代码。为何如此设计？JVM都是必须使用JNI调用。
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-2-1-1">
+<ol class="org-ol">
+<li><a id="orgc64910a"></a>回应<br />
+<div class="outline-text-5" id="text-3-2-1-1">
 <p>
 这些代码运行环境都是受控的，而且相比JNI来说，由于标准化在语言中，更加明确。如果写JNI，问题可能会更多点。
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 </div>
-
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 值类型</h3>
+<div id="outline-container-org7dfb60a" class="outline-3">
+<h3 id="org7dfb60a"><span class="section-number-3">3.3.</span> 值类型</h3>
 <div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-sec-3-3-1" class="outline-4">
-<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> 问题0</h4>
+</div>
+<div id="outline-container-org3909c87" class="outline-4">
+<h4 id="org3909c87"><span class="section-number-4">3.3.1.</span> 问题0</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 CRL中支持值类型，而Java中是区分基础类型和包裹的类型。如此设计是性能的考虑还是为了方便性？
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-3-1-1">
+<ol class="org-ol">
+<li><a id="orga59c3a9"></a>回应<br />
+<div class="outline-text-5" id="text-3-3-1-1">
 <p>
 主要是性能问题。完全的面向对象可以是不存在基础类型，完全都是包裹类（都是在堆中分配），但是性能开销是比较大的。
 一般来说就是要么接受这种开销，要么向Java和C++这种，区分两种类型。但是这样写代码是比较麻烦的。值类型就是为了保证代码的一致性，在栈中性能与Java的基础类型无异。但是也可以在需要时从堆中分配。
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 </div>
-
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> 不变类型</h3>
+<div id="outline-container-orgf367270" class="outline-3">
+<h3 id="orgf367270"><span class="section-number-3">3.4.</span> 不变类型</h3>
 <div class="outline-text-3" id="text-3-4">
-</div><div id="outline-container-sec-3-4-1" class="outline-4">
-<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> 问题0</h4>
+</div>
+<div id="outline-container-orga782ac6" class="outline-4">
+<h4 id="orga782ac6"><span class="section-number-4">3.4.1.</span> 问题0</h4>
 <div class="outline-text-4" id="text-3-4-1">
 <p>
 是否考虑支持？类似C++的const。
 </p>
 </div>
-<ol class="org-ol"><li>回应<br  /><div class="outline-text-5" id="text-3-4-1-1">
+<ol class="org-ol">
+<li><a id="org28a8b41"></a>回应<br />
+<div class="outline-text-5" id="text-3-4-1-1">
 <p>
 不变类型是从外部的角度来说的。而且编译器难以识别。[这里的是一种不变类型，类似于Java String]对于const，其实只是人们希望能够增加一个语法层面的限制。对于C++有const是因为其中可以比较随意的转换，如果增加一个语法上的严格限制，反而会不方便使用了。[这里是一种不变类型]
 </p>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 </div>
 </div>

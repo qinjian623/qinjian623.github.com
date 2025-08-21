@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 减肥菜谱little scheme
 tags: [笔记]
 ---
-#+END_HTML
+#+END_EXPORT
 * 前言
   花了大概一天的时间看完了The little scheme。全书前前后后加起来不过200多页。起码这点上这书算得上little，当然，要是算上姊妹篇，算了，还是别算了，算上就是huge了，看完一定就恶心了。
 

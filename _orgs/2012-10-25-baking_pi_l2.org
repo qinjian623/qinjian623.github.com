@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Baking Pi - Operating Systems Development Lesson 2
 tags: [os]
 ---
-#+END_HTML
+#+END_EXPORT
 
 * 课时2 OK02
 

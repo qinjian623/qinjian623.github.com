@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 我对创新的理解
 ---
-#+END_HTML
+#+END_EXPORT
 
 前同事的一篇读书笔记
 http://lpan1010.com/2016/07/27/%e5%88%9b%e6%96%b0%e8%80%85%e7%9a%84%e7%aa%98%e5%a2%83/

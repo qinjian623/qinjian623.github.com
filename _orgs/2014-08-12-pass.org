@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 使用pass管理密码
 ---
-#+END_HTML
+#+END_EXPORT
 ** 资料
    1. http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml
    2. http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/

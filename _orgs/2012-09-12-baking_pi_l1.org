@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Baking Pi - Operating Systems Development Lesson 1
 tags: [os]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 本课时主要在于说明最基本的起步和怎样打开Raspberry Pi上的'OK' *LED* 灯,灯的位置在RCA和USB接口附近.

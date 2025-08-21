@@ -1,17 +1,17 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: JVM指令
 tags: [pl, java]
 ---
-#+END_HTML
+#+END_EXPORT
 
 转载的表格,来源在:http://blog.csdn.net/lm2302293/article/details/6713147
 
 洋文的:http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings
 
 命令是:javap -help
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <table cellspacing="0" cellpadding="0" border="1" style="width:515px; height:13749px">
 <tbody>
 <tr>
@@ -3044,5 +3044,5 @@ tags: [pl, java]
 </tr>
 </tbody>
 </table>
-#+END_HTML
+#+END_EXPORT
 

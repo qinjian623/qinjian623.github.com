@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Destructuring in Clojure
 tags: [pl, clojure]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 * Reference

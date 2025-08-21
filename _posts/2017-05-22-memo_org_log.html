@@ -4,81 +4,70 @@ title: 新日志系统恢复的备忘录
 ---
 
 <p>
-  旧的系统被荒废了很长一段时间，最近的一条记录貌似也在2015年了。旧系统内还存了不少记录和想法，看样子还得后续慢慢整理整理。
+旧的系统被荒废了很长一段时间，最近的一条记录貌似也在2015年了。旧系统内还存了不少记录和想法，看样子还得后续慢慢整理整理。
 </p>
 
 <p>
-  恢复日志系统这个事情一直说要弄没有弄，结果活生生拖了这么长时间。回头看自己之前的系统，有些东西搞得太复杂了，新手就是这个风格，恨不得一口吃成一个胖子，有什么功能都往里加。
+恢复日志系统这个事情一直说要弄没有弄，结果活生生拖了这么长时间。回头看自己之前的系统，有些东西搞得太复杂了，新手就是这个风格，恨不得一口吃成一个胖子，有什么功能都往里加。
 </p>
 
 <p>
-  写代码同理，代码搞得非常复杂，调用一层层的，回头看着就心烦，当然，当时肯定特别满意，感觉自己定义了一个这么有扩展性的系统，充满了智慧上的满足感。然而，根据我的新观点，第一次写一个领域里面的代码，就别考虑那么多了，越简单越好，其他的都是扯。
+写代码同理，代码搞得非常复杂，调用一层层的，回头看着就心烦，当然，当时肯定特别满意，感觉自己定义了一个这么有扩展性的系统，充满了智慧上的满足感。然而，根据我的新观点，第一次写一个领域里面的代码，就别考虑那么多了，越简单越好，其他的都是扯。
 </p>
 
 <p>
-  于是，我现在要重新恢复日志系统，越简单越好：
+于是，我现在要重新恢复日志系统，越简单越好：
 </p>
 <ol class="org-ol">
-  <li>依然依赖org-mode.
-  </li>
-  <li>记录时间
-  </li>
-  <li>分清工作和个人的内容
-  </li>
+<li>依然依赖org-mode.</li>
+<li>记录时间</li>
+<li>分清工作和个人的内容</li>
 </ol>
 
 
 <p>
-  于是，我发现org默认的设置没什么要改的，就自己定义了两个命令方面看东西。
+于是，我发现org默认的设置没什么要改的，就自己定义了两个命令方面看东西。
 </p>
 
 <div class="org-src-container">
-
-  <pre class="src src-emacs-lisp">(setq org-log-done t)
-    (global-set-key "\C-ca" 'org-agenda)
-    (setq org-directory "~/Dropbox/log")
-    (setq org-agenda-files 
-    (list "~/Dropbox/log/2017.org"))
-    (setq org-agenda-custom-commands 
-    '(("o" "Office Lists"
-    ((agenda)
-    (tags "AAA")
-    (tags "BBB")))
-    ("h" "Home Lists"
-    ((agenda)
-    (tags "Home")))
-    ("d" "Daily Action List"
-    ((agenda "" ((org-agenda-ndays 1)
-    (org-agenda-sorting-strategy
-    (quote ((agenda time-up priority-down tag-up) )))
-    (org-deadline-warning-days 0)
-    ))))
-    ;; ...other commands here
-    ))
-  </pre>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-log-done t)
+(global-set-key <span class="org-string">"\C-ca"</span> 'org-agenda)
+(<span class="org-keyword">setq</span> org-directory <span class="org-string">"~/Dropbox/log"</span>)
+(<span class="org-keyword">setq</span> org-agenda-files 
+      (list <span class="org-string">"~/Dropbox/log/2017.org"</span>))
+(<span class="org-keyword">setq</span> org-agenda-custom-commands 
+      '((<span class="org-string">"o"</span> <span class="org-string">"Office Lists"</span>
+         ((agenda)
+          (tags <span class="org-string">"AAA"</span>)
+          (tags <span class="org-string">"BBB"</span>)))
+        (<span class="org-string">"h"</span> <span class="org-string">"Home Lists"</span>
+         ((agenda)
+          (tags <span class="org-string">"Home"</span>)))
+        (<span class="org-string">"d"</span> <span class="org-string">"Daily Action List"</span>
+         ((agenda <span class="org-string">""</span> ((org-agenda-ndays 1)
+                      (org-agenda-sorting-strategy
+                       (<span class="org-keyword">quote</span> ((agenda time-up priority-down tag-up) )))
+                      (org-deadline-warning-days 0)
+                      ))))
+        <span class="org-comment-delimiter">;; </span><span class="org-comment">...other commands here
+</span>        ))
+</pre>
 </div>
 
 
 <p>
-  主要的几个流程就是：
+主要的几个流程就是：
 </p>
 <ol class="org-ol">
-  <li>建各项目。
-  </li>
-  <li>C-c C-t改TODO/DONE状态。
-  </li>
-  <li>设置下优先级，schedule。
-  </li>
-  <li>Clock in/ Clock out记录时间。
-  </li>
-  <li>Agenda view里面看看信息，主要就是l,R,w,d几个快捷键。
-  </li>
-  <li>自己设置了几个tag，可以过滤用的。
-  </li>
+<li>建各项目。</li>
+<li>C-c C-t改TODO/DONE状态。</li>
+<li>设置下优先级，schedule。</li>
+<li>Clock in/ Clock out记录时间。</li>
+<li>Agenda view里面看看信息，主要就是l,R,w,d几个快捷键。</li>
+<li>自己设置了几个tag，可以过滤用的。</li>
 </ol>
 
 
 <p>
-  先用着，应该没什么问题，自己反正也懒的很，估计放着就不会动了。
+先用着，应该没什么问题，自己反正也懒的很，估计放着就不会动了。
 </p>
-

@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Why *nix ?
 tags: [nothing, thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: Why *nix
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

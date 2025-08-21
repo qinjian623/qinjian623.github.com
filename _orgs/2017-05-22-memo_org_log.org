@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 新日志系统恢复的备忘录
 ---
-#+END_HTML
+#+END_EXPORT
 
   旧的系统被荒废了很长一段时间，最近的一条记录貌似也在2015年了。旧系统内还存了不少记录和想法，看样子还得后续慢慢整理整理。
 

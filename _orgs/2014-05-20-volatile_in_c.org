@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Volatile关键字
 ---
-#+END_HTML
+#+END_EXPORT
 * volatile
   防止编译器的某些优化措施，
   在c/c++中的作用，

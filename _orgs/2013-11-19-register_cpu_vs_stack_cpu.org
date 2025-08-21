@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 栈和寄存器虚拟机，Dalvik
 ---
-#+END_HTML
+#+END_EXPORT
 * 原文
 1. http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/
 

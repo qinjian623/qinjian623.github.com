@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Baking Pi - Operating Systems Development Lesson 0
 tags: [os]
 ---
-#+END_HTML
+#+END_EXPORT
 
 * 课时0 简介
 这一介绍性的课时没有太多实践的东西,只是为了解释一下操作系统\汇编代码还有

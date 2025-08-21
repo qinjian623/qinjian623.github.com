@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 程序员的呐喊
 ---
-#+END_HTML
+#+END_EXPORT
 
 在清点去年的书本的时候发现自己对这本竟然已经印象都没有了。正好这两天实在没兴致写代码，又没什么紧迫的任务。于是就重新拿出来看了。
 

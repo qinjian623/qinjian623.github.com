@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Two kinds of judgement by Paul Graham
 ---
-#+END_HTML
+#+END_EXPORT
 
 * nil
   之前挖的坑，终于填了一个。看了一半，不知道放那里多长时间了，单位还是月，再看看那些单位按年算得，罄竹难书、惨绝人寰、满目疮痍的那青春期的脸。

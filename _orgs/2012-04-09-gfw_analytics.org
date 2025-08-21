@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: VPN访问facebook及twitter不能简单记录
 tags: [gfw, share]
 ---
-#+END_HTML
+#+END_EXPORT
 
 尝试查找标题中所述问题的原因。目前测试环境依然xp中。
 

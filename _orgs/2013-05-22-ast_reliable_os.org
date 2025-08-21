@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Tanenbaum-Torvalds Debate, Part II
 tags: [nothing, thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: Tanenbaum-Torvalds Debate: Part II
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

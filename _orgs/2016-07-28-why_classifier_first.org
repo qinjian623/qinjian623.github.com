@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 为什么需要分类器作为预训练
 ---
-#+END_HTML
+#+END_EXPORT
 
 现在CNN的各种任务的训练，往往都会以分类模型作为基础进行finetune。那么，这一过程是否是必须的呢？
 

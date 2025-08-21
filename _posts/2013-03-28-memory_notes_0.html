@@ -3,27 +3,24 @@ layout: post
 title: What Every Programmer Should Know About Memory Notes 0
 tags: [pl, 笔记]
 ---
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 说明</h2>
+<div id="outline-container-org3797dba" class="outline-2">
+<h2 id="org3797dba"><span class="section-number-2">1.</span> 说明</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 原本想翻译，结果一看100+页，译了下第一页，然后就放弃了，改笔记。
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Abstract</h2>
+<div id="outline-container-org998750c" class="outline-2">
+<h2 id="org998750c"><span class="section-number-2">2.</span> Abstract</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 作者自然是看程序员都不懂硬件，代码写的太糟糕，内存、缓存统统都没用好，忍不住就给程序员定制一份硬件科普读物。
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-org3beaeea" class="outline-2">
+<h2 id="org3beaeea"><span class="section-number-2">3.</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 说了下历史，之前是硬件简单，各部分性能都八九不离十，譬如改革前的天朝，大家穷才是真的穷，硬件么，就是大家慢才是真的慢。
@@ -31,54 +28,43 @@ tags: [pl, 笔记]
 2B的容易处理，操作系统还可以用内存当缓存，这个shell里面来个free -m就可以看到，但是内存没辙，太文艺，提高性能怎么都要涉及硬件，改造集中于以下：
 </p>
 <ul class="org-ul">
-<li>RAM的硬件设计(速度与并发度)
-</li>
-<li>内存控制器的设计
-</li>
-<li>CPU缓存
-</li>
-<li>设备的直接内存访问(DMA)
+<li>RAM的硬件设计(速度与并发度)</li>
+<li>内存控制器的设计</li>
+<li>CPU缓存</li>
+<li><p>
+设备的直接内存访问(DMA)
+</p>
 
 <p>
 下面就是文章结构等，等等等等。记住，针对的都是linux，别的么，认真你就输了。作者redhat的，当然不客气了。还有，讨论的问题有些在现实中不同实现差异比较大，所以别认真。
-</p>
-</li>
+</p></li>
 </ul>
 </div>
-
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 文章结构</h3>
+<div id="outline-container-org727d357" class="outline-3">
+<h3 id="org727d357"><span class="section-number-3">3.1.</span> 文章结构</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>第二章，RAM的技术细节。
-</li>
-<li>第三章，CPU缓存细节。
-</li>
-<li>第四章，虚拟内存的实现。
-</li>
-<li>第五章，NUMA系统的细节<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>。
-</li>
-<li>第六章，本文主要内容，集合前几章的内容，没耐心的可以从这里开始。
-</li>
-<li>第七章，工具。
-</li>
-<li>第八章，江湖规矩，展望。
-</li>
+<li>第二章，RAM的技术细节。</li>
+<li>第三章，CPU缓存细节。</li>
+<li>第四章，虚拟内存的实现。</li>
+<li>第五章，NUMA系统的细节<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>。</li>
+<li>第六章，本文主要内容，集合前几章的内容，没耐心的可以从这里开始。</li>
+<li>第七章，工具。</li>
+<li>第八章，江湖规矩，展望。</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Commodity Hardware Today</h2>
+<div id="outline-container-org33bff08" class="outline-2">
+<h2 id="org33bff08"><span class="section-number-2">4.</span> Commodity Hardware Today</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 专业硬件正在滚蛋，商用硬件正在一统江湖。都是被一群互联网企业闹的，PC服务器群，便宜而且，便宜。Redhat，2007年的展望，未来数据中心都要用这样的：都是4插槽，每槽4核CPU，每CPU都超线程，但是没有英国管家。这个刚好够用，所以优化也集中于这点上。
 不同机器结构不同，不过90%以上都在本文范围内，不过随时间变化也很大。
 </p>
 </div>
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 南北桥</h3>
+<div id="outline-container-org324932c" class="outline-3">
+<h3 id="org324932c"><span class="section-number-3">4.1.</span> 南北桥</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 貌似现在已经少了一个了？有些要合并和消失的趋势了？不过功能划分应该还是会有遗留的。
@@ -86,25 +72,20 @@ tags: [pl, 笔记]
 下面开始这一结构大批判：
 </p>
 <ol class="org-ol">
-<li>CPU与CPU之前通讯要走和北桥通讯一样的总线。
-</li>
-<li>所有内存数据都要通过北桥
-</li>
-<li>RAM只有一个端口
-</li>
-<li>南桥设备与CPU通讯要经过北桥，因为CPU在西北偏北么&#x2026;&#x2026;
-</li>
+<li>CPU与CPU之前通讯要走和北桥通讯一样的总线。</li>
+<li>所有内存数据都要通过北桥</li>
+<li>RAM只有一个端口</li>
+<li>南桥设备与CPU通讯要经过北桥，因为CPU在西北偏北么&#x2026;&#x2026;</li>
 </ol>
 
 
 <p>
-因为A.DMA占用北桥总线带宽而现在DMA的设备又爆多，总线么，是吧。B.北桥与RAM的总线，用的DDR2，双通道，貌似现在i7都有三通道了&#x2026;&#x2026;爆兵堆数据果然在哪都是王道。然后CPU比内存快，这个大家都知道，所以最后的目的都是为了解决这个问题。下面的图就更加夸张了，每个内存都单独连内存控制器，再连北桥，缺点也有：北桥里面要撑爆了，外面往里狂灌数据。然后作者又提了下这么弄也可以弄成内存RAID，也是哦，这玩意和硬盘RAID也没什么差别了。然后，然后不要北桥的出现了，每个CPU一个MC，这下爽了，每个CPU真正是并行访问了，不过前提也是CPU只访问自己的内存还差不多，访问别人的内存&#x2026;.呵呵，于是有了NUMA因子<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>，应该就是评价访问CPU外内存的代价的指标<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>。
+因为A.DMA占用北桥总线带宽而现在DMA的设备又爆多，总线么，是吧。B.北桥与RAM的总线，用的DDR2，双通道，貌似现在i7都有三通道了&#x2026;&#x2026;爆兵堆数据果然在哪都是王道。然后CPU比内存快，这个大家都知道，所以最后的目的都是为了解决这个问题。下面的图就更加夸张了，每个内存都单独连内存控制器，再连北桥，缺点也有：北桥里面要撑爆了，外面往里狂灌数据。然后作者又提了下这么弄也可以弄成内存RAID，也是哦，这玩意和硬盘RAID也没什么差别了。然后，然后不要北桥的出现了，每个CPU一个MC，这下爽了，每个CPU真正是并行访问了，不过前提也是CPU只访问自己的内存还差不多，访问别人的内存&#x2026;.呵呵，于是有了NUMA因子<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>，应该就是评价访问CPU外内存的代价的指标<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>。
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> RAM类型</h3>
+<div id="outline-container-org9113283" class="outline-3">
+<h3 id="org9113283"><span class="section-number-3">4.2.</span> RAM类型</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 SRAM和DRAM一个静态的一个动态的。然后，觉得我需要重新找下数电书看下。但是手边没有数电书，不过，SRAM的稳定不易失。DRAM的不稳定，因为用的电容，不过电容会漏电，动态的图还是比较有爱的，不像静态的，根本就是不同的世界观设定，存的时候就往电容里充电，当然大电容也无所谓的了，可惜啊，这里是计算机电路，不是激光炮塔的辅助电容，要小啊小，只能存几万个电子，作者知道读者会没有概念，所以说了若干兆欧电阻也会很快跑光。
@@ -112,105 +93,90 @@ SRAM和DRAM一个静态的一个动态的。然后，觉得我需要重新找下
 DRAM也是有好处的，最大的好处是尺寸小、结构简单、成本低，我怎么感觉这是唯一的好处呢？竟然就靠这一个好处满地发芽，果然，人就靠三板斧就够用了。
 </p>
 </div>
-<div id="outline-container-sec-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> DRAM访问</h4>
+<div id="outline-container-orgf556291" class="outline-4">
+<h4 id="orgf556291"><span class="section-number-4">4.2.1.</span> DRAM访问</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
-内存访问过程自然是虚拟地址-&gt;物理地址-&gt;内存数据，物理地址通过address line<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>的形式传递给内存，4G内存有2<sup>32的AL，所以要被重新编码成为这么多AL的一小部分。传递的地址首先要被多路分配[fn</sup>:5]，一个N的AL会有输出为2<sup>N行。这些输出才用来定位内存。</sup>
-然后说，内存量要是上去了，这种直接的法子没法用，一个1Gbit容量的，需要30AL和2<sup>30行。反正我就是理解不能，还是看图吧。</sup>
-内存组织成行和列，为什么呢？因为这样方便，不用超大的多路分配。我想想啊，就是一维数组和二维数组的区别，如果是16个元素，一维就要16条线来索引每个元组，二维呢，4×4就可以，每个维度4条线。这样就是16比8的线，差距还不大，换成2<sup>32就出来了一个是2</sup><sup>32，一个是2</sup><sup>16</sup>+2<sup>16，所以说，小内存一维直接处理还可以，大了就要增加维度了。要是四维呢？2</sup><sup>10，是不是维度可以无限增加下去呢？到32维就是</sup>&#x2026;？<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>
+内存访问过程自然是虚拟地址-&gt;物理地址-&gt;内存数据，物理地址通过address line<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>的形式传递给内存，4G内存有2<sup>32的AL</sup>，所以要被重新编码成为这么多AL的一小部分。传递的地址首先要被多路分配<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>，一个N的AL会有输出为2<sup>N行</sup>。这些输出才用来定位内存。
+然后说，内存量要是上去了，这种直接的法子没法用，一个1Gbit容量的，需要30AL和2<sup>30行</sup>。反正我就是理解不能，还是看图吧。
+内存组织成行和列，为什么呢？因为这样方便，不用超大的多路分配。我想想啊，就是一维数组和二维数组的区别，如果是16个元素，一维就要16条线来索引每个元组，二维呢，4×4就可以，每个维度4条线。这样就是16比8的线，差距还不大，换成2<sup>32就出来了一个是2</sup><sup>32</sup>，一个是2<sup>16</sup>+2<sup>16</sup>，所以说，小内存一维直接处理还可以，大了就要增加维度了。要是四维呢？2<sup>10</sup>，是不是维度可以无限增加下去呢？到32维就是&#x2026;？<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
 后面还说了扩展性的问题，30根地址线连接到每个RAM芯片也不行，因为针脚会变得很多，解决可扩展问题用的是地址线复用。
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> 总结</h4>
+<div id="outline-container-orgd995284" class="outline-4">
+<h4 id="orgd995284"><span class="section-number-4">4.2.2.</span> 总结</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <ul class="org-ul">
-<li>SRAM和DRAM的成本平衡
-</li>
-<li>存储单元都要被单独选择来使用
-</li>
-<li>地址线数目影响MC、主板、DRAM模块和DRAM芯片成本
-</li>
-<li>读写的时候都要耗费时间的，因为电容的原因
-</li>
+<li>SRAM和DRAM的成本平衡</li>
+<li>存储单元都要被单独选择来使用</li>
+<li>地址线数目影响MC、主板、DRAM模块和DRAM芯片成本</li>
+<li>读写的时候都要耗费时间的，因为电容的原因</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> DRAM访问细节</h3>
+<div id="outline-container-org482a402" class="outline-3">
+<h3 id="org482a402"><span class="section-number-3">4.3.</span> DRAM访问细节</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 上节介绍说明了，地址要被复用，节约针脚。访问内存也需要充放电时间，还要刷新。说的都是同步DRAM。统一一个时钟来保持频率，也就是前端总线，但是FSB不是直接的时钟频率，因为可以很多倍，所以200的可以宣传是800.传输速度是频率×传输的位数，不过还有更多闲置的时间用于协商。
 </p>
 </div>
-<div id="outline-container-sec-4-3-1" class="outline-4">
-<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> 读</h4>
+<div id="outline-container-orgd24041f" class="outline-4">
+<h4 id="orgd24041f"><span class="section-number-4">4.3.1.</span> 读</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
-看图先，先传RAS ，tRCD时间后再传CAS，地址则在这段时间同时传输。然后就要等会，叫做CL时延，之后就开始传数据，但是如果每次只传一个字太浪费，最好每次都把缓存里面的线填满<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup>，同时还可以不用再重新发RAS直接发CAS，这样就是连续读取内存，少了之前的那些通讯开销。双通道的自然是双倍。
+看图先，先传RAS ，tRCD时间后再传CAS，地址则在这段时间同时传输。然后就要等会，叫做CL时延，之后就开始传数据，但是如果每次只传一个字太浪费，最好每次都把缓存里面的线填满<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>，同时还可以不用再重新发RAS直接发CAS，这样就是连续读取内存，少了之前的那些通讯开销。双通道的自然是双倍。
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-4-3-2" class="outline-4">
-<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> 预充电与激活</h4>
+<div id="outline-container-org653b636" class="outline-4">
+<h4 id="org653b636"><span class="section-number-4">4.3.2.</span> 预充电与激活</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
-RAS信号之前还要先锁定当前行然后对新行充电。要那么一段时间，结果就是，又占用了时间，不过预充电的一部分时间可以和数据传输并行，因为是两个不同行<sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup>。实际情况可以更加夸张还有tRAS的延时，预充电不是立即执行。
+RAS信号之前还要先锁定当前行然后对新行充电。要那么一段时间，结果就是，又占用了时间，不过预充电的一部分时间可以和数据传输并行，因为是两个不同行<sup><a id="fnr.8" class="footref" href="#fn.8" role="doc-backlink">8</a></sup>。实际情况可以更加夸张还有tRAS的延时，预充电不是立即执行。
 DDR模块的数据表示方法w-z-y-T,比如2-3-2-9-T1
 </p>
 <blockquote>
 <ul class="org-ul">
-<li>w 2 CAS延时（CL）
-</li>
-<li>x 3 RAS-to-CAS延时(t RCD)
-</li>
-<li>y 2 预充电时间(t RP)
-</li>
-<li>z 8 激活到预充电时间(t RAS)
-</li>
-<li>T T1 命令速率
-</li>
+<li>w 2 CAS延时（CL）</li>
+<li>x 3 RAS-to-CAS延时(t RCD)</li>
+<li>y 2 预充电时间(t RP)</li>
+<li>z 8 激活到预充电时间(t RAS)</li>
+<li>T T1 命令速率</li>
 </ul>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-sec-4-3-3" class="outline-4">
-<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> 重充电</h4>
+<div id="outline-container-org2cbabd4" class="outline-4">
+<h4 id="org2cbabd4"><span class="section-number-4">4.3.3.</span> 重充电</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
-DRAM必须保持刷新，也是按照行刷新，要是程序读的数据那行正好在刷新，那就中奖了<sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup>。
+DRAM必须保持刷新，也是按照行刷新，要是程序读的数据那行正好在刷新，那就中奖了<sup><a id="fnr.9" class="footref" href="#fn.9" role="doc-backlink">9</a></sup>。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-3-4" class="outline-4">
-<h4 id="sec-4-3-4"><span class="section-number-4">4.3.4</span> 内存类型</h4>
+<div id="outline-container-org18940f9" class="outline-4">
+<h4 id="org18940f9"><span class="section-number-4">4.3.4.</span> 内存类型</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <p>
-SDR SDRAM，数据传输和内存总线频率一样。速度比较慢，要提速只能提高频率，但是功耗会增加，同时也需要增加电压，进一步增加功耗。『功率= 动态电容×电压<sup>2×频率</sup> 』
+SDR SDRAM，数据传输和内存总线频率一样。速度比较慢，要提速只能提高频率，但是功耗会增加，同时也需要增加电压，进一步增加功耗。『功率= 动态电容×电压<sup>2</sup>×频率 』
 DDR SDRAM（DDR1），每周期可以传输两次数据，上升下降都可以传输数据，引入缓冲区。
 DDR2， 总线频率加倍，所以带宽也加倍。但是内存的芯片频率还是保持单倍不变，只是利用缓冲区的频率加倍，每次多读数据到缓存区。最后还要算上每周期的两次数据传输。最后就是阵列频率*4。
 DDR3，频率成为4倍，但是内部频率依然是一倍，还是依靠缓存区。算上两次数据传输，就是阵列频率×8。
 </p>
 
 <p>
-看了看，内存阵列的频率基本没有变化，都是依靠缓存区的频率加倍来提升。速度快了，但是针脚貌似也增加了<sup><a id="fnr.9" name="fnr.9" class="footref" href="#fn.9">9</a></sup>，并行化就难做，连线要差不多一样长<sup><a id="fnr.10" name="fnr.10" class="footref" href="#fn.10">10</a></sup>，针脚越多就越不好设计，竟然还有个更大的问题，总线上东西连多了信号会有变化。北桥不好保证内存双通道的并行，需要依靠外部内存控制器。
+看了看，内存阵列的频率基本没有变化，都是依靠缓存区的频率加倍来提升。速度快了，但是针脚貌似也增加了<sup><a id="fnr.10" class="footref" href="#fn.10" role="doc-backlink">10</a></sup>，并行化就难做，连线要差不多一样长<sup><a id="fnr.11" class="footref" href="#fn.11" role="doc-backlink">11</a></sup>，针脚越多就越不好设计，竟然还有个更大的问题，总线上东西连多了信号会有变化。北桥不好保证内存双通道的并行，需要依靠外部内存控制器。
 解决方法：处理器加入内存控制器，或者NUMA架构。
 Intel使用什么全缓冲DRAM（FB-DRAM）技术。不用并行总线，而是使用串行总线，频率可以更高，消除串行的缺点还可以增加带宽。改用串行后
 </p>
 <ol class="org-ol">
-<li>每个通道可以连接更多模块
-</li>
-<li>北桥内存控制器可以使用更多通道
-</li>
-<li>串行总线可以全双工（两条线）
-</li>
-<li>实现另外一个总线也容易，每方向也就两根线<sup><a id="fnr.11" name="fnr.11" class="footref" href="#fn.11">11</a></sup>，就可以增加速度了。
-</li>
+<li>每个通道可以连接更多模块</li>
+<li>北桥内存控制器可以使用更多通道</li>
+<li>串行总线可以全双工（两条线）</li>
+<li>实现另外一个总线也容易，每方向也就两根线<sup><a id="fnr.12" class="footref" href="#fn.12" role="doc-backlink">12</a></sup>，就可以增加速度了。</li>
 </ol>
 
 
@@ -219,8 +185,8 @@ FB的有69针脚，也可以连接更多到总线上。北桥可以6通道，布
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-3-5" class="outline-4">
-<h4 id="sec-4-3-5"><span class="section-number-4">4.3.5</span> 总结</h4>
+<div id="outline-container-org3919879" class="outline-4">
+<h4 id="org3919879"><span class="section-number-4">4.3.5.</span> 总结</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <p>
 终于到总结了，那就是DRAM的速度在现在的CPU面前就是渣，给的core2的差距是11倍差距，内存总线一个周期CPU要等11个周期，所以这个是数量级的差别。
@@ -229,8 +195,8 @@ FB的有69针脚，也可以连接更多到总线上。北桥可以6通道，布
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> 主存的其他用户</h3>
+<div id="outline-container-orgb02a78c" class="outline-3">
+<h3 id="orgb02a78c"><span class="section-number-3">4.4.</span> 主存的其他用户</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 除了CPU，访问内存的还有一堆东西。DMA的东西，USB的东西。DMA会和CPU竞争内存访问的总线。
@@ -239,8 +205,8 @@ FB的有69针脚，也可以连接更多到总线上。北桥可以6通道，布
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 好大一个坑</h2>
+<div id="outline-container-org09d4acb" class="outline-2">
+<h2 id="org09d4acb"><span class="section-number-2">5.</span> 好大一个坑</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 下面就进入无中文版参考范围，此坑够大够深，我一定是吃饱了。
@@ -251,49 +217,53 @@ FB的有69针脚，也可以连接更多到总线上。北桥可以6通道，布
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这个是个什么东西？
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 原来NUMA就是这里出来的。
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 那末，what if出来了&#x2026;每个CPU都和每个内存连起来呢？完全图一样的布线，而且估计CPU并行的问题还不太好处理，内存可以自带内存锁？
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这又是个什么东西？简称AL吧。
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+没错，电子词典上就是这个词。
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这里先歇歇，有问题。
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这里又是什么东西？不是总线填满么？
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 同行怎么办呢？同行连续读多了是不是电也会漏光呢？
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 可不可以用冗余内存，错开刷新时间来避免？不过这个成本有点高，小概率事件投入那么多。
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.9" name="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这是为什么？
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.10" name="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 应该是因为电流速度太慢了，要保持电流的电位同时到达，所以，还是换成光实在，宇宙极限了，要再快点只能交给造物主了。
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.11" name="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 应该是指实现后每条方向总共2条线。
-</p></div>
+</p></div></div>
 
 
 </div>

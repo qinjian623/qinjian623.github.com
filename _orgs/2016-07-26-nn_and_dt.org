@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 神经网络与决策树的分类能力等价的思考
 ---
-#+END_HTML
+#+END_EXPORT
 
 最近的观察和理解表明，神经网络即使只限制在分类任务上（据我所知目前决策树似乎还不能应用在其他种类的任务上），也具有不亚于决策树的表达能力。
 

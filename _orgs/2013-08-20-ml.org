@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Machine Learning课程
 ---
-#+END_HTML
+#+END_EXPORT
 * 说明
   之前在Coursera上选了个ML的课程，毕竟工作上也要用到，上门课程也好歹算得上准科班了，而且么，作业用matlab做的，正好自己之前就打算学，不过MIT的那个MATLAB的教程自己的笔记一直停在第二课上...这个直接动手的。虽说课程上用的是octave，不过么，我在matlab上也都跑过，没什么问题。
   

@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 机器人自动化的想法
 ---
-#+END_HTML
+#+END_EXPORT
 
 搬到公司新大楼后，面对外面的热火朝天的工地，突发想法，也许，机器人自动化替代的第一个产业就是建筑业。
 

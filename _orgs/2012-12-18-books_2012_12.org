@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 谁会认错和乔布斯传笔记
 tags: [笔记]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 记录下有关的两本书

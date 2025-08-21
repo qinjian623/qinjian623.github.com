@@ -8,12 +8,12 @@ tags: [gfw, share]
 <p>
 简单记载一下VPN在VPS的配置经过:
 </p>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 安装pptpd，具体根据发行版。</h2>
+<div id="outline-container-org0f11542" class="outline-2">
+<h2 id="org0f11542"><span class="section-number-2">1.</span> 安装pptpd，具体根据发行版。</h2>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 编辑/etc/pptpd.conf</h2>
+<div id="outline-container-org29e9191" class="outline-2">
+<h2 id="org29e9191"><span class="section-number-2">2.</span> 编辑/etc/pptpd.conf</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 去掉#的注释
@@ -23,8 +23,8 @@ remoteip 192.168.0.234-238,192.168.0.245
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 编辑 /etc/ppp/pptpd-options 文件，设置 DNS</h2>
+<div id="outline-container-org3f7f671" class="outline-2">
+<h2 id="org3f7f671"><span class="section-number-2">3.</span> 编辑 /etc/ppp/pptpd-options 文件，设置 DNS</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 找到 ms-dns 去掉 # 号，并修改 DNS 地址
@@ -36,16 +36,16 @@ ms-dns 8.8.4.4
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 编辑 /etc/ppp/chap-secrets ，加入用户</h2>
+<div id="outline-container-org2d16111" class="outline-2">
+<h2 id="org2d16111"><span class="section-number-2">4.</span> 编辑 /etc/ppp/chap-secrets ，加入用户</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 用户名 pptpd 密码 *
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 编辑 /etc/sysctl.conf 文件，找到以下行，去掉 # 号注释符号</h2>
+<div id="outline-container-orga844bca" class="outline-2">
+<h2 id="orga844bca"><span class="section-number-2">5.</span> 编辑 /etc/sysctl.conf 文件，找到以下行，去掉 # 号注释符号</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 net.ipv4.ip<sub>forward</sub>=1
@@ -60,8 +60,8 @@ sysctl -p
 </p>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> 向 nat 表中添加一条规则，如果没有iptables记得安装:</h2>
+<div id="outline-container-org5b140ca" class="outline-2">
+<h2 id="org5b140ca"><span class="section-number-2">6.</span> 向 nat 表中添加一条规则，如果没有iptables记得安装:</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j
@@ -69,8 +69,8 @@ MASQUERADE
 </p>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> 保存状态，免得重启无效</h2>
+<div id="outline-container-orgf2dd8a4" class="outline-2">
+<h2 id="orgf2dd8a4"><span class="section-number-2">7.</span> 保存状态，免得重启无效</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 iptables-save &gt; /etc/iptables-rules
@@ -84,22 +84,20 @@ pre-up iptables-restore &lt; /etc/iptables-rules
 </p>
 </div>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> 手动处理的情况</h2>
+<div id="outline-container-orge2edffa" class="outline-2">
+<h2 id="orge2edffa"><span class="section-number-2">8.</span> 手动处理的情况</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 iptables-restore /etc/iptables-rules
 </p>
 </div>
 </div>
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> 参考</h2>
+<div id="outline-container-org10df0c7" class="outline-2">
+<h2 id="org10df0c7"><span class="section-number-2">9.</span> 参考</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
-<li><a href="http://blog.jkey.lu/install-pptp-on-ubuntu/">http://blog.jkey.lu/install-pptp-on-ubuntu/</a>
-</li>
-<li><a href="http://wangyan.org/blog/debian-pptp-vpn.html">http://wangyan.org/blog/debian-pptp-vpn.html</a>
-</li>
+<li><a href="http://blog.jkey.lu/install-pptp-on-ubuntu/">http://blog.jkey.lu/install-pptp-on-ubuntu/</a></li>
+<li><a href="http://wangyan.org/blog/debian-pptp-vpn.html">http://wangyan.org/blog/debian-pptp-vpn.html</a></li>
 </ul>
 </div>
 </div>

@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: WebQQ逆向
 tags: [security]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: WebQQ逆向
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

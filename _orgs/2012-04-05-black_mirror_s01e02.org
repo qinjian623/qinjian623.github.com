@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 个人之于群体-BlackMirrorS01E02
 tags: [thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 
 一曲单纯的恋歌，却被群体的酱缸埋葬。
 ** 败于众手

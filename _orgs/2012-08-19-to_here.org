@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 改个地方
 tags: [share, blog]
 ---
-#+END_HTML
+#+END_EXPORT
 #+STYLE: <link rel="stylesheet" type="text/css" href="./style/style.css" />
 
 自己实在是个折腾不止的人,发现blogger上传的org-mode格式不太好看,竟然自己就换到github上来了,其实也是自己的早就想弄个静态的玩下,之前nodejs试了下,果然js还是太可怕.

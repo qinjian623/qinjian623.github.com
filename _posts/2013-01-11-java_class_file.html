@@ -3,58 +3,52 @@ layout: post
 title: Java Class File Format
 tags: [pl, java]
 ---
-
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Reference</h2>
+<div id="outline-container-org585d25f" class="outline-2">
+<h2 id="org585d25f"><span class="section-number-2">1.</span> Reference</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li><a href="http://en.wikipedia.org/wiki/Java_class_file">http://en.wikipedia.org/wiki/Java_class_file</a>
-</li>
-<li>Java Specification Request-202 Chapter 4
-</li>
+<li><a href="http://en.wikipedia.org/wiki/Java_class_file">http://en.wikipedia.org/wiki/Java_class_file</a></li>
+<li>Java Specification Request-202 Chapter 4</li>
 </ol>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 文件头</h2>
+<div id="outline-container-orgb726ffa" class="outline-2">
+<h2 id="orgb726ffa"><span class="section-number-2">2.</span> 文件头</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
+<pre class="src src-c"><span class="org-keyword">struct</span> <span class="org-type">Class_File_Format</span> {
+   <span class="org-type">u4</span> <span class="org-variable-name">magic_number</span>;   
 
-<pre class="src src-c"><span style="color: #FBDE2D;">struct</span> <span style="color: #D8FA3C;">Class_File_Format</span> {
-   <span style="color: #D8FA3C;">u4</span> <span style="color: #D8FA3C;">magic_number</span>;   
+   <span class="org-type">u2</span> <span class="org-variable-name">minor_version</span>;   
+   <span class="org-type">u2</span> <span class="org-variable-name">major_version</span>;   
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">minor_version</span>;   
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">major_version</span>;   
+   <span class="org-type">u2</span> <span class="org-variable-name">constant_pool_count</span>;   
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">constant_pool_count</span>;   
+   <span class="org-type">cp_info</span> <span class="org-variable-name">constant_pool</span>[constant_pool_count - 1];
 
-   <span style="color: #D8FA3C;">cp_info</span> <span style="color: #D8FA3C;">constant_pool</span>[constant_pool_count - 1];
+   <span class="org-type">u2</span> <span class="org-variable-name">access_flags</span>;
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">access_flags</span>;
+   <span class="org-type">u2</span> <span class="org-variable-name">this_class</span>;
+   <span class="org-type">u2</span> <span class="org-variable-name">super_class</span>;
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">this_class</span>;
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">super_class</span>;
+   <span class="org-type">u2</span> <span class="org-variable-name">interfaces_count</span>;   
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">interfaces_count</span>;   
+   <span class="org-type">u2</span> <span class="org-variable-name">interfaces</span>[interfaces_count];
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">interfaces</span>[interfaces_count];
+   <span class="org-type">u2</span> <span class="org-variable-name">fields_count</span>;   
+   <span class="org-type">field_info</span> <span class="org-variable-name">fields</span>[fields_count];
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">fields_count</span>;   
-   <span style="color: #D8FA3C;">field_info</span> <span style="color: #D8FA3C;">fields</span>[fields_count];
+   <span class="org-type">u2</span> <span class="org-variable-name">methods_count</span>;
+   <span class="org-type">method_info</span> <span class="org-variable-name">methods</span>[methods_count];
 
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">methods_count</span>;
-   <span style="color: #D8FA3C;">method_info</span> <span style="color: #D8FA3C;">methods</span>[methods_count];
-
-   <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">attributes_count</span>;   
-   <span style="color: #D8FA3C;">attribute_info</span> <span style="color: #D8FA3C;">attributes</span>[attributes_count];
+   <span class="org-type">u2</span> <span class="org-variable-name">attributes_count</span>;   
+   <span class="org-type">attribute_info</span> <span class="org-variable-name">attributes</span>[attributes_count];
 }
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> magic\<sub>number</sub></h3>
+<div id="outline-container-orgf4f332a" class="outline-3">
+<h3 id="orgf4f332a"><span class="section-number-3">2.1.</span> magic\<sub>number</sub></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 固定值 "0xcafebabe",但是在一个文件中看到的竟然是 <b>c38a c3be c2ba c2be</b> ,只好换一个文件看了.
@@ -70,26 +64,25 @@ certain release level of the Java platform may support.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> minor\<sub>version</sub> and major\<sub>version</sub></h3>
+<div id="outline-container-org4d122a1" class="outline-3">
+<h3 id="org4d122a1"><span class="section-number-3">2.2.</span> minor\<sub>version</sub> and major\<sub>version</sub></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 看到的两个都是 <b>0000 0032</b> ,
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> constant\<sub>pool\</sub><sub>count</sub> and constant\<sub>pool</sub></h3>
+<div id="outline-container-orgc70e1d7" class="outline-3">
+<h3 id="orgc70e1d7"><span class="section-number-3">2.3.</span> constant\<sub>pool</sub>\<sub>count</sub> and constant\<sub>pool</sub></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-constant\<sub>pool</sub> 范围是 1~constant\<sub>pool\</sub><sub>count</sub>-1,
+constant\<sub>pool</sub> 范围是 1~constant\<sub>pool</sub>\<sub>count</sub>-1,
 constant\<sub>pool中的数据结构是变长的</sub>:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">cp_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">info</span>[];
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">info</span>[];
 }
 </pre>
 </div>
@@ -101,69 +94,69 @@ constant\<sub>pool中的数据结构是变长的</sub>:
 
 
 <colgroup>
-<col class="left"/>
+<col  class="org-left" />
 
-<col class="right"/>
+<col  class="org-right" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">Constant Type</td>
-<td class="right">Value</td>
+<td class="org-left">Constant Type</td>
+<td class="org-right">Value</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Class</sub></td>
-<td class="right">7</td>
+<td class="org-left">CONSTANT\<sub>Class</sub></td>
+<td class="org-right">7</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Fieldref</sub></td>
-<td class="right">9</td>
+<td class="org-left">CONSTANT\<sub>Fieldref</sub></td>
+<td class="org-right">9</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Methodref</sub></td>
-<td class="right">10</td>
+<td class="org-left">CONSTANT\<sub>Methodref</sub></td>
+<td class="org-right">10</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>InterfaceMethorref</sub></td>
-<td class="right">11</td>
+<td class="org-left">CONSTANT\<sub>InterfaceMethorref</sub></td>
+<td class="org-right">11</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>String</sub></td>
-<td class="right">8</td>
+<td class="org-left">CONSTANT\<sub>String</sub></td>
+<td class="org-right">8</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Integer</sub></td>
-<td class="right">3</td>
+<td class="org-left">CONSTANT\<sub>Integer</sub></td>
+<td class="org-right">3</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Float</sub></td>
-<td class="right">4</td>
+<td class="org-left">CONSTANT\<sub>Float</sub></td>
+<td class="org-right">4</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Long</sub></td>
-<td class="right">5</td>
+<td class="org-left">CONSTANT\<sub>Long</sub></td>
+<td class="org-right">5</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Double</sub></td>
-<td class="right">6</td>
+<td class="org-left">CONSTANT\<sub>Double</sub></td>
+<td class="org-right">6</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>NameAndType</sub></td>
-<td class="right">12</td>
+<td class="org-left">CONSTANT\<sub>NameAndType</sub></td>
+<td class="org-right">12</td>
 </tr>
 
 <tr>
-<td class="left">CONSTANT\<sub>Utf8</sub></td>
-<td class="right">1</td>
+<td class="org-left">CONSTANT\<sub>Utf8</sub></td>
+<td class="org-right">1</td>
 </tr>
 </tbody>
 </table>
@@ -171,28 +164,25 @@ constant\<sub>pool中的数据结构是变长的</sub>:
 后面跟随的是则是根据tag不同的结构.
 </p>
 </div>
-
-<div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> CONSTANT\<sub>Class</sub></h4>
+<div id="outline-container-org82c4525" class="outline-4">
+<h4 id="org82c4525"><span class="section-number-4">2.3.1.</span> CONSTANT\<sub>Class</sub></h4>
 <div class="outline-text-4" id="text-2-3-1">
 <div class="org-src-container">
-
 <pre class="src src-c">CONSTANT_Class_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">name_index</span>;
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">name_index</span>;
 }
 </pre>
 </div>
 <p>
-注意,这里代表的是cp<sub>info的整个</sub>,所以也包括了tag.name\<sub>index则代表的具体的名称的index</sub>,具体的名称同样也会在pool里面,指向的类型应该是 CONSTANT\<sub>Utf8\</sub><sub>info</sub> 的类型.
+注意,这里代表的是cp<sub>info的整个,所以也包括了tag.name</sub>\<sub>index则代表的具体的名称的index,具体的名称同样也会在pool里面,指向的类型应该是</sub> CONSTANT\<sub>Utf8</sub>\<sub>info</sub> 的类型.
 </p>
 
 <p>
 数组也是对象,表示形式比较特殊:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-java"><span style="color: #D8FA3C;">int</span>[][] =&gt; [[I
+<pre class="src src-java"><span class="org-type">int</span>[][] =&gt; [[I
 Thread[] =&gt; [Ljava/lang/Thread;
 </pre>
 </div>
@@ -206,37 +196,40 @@ An array type descriptor is valid only if it represents 255 or fewer dimensions.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> CONSTANT\<sub>*</sub>ref\<sub>info</sub></h4>
+<div id="outline-container-orgad2844d" class="outline-4">
+<h4 id="orgad2844d"><span class="section-number-4">2.3.2.</span> CONSTANT\<sub>*</sub>ref\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 *代表的是Field/Method/Interface,这几个结构一致.
 </p>
 <div class="org-src-container">
-
-<pre class="src src-c">CONSTANT_*ref_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">class_index</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">name_and_type_index</span>;
+<pre class="src src-c"><span class="org-type">CONSTANT_</span>*<span class="org-variable-name">ref_info</span> {
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">class_index</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">name_and_type_index</span>;
 }
 </pre>
 </div>
 </div>
-<ol class="org-ol"><li>class\<sub>index</sub><br/><div class="outline-text-5" id="text-2-3-2-1">
+<ol class="org-ol">
+<li><a id="orgfdf72cb"></a>class\<sub>index</sub><br />
+<div class="outline-text-5" id="text-2-3-2-1">
 <p>
-指向的内容,必须是 CONSTANT\<sub>Class\</sub><sub>info</sub> 的结构. 而Methodref指向的不能是interface而只能是class.Interfaceref的只能是interface. Fieldref的则两种随便.
+指向的内容,必须是 CONSTANT\<sub>Class</sub>\<sub>info</sub> 的结构. 而Methodref指向的不能是interface而只能是class.Interfaceref的只能是interface. Fieldref的则两种随便.
 </p>
 </div>
 </li>
-<li>name\<sub>and\</sub><sub>type\</sub><sub>index</sub><br/><div class="outline-text-5" id="text-2-3-2-2">
+<li><a id="org52868f4"></a>name\<sub>and</sub>\<sub>type</sub>\<sub>index</sub><br />
+<div class="outline-text-5" id="text-2-3-2-2">
 <p>
-指向的则是 CONSTANT\<sub>NameAndType\</sub><sub>info</sub>, 这个表述的是method/field的名字和描述<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>.field的必须是一个field descriptor. CONSTANT\<sub>Methodref\</sub><sub>info的名字如果以</sub> '&lt;' 开始, 就需要是固定的 &lt;init&gt; ,表示 an instance initialization method, 其返回值必须是void.
+指向的则是 CONSTANT\<sub>NameAndType</sub>\<sub>info</sub>, 这个表述的是method/field的名字和描述<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>.field的必须是一个field descriptor. CONSTANT\<sub>Methodref</sub>\<sub>info的名字如果以</sub> '&lt;' 开始, 就需要是固定的 &lt;init&gt; ,表示 an instance initialization method, 其返回值必须是void.
 </p>
 </div>
-<ol class="org-ol"><li>field descriptor<br/><div class="outline-text-6" id="text-2-3-2-2-1">
+<ol class="org-ol">
+<li><a id="org8116dd7"></a>field descriptor<br />
+<div class="outline-text-6" id="text-2-3-2-2-1">
 <div class="org-src-container">
-
-<pre class="src src-c">  A field descriptor represents the type of <span style="color: #D8FA3C;">a</span> <span style="color: #D8FA3C;">class</span>, <span style="color: #D8FA3C;">instance</span>, <span style="color: #D8FA3C;">or</span> local variable. It is a series of characters generated by the grammar
+<pre class="src src-c">  A field descriptor represents the type of <span class="org-type">a</span> <span class="org-variable-name">class</span>, <span class="org-variable-name">instance</span>, <span class="org-variable-name">or</span> local variable. It is a series of characters generated by the grammar
 FieldDescriptor:
   FieldType
 ComponentType:
@@ -256,7 +249,7 @@ BaseType:
   *Z*
 ObjectType:
   L Classname;
-<span style="color: #4c83ff;">ArrayType</span>:
+<span class="org-constant">ArrayType</span>:
   [ComponentType
 </pre>
 </div>
@@ -268,94 +261,94 @@ ObjectType:
 
 
 <colgroup>
-<col class="left"/>
+<col  class="org-left" />
 
-<col class="left"/>
+<col  class="org-left" />
 
-<col class="left"/>
+<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">BaseType Character</td>
-<td class="left">Type</td>
-<td class="left">Interpretation</td>
+<td class="org-left">BaseType Character</td>
+<td class="org-left">Type</td>
+<td class="org-left">Interpretation</td>
 </tr>
 
 <tr>
-<td class="left">B</td>
-<td class="left">byte</td>
-<td class="left">signed byte</td>
+<td class="org-left">B</td>
+<td class="org-left">byte</td>
+<td class="org-left">signed byte</td>
 </tr>
 
 <tr>
-<td class="left">C</td>
-<td class="left">char</td>
-<td class="left">Unicode character</td>
+<td class="org-left">C</td>
+<td class="org-left">char</td>
+<td class="org-left">Unicode character</td>
 </tr>
 
 <tr>
-<td class="left">D</td>
-<td class="left">double</td>
-<td class="left">double-precision floating-point value</td>
+<td class="org-left">D</td>
+<td class="org-left">double</td>
+<td class="org-left">double-precision floating-point value</td>
 </tr>
 
 <tr>
-<td class="left">F</td>
-<td class="left">float</td>
-<td class="left">single-precision floating-point value</td>
+<td class="org-left">F</td>
+<td class="org-left">float</td>
+<td class="org-left">single-precision floating-point value</td>
 </tr>
 
 <tr>
-<td class="left">I</td>
-<td class="left">int</td>
-<td class="left">integer</td>
+<td class="org-left">I</td>
+<td class="org-left">int</td>
+<td class="org-left">integer</td>
 </tr>
 
 <tr>
-<td class="left">J</td>
-<td class="left">long</td>
-<td class="left">long integer</td>
+<td class="org-left">J</td>
+<td class="org-left">long</td>
+<td class="org-left">long integer</td>
 </tr>
 
 <tr>
-<td class="left">L Classname;</td>
-<td class="left">reference</td>
-<td class="left">an instance of class &lt;classname&gt;</td>
+<td class="org-left">L Classname;</td>
+<td class="org-left">reference</td>
+<td class="org-left">an instance of class &lt;classname&gt;</td>
 </tr>
 
 <tr>
-<td class="left">S</td>
-<td class="left">short</td>
-<td class="left">signed short</td>
+<td class="org-left">S</td>
+<td class="org-left">short</td>
+<td class="org-left">signed short</td>
 </tr>
 
 <tr>
-<td class="left">Z</td>
-<td class="left">boolean</td>
-<td class="left">true or false</td>
+<td class="org-left">Z</td>
+<td class="org-left">boolean</td>
+<td class="org-left">true or false</td>
 </tr>
 
 <tr>
-<td class="left">[</td>
-<td class="left">reference</td>
-<td class="left">one array dimension</td>
+<td class="org-left">[</td>
+<td class="org-left">reference</td>
+<td class="org-left">one array dimension</td>
 </tr>
 </tbody>
 </table>
 </div>
 </li>
-<li>剩下的都要是method descriptor<br/><div class="outline-text-6" id="text-2-3-2-2-2">
+<li><a id="orgaf44de9"></a>剩下的都要是method descriptor<br />
+<div class="outline-text-6" id="text-2-3-2-2-2">
 <p>
 直接引用吧:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-c"><span style="color: #4c83ff;">MethodDescriptor</span>:
-  ( <span style="color: #D8FA3C;">ParameterDescriptor</span>* ) ReturnDescriptor
-A parameter descriptor represents a parameter passed to <span style="color: #D8FA3C;">a</span> <span style="color: #D8FA3C;">method</span>:
+<pre class="src src-c"><span class="org-constant">MethodDescriptor</span>:
+  ( <span class="org-type">ParameterDescriptor</span>* ) ReturnDescriptor
+A parameter descriptor represents a parameter passed to a <span class="org-type">method</span>:
 ParameterDescriptor:
   FieldType
-A <span style="color: #FBDE2D;">return</span> descriptor represents the type of the value returned from a method. It is a
+A <span class="org-keyword">return</span> descriptor represents the type of the value returned from a method. It is a
 series of characters generated by the grammar:
 
 ReturnDescriptor:
@@ -367,7 +360,7 @@ VoidDescriptor:
 </pre>
 </div>
 <p>
-这里,parameters的length要少于等于255.具体的length计算要包括所有的parameters的和, <b>long</b> 或者 <b>double</b> 代表两个单元,而其他的都代表一个单元<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>.还要注意,实体类和接口方法调用的时候,this这个参数也是要算进去的<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>.
+这里,parameters的length要少于等于255.具体的length计算要包括所有的parameters的和, <b>long</b> 或者 <b>double</b> 代表两个单元,而其他的都代表一个单元<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>.还要注意,实体类和接口方法调用的时候,this这个参数也是要算进去的<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>.
 </p>
 
 <blockquote>
@@ -377,34 +370,34 @@ VoidDescriptor:
 </p>
 </blockquote>
 </div>
-</li></ol>
-</li></ol>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-<div id="outline-container-sec-2-3-3" class="outline-4">
-<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> CONSTANT\<sub>String\</sub><sub>info</sub></h4>
+<div id="outline-container-orgedac846" class="outline-4">
+<h4 id="orgedac846"><span class="section-number-4">2.3.3.</span> CONSTANT\<sub>String</sub>\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-3">
 <div class="org-src-container">
-
 <pre class="src src-c">CONSTANT_String_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">string_index</span>;
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">string_index</span>;
 }
 </pre>
 </div>
 
 <p>
-比较简单,index指向的必须是 CONSTANT\<sub>Utf8\</sub><sub>info</sub>
+比较简单,index指向的必须是 CONSTANT\<sub>Utf8</sub>\<sub>info</sub>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-3-4" class="outline-4">
-<h4 id="sec-2-3-4"><span class="section-number-4">2.3.4</span> CONSTANT\<sub>Integer\</sub><sub>info</sub> and CONSTANT\<sub>Float\</sub><sub>info</sub></h4>
+<div id="outline-container-org0389641" class="outline-4">
+<h4 id="org0389641"><span class="section-number-4">2.3.4.</span> CONSTANT\<sub>Integer</sub>\<sub>info</sub> and CONSTANT\<sub>Float</sub>\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-4">
 <div class="org-src-container">
-
-<pre class="src src-c">CONSTANT_*_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u4</span> <span style="color: #D8FA3C;">bytes</span>;
+<pre class="src src-c"><span class="org-type">CONSTANT_</span>*<span class="org-variable-name">_info</span> {
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u4</span> <span class="org-variable-name">bytes</span>;
 }
 </pre>
 </div>
@@ -415,39 +408,30 @@ bytes中保存是常量的值,其中float的是IEEE 754 floating-point single fo
 </p>
 <blockquote>
 <ul class="org-ul">
-<li>If bits is 0x7f800000, the float value will be positive inﬁnity.
-</li>
-<li>If bits is 0xff800000, the float value will be negative inﬁnity.
-</li>
-<li>If bits is in the range 0x7f800001 through 0x7fffffff or in the range 0xff800001 through 0xffffffff, the float value will be NaN.
-</li>
+<li>If bits is 0x7f800000, the float value will be positive inﬁnity.</li>
+<li>If bits is 0xff800000, the float value will be negative inﬁnity.</li>
+<li>If bits is in the range 0x7f800001 through 0x7fffffff or in the range 0xff800001 through 0xffffffff, the float value will be NaN.</li>
 <li>In all other cases, let s, e, and m be three values that might be computed from bits:
 <ul class="org-ul">
-<li>int s = ((bits &gt;&gt; 31) == 0) ? 1 : -1;
-</li>
-<li>int e = ((bits &gt;&gt; 23) &amp; 0xff);
-</li>
+<li>int s = ((bits &gt;&gt; 31) == 0) ? 1 : -1;</li>
+<li>int e = ((bits &gt;&gt; 23) &amp; 0xff);</li>
 <li>int m = (e == 0) ?
 (bits &amp; 0x7fffff) &lt;&lt; 1 :
-(bits &amp; 0x7fffff) | 0x800000;
-</li>
-<li>Then the float value equals the result of the mathematical expression . s * m* 2<sup>(e-150)</sup>
-</li>
-</ul>
-</li>
+(bits &amp; 0x7fffff) | 0x800000;</li>
+<li>Then the float value equals the result of the mathematical expression . s * m* 2<sup>(e-150)</sup></li>
+</ul></li>
 </ul>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-sec-2-3-5" class="outline-4">
-<h4 id="sec-2-3-5"><span class="section-number-4">2.3.5</span> CONSTANT\<sub>Long\</sub><sub>info</sub> and CONSTANT\<sub>Double\</sub><sub>info</sub></h4>
+<div id="outline-container-orge9cd801" class="outline-4">
+<h4 id="orge9cd801"><span class="section-number-4">2.3.5.</span> CONSTANT\<sub>Long</sub>\<sub>info</sub> and CONSTANT\<sub>Double</sub>\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-5">
 <div class="org-src-container">
-
-<pre class="src src-c">CONSTANT_*_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u4</span> <span style="color: #D8FA3C;">high_bytes</span>;
-  <span style="color: #D8FA3C;">u4</span> <span style="color: #D8FA3C;">low_bytes</span>;
+<pre class="src src-c"><span class="org-type">CONSTANT_</span>*<span class="org-variable-name">_info</span> {
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u4</span> <span class="org-variable-name">high_bytes</span>;
+  <span class="org-type">u4</span> <span class="org-variable-name">low_bytes</span>;
 }
 </pre>
 </div>
@@ -456,11 +440,10 @@ bytes中保存是常量的值,其中float的是IEEE 754 floating-point single fo
 这里计算index有个特殊情况,这两个结构一次占用两个位置.
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">All 8-byte constants take up two entries in the constant_pool table of the class
 &#64257;le. If a CONSTANT_Long_info or CONSTANT_Double_info structure is the item
 in the constant_pool table at index n, then the next usable item in the pool is
-located at <span style="color: #D8FA3C;">index</span> <span style="color: #D8FA3C;">n</span> +2. The constant_pool index n +1 must be valid but is
+located at index n +2. The constant_pool index n +1 must be valid but is
 considered unusable.
 </pre>
 </div>
@@ -469,54 +452,44 @@ considered unusable.
 </p>
 <blockquote>
 <ul class="org-ul">
-<li>If bits is 0x7ff0000000000000L, the double value will be positive inﬁnity.
-</li>
-<li>If bits is 0xfff0000000000000L, the double value will be negative inﬁnity.
-</li>
-<li>If bits is in the range 0x7ff0000000000001L through 0x7fffffffffffffffL or in the range 0xfff0000000000001L through 0xffffffffffffffffL, the double value will be NaN.
-</li>
+<li>If bits is 0x7ff0000000000000L, the double value will be positive inﬁnity.</li>
+<li>If bits is 0xfff0000000000000L, the double value will be negative inﬁnity.</li>
+<li>If bits is in the range 0x7ff0000000000001L through 0x7fffffffffffffffL or in the range 0xfff0000000000001L through 0xffffffffffffffffL, the double value will be NaN.</li>
 <li>In all other cases, let s, e, and m be three values that might be computed from bits:
 <ul class="org-ul">
-<li>int s = ((bits &gt;&gt; 63) == 0) ? 1 : -1;
-</li>
-<li>int e = (int)((bits &gt;&gt; 52) &amp; 0x7ffL);
-</li>
+<li>int s = ((bits &gt;&gt; 63) == 0) ? 1 : -1;</li>
+<li>int e = (int)((bits &gt;&gt; 52) &amp; 0x7ffL);</li>
 <li>long m = (e == 0) ?
 (bits &amp; 0xfffffffffffffL) &lt;&lt; 1 :
-(bits &amp; 0xfffffffffffffL) | 0x10000000000000L;
-</li>
-<li>Then the ﬂoating-point value equals the double value of the mathematical expression s*m*2<sup>(e-1075)</sup>
-</li>
-</ul>
-</li>
+(bits &amp; 0xfffffffffffffL) | 0x10000000000000L;</li>
+<li>Then the ﬂoating-point value equals the double value of the mathematical expression s*m*2<sup>(e-1075)</sup></li>
+</ul></li>
 </ul>
 </blockquote>
 </div>
 </div>
-<div id="outline-container-sec-2-3-6" class="outline-4">
-<h4 id="sec-2-3-6"><span class="section-number-4">2.3.6</span> CONSTANT\<sub>NameAndType\</sub><sub>info</sub></h4>
+<div id="outline-container-orgbc38d5f" class="outline-4">
+<h4 id="orgbc38d5f"><span class="section-number-4">2.3.6.</span> CONSTANT\<sub>NameAndType</sub>\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-6">
 <div class="org-src-container">
-
 <pre class="src src-c">CONSTANT_NameAndType_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">name_index</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">descriptor_index</span>;
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">name_index</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">descriptor_index</span>;
 }
 </pre>
 </div>
 <p>
-index指向的都是 CONSTANT\<sub>Utf8\</sub><sub>info</sub>,一个是名字,一个是 descriptor.
+index指向的都是 CONSTANT\<sub>Utf8</sub>\<sub>info,一个是名字,一个是</sub> descriptor.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-3-7" class="outline-4">
-<h4 id="sec-2-3-7"><span class="section-number-4">2.3.7</span> CONSTANT\<sub>Utf8\</sub><sub>info</sub></h4>
+<div id="outline-container-org7f168ad" class="outline-4">
+<h4 id="org7f168ad"><span class="section-number-4">2.3.7.</span> CONSTANT\<sub>Utf8</sub>\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-3-7">
 <blockquote>
 <p>
-The CONSTANT\<sub>Utf8\</sub><sub>info</sub> structure is used to represent constant string values.String content is encoded in <i>modified</i> UTF-8.
+The CONSTANT\<sub>Utf8</sub>\<sub>info</sub> structure is used to represent constant string values.String content is encoded in <i>modified</i> UTF-8.
 </p>
 </blockquote>
 <p>
@@ -536,22 +509,21 @@ its own two-times-three-byte format instead.
 结构如下:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">CONSTANT_Utf8_info {
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">tag</span>;
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">length</span>;
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">bytes</span>[length];
+  <span class="org-type">u1</span> <span class="org-variable-name">tag</span>;
+  <span class="org-type">u2</span> <span class="org-variable-name">length</span>;
+  <span class="org-type">u1</span> <span class="org-variable-name">bytes</span>[length];
 }
 </pre>
 </div>
 <p>
-没有可以多废话,很明显,限制条件是,不能是0 和 range(0xf0, 0xff)<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>
+没有可以多废话,很明显,限制条件是,不能是0 和 range(0xf0, 0xff)<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 扯远了,要回来了,access\<sub>flags</sub></h3>
+<div id="outline-container-org15de102" class="outline-3">
+<h3 id="org15de102"><span class="section-number-3">2.4.</span> 扯远了,要回来了,access\<sub>flags</sub></h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 列表就可以,如下:
@@ -560,65 +532,65 @@ its own two-times-three-byte format instead.
 
 
 <colgroup>
-<col class="left"/>
+<col  class="org-left" />
 
-<col class="right"/>
+<col  class="org-right" />
 
-<col class="left"/>
+<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">Flag Name</td>
-<td class="right">Value</td>
-<td class="left">Intepretation</td>
+<td class="org-left">Flag Name</td>
+<td class="org-right">Value</td>
+<td class="org-left">Intepretation</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>PUBLIC</sub></td>
-<td class="right">0x0001</td>
-<td class="left">Declared public; may be accessed from outside its package.</td>
+<td class="org-left">ACC\<sub>PUBLIC</sub></td>
+<td class="org-right">0x0001</td>
+<td class="org-left">Declared public; may be accessed from outside its package.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>FINAL</sub></td>
-<td class="right">0x0010</td>
-<td class="left">Declared final; no subclasses allowed.</td>
+<td class="org-left">ACC\<sub>FINAL</sub></td>
+<td class="org-right">0x0010</td>
+<td class="org-left">Declared final; no subclasses allowed.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>SUPER</sub></td>
-<td class="right">0x0020</td>
-<td class="left">Treat superclass methods specially when invoked by the invokespecial instruction.</td>
+<td class="org-left">ACC\<sub>SUPER</sub></td>
+<td class="org-right">0x0020</td>
+<td class="org-left">Treat superclass methods specially when invoked by the invokespecial instruction.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>INTERFACE</sub></td>
-<td class="right">0x0200</td>
-<td class="left">Is an interface, not a class.</td>
+<td class="org-left">ACC\<sub>INTERFACE</sub></td>
+<td class="org-right">0x0200</td>
+<td class="org-left">Is an interface, not a class.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>ABSTRACT</sub></td>
-<td class="right">0x0400</td>
-<td class="left">Declared abstract; must not be instantiated.</td>
+<td class="org-left">ACC\<sub>ABSTRACT</sub></td>
+<td class="org-right">0x0400</td>
+<td class="org-left">Declared abstract; must not be instantiated.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>SYNTHETIC</sub></td>
-<td class="right">0x1000</td>
-<td class="left">Declared synthetic; Not present in the source code.</td>
+<td class="org-left">ACC\<sub>SYNTHETIC</sub></td>
+<td class="org-right">0x1000</td>
+<td class="org-left">Declared synthetic; Not present in the source code.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>ANNOTATION</sub></td>
-<td class="right">0x2000</td>
-<td class="left">Declared as an annotation type.</td>
+<td class="org-left">ACC\<sub>ANNOTATION</sub></td>
+<td class="org-right">0x2000</td>
+<td class="org-left">Declared as an annotation type.</td>
 </tr>
 
 <tr>
-<td class="left">ACC\<sub>ENUM</sub></td>
-<td class="right">0x4000</td>
-<td class="left">Declared as an enum type.</td>
+<td class="org-left">ACC\<sub>ENUM</sub></td>
+<td class="org-right">0x4000</td>
+<td class="org-left">Declared as an enum type.</td>
 </tr>
 </tbody>
 </table>
@@ -631,51 +603,47 @@ super的用来向上兼容,新编译器都应该直接设置.应该是为了 inv
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> this\<sub>index</sub></h3>
+<div id="outline-container-org1f8ed54" class="outline-3">
+<h3 id="org1f8ed54"><span class="section-number-3">2.5.</span> this\<sub>index</sub></h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 指向pool里面的CONSTANT<sub>Class</sub><sub>info类型</sub>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6"><span class="section-number-3">2.6</span> super\<sub>class</sub></h3>
+<div id="outline-container-org75cd50d" class="outline-3">
+<h3 id="org75cd50d"><span class="section-number-3">2.6.</span> super\<sub>class</sub></h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 除了object都要有,这是废话.不能是final的,这也是废话.interface的都要指向object,这个算不是废话.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-7" class="outline-3">
-<h3 id="sec-2-7"><span class="section-number-3">2.7</span> interfaces\<sub>count</sub> and interfaces[]</h3>
+<div id="outline-container-org086b0d4" class="outline-3">
+<h3 id="org086b0d4"><span class="section-number-3">2.7.</span> interfaces\<sub>count</sub> and interfaces[]</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 顺序是代码中的从左到右,或者是direct superinterface.指向的,自然是pool里面的东西.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-8" class="outline-3">
-<h3 id="sec-2-8"><span class="section-number-3">2.8</span> fields\<sub>count</sub> and fields[]</h3>
+<div id="outline-container-org640b1a8" class="outline-3">
+<h3 id="org640b1a8"><span class="section-number-3">2.8.</span> fields\<sub>count</sub> and fields[]</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 其中的field是field\<sub>info结构</sub>
 </p>
 </div>
-<div id="outline-container-sec-2-8-1" class="outline-4">
-<h4 id="sec-2-8-1"><span class="section-number-4">2.8.1</span> field\<sub>info</sub></h4>
+<div id="outline-container-orgc2f4a99" class="outline-4">
+<h4 id="orgc2f4a99"><span class="section-number-4">2.8.1.</span> field\<sub>info</sub></h4>
 <div class="outline-text-4" id="text-2-8-1">
 <div class="org-src-container">
-
 <pre class="src src-c">field_info {
- <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">access_flags</span>;
- <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">name_index</span>;
- <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">descriptor_index</span>;
- <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">attributes_count</span>;
- <span style="color: #D8FA3C;">attribute_info</span> <span style="color: #D8FA3C;">attributes</span>[attributes_count];
+ <span class="org-type">u2</span> <span class="org-variable-name">access_flags</span>;
+ <span class="org-type">u2</span> <span class="org-variable-name">name_index</span>;
+ <span class="org-type">u2</span> <span class="org-variable-name">descriptor_index</span>;
+ <span class="org-type">u2</span> <span class="org-variable-name">attributes_count</span>;
+ <span class="org-type">attribute_info</span> <span class="org-variable-name">attributes</span>[attributes_count];
 }
 </pre>
 </div>
@@ -683,11 +651,10 @@ super的用来向上兼容,新编译器都应该直接设置.应该是为了 inv
 主要就是 attribute\<sub>info</sub> ,结构:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">attribute_info {
-  <span style="color: #D8FA3C;">u2</span> <span style="color: #D8FA3C;">attribute_name_index</span>;
-  <span style="color: #D8FA3C;">u4</span> <span style="color: #D8FA3C;">attribute_length</span>;
-  <span style="color: #D8FA3C;">u1</span> <span style="color: #D8FA3C;">info</span>[attribute_length];
+  <span class="org-type">u2</span> <span class="org-variable-name">attribute_name_index</span>;
+  <span class="org-type">u4</span> <span class="org-variable-name">attribute_length</span>;
+  <span class="org-type">u1</span> <span class="org-variable-name">info</span>[attribute_length];
 }
 </pre>
 </div>
@@ -698,39 +665,37 @@ LineNumberTable, LocalVariableTable and Deprecated&#x2026;后面太多了,不看
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-2-9" class="outline-3">
-<h3 id="sec-2-9"><span class="section-number-3">2.9</span> method\<sub>count</sub> and methods[]</h3>
+<div id="outline-container-orgae57d12" class="outline-3">
+<h3 id="orgae57d12"><span class="section-number-3">2.9.</span> method\<sub>count</sub> and methods[]</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 methods里面存了所有的方法,除了superclass和superinterface的方法.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-10" class="outline-3">
-<h3 id="sec-2-10"><span class="section-number-3">2.10</span> attributes\<sub>count</sub> and attributes[]</h3>
+<div id="outline-container-org34ae3c9" class="outline-3">
+<h3 id="org34ae3c9"><span class="section-number-3">2.10.</span> attributes\<sub>count</sub> and attributes[]</h3>
 </div>
 </div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 描述是什么东西?Doc?
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 为什么double和long有特殊呢?
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 原来Java也是要传this的&#x2026;&#x2026;
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这个区间到底是开是闭没说,估计应该是闭区间.
-</p></div>
+</p></div></div>
 
 
 </div>

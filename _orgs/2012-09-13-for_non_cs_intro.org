@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Introduction for non-cs.
 tags: [intro]
 ---
-#+END_HTML
+#+END_EXPORT
 
 * 给非计算机专业的介绍性文章
 

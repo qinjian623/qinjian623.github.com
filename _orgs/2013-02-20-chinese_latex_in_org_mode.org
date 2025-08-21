@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: org-mode中文导出latex解决方法
 tags: [emacs]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: org-mode中文导出latex解决方法
 #+AUTHOR: Qin Jian
 #+LATEX_HEADER: \usepackage{xeCJK}

@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Clojure Persistent Vector
 tags: [pl, clojure]
 ---
-#+END_HTML
+#+END_EXPORT
 
 有关Clojure中的PersistentVector的记录,主要的参考来源是
 http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/

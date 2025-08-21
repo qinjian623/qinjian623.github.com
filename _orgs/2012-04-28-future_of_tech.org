@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 我的未来技术观
 tags: [share, thoughts] 
 ---
-#+END_HTML
+#+END_EXPORT
 
 从目前来看，IT程序员或者是软件工程师的数量依然需求明显。特别是所谓的"码农"，本应该是创造性的工作，正在变得机械化。程序设计的未来应该是什么样子？计算机在未来世界中会承担一个什么样子的角色呢？
 

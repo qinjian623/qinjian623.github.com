@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Baking Pi - Operating Systems Development Lesson 3
 tags: [os]
 ---
-#+END_HTML
+#+END_EXPORT
 
 OK03的课程在OK02的基础上继续，主要介绍如何通过使用函数，来提高代码的可复用性和可读性。这节课假设你已经有了OK02的代码。
 

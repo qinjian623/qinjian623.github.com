@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: How to Get More From Life
 tags: [reading]
 ---
-#+END_HTML
+#+END_EXPORT
 
 ** 说明：
    来自于Scott Young的博客的一个PDF文件。Scott Young 就是那个一年学了一堆MIT在线课程的人。地址http://www.scotthyoung.com/blog/ 。
@@ -72,10 +72,10 @@ tags: [reading]
 *** C8 Motivation, Confidence and Happiness
     Motivation就直接摘原文吧，简而言之就是找到一个自己喜欢的，然后坚持坚持再坚持。
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 It’s actually ridiculously easy. If you want to motivate yourself, spend 30-60 minutes brainstorming what you want from life and the action steps you need to take immediately to get there. If you aren’t motivated after a half-hour, you’ve done it wrong.
 Patience, persistence and sweating out the work in soul-crushing moments of doubt and fatigue are the difficult part. I don’t admire the person who got started. I admire the person who showed up, every day, for years, without fail.
-#+END_HTML
+#+END_EXPORT
 
 自信来源于经验，其实吧，自信基本都是盲目的，天知道经验能不能现用，多少人死在自己的经验上，对于现实这样的一个复杂系统来说，实在没什么解法。当然，没做过，说不定反而能做成。不过我们考虑下先验概率的话，有经验的，当然要更不盲目的自信点。
 

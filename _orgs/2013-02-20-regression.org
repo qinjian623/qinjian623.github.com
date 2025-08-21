@@ -1,11 +1,11 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 回归问题
 tags: [ml,math]
 math: t
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: 回归问题
 #+AUTHOR: Qin Jian
 #+LATEX_HEADER: \usepackage{xeCJK}

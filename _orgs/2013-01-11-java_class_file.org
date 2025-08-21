@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Java Class File Format
 tags: [pl, java]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 * Reference

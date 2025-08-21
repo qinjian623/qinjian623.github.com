@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 巴别塔-编程语言之旅
 ---
-#+END_HTML
+#+END_EXPORT
 
 * 说明
   1. 英文原版本：https://sites.google.com/site/steveyegge2/tour-de-babel

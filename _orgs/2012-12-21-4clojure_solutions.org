@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 4clojure's elementary and easy solutions
 tags: [pl]
 ---
-#+END_HTML
+#+END_EXPORT
 
 学clojure玩,就跌跌撞撞把4clojure上的elementary和easy的题目都写完了,没错,柿子就是要捡软的捏,目前依然任重道远......做这个才真正知道什么叫做行百里者半九十.如今我还在以龟速出门中...
 

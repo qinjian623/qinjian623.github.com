@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Unix缺陷读后
 tags: [thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 _写了很长时间,一直放在gmail里面存着,今晚整理收件夹,拿出来了_

@@ -3,21 +3,19 @@ layout: post
 title: Baking Pi - Operating Systems Development Lesson 0
 tags: [os]
 ---
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 课时0 简介</h2>
+<div id="outline-container-orgd3a2efd" class="outline-2">
+<h2 id="orgd3a2efd"><span class="section-number-2">1.</span> 课时0 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 这一介绍性的课时没有太多实践的东西,只是为了解释一下操作系统\汇编代码还有
 其他一些重要的基本概念. 急于尝试的同学,可以直接跳过本课时.
 </p>
 </div>
-
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 操作系统</h3>
+<div id="outline-container-org46421be" class="outline-3">
+<h3 id="org46421be"><span class="section-number-3">1.1.</span> 操作系统</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-操作系统是一种复杂的程序,用来管理在一台计算机上的各个程序,比如说分配计算机的CPU时间片,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括GNU/Linux, Mac OS X和微软的Windows.其他的一些设备也是需要操作系统的,比如手机就会使用Android, iOS和Windows Phone这类的系统.<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+操作系统是一种复杂的程序,用来管理在一台计算机上的各个程序,比如说分配计算机的CPU时间片,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括GNU/Linux, Mac OS X和微软的Windows.其他的一些设备也是需要操作系统的,比如手机就会使用Android, iOS和Windows Phone这类的系统.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
 </p>
 
 <p>
@@ -25,15 +23,15 @@ tags: [os]
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 汇编代码</h3>
+<div id="outline-container-org6b27e41" class="outline-3">
+<h3 id="org6b27e41"><span class="section-number-3">1.2.</span> 汇编代码</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 本课程的代码基本都是汇编代码.它的特点就是十分接近计算机硬件层,易于被机器所"理解".计算机的工作是通过处理器和内存来实现的,处理器可以做一些数字的加减法这类的简单工作,内存则负责存储这些数字.计算机通电后,处理器就通过执行程序员交给它的指令来改变内存中的数字和与硬件交互.汇编代码就是这些指令被翻译成方便人类读取的形式.
 </p>
 
 <p>
-一般编程,程序员都会使用一门编程语言,譬如C++,Java,C#,Basic等等.之后再调用编译器将这些由程序员编写的代码翻译成为汇编代码,之后会再进一步翻译成为二进制代码<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>.二进制代码是计算机实际能够理解的语言,只不过实在不适合人类阅读.汇编代码就相对易读,但是供程序员使用的指令也依然很少. 请谨记每个使用汇编代码编写的指令,都是计算机可以直接理解的,因此这些指令是受下层硬件决定的,每个指令都会被实际上的电路直接使用.
+一般编程,程序员都会使用一门编程语言,譬如C++,Java,C#,Basic等等.之后再调用编译器将这些由程序员编写的代码翻译成为汇编代码,之后会再进一步翻译成为二进制代码<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>.二进制代码是计算机实际能够理解的语言,只不过实在不适合人类阅读.汇编代码就相对易读,但是供程序员使用的指令也依然很少. 请谨记每个使用汇编代码编写的指令,都是计算机可以直接理解的,因此这些指令是受下层硬件决定的,每个指令都会被实际上的电路直接使用.
 </p>
 
 <p>
@@ -54,16 +52,16 @@ tags: [os]
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 更完整的操作系统清单,请参考
-  <a href="http://en.wikipedia.org/wiki/List_of_operating_systems"> List of operating systems - Wikipedia, the free encyclopedia</a>
-</p></div>
+<a href="http://en.wikipedia.org/wiki/List_of_operating_systems"> List of operating systems - Wikipedia, the free encyclopedia</a>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 在这里,对"一般编程"是简化了描述,事实上,它与语言和机器都息息相关,
 深入了解,可以参考
 <a href="http://en.wikipedia.org/wiki/Compiler"> Compiler - Wikipedia, the free encyclopedia</a>
-</p></div>
+</p></div></div>
 
 
 </div>

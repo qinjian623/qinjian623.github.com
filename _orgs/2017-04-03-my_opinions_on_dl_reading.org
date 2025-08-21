@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: DL资料阅读观
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 也算是混日子有点年头的研发工程师。要总结下有关自己的资料阅读的观点。

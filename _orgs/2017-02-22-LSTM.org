@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: LSTM
 math: t
 ---
-#+END_HTML
+#+END_EXPORT
 
 ** 资料来源
     1. https://colah.github.io/posts/2015-08-Understanding-LSTMs/

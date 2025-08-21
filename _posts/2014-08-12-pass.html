@@ -2,32 +2,26 @@
 layout: post
 title: 使用pass管理密码
 ---
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 资料</h2>
+<div id="outline-container-org832d143" class="outline-2">
+<h2 id="org832d143"><span class="section-number-2">1.</span> 资料</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li><a href="http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml">http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml</a>
-</li>
-<li><a href="http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/">http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/</a>
-</li>
-<li><a href="http://stackoverflow.com/questions/5587513/gnupg-encryption-how-to-export-private-secret-asc-key-to-decrypt-gpg-files-i">http://stackoverflow.com/questions/5587513/gnupg-encryption-how-to-export-private-secret-asc-key-to-decrypt-gpg-files-i</a>
-</li>
-<li><a href="http://lists.gnupg.org/pipermail/gnupg-users/2004-July/022930.html">http://lists.gnupg.org/pipermail/gnupg-users/2004-July/022930.html</a>
-</li>
-<li><a href="http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html">http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html</a>
-</li>
-<li><a href="http://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE">http://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE</a>
-</li>
-<li><a href="http://www.ruanyifeng.com/blog/2013/07/gpg.html">http://www.ruanyifeng.com/blog/2013/07/gpg.html</a>
-</li>
+<li><a href="http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml">http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml</a></li>
+<li><a href="http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/">http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/</a></li>
+<li><a href="http://stackoverflow.com/questions/5587513/gnupg-encryption-how-to-export-private-secret-asc-key-to-decrypt-gpg-files-i">http://stackoverflow.com/questions/5587513/gnupg-encryption-how-to-export-private-secret-asc-key-to-decrypt-gpg-files-i</a></li>
+<li><a href="http://lists.gnupg.org/pipermail/gnupg-users/2004-July/022930.html">http://lists.gnupg.org/pipermail/gnupg-users/2004-July/022930.html</a></li>
+<li><a href="http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html">http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html</a></li>
+<li><a href="http://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE">http://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2013/07/gpg.html">http://www.ruanyifeng.com/blog/2013/07/gpg.html</a></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 正文</h2>
+<div id="outline-container-orgdd44f7b" class="outline-2">
+<h2 id="orgdd44f7b"><span class="section-number-2">2.</span> 正文</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 需求</h3>
+</div>
+<div id="outline-container-org189ca39" class="outline-3">
+<h3 id="org189ca39"><span class="section-number-3">2.1.</span> 需求</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 虽然我一直坚持大脑是最好的密码存储地，但是扛不住帐号越来越多，现在登陆一些网站偶尔还要试两下，因为把密码弄混了。
@@ -42,26 +36,24 @@ title: 使用pass管理密码
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 过程</h3>
+<div id="outline-container-org49d52fc" class="outline-3">
+<h3 id="org49d52fc"><span class="section-number-3">2.2.</span> 过程</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 整体过程是比较简单快速的，麻烦的是自己重新整理那么多的帐号和密码。
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-bash"># 首先pass需要一个密钥对来进行管理，具体可以看 http://www.ruanyifeng.com/blog/2013/07/gpg.html
-gpg --gen-key #一路默认就可以
-# 之后得用生成的密钥对来初始化pass
-pass init GPG-ID
-# 其中这里的GPG-ID通过命令获得，一排16进制的数字，在第二列中
-gpg --list-key
-# 再就是加入git，每次pass都会自动帮你commit了，但是放到远程库管理就得自己push了
-pass git init # pass后面直接跟git的命令就可以
-# 后面的可以直接man pass
-pass generate XX
+<pre class="src src-bash"><span class="org-comment-delimiter"># </span><span class="org-comment">&#39318;&#20808;pass&#38656;&#35201;&#19968;&#20010;&#23494;&#38053;&#23545;&#26469;&#36827;&#34892;&#31649;&#29702;&#65292;&#20855;&#20307;&#21487;&#20197;&#30475; http://www.ruanyifeng.com/blog/2013/07/gpg.html
+</span>gpg --gen-key <span class="org-comment-delimiter">#</span><span class="org-comment">&#19968;&#36335;&#40664;&#35748;&#23601;&#21487;&#20197;
+</span><span class="org-comment-delimiter"># </span><span class="org-comment">&#20043;&#21518;&#24471;&#29992;&#29983;&#25104;&#30340;&#23494;&#38053;&#23545;&#26469;&#21021;&#22987;&#21270;pass
+</span>pass init GPG-ID
+<span class="org-comment-delimiter"># </span><span class="org-comment">&#20854;&#20013;&#36825;&#37324;&#30340;GPG-ID&#36890;&#36807;&#21629;&#20196;&#33719;&#24471;&#65292;&#19968;&#25490;16&#36827;&#21046;&#30340;&#25968;&#23383;&#65292;&#22312;&#31532;&#20108;&#21015;&#20013;
+</span>gpg --list-key
+<span class="org-comment-delimiter"># </span><span class="org-comment">&#20877;&#23601;&#26159;&#21152;&#20837;git&#65292;&#27599;&#27425;pass&#37117;&#20250;&#33258;&#21160;&#24110;&#20320;commit&#20102;&#65292;&#20294;&#26159;&#25918;&#21040;&#36828;&#31243;&#24211;&#31649;&#29702;&#23601;&#24471;&#33258;&#24049;push&#20102;
+</span>pass git init <span class="org-comment-delimiter"># </span><span class="org-comment">pass&#21518;&#38754;&#30452;&#25509;&#36319;git&#30340;&#21629;&#20196;&#23601;&#21487;&#20197;
+</span><span class="org-comment-delimiter"># </span><span class="org-comment">&#21518;&#38754;&#30340;&#21487;&#20197;&#30452;&#25509;man pass
+</span>pass generate XX
 pass insert XX
 pass edit XX
 pass rm XX
@@ -70,49 +62,39 @@ pass mv XX
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 补充</h3>
+<div id="outline-container-orgec85bdc" class="outline-3">
+<h3 id="orgec85bdc"><span class="section-number-3">2.3.</span> 补充</h3>
 <div class="outline-text-3" id="text-2-3">
 <ol class="org-ol">
-<li>私钥拷贝导出，解密都要用这个，用pass的肯定不止一个地方。
-</li>
+<li>私钥拷贝导出，解密都要用这个，用pass的肯定不止一个地方。</li>
 </ol>
 <div class="org-src-container">
-
-<pre class="src src-bash"># 下面弄完了就保存密钥对在一个对称加密文件里了
-gpg --output pubkey.gpg --export {GPGID}
-gpg --output - --export-secret-key {GPGID} |\
- cat pubkey.gpg - |\
+<pre class="src src-bash"><span class="org-comment-delimiter"># </span><span class="org-comment">&#19979;&#38754;&#24324;&#23436;&#20102;&#23601;&#20445;&#23384;&#23494;&#38053;&#23545;&#22312;&#19968;&#20010;&#23545;&#31216;&#21152;&#23494;&#25991;&#20214;&#37324;&#20102;
+</span>gpg --output pubkey.gpg --export {GPGID}
+gpg --output - --export-secret-key {GPGID} |<span class="org-sh-escaped-newline">\</span>
+ cat pubkey.gpg - |<span class="org-sh-escaped-newline">\</span>
  gpg --armor --output keys.asc --symmetric --cipher-algo AES256
 
-# 新电脑导入的时候
-gpg --no-use-agent --output - keys.asc | gpg --import
-# 记得把git仓库也clone下来
-git clone XXX ~/.password-store
+<span class="org-comment-delimiter"># </span><span class="org-comment">&#26032;&#30005;&#33041;&#23548;&#20837;&#30340;&#26102;&#20505;
+</span>gpg --no-use-agent --output - keys.asc | gpg --import
+<span class="org-comment-delimiter"># </span><span class="org-comment">&#35760;&#24471;&#25226;git&#20179;&#24211;&#20063;clone&#19979;&#26469;
+</span>git clone XXX ~/.password-store
 </pre>
 </div>
 <ol class="org-ol">
-<li>除了保存密码，还可以保存用户名用pass edit，反正都是文本文件，什么都能存。
-</li>
-<li>mac os下brew install gpg pass
-</li>
+<li>除了保存密码，还可以保存用户名用pass edit，反正都是文本文件，什么都能存。</li>
+<li>mac os下brew install gpg pass</li>
 </ol>
 </div>
 </div>
-
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 注意事项</h3>
+<div id="outline-container-orgc398d32" class="outline-3">
+<h3 id="orgc398d32"><span class="section-number-3">2.4.</span> 注意事项</h3>
 <div class="outline-text-3" id="text-2-4">
 <ol class="org-ol">
-<li>生成密钥对时候的私钥的保护密码得注意点，动动脑子想想，以后这么多的密码就全靠她了。
-</li>
-<li>密钥对还是要隔离好，新建一个专门给pass用，虽说其实都用一个也没多大区别&#x2026;因为无数的革命先辈的经验和教训都告诉我们一个道理，“马甲多不坏菜”。唯一例外的可能就是某伍豪这个悲催的名字了。
-</li>
-<li>虽说是git管理，但是安全第一还是不要放github上了，当然，土豪付费闭源库例外。
-</li>
-<li>解密的时候出现no pinentry的问题，重启gpg-agent， kill后再gpg-agent &#x2013;daemon启动
-</li>
+<li>生成密钥对时候的私钥的保护密码得注意点，动动脑子想想，以后这么多的密码就全靠她了。</li>
+<li>密钥对还是要隔离好，新建一个专门给pass用，虽说其实都用一个也没多大区别&#x2026;因为无数的革命先辈的经验和教训都告诉我们一个道理，“马甲多不坏菜”。唯一例外的可能就是某伍豪这个悲催的名字了。</li>
+<li>虽说是git管理，但是安全第一还是不要放github上了，当然，土豪付费闭源库例外。</li>
+<li>解密的时候出现no pinentry的问题，重启gpg-agent， kill后再gpg-agent &#x2013;daemon启动</li>
 </ol>
 </div>
 </div>

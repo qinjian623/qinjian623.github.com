@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 有关VPN在VPS上的配置
 tags: [gfw, share]
 ---
-#+END_HTML
+#+END_EXPORT
 
 
 简单记载一下VPN在VPS的配置经过:

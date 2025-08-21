@@ -1,11 +1,11 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 又想回到Linux怀抱了
 tags: [linux]
 ---
 
-#+END_HTML
+#+END_EXPORT
 
 犯贱,今天稍微配了下emacs,然后突然又起折腾的冲动了.想弄个Arch来玩玩.计划环境如下:
 * TODO OS

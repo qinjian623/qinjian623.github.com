@@ -2,70 +2,59 @@
 layout: post
 title: 栈和寄存器虚拟机，Dalvik
 ---
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 原文</h2>
+<div id="outline-container-org107bceb" class="outline-2">
+<h2 id="org107bceb"><span class="section-number-2">1.</span> 原文</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li><a href="http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/">http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a>
-</li>
+<li><a href="http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/">http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/</a></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 栈和寄存器CPU架构，以及Dalvik虚拟机</h2>
+<div id="outline-container-org5025694" class="outline-2">
+<h2 id="org5025694"><span class="section-number-2">2.</span> 栈和寄存器CPU架构，以及Dalvik虚拟机</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-虚拟机（VM）是在本地操作系统上的一层模拟真实机器的抽象。这里要说的是进程虚拟机而不是系统虚拟机。<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> 这种虚拟机可以在不同的机器架构和操作系统上保持一个统一的平台。Java和Python的解释器就是这种，代码都会被编译成为VM自己的bytecode。微软的.Net也是如此，代码都是编译成为中间层的语言CLR(Common Language Runtime)。
+虚拟机（VM）是在本地操作系统上的一层模拟真实机器的抽象。这里要说的是进程虚拟机而不是系统虚拟机。<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> 这种虚拟机可以在不同的机器架构和操作系统上保持一个统一的平台。Java和Python的解释器就是这种，代码都会被编译成为VM自己的bytecode。微软的.Net也是如此，代码都是编译成为中间层的语言CLR(Common Language Runtime)。
 </p>
 
 <p>
 那么虚拟机应该都实现一些什么功能么？它应该模拟真实的CPU的各项操作，以及完成以下的功能：
 </p>
 <ol class="org-ol">
-<li>翻译源代码到VM专用的bytecode。
-</li>
-<li>用于存储指令、操作数（也就是指令操作的对象）的数据结构。
-</li>
-<li>调用栈，用来支持函数的调用。
-</li>
-<li>指令指针(IP)，用于定位下一个将要执行的指令。
-</li>
+<li>翻译源代码到VM专用的bytecode。</li>
+<li>用于存储指令、操作数（也就是指令操作的对象）的数据结构。</li>
+<li>调用栈，用来支持函数的调用。</li>
+<li>指令指针(IP)，用于定位下一个将要执行的指令。</li>
 <li>一个虚拟的CPU，进行指令的调用，包括
 <ul class="org-ul">
-<li>获得下一条指令（IP所指的地方）
-</li>
-<li>解析操作数
-</li>
-<li>执行指令
-</li>
-</ul>
-</li>
+<li>获得下一条指令（IP所指的地方）</li>
+<li>解析操作数</li>
+<li>执行指令</li>
+</ul></li>
 </ol>
 
 <p>
 目前有两种实现VM的方法：基于栈和基于寄存器。栈VM的例子包括Java虚拟机、.Net CLR。这也是被广泛采用的一种设计。寄存器VM的例子包括Lua VM还有Dalvik VM（这个马上我们就会细说）。两者的区别在于存储、读取操作数的方法不同。
 </p>
 </div>
-
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 栈虚拟机</h3>
+<div id="outline-container-orgbeb0347" class="outline-3">
+<h3 id="orgbeb0347"><span class="section-number-3">2.1.</span> 栈虚拟机</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 栈虚拟机实现了我们之前说过的一个VM应该实现的功能，只不过存储操作数的内存结构是一个栈。操作过程一般都是先从栈中弹出数据、处理数据最后再压栈回去的LIFO(Last In First Out)模式。在栈虚拟机中，两数求和的过程一般都是这样（其中20、7、result都是操作数）：
 </p>
 
 
-<div class="figure">
+<div id="org3da38e4" class="figure">
 <p><img src="../../../../images/stackadd_thumb.png" alt="stackadd_thumb.png" />
 </p>
 </div>
 
 <div class="org-src-container">
-
-<pre class="src src-asm"><span style="color: #ff1493;">POP</span> <span style="color: #FBDE2D;">20</span>
-<span style="color: #ff1493;">POP</span> <span style="color: #FBDE2D;">7</span>
-<span style="color: #ff1493;">ADD</span> <span style="color: #FBDE2D;">20</span>, 7, result
-<span style="color: #ff1493;">PUSH</span> <span style="color: #FBDE2D;">result</span>
+<pre class="src src-asm"><span class="org-function-name">POP</span> <span class="org-keyword">20</span>
+<span class="org-function-name">POP</span> <span class="org-keyword">7</span>
+<span class="org-function-name">ADD</span> <span class="org-keyword">20</span>, 7, result
+<span class="org-function-name">PUSH</span> <span class="org-keyword">result</span>
 </pre>
 </div>
 
@@ -74,22 +63,21 @@ title: 栈和寄存器虚拟机，Dalvik
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 寄存器虚拟机</h3>
+<div id="outline-container-org1781dea" class="outline-3">
+<h3 id="org1781dea"><span class="section-number-3">2.2.</span> 寄存器虚拟机</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 这种虚拟机的操作数都是存储在CPU的寄存器中的。不再需要PUSH、POP的操作，但是你需要指定运算的操作数的位置（具体是在哪个寄存器里）。就是说，操作数的位置都是需要在指令中显式的指定的。不像栈虚拟机，反正下一个操作数就是SP所指的地方。比如，上面的加法操作在寄存器虚拟机里会是这样：
 </p>
 
 
-<div class="figure">
+<div id="orgbc40e85" class="figure">
 <p><img src="../../../../images/registeradd_thumb.png" alt="registeradd_thumb.png" />
 </p>
 </div>
 
 <div class="org-src-container">
-
-<pre class="src src-asm"><span style="color: #ff1493;">ADD</span> <span style="color: #FBDE2D;">R1</span>, R2, R3 <span style="color: #8B8989; font-style: italic;">;        </span><span style="color: #8B8989; font-style: italic;"># Add contents of R1 and R2, store result in R3</span>
+<pre class="src src-asm"><span class="org-function-name">ADD</span> <span class="org-keyword">R1</span>, R2, R3 <span class="org-comment-delimiter">;        </span><span class="org-comment"># Add contents of R1 and R2, store result in R3</span>
 </pre>
 </div>
 <p>
@@ -109,11 +97,11 @@ title: 栈和寄存器虚拟机，Dalvik
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> DALVIK虚拟机</h3>
+<div id="outline-container-org20f80b6" class="outline-3">
+<h3 id="org20f80b6"><span class="section-number-3">2.3.</span> DALVIK虚拟机</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-它是Google为Android写的，用来作为Android设备的Java解释器<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>。底层的Linux内核都是每个进程创建一个VM，所以是进程VM。每个进程都通过一个独立的DALVIK虚拟机运行。可以减少因为一个VM崩溃造成多个应用都退出的概率。Dalvik是个寄存器虚拟机，而且不同于标准Java bytecode（在栈实现的JVM上使用8bit的栈指令），它用的是16bit的指令集。Dalvik的寄存器都是需要4bit来指定的位置的。
+它是Google为Android写的，用来作为Android设备的Java解释器<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>。底层的Linux内核都是每个进程创建一个VM，所以是进程VM。每个进程都通过一个独立的DALVIK虚拟机运行。可以减少因为一个VM崩溃造成多个应用都退出的概率。Dalvik是个寄存器虚拟机，而且不同于标准Java bytecode（在栈实现的JVM上使用8bit的栈指令），它用的是16bit的指令集。Dalvik的寄存器都是需要4bit来指定的位置的。
 </p>
 
 <p>
@@ -121,7 +109,7 @@ title: 栈和寄存器虚拟机，Dalvik
 </p>
 
 
-<div class="figure">
+<div id="orgd9cc407" class="figure">
 <p><img src="../../../../images/androidboot_thumb.png" alt="androidboot_thumb.png" />
 </p>
 </div>
@@ -130,16 +118,11 @@ title: 栈和寄存器虚拟机，Dalvik
 系统启动时候，bootloader会将内核载入内存，初始化系统的参数。之后：
 </p>
 <ol class="org-ol">
-<li>内核启动init程序，这也是所有系统中进程的父进程。
-</li>
-<li>init程序会开始启动各种系统的守护进程，还有十分重要的‘Zygote’服务。
-</li>
-<li>Zygote进程会创建一个Dalvik实例，作为所有其他Dalvik虚拟机的父进程。
-</li>
-<li>之后Zygote会打开一个socket端口，监听任何请求。
-</li>
-<li>一旦收到任何请求，Zygote会fork一个新的进程，然后传给请求的应用。
-</li>
+<li>内核启动init程序，这也是所有系统中进程的父进程。</li>
+<li>init程序会开始启动各种系统的守护进程，还有十分重要的‘Zygote’服务。</li>
+<li>Zygote进程会创建一个Dalvik实例，作为所有其他Dalvik虚拟机的父进程。</li>
+<li>之后Zygote会打开一个socket端口，监听任何请求。</li>
+<li>一旦收到任何请求，Zygote会fork一个新的进程，然后传给请求的应用。</li>
 </ol>
 
 <p>
@@ -156,11 +139,11 @@ DEX将java的.class文件翻译成为.dex文件，dex文件体积更小，也正
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 结束</h3>
+<div id="outline-container-org8bae54e" class="outline-3">
+<h3 id="org8bae54e"><span class="section-number-3">2.4.</span> 结束</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
-具体两种VM孰优孰劣尚无定论。目前争议较多，也是一个有意思的研究领域。有一篇很有意思的<a href="https://docs.google.com/viewer?a=v&q=cache:cPOTbgQfSF8J:www.usenix.org/events/vee05/full_papers/p153-yunhe.pdf+register+based+virtual+machine&hl=en&pid=bl&srcid=ADGEESiVdT4IVONxVrmGg4g1OTIuXjFx1mi-ZbxXetvlWMJBpbFyVh6Sc0iqIK2oRbYZdUmLXyCothUPSozS1J64ReJvvGapPGAzVDz-76IbYfDlwtsUcRN6Ddoia_nJL2udF9BnS2VF&sig=AHIEtbSuiwC8NheRf2cA9a4Jc99xvBr2Tw">论文</a> ，作者将JVM换成了寄存器实现，获得了很明显的性能提升。希望我在这里解释清楚了栈虚拟机和寄存器虚拟机的区别，以及Dalvik VM的一些细节。欢迎各位读者针对文中内容的反馈和提问。
+具体两种VM孰优孰劣尚无定论。目前争议较多，也是一个有意思的研究领域。有一篇很有意思的<a href="https://docs.google.com/viewer?a=v&amp;q=cache:cPOTbgQfSF8J:www.usenix.org/events/vee05/full_papers/p153-yunhe.pdf+register+based+virtual+machine&amp;hl=en&amp;pid=bl&amp;srcid=ADGEESiVdT4IVONxVrmGg4g1OTIuXjFx1mi-ZbxXetvlWMJBpbFyVh6Sc0iqIK2oRbYZdUmLXyCothUPSozS1J64ReJvvGapPGAzVDz-76IbYfDlwtsUcRN6Ddoia_nJL2udF9BnS2VF&amp;sig=AHIEtbSuiwC8NheRf2cA9a4Jc99xvBr2Tw">论文</a> ，作者将JVM换成了寄存器实现，获得了很明显的性能提升。希望我在这里解释清楚了栈虚拟机和寄存器虚拟机的区别，以及Dalvik VM的一些细节。欢迎各位读者针对文中内容的反馈和提问。
 </p>
 </div>
 </div>
@@ -169,13 +152,13 @@ DEX将java的.class文件翻译成为.dex文件，dex文件体积更小，也正
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 具体区别可见：<a href="http://en.wikipedia.org/wiki/Virtual_machine">http://en.wikipedia.org/wiki/Virtual_machine</a>
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 关于解释器、编译器、CPU、物理机器的纠结，可以看下王垠大大的说明，地址忘了。
-</p></div>
+</p></div></div>
 
 
 </div>

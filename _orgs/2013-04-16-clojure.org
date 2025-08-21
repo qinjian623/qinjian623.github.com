@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: clojure与FP
 tags: [pl]
 ---
-#+END_HTML
+#+END_EXPORT
 #+TITLE: Technical Report 2013.01
 #+AUTHOR: 秦暕
 #+LATEX_HEADER: \usepackage{xeCJK}

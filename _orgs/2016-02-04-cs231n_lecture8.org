@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: CS231n Lecture 8
 ---
-#+END_HTML
+#+END_EXPORT
 
 昨天看了下CS231n课程视频的Lecture8，讲的主要是CNN在Detection的内容。实际上，主要讲的就是RCNN这块， 毕竟这是作者的亲儿子。
 

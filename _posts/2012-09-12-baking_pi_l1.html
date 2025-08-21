@@ -8,18 +8,16 @@ tags: [os]
 <p>
 本课时主要在于说明最基本的起步和怎样打开Raspberry Pi上的'OK' <b>LED</b> 灯,灯的位置在RCA和USB接口附近.
 </p>
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 起步</h2>
+<div id="outline-container-orge89223c" class="outline-2">
+<h2 id="orge89223c"><span class="section-number-2">1.</span> 起步</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 首先需要你访问 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/downloads.html">下载</a> 页面获得其中的GNU的工具链.同时在该页面上,也存在一个叫做 <i>OS Template</i> 的文件.请把它下载下来,解压到新建的文件夹内.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 开始</h2>
+<div id="outline-container-orgf7ec191" class="outline-2">
+<h2 id="orgf7ec191"><span class="section-number-2">2.</span> 开始</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 先解压模板文件,然后在其'source'文件夹中创建一个名称为'main.s'的文件.该文件会包含待开发的操作系统的代码.用文本编辑器打开,准备向其中写入汇编代码.Raspberry Pi使用的是ARMv6的汇编代码,因此,我们也需要根据ARMv6的语法和要求来写代码.
@@ -29,7 +27,6 @@ tags: [os]
 拷贝如下代码:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-MASM">.section .init
 .globl _start
 _start:
@@ -37,16 +34,16 @@ _start:
 </div>
 
 <p>
-目前什么都不会发生,这些代码都是等待给汇编器的指令.汇编器是翻译汇编代码到二进制代码的程序.汇编代码中,每行就是一个新的指令.其中第一行告诉汇编器<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>放置我们代码的位置.OS模板文件会让 <b>.init</b> 的模块首先输出.这里比较重要,因为我们需要控制具体哪段代码首先执行.不这么做的话,代码根据字典顺序来执行. <b>.section</b> 指令就是告诉汇编器把代码放哪里,代码范围是从该点开始一直到下个 <b>.section</b> 或者文件尾.
+目前什么都不会发生,这些代码都是等待给汇编器的指令.汇编器是翻译汇编代码到二进制代码的程序.汇编代码中,每行就是一个新的指令.其中第一行告诉汇编器<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>放置我们代码的位置.OS模板文件会让 <b>.init</b> 的模块首先输出.这里比较重要,因为我们需要控制具体哪段代码首先执行.不这么做的话,代码根据字典顺序来执行. <b>.section</b> 指令就是告诉汇编器把代码放哪里,代码范围是从该点开始一直到下个 <b>.section</b> 或者文件尾.
 </p>
 
 <p>
-后面两行只是为了防止警告信息,没有重要意义.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+后面两行只是为了防止警告信息,没有重要意义.<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 第一行代码</h2>
+<div id="outline-container-orgf71813d" class="outline-2">
+<h2 id="orgf71813d"><span class="section-number-2">3.</span> 第一行代码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 现在我们开始真正的编写代码.代码的作用是告诉处理器将 0x20200000存入寄存器r0.显然读者肯定会问及两个问题,寄存器是什么和为什么是0x20200000这个数字.
@@ -65,15 +62,14 @@ _start:
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 成功输出</h2>
+<div id="outline-container-org93a216e" class="outline-2">
+<h2 id="org93a216e"><span class="section-number-2">4.</span> 成功输出</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 如果读过手册,就会知道我们需要发送两个消息给GPIO控制器.我们必须让控制器能够理解我们的消息,一旦这样,控制器就会按照我们所愿打开OK LED灯.由于这是个十分简单的芯片,所以我们只用很简单的发送几个数字就可以了.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-MASM">mov r1,#1
 lsl r1,#18
 str r1,[r0,#4]
@@ -85,7 +81,7 @@ str r1,[r0,#4]
 </p>
 
 <p>
-r1中的数字用来激活LED的针脚.第一行将1<sub>10</sub> 放入r1. <b>mov</b> 指令比 <b>ldr</b> 指令快,因为它不涉及内存操作.不过 <b>mov</b> 只能用来载入确定值<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>.在ARM的汇编代码中,基本所有指令都由三个字母打头.这种方式被称作助记符,表明该命令实际执行的操作.比如 <b>mov</b> 是 move的简写, <b>ldr</b> 是 load register的简写. <b>mov</b> 指令将第二个参数 <b>#1</b> 移入到第一个参数的 <b>r1</b>.一般来说, <b>#</b> 必须用来指定数字,不过我们已经看到过反例了.
+r1中的数字用来激活LED的针脚.第一行将1<sub>10</sub> 放入r1. <b>mov</b> 指令比 <b>ldr</b> 指令快,因为它不涉及内存操作.不过 <b>mov</b> 只能用来载入确定值<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>.在ARM的汇编代码中,基本所有指令都由三个字母打头.这种方式被称作助记符,表明该命令实际执行的操作.比如 <b>mov</b> 是 move的简写, <b>ldr</b> 是 load register的简写. <b>mov</b> 指令将第二个参数 <b>#1</b> 移入到第一个参数的 <b>r1</b>.一般来说, <b>#</b> 必须用来指定数字,不过我们已经看到过反例了.
 </p>
 
 <p>
@@ -93,7 +89,7 @@ r1中的数字用来激活LED的针脚.第一行将1<sub>10</sub> 放入r1. <b>m
 </p>
 
 <p>
-这些命令中固定的数字也是我从硬件说明手册上找到的<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>.手册上说了,GPIO控制器有一24b的空间,用于决定GPIO的设定.前四个设定前十个GPIO pin, 第五到八设定第十一到二十个GPIO pin,以此类推.总共54个针脚,所以需要6*4个byte,总共24个.在每四个byte中,有三个bits用来指定某一个GPIO pin.如果我们需要第16个pin,那么就要设定第五到八byte.因为我们在处理10-19范围类的pin.我们处理的是3bits中的第6个.所以需要移位18.
+这些命令中固定的数字也是我从硬件说明手册上找到的<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>.手册上说了,GPIO控制器有一24b的空间,用于决定GPIO的设定.前四个设定前十个GPIO pin, 第五到八设定第十一到二十个GPIO pin,以此类推.总共54个针脚,所以需要6*4个byte,总共24个.在每四个byte中,有三个bits用来指定某一个GPIO pin.如果我们需要第16个pin,那么就要设定第五到八byte.因为我们在处理10-19范围类的pin.我们处理的是3bits中的第6个.所以需要移位18.
 </p>
 
 <p>
@@ -101,15 +97,14 @@ r1中的数字用来激活LED的针脚.第一行将1<sub>10</sub> 放入r1. <b>m
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 让机器动起来</h2>
+<div id="outline-container-org491ab4d" class="outline-2">
+<h2 id="org491ab4d"><span class="section-number-2">5.</span> 让机器动起来</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-现在,LED已经准备好被打开,但是我们还需要打开它.也即发送一个消息让GPIO控制器将pin 16 关上.  <i>没错,是关上</i> .芯片制造商决定这么设计的<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>,当GPIO的pin关闭的时候,LED打开.硬件工程师经常会有这样的决定,让OS开发人员忙活个不停.自己要注意.
+现在,LED已经准备好被打开,但是我们还需要打开它.也即发送一个消息让GPIO控制器将pin 16 关上.  <i>没错,是关上</i> .芯片制造商决定这么设计的<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>,当GPIO的pin关闭的时候,LED打开.硬件工程师经常会有这样的决定,让OS开发人员忙活个不停.自己要注意.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-MASM">mov r1,#1
 lsl r1,#16
 str r1,[r0,#40]
@@ -117,21 +112,21 @@ str r1,[r0,#40]
 </div>
 
 <p>
-按说这上面的命令不用多说了,只是参数上稍有不同.第一行和之前一样, <b>r1</b> 赋值为1.第二行左移16位.因为要关闭pin16,所以我们需要在第16bit上置一(同理,其他位置就是操作其他pin了).最后还是GPIO的地址加40<sub>10</sub>.用来关闭pin(28用来打开pin)
+按说这上面的命令不用多说了,只是参数上稍有不同.第一行和之前一样, <b>r1</b> 赋值为1.第二行左移16位.因为要关闭pin16,所以我们需要在第16bit上置一(同理,其他位置就是操作其他pin了).最后还是GPIO的地址加40<sub>10.用来关闭pin</sub>(28用来打开pin)
 </p>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> 收尾工作</h2>
+<div id="outline-container-org8ad77de" class="outline-2">
+<h2 id="org8ad77de"><span class="section-number-2">6.</span> 收尾工作</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 到这里工作也就结束了,不过不幸的是,处理器还不知道我们已经完成工作了.实际上,处理器也是不停工作的.只要供电,处理器就不停工作.所以么,我们得给个任务让它一直做下去,否则Raspberry Pi就要崩溃了(在我们课程上其实也没什么关系,因为灯已经打开了,爱崩溃不崩溃吧.)
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-MASM">loop$:
 b loop$
+
 </pre>
 </div>
 
@@ -144,8 +139,8 @@ b loop$
 </p>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> 在Pi上执行</h2>
+<div id="outline-container-orgcd6bd53" class="outline-2">
+<h2 id="orgcd6bd53"><span class="section-number-2">7.</span> 在Pi上执行</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 完成代码后,我们就得把代码放到Pi上执行了.在你的计算机上打开一个终端,将工作路径改变到源代码目录的上级目录上. 输入命令 <b>make</b>,回车.要是出了错误,请到troubleshooting那一章节去找解决方法.没错的话,应该就生成三个文件了.kernel.img是你的操作系统镜像.kernel.list是你写的汇编代码的清单,是自动生成的,方便将来检查是否生成成功. kernel.map文件是所有的标签的生成的一个对照文件,可以方便我们查找各个值.
@@ -164,23 +159,23 @@ b loop$
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 其实实际上时告诉链接器.这是另外一个程序,功能是将多个汇编文件链接在一起.不过这个细节并不重要.
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 其实他们很重要,GNU的工具链主要用于创建程序,因此他需要一个程序的入口,标签名称是 <b>_ start</b> .由于我们在创建一个操作系统, <b>_ start</b> 的标签总是最开始执行的位置,而在这里我们通过 <b>.section</b> 和 <b>.init</b> 命令设定了这一位置.要是我们没有设置这个位置的话,工具链就要报错了.其实第一行的内容就是申明,我们要创建一个 <b>_ start</b> 的符号名称,而这个名称是全局都可见的(所以是globally的),第二行说明, <b>_ start</b> 的地址就是从下一行开始.有关地址,我们很快就会涉及.
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这是值是指那些2进制的表示中,只有前8个bit才有1的数值.简而言之就是,8个1bit或者0bit开头,后面的全是0.
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 这个课程的目的其实是为了减轻你阅读这种手册的痛苦,不过如果你感兴趣,希望进一步深入,可以在 <a href="http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/downloads/SoC-Peripherals.pdf">SoC-Peripherals.pdf</a> 这里找到.
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 一位好心的硬件工程师向我解释了原因:现代芯片使用CMOS来组合,全名是
 (Complementary Metal Oxide Semiconductor).Complementary 的意思就是每个信
 号都被连接到两个晶体管上,一个是由N-type semiconductor材料制作,用于处理低
@@ -195,7 +190,7 @@ b loop$
 是要比P型处理高电压要快.一般低电压激活的时候总会在信号名字上面加一横以示
 说明,或者写做 SIGNAL _n 或者是/SIGNAL.不过还是容易被混淆,哪怕硬件工程师
 也难逃.
-</p></div>
+</p></div></div>
 
 
 </div>

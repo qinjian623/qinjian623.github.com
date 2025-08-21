@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 数独问题解决方法
 tags: [share, translation]
 ---
-#+END_HTML
+#+END_EXPORT
 
 ** 我的说明
    自己好几年之前无聊的时候写解数独程序的时候看的,原以为到现在还没人翻译成中文版的,搜了搜,果然已经有了.

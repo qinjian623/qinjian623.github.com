@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 重新整UI,升级jekyll
 ---
-#+END_HTML
+#+END_EXPORT
 
 * A
   想着自己的jekyll版本放那都一年没动过了，于是跑jekyll的页面上看了下。勾起了我的升级强迫症，实在是不应该手贱点链接啊。

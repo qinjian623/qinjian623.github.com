@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 亲身体验
 tags: [share, thoughts]
 ---
-#+END_HTML
+#+END_EXPORT
 
 总是面对别人对我们说，应该应该如何，如果不那样，就会如何。就像代码中掺入了太多的if-else，这样的结构总是让人感觉丑陋的。往往，迷惘也就产生于此，因为迷惘不是什么都不知道，也不是什么都知道，恰恰是雾里看花时，迷惘才出现。 
 

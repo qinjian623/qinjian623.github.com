@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Python performance tips test
 ---
-#+END_HTML
+#+END_EXPORT
 
 测试了一些Python中的性能建议（[[https://wiki.python.org/moin/PythonSpeed/PerformanceTips][ 地址]] ）。测试案例都很简单([[https://gist.github.com/qinjian623/7042fcb39cd0ca756441926aa62935ed][Gist地址]])， 所以不对测试的结论负责任。
 

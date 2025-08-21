@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 上篇CNN加速的初步结果
 ---
-#+END_HTML
+#+END_EXPORT
 结论是， 加速效果暂时没有达到预期，但是这个需要后续熟悉架构后再调教。
 然而， 模型参数真的是降的狠，当然，模型的能力也随着下降。
 
@@ -13,9 +13,9 @@ title: 上篇CNN加速的初步结果
 
 在以上的基础上，训练了一个可以在512x288分辨率，CPU（i7-6700）上稳定运行8FPS的模型。
 效果尚可，不过更多的速度提升还是来自分辨率的下降和输入被换为黑白。这个当然会带来准确率的损失。
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 <iframe height=498 width=510 src='http://player.youku.com/embed/XMjUzMzM0ODUxMg==' frameborder=0 'allowfullscreen'></iframe>
-#+END_HTML
+#+END_EXPORT
 
 
 这其实是个很有意思的现象，网络中的参数，到底有多少实质上可以省略？ 一个接近极限的网络会在运行性能上提高多少？ 网络架构的改进对性能的提升？

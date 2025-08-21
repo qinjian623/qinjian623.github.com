@@ -6,60 +6,55 @@ tags: [emacs]
 <p>
 为什么折腾这个?因为自己看文章看烦了.具体解决方法很简单,因为英文的导出org-mode一点问题都没有.
 </p>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> tex的中文支持</h2>
+<div id="outline-container-org99c3be1" class="outline-2">
+<h2 id="org99c3be1"><span class="section-number-2">1.</span> tex的中文支持</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 因为xelatex的中文支持没有问题了,所以只要按照xelatex的要求,在tex文件里面加一句,就可以:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-tex"><span style="color: #8B8989; font-style: italic;">%</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#26159;tex&#25991;&#20214;&#24605;&#23494;&#36798;</span>
-<span style="color: #FBDE2D;">\setmainfont</span>{SimSun}
+<pre class="src src-tex"><span class="org-comment-delimiter">%</span><span class="org-comment">&#36825;&#37324;&#26159;tex&#25991;&#20214;&#24605;&#23494;&#36798;
+</span><span class="org-keyword">\setmainfont</span>{SimSun}
 </pre>
 </div>
 <p>
 里面的字体使用系统中的字体名字就可以,命令:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #8B8989; font-style: italic;">#</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#26159;shell&#21629;&#20196;&#24605;&#23494;&#36798;</span>
-fc-list
+<pre class="src src-sh"><span class="org-comment-delimiter">#</span><span class="org-comment">&#36825;&#37324;&#26159;shell&#21629;&#20196;&#24605;&#23494;&#36798;
+</span>fc-list
 </pre>
 </div>
 <p>
 简直简单爆了,不过中英文字体得分开,否则就丑爆了.所以要用包,依然简单爆了:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-tex"><span style="color: #8B8989; font-style: italic;">%</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#26159;tex&#25991;&#20214;&#24605;&#23494;&#36798;</span>
-<span style="color: #FBDE2D;">\usepackage</span>{<span style="color: #FF6400;">xeCJK</span>}
-<span style="color: #FBDE2D;">\setCJKmainfont</span>{SimSun}
-<span style="color: #8B8989; font-style: italic;">%</span><span style="color: #8B8989; font-style: italic;">&#20043;&#21069;&#30340;setmainfont&#23601;&#19981;&#38656;&#35201;&#20102;.&#25110;&#32773;&#25343;&#21435;&#35774;&#23450;&#33521;&#25991;&#23383;&#20307;?(&#36825;&#21477;&#25105;&#19981;&#36127;&#36131;&#20219;&#30340;).</span>
+<pre class="src src-tex"><span class="org-comment-delimiter">%</span><span class="org-comment">&#36825;&#37324;&#26159;tex&#25991;&#20214;&#24605;&#23494;&#36798;
+</span><span class="org-keyword">\usepackage</span>{<span class="org-builtin">xeCJK</span>}
+<span class="org-keyword">\setCJKmainfont</span>{SimSun}
+<span class="org-comment-delimiter">%</span><span class="org-comment">&#20043;&#21069;&#30340;setmainfont&#23601;&#19981;&#38656;&#35201;&#20102;.&#25110;&#32773;&#25343;&#21435;&#35774;&#23450;&#33521;&#25991;&#23383;&#20307;?(&#36825;&#21477;&#25105;&#19981;&#36127;&#36131;&#20219;&#30340;).</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> org-mode的中文支持</h2>
+<div id="outline-container-orgdfe33d0" class="outline-2">
+<h2 id="orgdfe33d0"><span class="section-number-2">2.</span> org-mode的中文支持</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 既然知道怎么处理tex的中文,org-mode的中文导出就一点问题都没有了.在header里面加两行内容就可以了:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-tex">#+&#36825;&#37324;&#26159;org&#25991;&#20214;&#24605;&#23494;&#36798;
-#+LATEX_HEADER: <span style="color: #FBDE2D;">\usepackage</span>{<span style="color: #FF6400;">xeCJK</span>}
-#+LATEX_HEADER: <span style="color: #FBDE2D;">\setCJKmainfont</span>{SimSun}
+#+LATEX_HEADER: <span class="org-keyword">\usepackage</span>{<span class="org-builtin">xeCJK</span>}
+#+LATEX_HEADER: <span class="org-keyword">\setCJKmainfont</span>{SimSun}
 </pre>
 </div>
 <p>
 然后,导出的tex文件就可以用xelatex直接生成pdf了.但是,org-mode可以直接顺便导出pdf的,所以要把默认的程序改成xelatex,改改配置文件,以下内容我不负责任的,因为自己在公司的XP上没弄好思密达.
 </p>
 <div class="org-src-container">
-
-<pre class="src src-lisp"><span style="color: #8B8989; font-style: italic;">;;</span><span style="color: #8B8989; font-style: italic;">&#36825;&#37324;&#26159;emacs&#30340;&#37197;&#32622;&#25991;&#20214;&#24605;&#23494;&#36798;</span>
-<span style="color: #7f7f7f;">(</span>setq org-latex-to-pdf-process '<span style="color: #7f7f7f;">(</span><span style="color: #61CE3C;">"xelatex %f"</span><span style="color: #7f7f7f;">))</span>
+<pre class="src src-lisp"><span class="org-comment-delimiter">;;</span><span class="org-comment">&#36825;&#37324;&#26159;emacs&#30340;&#37197;&#32622;&#25991;&#20214;&#24605;&#23494;&#36798;
+</span>(setq org-latex-to-pdf-process '(<span class="org-string">"xelatex %f"</span>))
 </pre>
 </div>
 <p>
@@ -67,9 +62,8 @@ fc-list
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 后来</h2>
+<div id="outline-container-orgfc82a56" class="outline-2">
+<h2 id="orgfc82a56"><span class="section-number-2">3.</span> 后来</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 懒人自然也可以直接把内容写到配置文件里面,以后就不用手动写.或者YASnippet里.自动填写.参考内容实在是没有记录下来对不起思密达.Google "latex export org-mode"是其中的一部分.好水思密达.用org写东西绝对比用tex写东西要爽歪歪,字体中文对齐等等细节问题就先不纠结了.

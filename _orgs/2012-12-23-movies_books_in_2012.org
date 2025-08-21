@@ -1,10 +1,10 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 2012的电影和书盘点
 tags: [nothing]
 ---
-#+END_HTML
+#+END_EXPORT
 
 年纪不小了，总结也要开始严肃起来了。要细致、要严谨、要成为共产主义战士。
 

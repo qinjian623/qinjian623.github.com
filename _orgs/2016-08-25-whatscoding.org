@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Coding与知识构建
 ---
-#+END_HTML
+#+END_EXPORT
 之前突然蹦出来新想法. 编码的过程就是知识构建的过程. 写代码的过程其实只是程序员学习的过程, 一个项目的形成过程, 就是程序员的知识体系的构建过程. 这样的话, 可以解释很多问题.
 
 ** 为毛重构

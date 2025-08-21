@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 针对Anders Hejlsberg的一次采访
 ---
-#+END_HTML
+#+END_EXPORT
 
 * Intro
   A Conversation with Anders Hejlsberg

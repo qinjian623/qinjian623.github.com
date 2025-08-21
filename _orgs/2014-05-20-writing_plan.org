@@ -1,9 +1,9 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: 碎碎念
 ---
-#+END_HTML
+#+END_EXPORT
 
 4G Spaces的编程诸鸡番外篇竟然更新了，顿时喜从心起。看了看，虽然内容有点失望，感觉质量有点下降。但是自己也好长时间没动过了，曾经和自己的约定跑哪里去了......家里都发霉了，见证我最近的颓废状态。
 

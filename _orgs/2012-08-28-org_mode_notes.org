@@ -1,11 +1,11 @@
-#+BEGIN_HTML
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: Org-mode笔记
 tags: [share, emacs, org-mode]
 ---
 
-#+END_HTML
+#+END_EXPORT
 
 考虑到现在开始用org-mode写东西,干脆再稍微记录下org-mode的东西,虽说平时使用没有什么问题,但是某些自己不常用的记录下来也没有错.
 
