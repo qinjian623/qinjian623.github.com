@@ -1,8 +1,9 @@
+---
+layout: default
+---
 # Focal Loss初步试验
 
- **Author:** [Captain Jack]
-
- **Link:** [https://zhuanlan.zhihu.com/p/28464234]
+ [*Link:*](https://zhuanlan.zhihu.com/p/28464234)
 
 看到知乎上对 *Focal Loss for Dense Object Detection* 这篇论文的介绍，发现是针对所谓的one-stage的检测框架的数据不平衡问题的。考虑到目前我们使用的也是one-stage的检测框架，于是就打出来看了下，本来按照自己最近的慵懒状态，肯定懒得动手。不过看的也是囫囵吞枣，自然应该有些理解错误和遗漏。
 
