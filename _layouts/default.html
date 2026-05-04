@@ -1,9 +1,15 @@
+{%- assign resolved_title = page.title -%}
+{%- if resolved_title == nil and page.path contains 'bit_ass/' and page.name contains '.md' -%}
+{%- assign page_name = page.name | remove: ".md" -%}
+{%- assign page_date = page_name | slice: 0, 10 -%}
+{%- assign resolved_title = page_name | remove_first: page_date | remove_first: "-" | replace: "_", " " -%}
+{%- endif -%}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
+        <title>{% if resolved_title %}{{ resolved_title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -31,7 +37,7 @@
           </div>
         </div> <!-- /container -->
         <footer class="footer">
-          <p>&copy; {{site.author.name}} 2012-2016 如无特殊说明,所有产生内容默认<a href="http://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
+          <p>&copy; {{site.author.name}} 2012-2026 如无特殊说明,所有产生内容默认<a href="https://creativecommons.org/licenses/by-sa/2.5/cn">CC知识共享署名-相同方式</a>
           </p>
         </footer>
         

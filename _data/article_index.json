@@ -1,0 +1,1171 @@
+[
+  {
+    "date": "2023-04-10",
+    "title": "规划模型的PoC及难点",
+    "url": "/bit_ass/2023-04-10-%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E7%9A%84PoC%E5%8F%8A%E9%9A%BE%E7%82%B9.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-04-10-规划模型的PoC及难点.md"
+  },
+  {
+    "date": "2023-03-15",
+    "title": "自己小组的一篇 CVPR23 车道线检测论文",
+    "url": "/bit_ass/2023-03-15-%E8%87%AA%E5%B7%B1%E5%B0%8F%E7%BB%84%E7%9A%84%E4%B8%80%E7%AF%87_CVPR23_%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-03-15-自己小组的一篇_CVPR23_车道线检测论文.md"
+  },
+  {
+    "date": "2023-03-07",
+    "title": "ChatGPT的翻译对比",
+    "url": "/bit_ass/2023-03-07-ChatGPT%E7%9A%84%E7%BF%BB%E8%AF%91%E5%AF%B9%E6%AF%94.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-03-07-ChatGPT的翻译对比.md"
+  },
+  {
+    "date": "2023-03-06",
+    "title": "NO-HDMap 传统归控方案面对的问题",
+    "url": "/bit_ass/2023-03-06-NO-HDMap_%E4%BC%A0%E7%BB%9F%E5%BD%92%E6%8E%A7%E6%96%B9%E6%A1%88%E9%9D%A2%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-03-06-NO-HDMap_传统归控方案面对的问题.md"
+  },
+  {
+    "date": "2023-02-23",
+    "title": "Fast-BEV 工程化的BEV转换",
+    "url": "/bit_ass/2023-02-23-Fast-BEV_%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84BEV%E8%BD%AC%E6%8D%A2.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-02-23-Fast-BEV_工程化的BEV转换.md"
+  },
+  {
+    "date": "2023-02-07",
+    "title": "BEV 3D 转换模块的动静态任务特性与选择",
+    "url": "/bit_ass/2023-02-07-BEV_3D_%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97%E7%9A%84%E5%8A%A8%E9%9D%99%E6%80%81%E4%BB%BB%E5%8A%A1%E7%89%B9%E6%80%A7%E4%B8%8E%E9%80%89%E6%8B%A9.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-02-07-BEV_3D_转换模块的动静态任务特性与选择.md"
+  },
+  {
+    "date": "2023-01-04",
+    "title": "BEV 感知模型实用的一些经验",
+    "url": "/bit_ass/2023-01-04-BEV_%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2023-01-04-BEV_感知模型实用的一些经验.md"
+  },
+  {
+    "date": "2022-09-18",
+    "title": "BEV Object Detection",
+    "url": "/bit_ass/2022-09-18-BEV_Object_Detection.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2022-09-18-BEV_Object_Detection.md"
+  },
+  {
+    "date": "2022-08-01",
+    "title": "最近一年自动驾驶工作的总结与流水账",
+    "url": "/bit_ass/2022-08-01-%E6%9C%80%E8%BF%91%E4%B8%80%E5%B9%B4%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B5%81%E6%B0%B4%E8%B4%A6.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2022-08-01-最近一年自动驾驶工作的总结与流水账.md"
+  },
+  {
+    "date": "2022-05-05",
+    "title": "自动驾驶的民科思考-00",
+    "url": "/bit_ass/2022-05-05-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%9A%84%E6%B0%91%E7%A7%91%E6%80%9D%E8%80%83-00.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2022-05-05-自动驾驶的民科思考-00.md"
+  },
+  {
+    "date": "2022-04-20",
+    "title": "自动驾驶车道线检测相关问题",
+    "url": "/bit_ass/2022-04-20-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2022-04-20-自动驾驶车道线检测相关问题.md"
+  },
+  {
+    "date": "2022-03-24",
+    "title": "Conv2d Attention for Image",
+    "url": "/bit_ass/2022-03-24-Conv2d_Attention_for_Image.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2022-03-24-Conv2d_Attention_for_Image.md"
+  },
+  {
+    "date": "2021-12-25",
+    "title": "D Space 路面重建 Demo",
+    "url": "/bit_ass/2021-12-25-D_Space_%E8%B7%AF%E9%9D%A2%E9%87%8D%E5%BB%BA_Demo.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-12-25-D_Space_路面重建_Demo.md"
+  },
+  {
+    "date": "2021-12-10",
+    "title": "近期 Tesla BEV 的一些验证工作",
+    "url": "/bit_ass/2021-12-10-%E8%BF%91%E6%9C%9F_Tesla_BEV_%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AA%8C%E8%AF%81%E5%B7%A5%E4%BD%9C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-12-10-近期_Tesla_BEV_的一些验证工作.md"
+  },
+  {
+    "date": "2021-12-10",
+    "title": "自动驾驶摄像头布置注意事项",
+    "url": "/bit_ass/2021-12-10-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%91%84%E5%83%8F%E5%A4%B4%E5%B8%83%E7%BD%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-12-10-自动驾驶摄像头布置注意事项.md"
+  },
+  {
+    "date": "2021-09-19",
+    "title": "单目视觉点云玩具",
+    "url": "/bit_ass/2021-09-19-%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E7%82%B9%E4%BA%91%E7%8E%A9%E5%85%B7.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-09-19-单目视觉点云玩具.md"
+  },
+  {
+    "date": "2021-08-25",
+    "title": "Notes Tesla AI Day - Vision篇",
+    "url": "/bit_ass/2021-08-25-Notes_Tesla_AI_Day_-_Vision%E7%AF%87.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-08-25-Notes_Tesla_AI_Day_-_Vision篇.md"
+  },
+  {
+    "date": "2021-06-28",
+    "title": "Notes Tesla CVPR2021 Workshop",
+    "url": "/bit_ass/2021-06-28-Notes_Tesla_CVPR2021_Workshop.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-06-28-Notes_Tesla_CVPR2021_Workshop.md"
+  },
+  {
+    "date": "2021-06-21",
+    "title": "NotesKnowledge distillation A good teacher is patient and consistent",
+    "url": "/bit_ass/2021-06-21-NotesKnowledge_distillation_A_good_teacher_is_patient_and_consistent.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-06-21-NotesKnowledge_distillation_A_good_teacher_is_patient_and_consistent.md"
+  },
+  {
+    "date": "2021-06-03",
+    "title": "自动驾驶方案试驾及感知相关问题总结",
+    "url": "/bit_ass/2021-06-03-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%96%B9%E6%A1%88%E8%AF%95%E9%A9%BE%E5%8F%8A%E6%84%9F%E7%9F%A5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-06-03-自动驾驶方案试驾及感知相关问题总结.md"
+  },
+  {
+    "date": "2021-05-18",
+    "title": "多相机融合的感知模型玩具",
+    "url": "/bit_ass/2021-05-18-%E5%A4%9A%E7%9B%B8%E6%9C%BA%E8%9E%8D%E5%90%88%E7%9A%84%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%E7%8E%A9%E5%85%B7.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-05-18-多相机融合的感知模型玩具.md"
+  },
+  {
+    "date": "2021-05-13",
+    "title": "MLP-Mixer MLP 换用 CNN 的玩具结果",
+    "url": "/bit_ass/2021-05-13-MLP-Mixer_MLP_%E6%8D%A2%E7%94%A8_CNN_%E7%9A%84%E7%8E%A9%E5%85%B7%E7%BB%93%E6%9E%9C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-05-13-MLP-Mixer_MLP_换用_CNN_的玩具结果.md"
+  },
+  {
+    "date": "2021-02-23",
+    "title": "随机噪音抗过拟合训练",
+    "url": "/bit_ass/2021-02-23-%E9%9A%8F%E6%9C%BA%E5%99%AA%E9%9F%B3%E6%8A%97%E8%BF%87%E6%8B%9F%E5%90%88%E8%AE%AD%E7%BB%83.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-02-23-随机噪音抗过拟合训练.md"
+  },
+  {
+    "date": "2021-01-13",
+    "title": "DNN 特性与抗过拟合思路",
+    "url": "/bit_ass/2021-01-13-DNN_%E7%89%B9%E6%80%A7%E4%B8%8E%E6%8A%97%E8%BF%87%E6%8B%9F%E5%90%88%E6%80%9D%E8%B7%AF.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2021-01-13-DNN_特性与抗过拟合思路.md"
+  },
+  {
+    "date": "2020-12-18",
+    "title": "GPU 硬件层次和调度方式",
+    "url": "/bit_ass/2020-12-18-GPU_%E7%A1%AC%E4%BB%B6%E5%B1%82%E6%AC%A1%E5%92%8C%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-12-18-GPU_硬件层次和调度方式.md"
+  },
+  {
+    "date": "2020-11-16",
+    "title": "Product Quantization 算法实现",
+    "url": "/bit_ass/2020-11-16-Product_Quantization_%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-11-16-Product_Quantization_算法实现.md"
+  },
+  {
+    "date": "2020-08-26",
+    "title": "向量搜索工作的对比测试",
+    "url": "/bit_ass/2020-08-26-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%AF%B9%E6%AF%94%E6%B5%8B%E8%AF%95.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-08-26-向量搜索工作的对比测试.md"
+  },
+  {
+    "date": "2020-08-25",
+    "title": "Distillation gayhub上的实现 bug",
+    "url": "/bit_ass/2020-08-25-Distillation_gayhub%E4%B8%8A%E7%9A%84%E5%AE%9E%E7%8E%B0_bug.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-08-25-Distillation_gayhub上的实现_bug.md"
+  },
+  {
+    "date": "2020-08-06",
+    "title": "IVF 性能测试",
+    "url": "/bit_ass/2020-08-06-IVF_%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-08-06-IVF_性能测试.md"
+  },
+  {
+    "date": "2020-07-31",
+    "title": "Google AI 的一篇向量搜索相关的论文",
+    "url": "/bit_ass/2020-07-31-Google_AI_%E7%9A%84%E4%B8%80%E7%AF%87%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9B%B8%E5%85%B3%E7%9A%84%E8%AE%BA%E6%96%87.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-07-31-Google_AI_的一篇向量搜索相关的论文.md"
+  },
+  {
+    "date": "2020-07-29",
+    "title": "向量搜索短期工作总结",
+    "url": "/bit_ass/2020-07-29-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9F%AD%E6%9C%9F%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-07-29-向量搜索短期工作总结.md"
+  },
+  {
+    "date": "2020-07-20",
+    "title": "K-means on PyTorch",
+    "url": "/bit_ass/2020-07-20-K-means_on_PyTorch.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-07-20-K-means_on_PyTorch.md"
+  },
+  {
+    "date": "2020-07-03",
+    "title": "向量搜索的一些主题",
+    "url": "/bit_ass/2020-07-03-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E9%A2%98.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-07-03-向量搜索的一些主题.md"
+  },
+  {
+    "date": "2020-06-24",
+    "title": "深度学习中一些不容易察觉的 Bugs",
+    "url": "/bit_ass/2020-06-24-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%AE%B9%E6%98%93%E5%AF%9F%E8%A7%89%E7%9A%84_Bugs.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-06-24-深度学习中一些不容易察觉的_Bugs.md"
+  },
+  {
+    "date": "2020-06-24",
+    "title": "一个 CPU cache 的性能小知识",
+    "url": "/bit_ass/2020-06-24-%E4%B8%80%E4%B8%AA_CPU_cache_%E7%9A%84%E6%80%A7%E8%83%BD%E5%B0%8F%E7%9F%A5%E8%AF%86.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-06-24-一个_CPU_cache_的性能小知识.md"
+  },
+  {
+    "date": "2020-05-27",
+    "title": "PyTorch 卷积与BatchNorm的融合",
+    "url": "/bit_ass/2020-05-27-PyTorch_%E5%8D%B7%E7%A7%AF%E4%B8%8EBatchNorm%E7%9A%84%E8%9E%8D%E5%90%88.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-05-27-PyTorch_卷积与BatchNorm的融合.md"
+  },
+  {
+    "date": "2020-05-26",
+    "title": "MergeBN  Quantization PyTorch 官方解决方案",
+    "url": "/bit_ass/2020-05-26-MergeBN__Quantization_PyTorch_%E5%AE%98%E6%96%B9%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-05-26-MergeBN__Quantization_PyTorch_官方解决方案.md"
+  },
+  {
+    "date": "2020-04-21",
+    "title": "两个脑洞的工作方向",
+    "url": "/bit_ass/2020-04-21-%E4%B8%A4%E4%B8%AA%E8%84%91%E6%B4%9E%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%90%91.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-04-21-两个脑洞的工作方向.md"
+  },
+  {
+    "date": "2020-04-21",
+    "title": "ROI Align 与多任务学习",
+    "url": "/bit_ass/2020-04-21-ROI_Align_%E4%B8%8E%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2020-04-21-ROI_Align_与多任务学习.md"
+  },
+  {
+    "date": "2019-12-14",
+    "title": "水文4理想主义Tech Leader",
+    "url": "/bit_ass/2019-12-14-%E6%B0%B4%E6%96%874%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89Tech_Leader.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-12-14-水文4理想主义Tech_Leader.md"
+  },
+  {
+    "date": "2019-11-15",
+    "title": "水文3一些改进模型速度精度的工程方法",
+    "url": "/bit_ass/2019-11-15-%E6%B0%B4%E6%96%873%E4%B8%80%E4%BA%9B%E6%94%B9%E8%BF%9B%E6%A8%A1%E5%9E%8B%E9%80%9F%E5%BA%A6%E7%B2%BE%E5%BA%A6%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%96%B9%E6%B3%95.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-11-15-水文3一些改进模型速度精度的工程方法.md"
+  },
+  {
+    "date": "2019-10-22",
+    "title": "两篇图像压缩相关论文",
+    "url": "/bit_ass/2019-10-22-%E4%B8%A4%E7%AF%87%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-10-22-两篇图像压缩相关论文.md"
+  },
+  {
+    "date": "2019-10-17",
+    "title": "水文[04.00]-理想主义的Tech Leader·[Big Picture]",
+    "url": "/2019/10/17/tech_leader_0.html",
+    "source": "post_md",
+    "source_path": "_posts/2019-10-17-tech_leader_0.md"
+  },
+  {
+    "date": "2019-10-11",
+    "title": "Myths of CPP的小思考",
+    "url": "/2019/10/11/cpp_myths.html",
+    "source": "post_md",
+    "source_path": "_posts/2019-10-11-cpp_myths.md"
+  },
+  {
+    "date": "2019-09-27",
+    "title": "重新打理这片寂静之地",
+    "url": "/2019/09/27/im_back.html",
+    "source": "post_md",
+    "source_path": "_posts/2019-09-27-im_back.md"
+  },
+  {
+    "date": "2019-09-16",
+    "title": "Pytorch Post Training Quantization",
+    "url": "/bit_ass/2019-09-16-Pytorch_Post_Training_Quantization.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-09-16-Pytorch_Post_Training_Quantization.md"
+  },
+  {
+    "date": "2019-07-29",
+    "title": "PyTorch中针对ResNet的可视化试验",
+    "url": "/bit_ass/2019-07-29-PyTorch%E4%B8%AD%E9%92%88%E5%AF%B9ResNet%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AF%95%E9%AA%8C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-07-29-PyTorch中针对ResNet的可视化试验.md"
+  },
+  {
+    "date": "2019-06-30",
+    "title": "水文5主观的工程Tips",
+    "url": "/bit_ass/2019-06-30-%E6%B0%B4%E6%96%875%E4%B8%BB%E8%A7%82%E7%9A%84%E5%B7%A5%E7%A8%8BTips.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-06-30-水文5主观的工程Tips.md"
+  },
+  {
+    "date": "2019-05-28",
+    "title": "水文2从自己的工作经验思考Anchor Free 方法的重新出现",
+    "url": "/bit_ass/2019-05-28-%E6%B0%B4%E6%96%872%E4%BB%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C%E6%80%9D%E8%80%83Anchor_Free_%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E6%96%B0%E5%87%BA%E7%8E%B0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-05-28-水文2从自己的工作经验思考Anchor_Free_方法的重新出现.md"
+  },
+  {
+    "date": "2019-05-25",
+    "title": "水文1技术能力与技术审美",
+    "url": "/bit_ass/2019-05-25-%E6%B0%B4%E6%96%871%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AE%A1%E7%BE%8E.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-05-25-水文1技术能力与技术审美.md"
+  },
+  {
+    "date": "2019-05-10",
+    "title": "Group Conv的民科思考",
+    "url": "/bit_ass/2019-05-10-Group_Conv%E7%9A%84%E6%B0%91%E7%A7%91%E6%80%9D%E8%80%83.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-05-10-Group_Conv的民科思考.md"
+  },
+  {
+    "date": "2019-05-09",
+    "title": "水文0深度学习三要素硬件数据人力",
+    "url": "/bit_ass/2019-05-09-%E6%B0%B4%E6%96%870%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%89%E8%A6%81%E7%B4%A0%E7%A1%AC%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%BA%BA%E5%8A%9B.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-05-09-水文0深度学习三要素硬件数据人力.md"
+  },
+  {
+    "date": "2019-04-22",
+    "title": "ONNX转PyTorch脚本验证与更新",
+    "url": "/bit_ass/2019-04-22-ONNX%E8%BD%ACPyTorch%E8%84%9A%E6%9C%AC%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%9B%B4%E6%96%B0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-04-22-ONNX转PyTorch脚本验证与更新.md"
+  },
+  {
+    "date": "2019-04-19",
+    "title": "一个ONNX模型转Pytorch的玩具脚本",
+    "url": "/bit_ass/2019-04-19-%E4%B8%80%E4%B8%AAONNX%E6%A8%A1%E5%9E%8B%E8%BD%ACPytorch%E7%9A%84%E7%8E%A9%E5%85%B7%E8%84%9A%E6%9C%AC.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-04-19-一个ONNX模型转Pytorch的玩具脚本.md"
+  },
+  {
+    "date": "2019-04-15",
+    "title": "RePr论文复现遇到的问题",
+    "url": "/bit_ass/2019-04-15-RePr%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-04-15-RePr论文复现遇到的问题.md"
+  },
+  {
+    "date": "2019-04-02",
+    "title": "RePr Improved Training of Convolutional Filters笔记",
+    "url": "/bit_ass/2019-04-02-RePr_Improved_Training_of_Convolutional_Filters%E7%AC%94%E8%AE%B0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-04-02-RePr_Improved_Training_of_Convolutional_Filters笔记.md"
+  },
+  {
+    "date": "2019-04-01",
+    "title": "目标检测实用中可以改进的方向",
+    "url": "/bit_ass/2019-04-01-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AE%9E%E7%94%A8%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%94%B9%E8%BF%9B%E7%9A%84%E6%96%B9%E5%90%91.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-04-01-目标检测实用中可以改进的方向.md"
+  },
+  {
+    "date": "2019-03-22",
+    "title": "Pytorch双卡训练卡死问题排查",
+    "url": "/bit_ass/2019-03-22-Pytorch%E5%8F%8C%E5%8D%A1%E8%AE%AD%E7%BB%83%E5%8D%A1%E6%AD%BB%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-03-22-Pytorch双卡训练卡死问题排查.md"
+  },
+  {
+    "date": "2019-03-03",
+    "title": "YOLO训练中的问题与怀疑",
+    "url": "/bit_ass/2019-03-03-YOLO%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%80%80%E7%96%91.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2019-03-03-YOLO训练中的问题与怀疑.md"
+  },
+  {
+    "date": "2018-12-07",
+    "title": "Bag of Tricks for Image Classification with CNN",
+    "url": "/bit_ass/2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN.md"
+  },
+  {
+    "date": "2018-11-21",
+    "title": "模型伪量化",
+    "url": "/bit_ass/2018-11-21-%E6%A8%A1%E5%9E%8B%E4%BC%AA%E9%87%8F%E5%8C%96.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-11-21-模型伪量化.md"
+  },
+  {
+    "date": "2018-10-24",
+    "title": "节日快乐",
+    "url": "/bit_ass/2018-10-24-%E8%8A%82%E6%97%A5%E5%BF%AB%E4%B9%90.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-10-24-节日快乐.md"
+  },
+  {
+    "date": "2018-10-23",
+    "title": "数据和网络结构与过拟合",
+    "url": "/bit_ass/2018-10-23-%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-10-23-数据和网络结构与过拟合.md"
+  },
+  {
+    "date": "2018-10-16",
+    "title": "有关网络裁剪的相关论文三篇",
+    "url": "/bit_ass/2018-10-16-%E6%9C%89%E5%85%B3%E7%BD%91%E7%BB%9C%E8%A3%81%E5%89%AA%E7%9A%84%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E4%B8%89%E7%AF%87.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-10-16-有关网络裁剪的相关论文三篇.md"
+  },
+  {
+    "date": "2018-09-30",
+    "title": "模型训练中的新反思",
+    "url": "/bit_ass/2018-09-30-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E6%96%B0%E5%8F%8D%E6%80%9D.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-09-30-模型训练中的新反思.md"
+  },
+  {
+    "date": "2018-08-24",
+    "title": "利用未标注视频的民科脑洞",
+    "url": "/bit_ass/2018-08-24-%E5%88%A9%E7%94%A8%E6%9C%AA%E6%A0%87%E6%B3%A8%E8%A7%86%E9%A2%91%E7%9A%84%E6%B0%91%E7%A7%91%E8%84%91%E6%B4%9E.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-08-24-利用未标注视频的民科脑洞.md"
+  },
+  {
+    "date": "2018-08-14",
+    "title": "Small object fast detection",
+    "url": "/bit_ass/2018-08-14-Small_object_fast_detection.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-08-14-Small_object_fast_detection.md"
+  },
+  {
+    "date": "2018-08-13",
+    "title": "ShuffleNet v1-v2 Notes",
+    "url": "/bit_ass/2018-08-13-ShuffleNet_v1-v2_Notes.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-08-13-ShuffleNet_v1-v2_Notes.md"
+  },
+  {
+    "date": "2018-08-06",
+    "title": "Feature Visualization Notes",
+    "url": "/bit_ass/2018-08-06-Feature_Visualization_Notes.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-08-06-Feature_Visualization_Notes.md"
+  },
+  {
+    "date": "2018-07-26",
+    "title": "Naive RNN",
+    "url": "/bit_ass/2018-07-26-Naive_RNN.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-07-26-Naive_RNN.md"
+  },
+  {
+    "date": "2018-07-09",
+    "title": "一些有关数据的人生教训",
+    "url": "/bit_ass/2018-07-09-%E4%B8%80%E4%BA%9B%E6%9C%89%E5%85%B3%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BA%BA%E7%94%9F%E6%95%99%E8%AE%AD.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-07-09-一些有关数据的人生教训.md"
+  },
+  {
+    "date": "2018-06-04",
+    "title": "Naive gradient descent",
+    "url": "/bit_ass/2018-06-04-Naive_gradient_descent.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-06-04-Naive_gradient_descent.md"
+  },
+  {
+    "date": "2018-05-17",
+    "title": "Darknet yolo layer实现",
+    "url": "/bit_ass/2018-05-17-Darknet_yolo_layer%E5%AE%9E%E7%8E%B0.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-05-17-Darknet_yolo_layer实现.md"
+  },
+  {
+    "date": "2018-05-04",
+    "title": "数据质量的重要性与多尺度的重新思考",
+    "url": "/bit_ass/2018-05-04-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E4%B8%8E%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%9A%84%E9%87%8D%E6%96%B0%E6%80%9D%E8%80%83.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-05-04-数据质量的重要性与多尺度的重新思考.md"
+  },
+  {
+    "date": "2018-03-08",
+    "title": "有关模型泛化性能的一些民科想法",
+    "url": "/bit_ass/2018-03-08-%E6%9C%89%E5%85%B3%E6%A8%A1%E5%9E%8B%E6%B3%9B%E5%8C%96%E6%80%A7%E8%83%BD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B0%91%E7%A7%91%E6%83%B3%E6%B3%95.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-03-08-有关模型泛化性能的一些民科想法.md"
+  },
+  {
+    "date": "2018-02-17",
+    "title": "Naive im2col",
+    "url": "/bit_ass/2018-02-17-Naive_im2col.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2018-02-17-Naive_im2col.md"
+  },
+  {
+    "date": "2017-12-06",
+    "title": "双目障碍物检测-CNN",
+    "url": "/bit_ass/2017-12-06-%E5%8F%8C%E7%9B%AE%E9%9A%9C%E7%A2%8D%E7%89%A9%E6%A3%80%E6%B5%8B-CNN.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-12-06-双目障碍物检测-CNN.md"
+  },
+  {
+    "date": "2017-11-04",
+    "title": "Naive MLP",
+    "url": "/bit_ass/2017-11-04-Naive_MLP.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-11-04-Naive_MLP.md"
+  },
+  {
+    "date": "2017-10-31",
+    "title": "结构化机器学习项目总结",
+    "url": "/bit_ass/2017-10-31-%E7%BB%93%E6%9E%84%E5%8C%96%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-10-31-结构化机器学习项目总结.md"
+  },
+  {
+    "date": "2017-09-29",
+    "title": "Challenger AI 场景分类测试数据",
+    "url": "/bit_ass/2017-09-29-Challenger_AI_%E5%9C%BA%E6%99%AF%E5%88%86%E7%B1%BB%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-09-29-Challenger_AI_场景分类测试数据.md"
+  },
+  {
+    "date": "2017-09-08",
+    "title": "Challenger AI场景分类初步试验",
+    "url": "/bit_ass/2017-09-08-Challenger_AI%E5%9C%BA%E6%99%AF%E5%88%86%E7%B1%BB%E5%88%9D%E6%AD%A5%E8%AF%95%E9%AA%8C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-09-08-Challenger_AI场景分类初步试验.md"
+  },
+  {
+    "date": "2017-09-01",
+    "title": "FlowNet及试验",
+    "url": "/bit_ass/2017-09-01-FlowNet%E5%8F%8A%E8%AF%95%E9%AA%8C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-09-01-FlowNet及试验.md"
+  },
+  {
+    "date": "2017-08-14",
+    "title": "Notes on Neural Machine Translation by Jointly Learning to Align and Translate",
+    "url": "/bit_ass/2017-08-14-Notes_on_Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-08-14-Notes_on_Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.md"
+  },
+  {
+    "date": "2017-08-11",
+    "title": "Focal Loss初步试验",
+    "url": "/bit_ass/2017-08-11-Focal_Loss%E5%88%9D%E6%AD%A5%E8%AF%95%E9%AA%8C.html",
+    "source": "bit_ass",
+    "source_path": "bit_ass/2017-08-11-Focal_Loss初步试验.md"
+  },
+  {
+    "date": "2017-06-20",
+    "title": "Pytorch短期使用回顾",
+    "url": "/2017/06/20/pytorch.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-06-20-pytorch.html"
+  },
+  {
+    "date": "2017-05-22",
+    "title": "新日志系统恢复的备忘录",
+    "url": "/2017/05/22/memo_org_log.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-05-22-memo_org_log.html"
+  },
+  {
+    "date": "2017-04-13",
+    "title": "Pytorch",
+    "url": "/2017/04/13/pytorch.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-04-13-pytorch.html"
+  },
+  {
+    "date": "2017-04-05",
+    "title": "生成模型与判别模型",
+    "url": "/2017/04/05/generative_vs_discriminative.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-04-05-generative_vs_discriminative.html"
+  },
+  {
+    "date": "2017-04-03",
+    "title": "DL资料阅读观",
+    "url": "/2017/04/03/my_opinions_on_dl_reading.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-04-03-my_opinions_on_dl_reading.html"
+  },
+  {
+    "date": "2017-03-21",
+    "title": "GPU server的一些经验",
+    "url": "/2017/03/21/dlbox.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-03-21-dlbox.html"
+  },
+  {
+    "date": "2017-03-10",
+    "title": "机器人自动化的想法",
+    "url": "/2017/03/10/thoughts_on_robots.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-03-10-thoughts_on_robots.html"
+  },
+  {
+    "date": "2017-02-27",
+    "title": "上篇CNN加速的初步结果",
+    "url": "/2017/02/27/reports_of_rt_cnn.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-02-27-reports_of_rt_cnn.html"
+  },
+  {
+    "date": "2017-02-23",
+    "title": "有关提升CNN运行速度的论文列表及极简单关键词摘要",
+    "url": "/2017/02/23/rt_cnn.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-02-23-rt_cnn.html"
+  },
+  {
+    "date": "2017-02-22",
+    "title": "LSTM",
+    "url": "/2017/02/22/LSTM.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-02-22-LSTM.html"
+  },
+  {
+    "date": "2017-02-17",
+    "title": "ian 2 articles",
+    "url": "/2017/02/17/ian_2_articles.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-02-17-ian_2_articles.html"
+  },
+  {
+    "date": "2017-02-15",
+    "title": "回到Linux怀抱",
+    "url": "/2017/02/15/arch_linux.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-02-15-arch_linux.html"
+  },
+  {
+    "date": "2017-01-08",
+    "title": "我对创新的理解",
+    "url": "/2017/01/08/innovation.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-01-08-innovation.html"
+  },
+  {
+    "date": "2017-01-04",
+    "title": "2016",
+    "url": "/2017/01/04/review_of_2016.html",
+    "source": "post_html",
+    "source_path": "_posts/2017-01-04-review_of_2016.html"
+  },
+  {
+    "date": "2016-08-25",
+    "title": "Dart and Atom",
+    "url": "/2016/08/25/dartlang.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-08-25-dartlang.html"
+  },
+  {
+    "date": "2016-08-25",
+    "title": "Coding与知识构建",
+    "url": "/2016/08/25/whatscoding.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-08-25-whatscoding.html"
+  },
+  {
+    "date": "2016-07-28",
+    "title": "为什么需要分类器作为预训练",
+    "url": "/2016/07/28/why_classifier_first.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-07-28-why_classifier_first.html"
+  },
+  {
+    "date": "2016-07-26",
+    "title": "神经网络与决策树的分类能力等价的思考",
+    "url": "/2016/07/26/nn_and_dt.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-07-26-nn_and_dt.html"
+  },
+  {
+    "date": "2016-02-05",
+    "title": "君士坦丁堡的陷落",
+    "url": "/2016/02/05/fall_of_constantinople.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-02-05-fall_of_constantinople.html"
+  },
+  {
+    "date": "2016-02-04",
+    "title": "CS231n Lecture 8",
+    "url": "/2016/02/04/cs231n_lecture8.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-02-04-cs231n_lecture8.html"
+  },
+  {
+    "date": "2016-01-13",
+    "title": "程序员的呐喊",
+    "url": "/2016/01/13/programmer_rantings.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-01-13-programmer_rantings.html"
+  },
+  {
+    "date": "2016-01-11",
+    "title": "书们",
+    "url": "/2016/01/11/books_of_2015.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-01-11-books_of_2015.html"
+  },
+  {
+    "date": "2016-01-09",
+    "title": "近期的工作总结",
+    "url": "/2016/01/09/cnn.html",
+    "source": "post_html",
+    "source_path": "_posts/2016-01-09-cnn.html"
+  },
+  {
+    "date": "2014-09-15",
+    "title": "Torch7 and ConvNet",
+    "url": "/2014/09/15/torch_convnet.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-09-15-torch_convnet.html"
+  },
+  {
+    "date": "2014-09-04",
+    "title": "Python yield",
+    "url": "/2014/09/04/pythong_yield.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-09-04-pythong_yield.html"
+  },
+  {
+    "date": "2014-08-12",
+    "title": "使用pass管理密码",
+    "url": "/2014/08/12/pass.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-08-12-pass.html"
+  },
+  {
+    "date": "2014-05-20",
+    "title": "碎碎念",
+    "url": "/2014/05/20/writing_plan.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-05-20-writing_plan.html"
+  },
+  {
+    "date": "2014-05-20",
+    "title": "《明朝那些事》与《万历十五年》",
+    "url": "/2014/05/20/bfs_and_dfs.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-05-20-bfs_and_dfs.html"
+  },
+  {
+    "date": "2014-05-20",
+    "title": "Volatile关键字",
+    "url": "/2014/05/20/volatile_in_c.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-05-20-volatile_in_c.html"
+  },
+  {
+    "date": "2014-02-27",
+    "title": "针对Anders Hejlsberg的一次采访",
+    "url": "/2014/02/27/a_conversation_with_anders_hejlsberg.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-02-27-a_conversation_with_anders_hejlsberg.html"
+  },
+  {
+    "date": "2014-01-16",
+    "title": "巴别塔-编程语言之旅",
+    "url": "/2014/01/16/tour_de_babel.html",
+    "source": "post_html",
+    "source_path": "_posts/2014-01-16-tour_de_babel.html"
+  },
+  {
+    "date": "2013-12-23",
+    "title": "Neural Networks, Basic Concepts",
+    "url": "/2013/12/23/neural_networks_0.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-12-23-neural_networks_0.html"
+  },
+  {
+    "date": "2013-12-22",
+    "title": "几本书的回顾",
+    "url": "/2013/12/22/books_important_to_me.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-12-22-books_important_to_me.html"
+  },
+  {
+    "date": "2013-11-19",
+    "title": "栈和寄存器虚拟机，Dalvik",
+    "url": "/2013/11/19/register_cpu_vs_stack_cpu.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-11-19-register_cpu_vs_stack_cpu.html"
+  },
+  {
+    "date": "2013-11-05",
+    "title": "编写可读代码的艺术",
+    "url": "/2013/11/05/clean_code.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-11-05-clean_code.html"
+  },
+  {
+    "date": "2013-11-04",
+    "title": "Two kinds of judgement by Paul Graham",
+    "url": "/2013/11/04/two_kinds_of_judgement.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-11-04-two_kinds_of_judgement.html"
+  },
+  {
+    "date": "2013-09-22",
+    "title": "Emacs 配置",
+    "url": "/2013/09/22/emacs_configs.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-09-22-emacs_configs.html"
+  },
+  {
+    "date": "2013-08-20",
+    "title": "Machine Learning课程",
+    "url": "/2013/08/20/ml.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-08-20-ml.html"
+  },
+  {
+    "date": "2013-08-16",
+    "title": "重新整UI,升级jekyll",
+    "url": "/2013/08/16/new_jekyll.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-08-16-new_jekyll.html"
+  },
+  {
+    "date": "2013-07-03",
+    "title": "减肥菜谱little scheme",
+    "url": "/2013/07/03/little_scheme.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-07-03-little_scheme.html"
+  },
+  {
+    "date": "2013-06-20",
+    "title": "20年的高效：纪念Vim 20周年",
+    "url": "/2013/06/20/20th_anniversary_vim.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-06-20-20th_anniversary_vim.html"
+  },
+  {
+    "date": "2013-05-22",
+    "title": "Tanenbaum-Torvalds Debate, Part II",
+    "url": "/2013/05/22/ast_reliable_os.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-05-22-ast_reliable_os.html"
+  },
+  {
+    "date": "2013-04-27",
+    "title": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
+    "url": "/2013/04/27/wtfpl.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-04-27-wtfpl.html"
+  },
+  {
+    "date": "2013-04-16",
+    "title": "clojure与FP",
+    "url": "/2013/04/16/clojure.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-04-16-clojure.html"
+  },
+  {
+    "date": "2013-04-16",
+    "title": "Why *nix ?",
+    "url": "/2013/04/16/why_nix.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-04-16-why_nix.html"
+  },
+  {
+    "date": "2013-03-28",
+    "title": "What Every Programmer Should Know About Memory Notes 0",
+    "url": "/2013/03/28/memory_notes_0.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-03-28-memory_notes_0.html"
+  },
+  {
+    "date": "2013-03-28",
+    "title": "Overnight talking.",
+    "url": "/2013/03/28/overnight_talking.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-03-28-overnight_talking.html"
+  },
+  {
+    "date": "2013-02-26",
+    "title": "Unit Test in Clojure",
+    "url": "/2013/02/26/clojure_unit_test.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-02-26-clojure_unit_test.html"
+  },
+  {
+    "date": "2013-02-21",
+    "title": "WebQQ逆向",
+    "url": "/2013/02/21/webqq.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-02-21-webqq.html"
+  },
+  {
+    "date": "2013-02-20",
+    "title": "回归问题",
+    "url": "/2013/02/20/regression.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-02-20-regression.html"
+  },
+  {
+    "date": "2013-02-20",
+    "title": "org-mode中文导出latex解决方法",
+    "url": "/2013/02/20/chinese_latex_in_org_mode.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-02-20-chinese_latex_in_org_mode.html"
+  },
+  {
+    "date": "2013-01-11",
+    "title": "Java Class File Format",
+    "url": "/2013/01/11/java_class_file.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-01-11-java_class_file.html"
+  },
+  {
+    "date": "2013-01-11",
+    "title": "JVM指令",
+    "url": "/2013/01/11/JVM_instruction.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-01-11-JVM_instruction.html"
+  },
+  {
+    "date": "2013-01-10",
+    "title": "Destructuring in Clojure",
+    "url": "/2013/01/10/destructuring_in_clojure.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-01-10-destructuring_in_clojure.html"
+  },
+  {
+    "date": "2013-01-05",
+    "title": "Clojure Persistent Vector",
+    "url": "/2013/01/05/clojure_persistent_vector.html",
+    "source": "post_html",
+    "source_path": "_posts/2013-01-05-clojure_persistent_vector.html"
+  },
+  {
+    "date": "2012-12-23",
+    "title": "2012的电影和书盘点",
+    "url": "/2012/12/23/movies_books_in_2012.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-23-movies_books_in_2012.html"
+  },
+  {
+    "date": "2012-12-21",
+    "title": "4clojure's elementary and easy solutions",
+    "url": "/2012/12/21/4clojure_solutions.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-21-4clojure_solutions.html"
+  },
+  {
+    "date": "2012-12-18",
+    "title": "谁会认错和乔布斯传笔记",
+    "url": "/2012/12/18/books_2012_12.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-18-books_2012_12.html"
+  },
+  {
+    "date": "2012-12-10",
+    "title": "lambda和邱奇编码",
+    "url": "/2012/12/10/Lambda.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-10-Lambda.html"
+  },
+  {
+    "date": "2012-12-08",
+    "title": "自控力笔记",
+    "url": "/2012/12/08/willpower.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-08-willpower.html"
+  },
+  {
+    "date": "2012-12-06",
+    "title": "无聊的时候",
+    "url": "/2012/12/06/solidot_famous.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-06-solidot_famous.html"
+  },
+  {
+    "date": "2012-12-06",
+    "title": "goagent",
+    "url": "/2012/12/06/goagent.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-06-goagent.html"
+  },
+  {
+    "date": "2012-12-06",
+    "title": "Baking Pi - Operating Systems Development Lesson 3",
+    "url": "/2012/12/06/baking_pi_l3.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-06-baking_pi_l3.html"
+  },
+  {
+    "date": "2012-12-02",
+    "title": "How to Get More From Life",
+    "url": "/2012/12/02/how_to_get_more_from_life.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-12-02-how_to_get_more_from_life.html"
+  },
+  {
+    "date": "2012-11-15",
+    "title": "数独问题解决方法",
+    "url": "/2012/11/15/sudoku_puzzle.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-11-15-sudoku_puzzle.html"
+  },
+  {
+    "date": "2012-10-25",
+    "title": "Baking Pi - Operating Systems Development Lesson 2",
+    "url": "/2012/10/25/baking_pi_l2.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-10-25-baking_pi_l2.html"
+  },
+  {
+    "date": "2012-09-13",
+    "title": "Introduction for non-cs.",
+    "url": "/2012/09/13/for_non_cs_intro.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-13-for_non_cs_intro.html"
+  },
+  {
+    "date": "2012-09-12",
+    "title": "Baking Pi - Operating Systems Development Lesson 1",
+    "url": "/2012/09/12/baking_pi_l1.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-12-baking_pi_l1.html"
+  },
+  {
+    "date": "2012-09-12",
+    "title": "Baking Pi - Operating Systems Development Lesson 0",
+    "url": "/2012/09/12/baking_pi_l0.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-12-baking_pi_l0.html"
+  },
+  {
+    "date": "2012-09-10",
+    "title": "Unix缺陷读后",
+    "url": "/2012/09/10/wangyin.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-10-wangyin.html"
+  },
+  {
+    "date": "2012-09-03",
+    "title": "写些什么东西?",
+    "url": "/2012/09/03/what_is_next.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-03-what_is_next.html"
+  },
+  {
+    "date": "2012-09-03",
+    "title": "Baking Pi - Operating Systems Development",
+    "url": "/2012/09/03/baking_pi_intro.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-09-03-baking_pi_intro.html"
+  },
+  {
+    "date": "2012-08-29",
+    "title": "又想回到Linux怀抱了",
+    "url": "/2012/08/29/OS.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-08-29-OS.html"
+  },
+  {
+    "date": "2012-08-28",
+    "title": "Org-mode笔记",
+    "url": "/2012/08/28/org_mode_notes.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-08-28-org_mode_notes.html"
+  },
+  {
+    "date": "2012-08-19",
+    "title": "改个地方",
+    "url": "/2012/08/19/to_here.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-08-19-to_here.html"
+  },
+  {
+    "date": "2012-08-17",
+    "title": "Google Reader订阅",
+    "url": "/2012/08/17/GoogleReader.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-08-17-GoogleReader.html"
+  },
+  {
+    "date": "2012-04-28",
+    "title": "我的未来技术观",
+    "url": "/2012/04/28/future_of_tech.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-04-28-future_of_tech.html"
+  },
+  {
+    "date": "2012-04-09",
+    "title": "VPN访问facebook及twitter不能简单记录",
+    "url": "/2012/04/09/gfw_analytics.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-04-09-gfw_analytics.html"
+  },
+  {
+    "date": "2012-04-05",
+    "title": "个人之于群体-BlackMirrorS01E02",
+    "url": "/2012/04/05/black_mirror_s01e02.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-04-05-black_mirror_s01e02.html"
+  },
+  {
+    "date": "2012-04-04",
+    "title": "有关VPN在VPS上的配置",
+    "url": "/2012/04/04/VPN_on_VPS.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-04-04-VPN_on_VPS.html"
+  },
+  {
+    "date": "2012-03-17",
+    "title": "亲身体验",
+    "url": "/2012/03/17/experience_by_self.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-03-17-experience_by_self.html"
+  },
+  {
+    "date": "2012-02-26",
+    "title": "不确定性之于预测和机会",
+    "url": "/2012/02/26/possibility.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-02-26-possibility.html"
+  },
+  {
+    "date": "2012-02-19",
+    "title": "有关选择",
+    "url": "/2012/02/19/about_your_choices.html",
+    "source": "post_html",
+    "source_path": "_posts/2012-02-19-about_your_choices.html"
+  }
+]
