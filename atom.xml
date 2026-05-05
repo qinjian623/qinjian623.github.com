@@ -14,13 +14,13 @@ title : Atom Feed
    <email>{{ site.author.email }}</email>
  </author>
 
- {% for post in site.posts %}
+ {% for article in site.data.article_index %}
  <entry>
-   <title>{{ post.title }}</title>
-   <link href="{{ site.production_url }}{{ post.url }}"/>
-   <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>{{ site.production_url }}{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <title>{{ article.title | xml_escape }}</title>
+   <link href="{{ site.production_url }}{{ article.url }}"/>
+   <updated>{{ article.date | date_to_xmlschema }}</updated>
+   <id>{{ site.production_url }}{{ article.url }}</id>
+   <summary type="html">{{ article.excerpt | default: article.title | xml_escape }}</summary>
  </entry>
  {% endfor %}
  

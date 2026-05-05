@@ -28,6 +28,7 @@ highlighter: rouge
 # so be sure to set them if your theme uses them.
 title : K.I.S.S
 name : K.I.S.S
+description : 工程实践、模型训练、自动驾驶感知与系统性能的长期笔记。
 # tagline: Site Tagline
 author :
   name : Qin Jian
@@ -116,7 +117,7 @@ JB :
   # Set 'provider' to false to turn analytics off globally.
   #        
   analytics :
-    provider : google 
+    provider : false
     google : 
         tracking_id : 'UA-34189274-1'
 

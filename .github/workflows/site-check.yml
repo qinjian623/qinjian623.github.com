@@ -1,0 +1,25 @@
+name: site-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Check generated article data
+        run: python3 scripts/build_article_index.py --check --site-dir _site
+
+      - name: Build site
+        run: JEKYLL_ENV=production bundle exec jekyll build --trace
+
+      - name: Check built article URLs
+        run: python3 scripts/build_article_index.py --check --site-dir _site

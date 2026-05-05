@@ -56,12 +56,78 @@ ul.article-list {
 
 ul.article-list li {
   line-height: 1.75em;
+  margin-bottom: .35em;
 }
 
 ul.article-list span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
   font-size: 80%;
+}
+
+ul.article-list em {
+  color: #888;
+  font-size: 80%;
+  font-style: normal;
+  margin-left: .5em;
+}
+
+ul.article-list p {
+  color: #555;
+  line-height: 1.45em;
+  margin: .2em 0 .7em;
+}
+
+.home-intro p {
+  color: #555;
+}
+
+.start-here,
+.topic-entry,
+.topic-section {
+  margin-bottom: 2.5em;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+  gap: .75em;
+  margin: 1em 0 2em;
+}
+
+.topic-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #222;
+  display: block;
+  padding: .85em;
+  text-decoration: none;
+}
+
+.topic-card:visited {
+  color: #222;
+}
+
+.topic-card:hover {
+  border-color: #aaa;
+  color: #000;
+}
+
+.topic-card strong,
+.topic-card span {
+  display: block;
+}
+
+.topic-card span {
+  color: #888;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+  margin-top: .2em;
+}
+
+.topic-card p {
+  color: #555;
+  margin: .6em 0 0;
 }
 
 /*****************************************************************************/
@@ -147,6 +213,7 @@ ul.article-list span {
   border: 1px solid #ddd;
   background-color: #eef;
   padding: 0 .4em;
+  overflow-x: auto;
 }
 
 .post ul, .post ol {
@@ -161,6 +228,17 @@ ul.article-list span {
 
 .post pre code {
   border: none;
+}
+
+.post img,
+.site img {
+  height: auto;
+  max-width: 100%;
+}
+
+.post iframe,
+.site iframe {
+  max-width: 100%;
 }
 
 /* terminal */

@@ -1,0 +1,1050 @@
+[
+  {
+    "name": "自动驾驶 / BEV",
+    "slug": "ad-bev",
+    "description": "自动驾驶感知、BEV、车道线、传感器、规划和数据闭环。",
+    "count": 30,
+    "articles": [
+      {
+        "date": "2026-05-05",
+        "title": "流水账【23-26】- 01 - 杂项",
+        "url": "/2026/05/05/3_years.html",
+        "excerpt": "最近几年没有写什么内容。主要原因是工作量相对增大不少，资源也比较紧张，导致没有什么精力来写东西（以上都是借口，去年述职我给自己定了 KPI，要继续写一点东西）。这次借着五一没有出门，统一写一份流水账。 首先，从大的方面看，这几年的变化基本都是 AI 的发展带来，尤其是 Agent 的发展，对技术开发、技术管理、团队管理等等方面都带来了非常大的影响，甚至..."
+      },
+      {
+        "date": "2023-04-10",
+        "title": "规划模型的PoC及难点",
+        "url": "/bit_ass/2023-04-10-%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E7%9A%84PoC%E5%8F%8A%E9%9A%BE%E7%82%B9.html",
+        "excerpt": "我让 GPT-4 帮我润色了下，省略了很多废话，顺便让他给了一份中英文的总结，简直就是6。 最近一个月，我们进行了一系列概念验证，与规控团队讨论并形成了初步的设计方向，目标是方便地融入现有框架。开放环路测试结果显示，模型在不同时机的选择上存在差异。评测存在一定难度，可靠的评测方法只能依赖闭环评测。模拟器在实现更贴近实际的模拟方面面临诸多挑战。我们引入了..."
+      },
+      {
+        "date": "2023-03-15",
+        "title": "自己小组的一篇 CVPR23 车道线检测论文",
+        "url": "/bit_ass/2023-03-15-%E8%87%AA%E5%B7%B1%E5%B0%8F%E7%BB%84%E7%9A%84%E4%B8%80%E7%AF%87_CVPR23_%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87.html",
+        "excerpt": "CVPR 中了一篇车道线检测相关论文，简单介绍一下。本身比较偏应用，预期是workshop，运气比较好，磕磕碰碰主会接收了。 https://arxiv.org/abs/2210.06006具体工作绝大部分都是一作的瑞豪同学完成，可以关注他对这个任务更加具体的理解： 王瑞豪我简单介绍一些论文的内容，以及目前我们对 BEV 任务的观点。 主要的工作是三个..."
+      },
+      {
+        "date": "2023-03-06",
+        "title": "NO-HDMap 传统归控方案面对的问题",
+        "url": "/bit_ass/2023-03-06-NO-HDMap_%E4%BC%A0%E7%BB%9F%E5%BD%92%E6%8E%A7%E6%96%B9%E6%A1%88%E9%9D%A2%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98.html",
+        "excerpt": "最近我接收到新的任务：如何将 AI 技术在规控上进一步利用。首先还是调研现有算法及其缺陷。以下是一些开放性问题的零散想法，目前还没有系统化。 讨论的主要范围： * 规划 * 预测 对于具体的控制指令，我个人观点没有太大必要引入 DL 技术：本身有比较成熟的数学模型、确定性强，而且和底层的一些控制系统相关，属于关键基础设施。 显然，丢弃 HD 是一个确定..."
+      },
+      {
+        "date": "2023-02-23",
+        "title": "Fast-BEV 工程化的BEV转换",
+        "url": "/bit_ass/2023-02-23-Fast-BEV_%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84BEV%E8%BD%AC%E6%8D%A2.html",
+        "excerpt": "商汤最新出的一个3D转换模块，按照之前https://zhuanlan.zhihu.com/p/604293845属于静态转换。但是其利用了转换过程中增加冗余信息为动态任务提供了空间。这个思路简单粗暴但有效，一个非常好的R&D范例。 从我的角度来看，对于缺点：由于是通过冗余信息，BEV 后的网络需要负责支持动态任务，这就需要增加 BEV 网络的 cap..."
+      },
+      {
+        "date": "2023-02-07",
+        "title": "BEV 3D 转换模块的动静态任务特性与选择",
+        "url": "/bit_ass/2023-02-07-BEV_3D_%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97%E7%9A%84%E5%8A%A8%E9%9D%99%E6%80%81%E4%BB%BB%E5%8A%A1%E7%89%B9%E6%80%A7%E4%B8%8E%E9%80%89%E6%8B%A9.html",
+        "excerpt": "从之前工作中的总结的一些经验扩展： Captain Jack：BEV 感知模型实用的一些经验我们在实际使用中，发现不同的感知任务对 BEV 的 3D 转换特性可能有不同的需求，这些差异化的需求，在学界角度可能并不需要考虑。但是在实际工程使用中，可以成为一个 trade off 的因素。 首先，我们需要将任务区分为两类： 1. 静态任务（ST）：大部分情..."
+      },
+      {
+        "date": "2023-01-04",
+        "title": "BEV 感知模型实用的一些经验",
+        "url": "/bit_ass/2023-01-04-BEV_%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C.html",
+        "excerpt": "目前实用 BEV 的技术方案已经有大概半年时间了，多个 BEV 模型都在不同项目做了实际部署，可以在这些工作的基础上做一些经验总结了。 内容其实是断断续续写的，因为新冠的脑雾在我身上可感知的大概持续了半个月。 虽然这个看起来比较反直觉。但是实际上性能反而比 2D 任务更好，而且还能保持基本对标甚至更好的指标。同样的两个任务，我们使用更少的算力（1/3..."
+      },
+      {
+        "date": "2022-09-18",
+        "title": "BEV Object Detection",
+        "url": "/bit_ass/2022-09-18-BEV_Object_Detection.html",
+        "excerpt": "水每月一篇的KPI，也是这里面的降级车端模型的阶段结果： Captain Jack：最近一年自动驾驶工作的总结与流水账模型推理结果加了一个自己临时写的Low版NMS。行人数据没有准备好，只是减量的车辆数据训练的。 https://www.zhihu.com/video/1554934227308929024"
+      },
+      {
+        "date": "2022-08-01",
+        "title": "最近一年自动驾驶工作的总结与流水账",
+        "url": "/bit_ass/2022-08-01-%E6%9C%80%E8%BF%91%E4%B8%80%E5%B9%B4%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B5%81%E6%B0%B4%E8%B4%A6.html",
+        "excerpt": "近一年的阶段性工作和一些方向上的经验总结，之前的一些经验也在自己专栏上有写。流水账凭记忆分月，也算是自己最近一年在创业公司的一览。分经验和流水账两部分吧。有一些之前专栏的总结也都在流水账里面。 --- 由于特斯拉的原因，现在的 BEV 模型迎来了一次爆炸。甚至会有人说， BEV 就是解决自动驾驶的关键技术。但是，实际做过工业研发会知道，BEV 模型虽然..."
+      },
+      {
+        "date": "2022-05-05",
+        "title": "自动驾驶的民科思考-00",
+        "url": "/bit_ass/2022-05-05-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%9A%84%E6%B0%91%E7%A7%91%E6%80%9D%E8%80%83-00.html",
+        "excerpt": "数据闭环其实是任何有机器学习相关经验的人的朴素思路，并没有值得特别多的强调，反而是具体的做法才是重点。 从怀疑数据数据闭环的角度来说（其实完全没有值得怀疑的）： 1. 数据闭环肯定没法解决所有的问题，甚至 95% 都未必能到。 2. 但是如果抛弃数据闭环这个思路，可能连 60 分都达不到。 3. 目前阶段，不走数据闭环会很快被成功建立起这套基础系统的迅..."
+      },
+      {
+        "date": "2022-04-20",
+        "title": "自动驾驶车道线检测相关问题",
+        "url": "/bit_ass/2022-04-20-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98.html",
+        "excerpt": "最近有一部分工作是 2D 车道线的检测，整体路线偏传统一点，期望纯视觉和无地图，总结下遇到的技术问题。 目前市面上是有很多开源车道线检测的数据集合的，而且对应的 benchmark 指标也看起来很美好。有些数据集都能到 9x% 的指标。 但是，这些 benchmark 其实已经有一定的失真，表现好的模型未必真的有可用性，事实上可以说 benchmark..."
+      },
+      {
+        "date": "2021-12-25",
+        "title": "4D Space 路面重建 Demo",
+        "url": "/bit_ass/2021-12-25-D_Space_%E8%B7%AF%E9%9D%A2%E9%87%8D%E5%BB%BA_Demo.html",
+        "excerpt": "之前的一个继续， 1. 扩充了验证数据范围，不过模型的测试误差没有太大变化。 2. 修正了构建 4d space 代码中的一个错误。 Captain Jack：近期 Tesla BEV 的一些验证工作 https://www.zhihu.com/video/1457819204620062720https://www.zhihu.com/video/1..."
+      },
+      {
+        "date": "2021-12-10",
+        "title": "近期 Tesla BEV 的一些验证工作",
+        "url": "/bit_ass/2021-12-10-%E8%BF%91%E6%9C%9F_Tesla_BEV_%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AA%8C%E8%AF%81%E5%B7%A5%E4%BD%9C.html",
+        "excerpt": "近期的一部分验证工作。 由于没有 v-slam 基础设施，帧间匹配用的高精定位。好处是使用的全局定位，相比特斯拉的里程计 + IMU 方法的累积误差，可以叠加更长的时间段。不过，这段验证只叠加了 10+ s的。 https://www.zhihu.com/video/1452575572967219200 基于 10Hz 前视相机的尝试，检测模型使用车..."
+      },
+      {
+        "date": "2021-12-10",
+        "title": "自动驾驶摄像头布置注意事项",
+        "url": "/bit_ass/2021-12-10-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%91%84%E5%83%8F%E5%A4%B4%E5%B8%83%E7%BD%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.html",
+        "excerpt": "主要思路都比较成熟，剩下需要考虑的一些问题： 1. 与其他传感器的配合：主要是 Lidar，两者的视角是否需要尽量保持一致。 2. 气流与自洁能力：摄像头位置上装个雨刷太滑稽，依靠汽车行驶中的气流来自洁是个基本思路。否则雨天挂个水滴在上面，这个摄像头就不可能正常感知了。 3. 高度的基本思路：在满足车身美观、强度设计条件的范围内，尽量往上放。太低的位置..."
+      },
+      {
+        "date": "2021-09-19",
+        "title": "单目视觉点云玩具",
+        "url": "/bit_ass/2021-09-19-%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E7%82%B9%E4%BA%91%E7%8E%A9%E5%85%B7.html",
+        "excerpt": "刷私人KPI，水一篇专栏。 最近半个月弄的一个视觉点云（or mono-depth）的玩具。 1. 由于天空是无限远，没有加上过滤，所以天空的像素投影会很乱。 2. 目前的数据还没有时间同步，标定也有问题，会有一些诡异问题。 3. 验证集的两张结果。 目前来看，已经超出预期。后续的依赖工作可以试着铺开一下了。 https://www.zhihu.com..."
+      },
+      {
+        "date": "2021-08-25",
+        "title": "[Notes] Tesla AI Day - Vision篇",
+        "url": "/bit_ass/2021-08-25-Notes_Tesla_AI_Day_-_Vision%E7%AF%87.html",
+        "excerpt": "Tesla AI day 当天看了直播（感谢 hacknews 上有人贴了链接让我看见了），然而这次的内容信息密度实在太大了，而且基本算是全技术栈的能力展示。只能慢慢消化，先看看和自己相关的感知。 相比之前的 workshop 的内容，这次涉及的范围更广，内容深度也稍深： [Captain Jack：[Notes] Tesla CVPR2021 Wor..."
+      },
+      {
+        "date": "2021-06-28",
+        "title": "[Notes] Tesla CVPR2021 Workshop",
+        "url": "/bit_ass/2021-06-28-Notes_Tesla_CVPR2021_Workshop.html",
+        "excerpt": "上周五，Youtube上搜特斯拉之前的技术讲座的时候才发现，Andrej 在 CVPR 2021 的 Workshop 上做了一些新进展的介绍，于是就点进去学习学习了： Andrej Karpathy (Tesla) - CVPR 2021 Wo… 我关注的是两个问题： 1. 相比之前的技术方案，有没有路线层面的变化？ 2. 有没有解释下 Elon 说..."
+      },
+      {
+        "date": "2021-06-03",
+        "title": "自动驾驶方案试驾及感知相关问题总结",
+        "url": "/bit_ass/2021-06-03-%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E6%96%B9%E6%A1%88%E8%AF%95%E9%A9%BE%E5%8F%8A%E6%84%9F%E7%9F%A5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.html",
+        "excerpt": "最近试驾了两台车的自动驾驶，一个新势力，一个传统主机厂。刚好可以从半个从业者的角度看看视觉感知的问题。 传感器上，都是依靠 毫米波+视觉 的思路。 从视觉的角度来看基本功能主要两个: 1. 目标检测 2. 车道检测 **目标检测** **1. 识别不连续的情况偶有发生** 这个问题从目标检测的情况下是难以避免的，都是靠跟踪滤波算法尽量让目标稳定。不过，..."
+      },
+      {
+        "date": "2021-05-18",
+        "title": "多相机融合的感知模型玩具",
+        "url": "/bit_ass/2021-05-18-%E5%A4%9A%E7%9B%B8%E6%9C%BA%E8%9E%8D%E5%90%88%E7%9A%84%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%E7%8E%A9%E5%85%B7.html",
+        "excerpt": "水个 KPI，上周花一天时间做的一个 POC 玩具。 * 4 摄像头（侧面鱼眼 x2, 前后广角 x2） * 低线束 Lidar x N(仅标注用途，未输入) * 无硬同步 * 相机系统无标定 * 点云分割的稀疏标注，鸟瞰图视角 基本达到预期，细节上的东西可以后续模型结构、特征融合等等慢慢优化。 1. 具备融合能力 2. 具备空间距离的感知能力 3...."
+      },
+      {
+        "date": "2020-12-18",
+        "title": "GPU 硬件层次和调度方式",
+        "url": "/bit_ass/2020-12-18-GPU_%E7%A1%AC%E4%BB%B6%E5%B1%82%E6%AC%A1%E5%92%8C%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F.html",
+        "excerpt": "工作原因，需要了解一下 GPU 的硬件和 CUDA 的对应关系和调度方法。由于不是专职优化 GPU 代码，所以就是个大概了解。 * Perfect solution for {数据并行} * 硬件设计思路： * 上下文切换可以认为是 0（每个 cycle 都可以切换，寄存器、指令都是同时分配很多个线程的，也就是说线程上下文都准备好了，没有切换开销）。..."
+      },
+      {
+        "date": "2020-07-31",
+        "title": "Google AI 的一篇向量搜索相关的论文",
+        "url": "/bit_ass/2020-07-31-Google_AI_%E7%9A%84%E4%B8%80%E7%AF%87%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9B%B8%E5%85%B3%E7%9A%84%E8%AE%BA%E6%96%87.html",
+        "excerpt": "免责声明：我是在 PPT拖延症 的时候看的文章，也没怎么仔细看，可能会有遗漏。 *Accelerating Large-Scale Inference with Anisotropic Vector Quantization* 一篇和向量搜索相关的论文，思路和我自己之前暴力搜索优化的想法很类似 Captain Jack：向量搜索短期工作总结也是觉得向量..."
+      },
+      {
+        "date": "2020-04-21",
+        "title": "两个脑洞的工作方向",
+        "url": "/bit_ass/2020-04-21-%E4%B8%A4%E4%B8%AA%E8%84%91%E6%B4%9E%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%90%91.html",
+        "excerpt": "不负责任的两个脑洞的技术方向。 如果业务背景比较单纯的话，模型部署可以简单粗暴，这个问题其实也没有凸显出来。不过，一旦整个业务流程复杂度增加，怎样利用好所有异构硬件，overlap算力外的开销，榨干硬件上的每一分算力，提高整个系统的吞吐量就成为值得解决的问题。 这也可以看作分布式模型训练增加吞吐量的方法在模型推理阶段的扩展，只不过有一些稍微的不同： *..."
+      },
+      {
+        "date": "2019-12-14",
+        "title": "【水文4】理想主义Tech Leader",
+        "url": "/bit_ass/2019-12-14-%E6%B0%B4%E6%96%874%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89Tech_Leader.html",
+        "excerpt": "最近的一两年时间，我算是做了半个Tech Leader吧（毕竟，我自评算不上做得好，就算半个吧），期间也有一些思考、总结，尤其是教训比较多，记录一下。 1. Leader的风格是很多样化的，同样的目标，不同的风格都可以实现，条条大陆通罗马。 2. 方法本身是需要不断学习和改进的，有些人可能觉得自己情商相对高就可以做leader，本身是很不负责任的。成长..."
+      },
+      {
+        "date": "2019-11-15",
+        "title": "【水文3】一些改进模型速度/精度的工程方法",
+        "url": "/bit_ass/2019-11-15-%E6%B0%B4%E6%96%873%E4%B8%80%E4%BA%9B%E6%94%B9%E8%BF%9B%E6%A8%A1%E5%9E%8B%E9%80%9F%E5%BA%A6%E7%B2%BE%E5%BA%A6%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%96%B9%E6%B3%95.html",
+        "excerpt": "一些自己的工作经验总结，用于补救模型、提升速度的常用工程方法。 --- 同样的任务，可以训练两套网络，通过控制网络的 receptive field，分别处理大目标、小目标。 为了检测多尺度目标，模型都会采用类FPN的结构，直接结果就是减少模型的并发性。划分大小网络后，可以减少FPN结构的分支，同时也可以减少训练难度，而且两个网络也可以使用不同的复杂度..."
+      },
+      {
+        "date": "2019-10-17",
+        "title": "水文[04.00]-理想主义的Tech Leader·[Big Picture]",
+        "url": "/2019/10/17/tech_leader_0.html",
+        "excerpt": "最近的一两年时间，我算是做了半个Tech Leader吧（毕竟，我自评算不上做得好，就算半个吧），期间也有一些思考、总结，记录一下。 1. Leader的风格是很多样化的，同样的目标，不同的风格都可以实现，条条大路通罗马。 2. 方法本身是需要不断学习和改进的，有些人可能觉得自己情商高就可以做leader，本身是很不负责任的。成长型思维、不断学习、科学..."
+      },
+      {
+        "date": "2019-04-01",
+        "title": "目标检测实用中可以改进的方向",
+        "url": "/bit_ass/2019-04-01-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%AE%9E%E7%94%A8%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%94%B9%E8%BF%9B%E7%9A%84%E6%96%B9%E5%90%91.html",
+        "excerpt": "根据目前手头上的工作整理的一份清单，主要是自己的工作过程中，感觉到需要改进或者比较关注的问题，可能和一般的目标检测的研发不太一致，更多的还是些杂七杂八的点。 一般的训练和评估都是针对单帧图像的，然而，实际应用中，很多都是针对连续帧（或者相近帧）的检测。 在连续帧检测上，即使在观感上，就会比较明显的感觉到不如单帧检测。 现象主要是以下： * 目标不能连续..."
+      },
+      {
+        "date": "2017-03-10",
+        "title": "机器人自动化的想法",
+        "url": "/2017/03/10/thoughts_on_robots.html",
+        "excerpt": "搬到公司新大楼后，面对外面的热火朝天的工地，突发想法，也许，机器人自动化替代的第一个产业就是建筑业。 建筑业实在是太适合机器人自动化了： 整个工地完全封闭，没有多余的开发环境需要考虑。这种情况下程序的复杂度起码可以少一个数量级。因为是封闭环境，连路径规划都可以简单到爆，直接铺轨道都可以。 大量的力气活存在，机器人效率会高很多。 个人发挥的空间几乎没有，..."
+      },
+      {
+        "date": "2017-02-17",
+        "title": "ian 2 articles",
+        "url": "/2017/02/17/ian_2_articles.html",
+        "excerpt": "Ian Goodfellow的两篇合作短文。主题是神经网络的安全相关问题。 GAN的论文我还没有开始看，所以这两篇短文是边看边脑洞的结果。 这个问题在训练网络的时候 反向训练的可能性？ 1. Breaking things is easy 1.1. 内容 先说明的安全三要素,还好自己之前学的安全相关的,这些东西可以过得快点. 之后举例可能的攻击手段,..."
+      },
+      {
+        "date": "2017-01-04",
+        "title": "2016",
+        "url": "/2017/01/04/review_of_2016.html",
+        "excerpt": "按照往常惯例, 又到了回顾与展望的时间… 简而言之, 二十几本书，七十多部电影，几本摄影图集，几个模型，一段感情，一次远行，还有浪费在刷知乎上的大把时间。 1. 书 主要内容是科幻小说和摄影教程. 这些里面, 看看了评分, 值得提出来的就是以下几本. 1453-君士坦丁堡的陷落: 我当时看完连带这心情沉重了好几天. 永恒的终结: 是本好书, 我打的可是..."
+      },
+      {
+        "date": "2016-01-09",
+        "title": "近期的工作总结",
+        "url": "/2016/01/09/cnn.html",
+        "excerpt": "这一年竟然没有任何更新，只能说，我堕落了。要说工作内容紧张了，显然没有，起码没有多么紧张。那么，一个很大概率的推断就是：女友是个吃时间的大怪物。 1. 这一年的工作内容 这一年的主要工作内容就是开发一个运行在嵌入式平台上的ADAS系统，具体的方法是传统的cascade+hog，似乎也只有这条路能够满足嵌入式平台上的性能要求。后续我们也探索了使用DNN的..."
+      }
+    ]
+  },
+  {
+    "name": "深度学习工程",
+    "slug": "deep-learning-engineering",
+    "description": "模型训练、CV、PyTorch、目标检测、量化、蒸馏和部署经验。",
+    "count": 61,
+    "articles": [
+      {
+        "date": "2022-03-24",
+        "title": "Conv2d Attention for Image",
+        "url": "/bit_ass/2022-03-24-Conv2d_Attention_for_Image.html",
+        "excerpt": "我自己用来做 2D image 之间的 Attention 的玩具，把 Linear 换成了 Conv2d，免得还得纬度转来转去，其他没变。上一个版本有过任务验证，起码能收敛。 https://github.com/qinjian623/pytorch\\_toys/blob/master/utils/modules.py"
+      },
+      {
+        "date": "2021-06-21",
+        "title": "[Notes]Knowledge distillation: A good teacher is patient and consistent",
+        "url": "/bit_ass/2021-06-21-NotesKnowledge_distillation_A_good_teacher_is_patient_and_consistent.html",
+        "excerpt": "模型加速三板斧： * 量化 * 减枝 * distill 这篇论文做的是 distillation 相关的试验验证，而且是 Google 不差钱风。 这篇论文的好处是，没任何额外的 trick ，拿来就可以用。看别人烧钱在大规模数据上的结论，省自己的钱。 > The apparent simplicity of our findings 两个 prin..."
+      },
+      {
+        "date": "2021-05-13",
+        "title": "MLP-Mixer MLP 换用 CNN 的玩具结果",
+        "url": "/bit_ass/2021-05-13-MLP-Mixer_MLP_%E6%8D%A2%E7%94%A8_CNN_%E7%9A%84%E7%8E%A9%E5%85%B7%E7%BB%93%E6%9E%9C.html",
+        "excerpt": "水私人KPI。 https://www.zhihu.com/question/457926000/answer/1871444516 的好奇后果，直接在 patch 后接传统Conv。 * torchvision resnet 第一层的 conv 设置成了 kernal size=16, stride=16, out channels = 512 (可..."
+      },
+      {
+        "date": "2021-02-23",
+        "title": "随机噪音抗过拟合训练",
+        "url": "/bit_ass/2021-02-23-%E9%9A%8F%E6%9C%BA%E5%99%AA%E9%9F%B3%E6%8A%97%E8%BF%87%E6%8B%9F%E5%90%88%E8%AE%AD%E7%BB%83.html",
+        "excerpt": "春节没事干，顺着 Captain Jack：DNN 特性与抗过拟合思路随机噪音的内容做的玩具。 **玩具地址：** https://github.com/qinjian623/pytorch\\_toys/tree/master/overfit/main.py只拿 CIFAR10 简单做了测试。私人的话，ImageNet需要掏钱租机器，实在玩不起。测试方..."
+      },
+      {
+        "date": "2021-01-13",
+        "title": "DNN 特性与抗过拟合思路",
+        "url": "/bit_ass/2021-01-13-DNN_%E7%89%B9%E6%80%A7%E4%B8%8E%E6%8A%97%E8%BF%87%E6%8B%9F%E5%90%88%E6%80%9D%E8%B7%AF.html",
+        "excerpt": "补年底KPI。 这是 NN 与一般 ML 方法不同的地方，增加模型的 capacity 甚至有可能增加泛化能力。 传统模型会随着模型的复杂度表现出 U 形曲线，随着模型复杂度的增加，模型的 test error 会先降低后增加。 NN 模型在初期同样有这个现象，但是随着模型复杂度的进一步增加， test error 会重新开始下降。这篇文章有很好的讨论..."
+      },
+      {
+        "date": "2020-11-16",
+        "title": "Product Quantization 算法实现",
+        "url": "/bit_ass/2020-11-16-Product_Quantization_%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0.html",
+        "excerpt": "看了下自己知乎的文章，再不抓紧随便弄一篇，就搞不定自己的私人KPI了。为了 KPI ，水一份也是一份。 最近工作上要用 PQ 算法，本来 Faiss 是有的，但是我懒得看代码怎么把结果提出来了，而且自己也需要对 PQ 的所有参数都能有控制能力。反正 k-means 已经有现成的了，顺手的事情。 目前已经在私有的数据集上做了测试，符合预期。使用 PQ 的..."
+      },
+      {
+        "date": "2020-08-25",
+        "title": "Distillation gayhub上的实现 bug",
+        "url": "/bit_ass/2020-08-25-Distillation_gayhub%E4%B8%8A%E7%9A%84%E5%AE%9E%E7%8E%B0_bug.html",
+        "excerpt": "自己的玩具训练要弄个distiller，于是 Google 了下，反正是第一条： https://github.com/peterliht/knowledge-distillation-pytorch用自己的模型放进去测了一下，看着似乎也没问题，于是先把 Loss 的计算那块挪到自己的代码里面。随后多次训练总是感觉很诡异，于是才进去看了这个项目的代码。..."
+      },
+      {
+        "date": "2020-07-29",
+        "title": "向量搜索短期工作总结",
+        "url": "/bit_ass/2020-07-29-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9F%AD%E6%9C%9F%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93.html",
+        "excerpt": "之前一些设想的后续： Captain Jack：两个脑洞的工作方向 Captain Jack：向量搜索的一些主题 目前已经实现了一个利用蒙特卡洛法来采样 query 分布的优化算法，在没有工程手段优化的情况下已经达到了 Faiss 的 `faiss.GpuIndexFlatIP` 两倍以上的速度。 不同测试参数下的耗时对比 以上是不同测试配置下的运行时..."
+      },
+      {
+        "date": "2020-07-20",
+        "title": "K-means on PyTorch",
+        "url": "/bit_ass/2020-07-20-K-means_on_PyTorch.html",
+        "excerpt": "自己需要一个 kmeans 来做实验，显然， scipy 的接口性能不足。目前测试数据已经在 10m 量级了，后面可能还要继续升一到两个数量级。PyTorch 锤子已经在手上了，管他什么钉子，先敲了再说。 目前测试可以在 10m， k=1000 的规模上，完成1次 kmeans 在 20s 以内（在我的私人珍藏古董卡上）。默认是跑 20 次，挑其中类中..."
+      },
+      {
+        "date": "2020-06-24",
+        "title": "深度学习中一些不容易察觉的 Bugs",
+        "url": "/bit_ass/2020-06-24-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%AE%B9%E6%98%93%E5%AF%9F%E8%A7%89%E7%9A%84_Bugs.html",
+        "excerpt": "由于DL本身的性质，这些问题不会造成程序崩溃/报错等等，所以很难察觉，基本都是靠感觉，排查方法也只能靠人工一步步。一般做第一次小数据量封闭测试的时候，这些就是我的 check list。 这些错误也都是自己经历过的，根本就是一部血泪史。后面有补充链接，可以看看更多别人的血泪史。 Nil ​ $\\approx​$ 难以觉察/准确率低下/Loss曲线不合经..."
+      },
+      {
+        "date": "2020-05-27",
+        "title": "PyTorch 卷积与BatchNorm的融合",
+        "url": "/bit_ass/2020-05-27-PyTorch_%E5%8D%B7%E7%A7%AF%E4%B8%8EBatchNorm%E7%9A%84%E8%9E%8D%E5%90%88.html",
+        "excerpt": "**2020-05-27 更新** 1. PyTorch已经官方支持了合并操作： Captain Jack：MergeBN && Quantization PyTorch 官方解决方案2. 有用户爸爸/妈妈（我是讲女权的）在用我的这套代码的时候出现了各种错误，如果还是打算用这套，我将最新版同步到了github上，后面也会不定期同步： https://g..."
+      },
+      {
+        "date": "2020-05-26",
+        "title": "MergeBN && Quantization PyTorch 官方解决方案",
+        "url": "/bit_ass/2020-05-26-MergeBN__Quantization_PyTorch_%E5%AE%98%E6%96%B9%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html",
+        "excerpt": "最近一年PyTorch在部署相关的方向上有了很多发展。MergeBN 和 量化 这两个部署必备已经在官方支持内了。 自己的 MergeBN 实现是这个，不过官方存在实现后就没必要用这套了： Captain Jack：PyTorch 卷积与BatchNorm的融合 由于PyTorch的动态图特性，所以没有办法简单的实现智能合并（因为这个特性需要获得计算图..."
+      },
+      {
+        "date": "2020-04-21",
+        "title": "ROI Align 与多任务学习",
+        "url": "/bit_ass/2020-04-21-ROI_Align_%E4%B8%8E%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0.html",
+        "excerpt": "> 这篇躺在印象笔记里面很久了，最近业余稍微空闲了些，拿出来拍拍灰，整理一下。 没有跟进目前的目标检测的进展，不过其实没关系，工业界 Faster-RCNN 还是用的比较多的。 --- 本来写着自己之前 Two Stage 和 One Stage 的技术选择的历史问题（其实，两者本相通，后面等我整理印象笔记里面更早的一篇...），而双阶段的最大优势就是..."
+      },
+      {
+        "date": "2019-10-22",
+        "title": "两篇图像压缩相关论文",
+        "url": "/bit_ass/2019-10-22-%E4%B8%A4%E7%AF%87%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87.html",
+        "excerpt": "两篇图像压缩相关的论文。第一篇虽然是Super-Resolution，但是可以认为是压缩的解码部分，思路借鉴一下也没有问题。 图片直接取自原论文或者截图，版权当然都是原作者的。 --- 这篇在reddit上有人拿来当玩具试验了。从论文来看，相比其他方法，脸部细节还原的非常好。 基本思路主要在下面几点： ***1. 阶段性训练 + 多尺度*** 多尺度模..."
+      },
+      {
+        "date": "2019-09-16",
+        "title": "Pytorch Post Training Quantization",
+        "url": "/bit_ass/2019-09-16-Pytorch_Post_Training_Quantization.html",
+        "excerpt": "之前工作的继续，后续加了一些代码，放那里都要生锈了。 Captain Jack：模型(伪)量化代码当然还是努力做到 Self-contained，乌七八糟的比较多，放 Gayhub 上吧： https://github.com/qinjian623/pytorch\\_toys/tree/master/post\\_quant 当然，精度损失有点大，不过作..."
+      },
+      {
+        "date": "2019-07-29",
+        "title": "PyTorch中针对ResNet的可视化试验",
+        "url": "/bit_ass/2019-07-29-PyTorch%E4%B8%AD%E9%92%88%E5%AF%B9ResNet%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AF%95%E9%AA%8C.html",
+        "excerpt": "Captain Jack：Feature Visualization Notes 这篇的后续，跑出来的结果扔在硬盘上大半年多了。本身也没有什么结论，拿出来重新看一下，为了自己的私人KPI，写一篇。。。。 ResNet在distill.pub的原文中就已经说了效果不佳，为毛线我要选resnet跑着玩… 这应该是针对比较高层的优化结果： 可以看出来是有一定..."
+      },
+      {
+        "date": "2019-05-28",
+        "title": "【水文2】从自己的工作经验思考：Anchor Free 方法的重新出现",
+        "url": "/bit_ass/2019-05-28-%E6%B0%B4%E6%96%872%E4%BB%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C%E6%80%9D%E8%80%83Anchor_Free_%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E6%96%B0%E5%87%BA%E7%8E%B0.html",
+        "excerpt": "之前自己所做的检测工作也经历一个从直接预测到选择加入 anchor 的过程。从 Two-stage -> One-Stage -> Two-stage 的技术倾向。 显然这些选择不会是心血来潮，也都有我们自己的理由，所以总结思考一下。 最近一段时间里，出现了很多针对目标检测中的 anchor 方法的反思，有些是抛弃，有些是改进。 比如： 1. Corn..."
+      },
+      {
+        "date": "2019-05-10",
+        "title": "Group Conv的民科思考",
+        "url": "/bit_ass/2019-05-10-Group_Conv%E7%9A%84%E6%B0%91%E7%A7%91%E6%80%9D%E8%80%83.html",
+        "excerpt": "Group Conv（Gconv）最早还是AlexNet里面因为显存不够并行到两个GPU才用的，没想到，后面被花样开发，先是Xception从Inception进化、ResNeXt为了控制网络复杂度，后面成了轻量网络的标配。 **1. 从ResNeXt的角度来看Group：** 理论上：网络越深越好，网络越宽越好。可惜现实很骨感，无论是深度、还是宽度，..."
+      },
+      {
+        "date": "2019-05-09",
+        "title": "【水文0】深度学习三要素：硬件、数据、人力",
+        "url": "/bit_ass/2019-05-09-%E6%B0%B4%E6%96%870%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%89%E8%A6%81%E7%B4%A0%E7%A1%AC%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%BA%BA%E5%8A%9B.html",
+        "excerpt": "由于最近结束了上一段工作，便决定重新思考和整理总结，都是自己的私人观点，并且都是水文。 深度学习（DL，限制在基于神经网络的方法）技术领域近几年出现了很繁荣的现象。我想这里面有一个很重要的原因： > DL把几个重要任务(图像、语音一类)工程方面的门槛大幅度拉低了。 **为什么呢？** * **神经网络（NN）提供的通用拟合能力** NN几乎直接提供了一..."
+      },
+      {
+        "date": "2019-04-22",
+        "title": "ONNX转PyTorch脚本验证与更新",
+        "url": "/bit_ass/2019-04-22-ONNX%E8%BD%ACPyTorch%E8%84%9A%E6%9C%AC%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%9B%B4%E6%96%B0.html",
+        "excerpt": "之前用torchvision里面的官方模型做了脚本的测试，今天手贱，没忍住，用onnx官方的models做了验证，于是带来了新的血泪。 onnx/modelsgist更新了脚本，增加了验证代码的文件onnx2pytorch\\_validate.py： https://gist.github.com/qinjian623/6aa777037534c1c1..."
+      },
+      {
+        "date": "2019-04-19",
+        "title": "一个ONNX模型转Pytorch的玩具脚本",
+        "url": "/bit_ass/2019-04-19-%E4%B8%80%E4%B8%AAONNX%E6%A8%A1%E5%9E%8B%E8%BD%ACPytorch%E7%9A%84%E7%8E%A9%E5%85%B7%E8%84%9A%E6%9C%AC.html",
+        "excerpt": "这两天看ONNX的文档。这种数据格式的文档，大部分都是数据规范，完全没有动力看。 于是就弄个玩具吧，这样总要看一看吧。 虽然是self-contain，但是，稍微有点长，放在gist上了： ONNX2pytorch --- 基本都是数据载入、处理、转换，行行都XX是血泪，全是细心活，太锻炼我的少女心了。 感觉这是我写的血泪密度最高的脚本了。 我用pyt..."
+      },
+      {
+        "date": "2019-04-15",
+        "title": "RePr论文复现遇到的问题",
+        "url": "/bit_ass/2019-04-15-RePr%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.html",
+        "excerpt": "所谓下论文如山倒，读论文如抽丝，复现就是各种问题如山倒。 写完代码试了试，结果一坨X，目前是真没有论文中那么好看的曲线，而且prune的过程中都是比较喜欢先干第一层（底层特征）...头疼。 前同事又给了一个复现的链接： Link这里面说的两个问题我自然也都遇到了。当然，这个实现版本貌似也还是有问题。 先把问题记录下来再说吧， 1. 首先就是null s..."
+      },
+      {
+        "date": "2019-04-02",
+        "title": "RePr: Improved Training of Convolutional Filters笔记",
+        "url": "/bit_ass/2019-04-02-RePr_Improved_Training_of_Convolutional_Filters%E7%AC%94%E8%AE%B0.html",
+        "excerpt": "之前看到的一篇文章。当时分给了同事看，自己一直扔那里没看。愚人节中午有空赶紧读了下。 **基本思路：** * 不断的使用Prune的方法，临时的剔除掉一部分filter。之后再重新初始化，加入训练。 * 在Prune和重训练的过程中，尽量的让同一层的filter之间正交，这样就让filter之间没有太多重复的特征，能够增加更多有效的网络容量。 **工艺..."
+      },
+      {
+        "date": "2019-03-22",
+        "title": "Pytorch双卡训练卡死问题排查",
+        "url": "/bit_ass/2019-03-22-Pytorch%E5%8F%8C%E5%8D%A1%E8%AE%AD%E7%BB%83%E5%8D%A1%E6%AD%BB%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5.html",
+        "excerpt": "这还是年前倒腾自己的机器，都2019年3月份了，整理下。 自己的私人珍藏机器，之前用双卡训练总会出现卡死的问题。不过反正也不影响打游戏，嗯，或者，单卡训练。所以又不是不能用。 我印象里都是时不时出现的，现在（2018年，时间线有点乱）好了，目前的状态是100%空手接卡死。I'm angry，现在只能硬着头皮看看问题了。 以下是排查流水账 1. **换后..."
+      },
+      {
+        "date": "2019-03-03",
+        "title": "YOLO训练中的问题与怀疑",
+        "url": "/bit_ass/2019-03-03-YOLO%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%80%80%E7%96%91.html",
+        "excerpt": "最近用YOLO训练过程中遇到的问题和猜测。 YOLO的训练比较明显的一个现象就是收敛比较慢，YOLO训练可以看作是是三个任务的联合训练，分别是：Objectness[O]，一个BinaryCrossEntropy训练或者Logistic regression；Boundbox[B]，一个数值回归的训练；Classification[C]任务，多类的分类..."
+      },
+      {
+        "date": "2018-12-07",
+        "title": "Bag of Tricks for Image Classification with CNN",
+        "url": "/bit_ass/2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN.html",
+        "excerpt": "昨天刷arxiv的RSS看到的新文章，作者在zhihu上都能看到...... 先过一遍，最近手头有其他事情，有机会再实践，基本都是论文内容罗列，应该是之前说的gluoncv里面的提升手段。 主要是三大块： 1. 加速训练 2. 对RetNet结构的改进 3. 针对训练LR，Loss，训练方法的trick --- 两大块：一个是增加batch size，..."
+      },
+      {
+        "date": "2018-11-21",
+        "title": "模型(伪)量化",
+        "url": "/bit_ass/2018-11-21-%E6%A8%A1%E5%9E%8B%E4%BC%AA%E9%87%8F%E5%8C%96.html",
+        "excerpt": "之前做了一个合并BatchNorm和Conv的试验： Captain Jack：PyTorch 卷积与BatchNorm的融合所以，量化自然就是下一步工作。 * https://arxiv.org/abs/1806.08342 * https://arxiv.org/abs/1712.05877 * https://arxiv.org/abs/1511..."
+      },
+      {
+        "date": "2018-10-23",
+        "title": "数据和网络结构与过拟合",
+        "url": "/bit_ass/2018-10-23-%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88.html",
+        "excerpt": "*Understanding Deep Learning Requires Rethinking Generalization* 借着这篇文章里面的随机数据实验来说说。 这篇文章当时出现的时候就争议很大，我自己读后也没有太关注，毕竟这个和日常的工作没多大关系。DL的模型到底里面什么个情况，没人能解释的通，但是效果好是实实在在看得到了。 其中比较有意思的..."
+      },
+      {
+        "date": "2018-10-16",
+        "title": "有关网络裁剪的相关论文三篇",
+        "url": "/bit_ass/2018-10-16-%E6%9C%89%E5%85%B3%E7%BD%91%E7%BB%9C%E8%A3%81%E5%89%AA%E7%9A%84%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E4%B8%89%E7%AF%87.html",
+        "excerpt": "首先，来自以下专栏的两篇论文 https://zhuanlan.zhihu.com/p/46839396 * https://arxiv.org/abs/1810.05270 * https://arxiv.org/abs/1810.04622 这段时间正好也在弄prune相关的事情，所以很好奇，昨天知道这两篇论文后就赶紧看了下。 事实上，第二篇的内容..."
+      },
+      {
+        "date": "2018-09-30",
+        "title": "模型训练中的新反思",
+        "url": "/bit_ass/2018-09-30-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E6%96%B0%E5%8F%8D%E6%80%9D.html",
+        "excerpt": "在之前的一篇总结里面提到对多尺度的思考： Captain Jack：数据质量的重要性与多尺度的重新思考当时自己认为，网络可以传递小目标的信息进入后续的层次，即使从down sample带来的数据丢失的角度来说，可能缩小后的feature map直觉上看已经完全不能表示小目标了，但是因为不断的增加channel，小目标精确的位置信息依然会通过某一形式的编..."
+      },
+      {
+        "date": "2018-08-14",
+        "title": "Small object fast detection",
+        "url": "/bit_ass/2018-08-14-Small_object_fast_detection.html",
+        "excerpt": "最近一段的工作，主要是限定部分类别（类别不要太多）的快速检测，总算有点结果了。 用于替代自己之前上一版DL检测模型，当时预期的目标是： 1. 比老版更快，720p分辨率上要 > 35FPS (1080Ti上) 2. 能够保持和老版一致的小目标检测能力 > 16x16像素 3. 保持检测精度 0.5 overlap F1 > 0.7 4. 更好的泛化 5..."
+      },
+      {
+        "date": "2018-08-13",
+        "title": "ShuffleNet v1-v2 Notes",
+        "url": "/bit_ass/2018-08-13-ShuffleNet_v1-v2_Notes.html",
+        "excerpt": "上月月底读过一段时间了，今天再复习一下，简单记录一下。 ShuffleNet用于低性能硬件的网络结构，似乎一直对标的Google的MobileNet。基本上每次都要提一提MobileNet，对比一番。 目前对于小网络的基本思路就是 1. 增加group，这样可以降低计算量，降低模型复杂度（在输出输出的channels和大网络一致的前提一下。） 2. 压..."
+      },
+      {
+        "date": "2018-08-06",
+        "title": "Feature Visualization Notes",
+        "url": "/bit_ass/2018-08-06-Feature_Visualization_Notes.html",
+        "excerpt": "Distill.pub上断续有好几篇有关网络可视化相关的文章。 对于网络的可视化，是有助于理解网络的部分功能。何况本身理解可视化的作用的过程也可以对网络更好的理解，同时这也是GAN技术的来源。 当然，我还是觉得可视化对本身的网络训练没有直接的作用，只是提供新的理解和启发。 这次看得这篇： https://distill.pub/2017/feature..."
+      },
+      {
+        "date": "2018-07-26",
+        "title": "Naive RNN",
+        "url": "/bit_ass/2018-07-26-Naive_RNN.html",
+        "excerpt": "作为底层码畜，有些东西不写一遍总是心里没底。 RNN这块还没写过，于是参考上古文章： https://karpathy.github.io/2015/05/21/rnn-effectiveness/ 我拿各种东西（福尔摩斯、红楼梦、朱子家训、三字经）都试了试，效果都不怎样。但是看现象是有学习到结构的，起码三字经的结构学到了： > 人教平，記於字。稻再農..."
+      },
+      {
+        "date": "2018-07-09",
+        "title": "一些有关数据的人生教训",
+        "url": "/bit_ass/2018-07-09-%E4%B8%80%E4%BA%9B%E6%9C%89%E5%85%B3%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BA%BA%E7%94%9F%E6%95%99%E8%AE%AD.html",
+        "excerpt": "作为一个loser，人生经验是没有的，人生教训是一箩筐的～ 使用Deep Learning容易带来对数据理解的忽视，似乎只需要足够的数据，DL就可以完成任务。然而，只是在某些任务上具有这个特性。其他的任务中，单纯的使用这样的粗暴方法，往往是不能够满足需要的。 对于CV和NLP的任务，确实，对数据的理解和质量的要求要比其他的任务低一些。ImageNet单..."
+      },
+      {
+        "date": "2018-06-04",
+        "title": "Naive gradient descent",
+        "url": "/bit_ass/2018-06-04-Naive_gradient_descent.html",
+        "excerpt": "上周四加今天上午写的玩具。 Refs: An overview of gradient descent optimization algorithms基本按照上面的顺序写的，adadelta没看清楚blog上的，点开的论文看了看。后面三个懒得写了，那天有心情的时候继续吧。但愿实现的都是对的，也但愿我的导数没推错，反正看起来能工作。 附赠一个失败的SGD..."
+      },
+      {
+        "date": "2018-05-17",
+        "title": "Darknet yolo_layer实现",
+        "url": "/bit_ass/2018-05-17-Darknet_yolo_layer%E5%AE%9E%E7%8E%B0.html",
+        "excerpt": "由于之前总结性的看了yolo系列的3篇，这两天好奇具体的yolo实现，于是看了看darknet有关的具体代码。darknet整体的CPU的代码直白清晰，挺好看的，虽然可能缺少一些小技巧的优化，但是都用CPU了，谁在意这个。 > examples/darknet.c 官网上的训练命令是 > ./darknet detector train cfg/voc..."
+      },
+      {
+        "date": "2018-05-04",
+        "title": "数据质量的重要性与多尺度的重新思考",
+        "url": "/bit_ass/2018-05-04-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E4%B8%8E%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%9A%84%E9%87%8D%E6%96%B0%E6%80%9D%E8%80%83.html",
+        "excerpt": "从目前的经验来看，对于日常的模型训练来说，一个十分重要的因素就是数据。数据的因素，包括数据质量与数据丰富性。 正常的应用场景下，我们往往并不追求模型是否是 state of art，只是不断的迭代改进。在这样的前提下，一个模型的好坏最主要的影响因素基本就是数据质量。原因很简单，由于 DL 的模型容量很大，使用一个差不多的网络，一般的训练参数，就可以得到..."
+      },
+      {
+        "date": "2018-03-08",
+        "title": "有关模型泛化性能的一些民科想法",
+        "url": "/bit_ass/2018-03-08-%E6%9C%89%E5%85%B3%E6%A8%A1%E5%9E%8B%E6%B3%9B%E5%8C%96%E6%80%A7%E8%83%BD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B0%91%E7%A7%91%E6%83%B3%E6%B3%95.html",
+        "excerpt": "放Dropbox里面好长时间了，估计也憋不出来什么了，毕竟都是民科想法。 一般模型的泛化性能相比人类来说实在是差了太远，比如人类可以用一张猫图片的训练量做到基本对所有猫在 3D 环境中不同角度的准确分类，而且即使遇到老虎这种东西也可以先分类为大猫，从分类上来看倒也没错，虽然在没有接触狗之前可能还会认为狗也是猫。如此可以通过反思自己来考虑如何利用少量图片..."
+      },
+      {
+        "date": "2018-02-17",
+        "title": "Naive im2col",
+        "url": "/bit_ass/2018-02-17-Naive_im2col.html",
+        "excerpt": "还是年前最后一天写的玩具，原计划准备过年的时候把后向也实现了。 然而，人性是那么的强大，呵呵。我看着PS4上刚买的一堆游戏，就已经知道故事的结局了，就这样吧。 参照了chainer的实现。im2col\\_by\\_kern 这个要快不少。用chainer实现对比测试了结果，应该没错。 市面上不少框架，适合看代码的，个人观点是抽象一点可以看Chainer的..."
+      },
+      {
+        "date": "2017-12-06",
+        "title": "双目障碍物检测-CNN",
+        "url": "/bit_ass/2017-12-06-%E5%8F%8C%E7%9B%AE%E9%9A%9C%E7%A2%8D%E7%89%A9%E6%A3%80%E6%B5%8B-CNN.html",
+        "excerpt": "由于手上的项目可能需要，于是顺路弄一下这个以防万一。十分naive的，基本就是统计CNN预测的视差图中每行针对其中位数的变化范围。只是为了验证一下结果，虽然看起来不咋地，未来优化优化还是应该足够应付可能的需求。 https://www.zhihu.com/video/921680146837151744在知乎上貌似看到过有人回答说双目本身是一个数学定义..."
+      },
+      {
+        "date": "2017-11-04",
+        "title": "Naive MLP",
+        "url": "/bit_ass/2017-11-04-Naive_MLP.html",
+        "excerpt": "这是我给新人和实习生讲东西用的代码，之前的找不到于是重写。 Young&simple, always naive. 看得出来模型拟合的结果不够平滑，应该是模型参数不够、能力有限。 对比结果： Truth写成True了，懒得改了。"
+      },
+      {
+        "date": "2017-10-31",
+        "title": "《结构化机器学习项目》总结",
+        "url": "/bit_ass/2017-10-31-%E7%BB%93%E6%9E%84%E5%8C%96%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93.html",
+        "excerpt": "应该是上上周花了一天看了下Andrew的DL课程，不过只是第三部分：结构化机器学习项目。后面又抽空重新快速过了一遍，细节上肯定会有很多遗漏，重新结合自己的思考总结一下。本来应该很早就整理了，笔记的东西都放那里半个多月了，不过这两周又是出差又是写文档，一直拖延着。其他的课程没看就不涉及，第三部分内容不是很复杂，主要是指导性的，同时对自己也有一定启发。 主..."
+      },
+      {
+        "date": "2017-09-29",
+        "title": "Challenger AI 场景分类测试数据",
+        "url": "/bit_ass/2017-09-29-Challenger_AI_%E5%9C%BA%E6%99%AF%E5%88%86%E7%B1%BB%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html",
+        "excerpt": "这周发现测试集出来了，于是下载了跑了一下，刚刚提交了结果。 按照网站的评价指标是95.2多一点。结果有点差...... Setup: 1. 框架Pytorch。 2. Res152, finetune Pytorch官方提供的网络。 3. 初始LR 0.001， 具体epoch手动调的，没注意，实际参与最后模型训练的应该在30以内。 batch\\_si..."
+      },
+      {
+        "date": "2017-09-08",
+        "title": "Challenger AI场景分类初步试验",
+        "url": "/bit_ass/2017-09-08-Challenger_AI%E5%9C%BA%E6%99%AF%E5%88%86%E7%B1%BB%E5%88%9D%E6%AD%A5%E8%AF%95%E9%AA%8C.html",
+        "excerpt": "昨天下载了场景分类的数据，印象里面大小是3.5G，毕竟看了下，这个应该算是流程上最简单的。主要任务就是80类别的图片分类任务，图片大概是五万多张，懒得终端统计了，凭印象吧。 **Setup** 1. 网络结构ResNet18, train from scratch。 2. 未区分训练与验证，所以目前的结果只是封闭测试的结果。 3. SGD, base..."
+      },
+      {
+        "date": "2017-09-01",
+        "title": "FlowNet及试验",
+        "url": "/bit_ass/2017-09-01-FlowNet%E5%8F%8A%E8%AF%95%E9%AA%8C.html",
+        "excerpt": "最近自己的计划工作一直进展不太顺利，于是这周无聊看了这篇论文，另外还有两篇有关双目的，其中一篇自然是mc-cnn，但是都看得很草率，不多说。 这篇论文虽然标题是做光流的，不过光流和双目的算法基本差不多，都是算视差的，所以FlowNet做双目也没问题。 双目的基本想法就是：对比两张照片相同内容的位置差异。算是一个搜索+匹配的流程。所以这也是论文里Flow..."
+      },
+      {
+        "date": "2017-08-14",
+        "title": "Notes on Neural Machine Translation by Jointly Learning to Align and Translate",
+        "url": "/bit_ass/2017-08-14-Notes_on_Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.html",
+        "excerpt": "这是大概三或者两个月前无聊的时候看的几篇有关Attenion Model的论文之一。那段时间正好有一周轮到我在组会上讲东西，不知道哪里出的毛病突然就搜了几篇这个主题的文章。因为是一周读了大概七八篇，所以对我来说算是速度很快，自然细节会遗漏很多。现在凭记忆再整理成文字，也就只能讲讲所谓的思想了，一般来说讲思想就可以糊弄糊弄。 首先，这篇是针对seq2se..."
+      },
+      {
+        "date": "2017-08-11",
+        "title": "Focal Loss初步试验",
+        "url": "/bit_ass/2017-08-11-Focal_Loss%E5%88%9D%E6%AD%A5%E8%AF%95%E9%AA%8C.html",
+        "excerpt": "看到知乎上对 *Focal Loss for Dense Object Detection* 这篇论文的介绍，发现是针对所谓的one-stage的检测框架的数据不平衡问题的。考虑到目前我们使用的也是one-stage的检测框架，于是就打出来看了下，本来按照自己最近的慵懒状态，肯定懒得动手。不过看的也是囫囵吞枣，自然应该有些理解错误和遗漏。 目前训练on..."
+      },
+      {
+        "date": "2017-06-20",
+        "title": "Pytorch短期使用回顾",
+        "url": "/2017/06/20/pytorch.html",
+        "excerpt": "最近一段时间我都是在零散的看看pytorch的文档，顺便开始把之前的训练的代码和方法往pytorch上迁移，一些新训练的任务我也都直接改用了pytorch。 一句话总结来看，pytorch依然和我第一眼看上的去的那样，还是一个很优美的框架。当然， 有小坑：我遇到的主要的问题是错误信息太缺少了，造成模型有错误的时候有点不太好定位。 这次的老训练系统的迁移..."
+      },
+      {
+        "date": "2017-04-13",
+        "title": "Pytorch",
+        "url": "/2017/04/13/pytorch.html",
+        "excerpt": "目前来看, 我本人接触的DL的工具箱, 按照时间顺序包括了: torch, caffe, tensorflow, mxnet, pytorch. 当然, 有深有潜, 应该是有潜有更潜, 没深过. 可以总结下自己对这几个的简单印象. 1. torch 最先使用的工具, 但是绑定的是lua. 当时还因此单独学了lua, 这语言核心确实够小巧, 貌似就是围绕..."
+      },
+      {
+        "date": "2017-04-05",
+        "title": "生成模型与判别模型",
+        "url": "/2017/04/05/generative_vs_discriminative.html",
+        "excerpt": "1. Refs http://ai.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf http://stats.stackexchange.com/questions/12421/generative-vs-discriminative http://freemind.pluski..."
+      },
+      {
+        "date": "2017-04-03",
+        "title": "DL资料阅读观",
+        "url": "/2017/04/03/my_opinions_on_dl_reading.html",
+        "excerpt": "也算是混日子有点年头的研发工程师。要总结下有关自己的资料阅读的观点。 1. 尽量读贴近第一手的资料 从自己的工作范围来看，基本就是不用读中文资料了。DL借着这把火，烧的到处都是 1 。于是，国内的资料也汗牛充栋。不过，从我自己接触的一小部分来看，质量不高，深度不足都是普遍的 2 ，大部分内容都是介绍下怎样跑个模型。或者是简单的读论文的笔记，而且未必读明..."
+      },
+      {
+        "date": "2017-02-27",
+        "title": "上篇CNN加速的初步结果",
+        "url": "/2017/02/27/reports_of_rt_cnn.html",
+        "excerpt": "结论是， 加速效果暂时没有达到预期，但是这个需要后续熟悉架构后再调教。 然而， 模型参数真的是降的狠，当然，模型的能力也随着下降。 速度上， 训练了一个小模型，相比原来提升了约20%。同时模型文件大小缩减到了500K，之前的模型大小在27M，相当于减少了98%的参数量。在准确率表现上，当然多了一些误识别，不过考虑到速度和模型参数这两个因素，这点准确率上..."
+      },
+      {
+        "date": "2017-02-23",
+        "title": "有关提升CNN运行速度的论文列表及极简单关键词摘要",
+        "url": "/2017/02/23/rt_cnn.html",
+        "excerpt": "这还是年前读的几篇有关通过优化网络结构提升CNN运行速度的几篇论文。 只是简单的列表，外加论文中提到的方法的关键词。 这些还没有应用到自己的网络中，也是未来一段时间的试验方向。当然，未必会有理想结果。 1. Xception Separable Convolution Layer 2. QuickNet PReLu Simple Entry Xcept..."
+      },
+      {
+        "date": "2017-02-22",
+        "title": "LSTM",
+        "url": "/2017/02/22/LSTM.html",
+        "excerpt": "1. 资料来源 https://colah.github.io/posts/2015-08-Understanding-LSTMs/ An Empirical Exploration of Recurrent Network Architectures cs231n-lecture-10 2. RNN的理解 在我看来是一种针对时序数据的空间转换+遗忘系..."
+      },
+      {
+        "date": "2016-07-28",
+        "title": "为什么需要分类器作为预训练",
+        "url": "/2016/07/28/why_classifier_first.html",
+        "excerpt": "现在CNN的各种任务的训练，往往都会以分类模型作为基础进行finetune。那么，这一过程是否是必须的呢？ 起码在我看来，这一过程是不可避免的，或者说，只要CNN进行其它复杂任务，都必须先学习分类模型。 1. 人类的认知过程 人类的学习过程是什么样子的？我们可以看到，都是首先学习概念。让人类可以回答：这是什么？ 其实，这一过程就是人类学习分类的过程。概..."
+      },
+      {
+        "date": "2016-02-04",
+        "title": "CS231n Lecture 8",
+        "url": "/2016/02/04/cs231n_lecture8.html",
+        "excerpt": "昨天看了下CS231n课程视频的Lecture8，讲的主要是CNN在Detection的内容。实际上，主要讲的就是RCNN这块， 毕竟这是作者的亲儿子。 1. 任务分类 按照难度依次增加： Classfication => Classification + Localization => Object Detection => Instance Seg..."
+      },
+      {
+        "date": "2013-12-23",
+        "title": "Neural Networks, Basic Concepts",
+        "url": "/2013/12/23/neural_networks_0.html",
+        "excerpt": "Introductions to Neural Networks,Basic concepts from Qin Jian"
+      },
+      {
+        "date": "2013-08-20",
+        "title": "Machine Learning课程",
+        "url": "/2013/08/20/ml.html",
+        "excerpt": "1. 说明 之前在Coursera上选了个ML的课程，毕竟工作上也要用到，上门课程也好歹算得上准科班了，而且么，作业用matlab做的，正好自己之前就打算学，不过MIT的那个MATLAB的教程自己的笔记一直停在第二课上…这个直接动手的。虽说课程上用的是octave，不过么，我在matlab上也都跑过，没什么问题。 课程本身难度不算大的，最近成绩出来，自..."
+      },
+      {
+        "date": "2013-01-10",
+        "title": "Destructuring in Clojure",
+        "url": "/2013/01/10/destructuring_in_clojure.html",
+        "excerpt": "1. Reference http://clojure.org/special_forms#Special%20Forms--Binding%20Forms%20%28Destructuring%29 http://blog.jayfields.com/2010/07/clojure-destructuring.html 2. What is Dest..."
+      },
+      {
+        "date": "2012-09-03",
+        "title": "写些什么东西?",
+        "url": "/2012/09/03/what_is_next.html",
+        "excerpt": "1. 想想这里最近的几个主题应该是什么 1.1. org-mode 自己得用这个来弄GTD管理, 按照这个作为参考: http://www.mastermindcn.com/ 1.1.1. TODO GTD管理 这个要慢慢的迭代成为柳比歇夫那样的管理方法 1.1.2. TODO blog相关的修改 目前也是刚开始用org-mode写blog,一些快捷键..."
+      }
+    ]
+  },
+  {
+    "name": "向量搜索 / GPU / 系统",
+    "slug": "vector-gpu-systems",
+    "description": "向量检索、GPU/CPU 性能、系统、OS、网络和底层工具。",
+    "count": 36,
+    "articles": [
+      {
+        "date": "2020-08-26",
+        "title": "向量搜索工作的对比测试",
+        "url": "/bit_ass/2020-08-26-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%AF%B9%E6%AF%94%E6%B5%8B%E8%AF%95.html",
+        "excerpt": "上期回顾： Captain Jack：IVF 性能测试 NN-everything 上最近半个月受挫，不过观察到的趋势是数据规模的增加会提升准确率，还需要改进方法，应该还是有希望的。I see potential. 陆续对三个数据集进行了对比测试： 1. Sift 1M 2. 10M x 64d private dataset 3. 10M x 256..."
+      },
+      {
+        "date": "2020-08-06",
+        "title": "IVF 性能测试",
+        "url": "/bit_ass/2020-08-06-IVF_%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95.html",
+        "excerpt": "上期回顾： Captain Jack：向量搜索短期工作总结这周补了两个 cuda kernel，现在有了 IVF 的性能高点的版本。目前还没有特别的工程优化（目测主要是并发、内存/显存的分配这两块应该还有改进空间）。 本想找人要一个熟悉 Faiss 调优的同事来搞定 Baseline 的测试，然而并没有。我只能用万金油 `grid search tes..."
+      },
+      {
+        "date": "2020-07-03",
+        "title": "向量搜索的一些主题",
+        "url": "/bit_ass/2020-07-03-%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E9%A2%98.html",
+        "excerpt": "继续上一篇的扩展: Captain Jack：两个脑洞的工作方向思考了一些可能涉及到的主题： 这算是向量搜索工具应该具备的基本能力，否则很难产生高效的索引： > 通过空间变换，形成高密度的聚类蔟是能够高效查询的基本前提。 否则的话： 1. 通过暴力手段进行搜索 2. 空间的划分不够合理，造成搜索速度慢，或者不能有效召回 同时，对于目前的聚类算法中的距离..."
+      },
+      {
+        "date": "2020-06-24",
+        "title": "一个 CPU cache 的性能小知识",
+        "url": "/bit_ass/2020-06-24-%E4%B8%80%E4%B8%AA_CPU_cache_%E7%9A%84%E6%80%A7%E8%83%BD%E5%B0%8F%E7%9F%A5%E8%AF%86.html",
+        "excerpt": "搜其他问题无意间看到的一个有意思的小知识，原文在这里： https://fastcompression.blogspot.com/2014/09/counting-bytes-fast-little-trick-from.html主要的现象就是： > 如果不断的修改同一个内存地址的数据（应该还需要满足一个条件：很难静态优化以及预测），性能会降低很多 原..."
+      },
+      {
+        "date": "2017-03-21",
+        "title": "GPU server的一些经验",
+        "url": "/2017/03/21/dlbox.html",
+        "excerpt": "目前自己因为工作的原因，也算是把乱七八糟的显卡都在手上过了一遍。总结一下需要注意的点： 专业卡不划算，目前来看1080或者1080Ti是很理想的选择。 大存储SSD非常重要，准备数据这块用SSD速度有很大优势。 功耗很高，所以电源要预留空间，同样主板也要预留物理空间，以后可以往上继续加卡，显卡很占用空间的。 CPU可以少核心，但是主频要高。一个核心对上..."
+      },
+      {
+        "date": "2017-02-15",
+        "title": "回到Linux怀抱",
+        "url": "/2017/02/15/arch_linux.html",
+        "excerpt": "换了新的随身笔记本，正在用的一部Air内存只有4G，实在不能忍。随便开个网页都要卡了，尤其像我这种开网页喜欢一开开一片的，连多开点网页也支持不住了。于是终于决定换笔记本了，然而，Apple抛弃了我，一个个的都太贵了吧。而且我这次还希望是换内存起码16G的。最终的结果是，Thinkpad X260，i5-6200U，8G，256SSD，1920x1080..."
+      },
+      {
+        "date": "2016-08-25",
+        "title": "Dart and Atom",
+        "url": "/2016/08/25/dartlang.html",
+        "excerpt": "1. Dart是个好语言 自己在几年前就关注了Dart,主要原因就是我实在是太讨厌JavaScript了.作为一名程序员,手上一点都不沾JS在这个时代似乎有点不现实, 于是我就在找寻JS替代这条不归路上渐行渐远. 这货后来似乎遇到了一个打击,Chrome不打算集成dart的vm.当然,这个倒也不影响web上继续,因为这货本来就支持编译到JavaScri..."
+      },
+      {
+        "date": "2016-01-13",
+        "title": "程序员的呐喊",
+        "url": "/2016/01/13/programmer_rantings.html",
+        "excerpt": "在清点去年的书本的时候发现自己对这本竟然已经印象都没有了。正好这两天实在没兴致写代码，又没什么紧迫的任务。于是就重新拿出来看了。 书当然是本好书，好歹作者是 Steve Yegge。今天重新看了前两章。 1. 编程语言里的宗教 几篇收录的博文分别是： 巴别塔、名词王国里的执行、神秘机器的笔记、摩尔定律就是胡扯、变换、弱类型机制够不够强 1.1. 巴别塔..."
+      },
+      {
+        "date": "2014-08-12",
+        "title": "使用pass管理密码",
+        "url": "/2014/08/12/pass.html",
+        "excerpt": "1. 资料 http://homepages.inf.ed.ac.uk/da/id/gpg-howto.shtml http://montemazuma.wordpress.com/2010/03/01/moving-a-gpg-key-privately/ http://stackoverflow.com/questions/5587513/gnup..."
+      },
+      {
+        "date": "2014-05-20",
+        "title": "碎碎念",
+        "url": "/2014/05/20/writing_plan.html",
+        "excerpt": "4G Spaces的编程诸鸡番外篇竟然更新了，顿时喜从心起。看了看，虽然内容有点失望，感觉质量有点下降。但是自己也好长时间没动过了，曾经和自己的约定跑哪里去了……家里都发霉了，见证我最近的颓废状态。 说到栈式和寄存器结构的机器，之前自己看到的一个观点比较有意思，“寄存器的机器是一种优化后的栈式机器”。怎么优化的，自然是万金油，cache，所谓的寄存器，..."
+      },
+      {
+        "date": "2014-05-20",
+        "title": "Volatile关键字",
+        "url": "/2014/05/20/volatile_in_c.html",
+        "excerpt": "1. volatile 防止编译器的某些优化措施， 在c/c++中的作用， 可以访问内存映射设备 setjmp和longjmp使用 信号处理函数中使用sig atomic t变量 需要注意的问题：不是原子操作，不能保证happens-before的关系，后面的Java按照何文所说是可以的。 1.1. volatile in c wiki中的例子，说明了..."
+      },
+      {
+        "date": "2014-02-27",
+        "title": "针对Anders Hejlsberg的一次采访",
+        "url": "/2014/02/27/a_conversation_with_anders_hejlsberg.html",
+        "excerpt": "1. Intro A Conversation with Anders Hejlsberg 地址： http://www.artima.com/intv/choices.html 里面的内容提取了下，按照自己的理解写下来。C#不熟悉有些名词应该不标准。本意是看下第八部分，顺便扫了第七。 2. PART VII 2.1. 泛型简介 [编译期或者是运行期前..."
+      },
+      {
+        "date": "2014-01-16",
+        "title": "巴别塔-编程语言之旅",
+        "url": "/2014/01/16/tour_de_babel.html",
+        "excerpt": "1. 说明 英文原版本： https://sites.google.com/site/steveyegge2/tour-de-babel 另外一个中文翻译版本： https://code.google.com/p/windows-config/wiki/TourDeBabel 作者是Steve Yegge，当时在亚马逊工作。 文章内容比较和我胃口，于是..."
+      },
+      {
+        "date": "2013-12-22",
+        "title": "几本书的回顾",
+        "url": "/2013/12/22/books_important_to_me.html",
+        "excerpt": "刷知乎比较多，于是Kindle上就顺手买了程浩的《站在两个世界的边缘》，里面有句话突然有点意思，“人的一生，最难保存的，是时间；最终能留下的，是记忆。而能够同时承载两者的，唯有文字”。这本书本身看了过半了，文笔、内容其实不算有多么突出吧，当然文字里面传递的是一个出生就患病与死神对赌多年的人的那些想法。所以，记录下自认为给自己影响比较大的或者刷新自己三观..."
+      },
+      {
+        "date": "2013-11-19",
+        "title": "栈和寄存器虚拟机，Dalvik",
+        "url": "/2013/11/19/register_cpu_vs_stack_cpu.html",
+        "excerpt": "1. 原文 http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/ 2. 栈和寄存器CPU架构，以及Dalvik虚拟机 虚拟机（VM）是在本地操作系统上的一层模拟真实..."
+      },
+      {
+        "date": "2013-06-20",
+        "title": "20年的高效：纪念Vim 20周年",
+        "url": "/2013/06/20/20th_anniversary_vim.html",
+        "excerpt": "1. 翻译来源 arstechnica.com/information-technology/2011/11/two-decades-of-productivity-vims-20th-anniversary/ 一个程序员，用着Emacs来翻译这篇没有什么技术含量的软文，毫无利己的动机，把Vim的宣传事业当作自己的事业，这是什么精神？这绝对是吃饱了撑的..."
+      },
+      {
+        "date": "2013-05-22",
+        "title": "Tanenbaum-Torvalds Debate, Part II",
+        "url": "/2013/05/22/ast_reliable_os.html",
+        "excerpt": "1. 说明 Tanenbaum-Torvalds Debate这个是N年前就已經闻名于世了，这个Part2貌似是Andrew S. Tanenbaum时隔多年又来一发的结果，当然，肯定不是他想来一发的。 原文地址： http://www.cs.vu.nl/~ast/reliable-os/ 以下就是正文了。 2. 前言 貌似这次又要来一发 微内核之争..."
+      },
+      {
+        "date": "2013-03-28",
+        "title": "What Every Programmer Should Know About Memory Notes 0",
+        "url": "/2013/03/28/memory_notes_0.html",
+        "excerpt": "1. 说明 原本想翻译，结果一看100+页，译了下第一页，然后就放弃了，改笔记。 2. Abstract 作者自然是看程序员都不懂硬件，代码写的太糟糕，内存、缓存统统都没用好，忍不住就给程序员定制一份硬件科普读物。 3. Introduction 说了下历史，之前是硬件简单，各部分性能都八九不离十，譬如改革前的天朝，大家穷才是真的穷，硬件么，就是大家慢..."
+      },
+      {
+        "date": "2013-02-21",
+        "title": "WebQQ逆向",
+        "url": "/2013/02/21/webqq.html",
+        "excerpt": "1. 部分参考资料 Google的关键字 \"webqq 协议\"，有一篇文章，但是版本旧了，而且在密码生成上没有说明，自己动手。 http://jsbin.com/itiqef/1/edit 用来调试JS代码的。 2. 目前的进展: 2.1. 确定了登陆接口位置: GET方法的 https://ssl.ptlogin2.qq.com/login ，但是似..."
+      },
+      {
+        "date": "2013-01-11",
+        "title": "JVM指令",
+        "url": "/2013/01/11/JVM_instruction.html",
+        "excerpt": "转载的表格,来源在: http://blog.csdn.net/lm2302293/article/details/6713147 洋文的: http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings 命令是:javap -help 指令码 助记符 功能描述 0x00 nop 无操作..."
+      },
+      {
+        "date": "2013-01-05",
+        "title": "Clojure Persistent Vector",
+        "url": "/2013/01/05/clojure_persistent_vector.html",
+        "excerpt": "有关Clojure中的PersistentVector的记录,主要的参考来源是 http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation/ 自己感冒头晕,昨晚看American Horror Story又没有休息好. 于是..."
+      },
+      {
+        "date": "2012-12-23",
+        "title": "2012的电影和书盘点",
+        "url": "/2012/12/23/movies_books_in_2012.html",
+        "excerpt": "年纪不小了，总结也要开始严肃起来了。要细致、要严谨、要成为共产主义战士。 算算自己今年的书和电影吧,从自己的豆瓣上的记录拿来的。 1. 书 1.1. 鲁滨逊漂流记 完成 从小就想看，一直都没看的。 1.2. 史蒂夫·乔布斯传 完成 我不是果粉，但是乔布斯真是成就惊人。 1.3. 胡适口述自传 50% 自己看着感兴趣的章节。 1.4. Linux/Uni..."
+      },
+      {
+        "date": "2012-12-18",
+        "title": "谁会认错和乔布斯传笔记",
+        "url": "/2012/12/18/books_2012_12.html",
+        "excerpt": "记录下有关的两本书 <谁会认错> 主题是:认知失调 <乔布斯传> 主题是:… 最近看的两本书,都是快速浏览性质的.主要原因自然是两本书的性质决定,别找借口了,其实只是临在年前为年终总结刷战绩.讨厌. 1. <谁会认错>主要集中在认知失调的讨论上,属于一个概念翻来覆去不停说的情况,当然,翻来覆去并不是完全一模一样.总结出来一句话基本就是:人都是死不认错的..."
+      },
+      {
+        "date": "2012-12-06",
+        "title": "goagent",
+        "url": "/2012/12/06/goagent.html",
+        "excerpt": "斯巴达那会儿，实在没法过，vpn连着没多长时间也要掉一下。但是想想也就那么半个月就结束了，忍忍就过去了，还是可以再回到之前的“相对”的自由和快乐的状态。但是，没想到，日子一天天过，也没见好转，算是明白了，我们又进入了一个新时代。忍不住又问候了方校长，还专门下了他挂名的那篇机器学习在流量检测分类的综述性质的论文，于是又边骂边读。 不过生活要继续，于是开始..."
+      },
+      {
+        "date": "2012-12-06",
+        "title": "Baking Pi - Operating Systems Development Lesson 3",
+        "url": "/2012/12/06/baking_pi_l3.html",
+        "excerpt": "OK03的课程在OK02的基础上继续，主要介绍如何通过使用函数，来提高代码的可复用性和可读性。这节课假设你已经有了OK02的代码。 1. 可复用的代码 之前，我们一直都是根据自己的思路按照顺序将代码写出来的。这对于很小的程序来说没有问题，不过如果我们将整个系统都这么写出来，代码基本就没法让人看了。因此需要引入函数，来帮助我们。 像c和c++这些上层语言..."
+      },
+      {
+        "date": "2012-11-15",
+        "title": "数独问题解决方法",
+        "url": "/2012/11/15/sudoku_puzzle.html",
+        "excerpt": "1. 我的说明 自己好几年之前无聊的时候写解数独程序的时候看的,原以为到现在还没人翻译成中文版的,搜了搜,果然已经有了. 自己用的约束传递的方法,不过当时还不知道这个名词,结果发现有缺陷,于是又考虑的在约束传递基础上暴力解决,其实吧,就是后面的搜索,但是感觉暴力太难看,就搜网上的方法,于是就看到了这篇文章,但是当时写完约束传递已经过了热情期了,扔那不管..."
+      },
+      {
+        "date": "2012-10-25",
+        "title": "Baking Pi - Operating Systems Development Lesson 2",
+        "url": "/2012/10/25/baking_pi_l2.html",
+        "excerpt": "1. 课时2 OK02 这个课时以上一个课时为基础，让'OK' LED灯能够反复的开关。本课时的前提是你已经有了前一课的 代码 作为基础。 1.1. 等待 等待是操作系统开发中很有使用价值的一件事情。操作系统经常会发现自己无事可做，这样就只能等待新的任务。在这个例子中，我们希望通过重复开关LED来展示操作系统空闲的时候。因为如果你知识简单的关闭和开启L..."
+      },
+      {
+        "date": "2012-09-13",
+        "title": "Introduction for non-cs.",
+        "url": "/2012/09/13/for_non_cs_intro.html",
+        "excerpt": "1. 给非计算机专业的介绍性文章 1.1. 简单说明: 本文的原文位置在 http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/introduction.html 作者发布的版权为 Creative Commons Attribution-ShareAlike 3.0 Unported Li..."
+      },
+      {
+        "date": "2012-09-12",
+        "title": "Baking Pi - Operating Systems Development Lesson 1",
+        "url": "/2012/09/12/baking_pi_l1.html",
+        "excerpt": "本课时主要在于说明最基本的起步和怎样打开Raspberry Pi上的'OK' LED 灯,灯的位置在RCA和USB接口附近. 1. 起步 首先需要你访问 下载 页面获得其中的GNU的工具链.同时在该页面上,也存在一个叫做 OS Template 的文件.请把它下载下来,解压到新建的文件夹内. 2. 开始 先解压模板文件,然后在其'source'文件夹中..."
+      },
+      {
+        "date": "2012-09-12",
+        "title": "Baking Pi - Operating Systems Development Lesson 0",
+        "url": "/2012/09/12/baking_pi_l0.html",
+        "excerpt": "1. 课时0 简介 这一介绍性的课时没有太多实践的东西,只是为了解释一下操作系统\\汇编代码还有 其他一些重要的基本概念. 急于尝试的同学,可以直接跳过本课时. 1.1. 操作系统 操作系统是一种复杂的程序,用来管理在一台计算机上的各个程序,比如说分配计算机的CPU时间片,内存资源,其他的硬件资源等等.主流的桌面操作系统一般包括GNU/Linux, Ma..."
+      },
+      {
+        "date": "2012-09-10",
+        "title": "Unix缺陷读后",
+        "url": "/2012/09/10/wangyin.html",
+        "excerpt": "写了很长时间,一直放在gmail里面存着,今晚整理收件夹,拿出来了 最近读了王垠的《Unix的缺陷》 http://blog.sina.com.cn/s/blog_5d90e82f01014k5j.html 文章似乎主要集中在Unix的设计哲学中的使用文本流的方法。 举例的是命令行用户接口不友好，特别是文本流和命令的选项之间的混淆，造成的误删除等等的操..."
+      },
+      {
+        "date": "2012-09-03",
+        "title": "Baking Pi - Operating Systems Development",
+        "url": "/2012/09/03/baking_pi_intro.html",
+        "excerpt": "1. 介绍 1 欢迎来到本课程,课程作者为 这个网站旨在帮助你完成在Raspberry Pi上进行一个基本的操作系统的开发.目标读者是16岁以上,当然更小的读者也可以,如果可以有其他人的帮助当然更好.课程目前还在进展中,随时会有新加入的内容. 本课程主要内容是利用汇编语言进行操作系统开发.设计之初就考虑到了没有操作系统开发和汇编语言背景的读者,因此无需..."
+      },
+      {
+        "date": "2012-08-29",
+        "title": "又想回到Linux怀抱了",
+        "url": "/2012/08/29/OS.html",
+        "excerpt": "犯贱,今天稍微配了下emacs,然后突然又起折腾的冲动了.想弄个Arch来玩玩.计划环境如下: 1. TODO OS Arch 2. TODO WM 不用DE了,就用awesome吧 3. TODO HD 整个上网本弄下. 我确实是不折腾不死星人…… Mac实在不能满足我的欲望…… 先放着,看看能不能让我的冲动消失…… 最新更新,鉴于自己估计要开始玩下..."
+      },
+      {
+        "date": "2012-08-17",
+        "title": "Google Reader订阅",
+        "url": "/2012/08/17/GoogleReader.html",
+        "excerpt": "1. 说明 没想到竟然有这么多,很多都是订阅的时候可能还有更新,不过目前不再更新的了. 加下划线的是自己重点看,或者质量比较高的. 2. 我的Google Reader订阅 4G spaces: http://blog.youxu.info A Geek's Page: http://wangcong.org/blog C++博客-λ-calculus..."
+      },
+      {
+        "date": "2012-04-09",
+        "title": "VPN访问facebook及twitter不能简单记录",
+        "url": "/2012/04/09/gfw_analytics.html",
+        "excerpt": "尝试查找标题中所述问题的原因。目前测试环境依然xp中。 1. facebook、twitter尝试访问 在VPN链接情况下，尝试访问facebook或者twitter，浏览器结果显示为超时。 于是在服务器上测试，可以访问，ping通，一切正常。 于是对比了本机和服务器的ping结果，发现两者DNS后的ip不同，尝试直接用本机DNS获得的ip地址访问，不..."
+      },
+      {
+        "date": "2012-04-04",
+        "title": "有关VPN在VPS上的配置",
+        "url": "/2012/04/04/VPN_on_VPS.html",
+        "excerpt": "简单记载一下VPN在VPS的配置经过: 1. 安装pptpd，具体根据发行版。 2. 编辑/etc/pptpd.conf 去掉#的注释 option /etc/ppp/pptpd-options localip 192.168.0.1 remoteip 192.168.0.234-238,192.168.0.245 3. 编辑 /etc/ppp/ppt..."
+      }
+    ]
+  },
+  {
+    "name": "编程语言 / 工程管理",
+    "slug": "programming-engineering",
+    "description": "编程语言、代码审美、API、工具、Tech Leader 和工程组织。",
+    "count": 30,
+    "articles": [
+      {
+        "date": "2023-03-07",
+        "title": "ChatGPT的翻译对比",
+        "url": "/bit_ass/2023-03-07-ChatGPT%E7%9A%84%E7%BF%BB%E8%AF%91%E5%AF%B9%E6%AF%94.html",
+        "excerpt": "写了个小插件，现在可以直接把 Paul Graham blog 上的文章全翻译了。但是质量还是有好有差，可能是 prompt 写的不够好吧。 拿两篇最新的中英文对比下，作为示例。 --- 英文原版： The Need to Read官方认证翻译： 译：阅读的必要性 | 程序员的喵ChatGPT 中文翻译： 阅读的必要性 2022年11月 在我小时候读的..."
+      },
+      {
+        "date": "2019-10-11",
+        "title": "Myths of CPP的小思考",
+        "url": "/2019/10/11/cpp_myths.html",
+        "excerpt": "Bjarne Stroustrup的一个小系列，貌似在我的Pocket存了两年了。在我上个月的大扫除中终于把它给读完了。 Part 1 的地址： https://isocpp.org/blog/2014/12/myths-1 先说明原文的大概内容 我理解的三个部分强调的几个方面： 1. Part 1 + C++的灵活性 + 更加脚本化的代码风格和抽象能..."
+      },
+      {
+        "date": "2019-09-27",
+        "title": "重新打理这片寂静之地",
+        "url": "/2019/09/27/im_back.html",
+        "excerpt": "我看了下记录最近的一篇已经是2017.06.23了，不过，这不代表我没有保持输出。因为，这两年我一直在自己的知乎专栏里写东西：Bit ass。事实上，这两个地方合并起来还是有连贯性的，两年来写了40篇（当然，其中有没多少字数的水文）。 下一步的计划： 1. 近期，先总结下最近两年 Tech Leader 相关的一些总结和反思。 2. 未来，我将考虑怎样..."
+      },
+      {
+        "date": "2019-06-30",
+        "title": "【水文5】主观的工程Tips",
+        "url": "/bit_ass/2019-06-30-%E6%B0%B4%E6%96%875%E4%B8%BB%E8%A7%82%E7%9A%84%E5%B7%A5%E7%A8%8BTips.html",
+        "excerpt": "码畜总结一下主观经验清单： 强调自己只写某某语言的程序员，80%情况下，代码都没法看。 每个语言都是一个思维体系，每一种不同编程范式更是迥异的思路。只接触一类编程模式，很难打开眼界，让自己有新的提升。 当然，我有拉黑两个语言： Php、JavaScript。 大部分的通用性设计最后都会沦为无用的代码，毕竟，架构师级别思考的需求出现的概率小于1/1000..."
+      },
+      {
+        "date": "2019-05-25",
+        "title": "【水文1】技术能力与技术审美",
+        "url": "/bit_ass/2019-05-25-%E6%B0%B4%E6%96%871%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AE%A1%E7%BE%8E.html",
+        "excerpt": "水文，主观臆测，皆观点、无事实。 一直以来我都觉得写代码就和写小说有很大的相似性，虽然我对写小说一窍不通。 按照写代码的模式写小说的话，那么就是这样的一个过程： 1. 构建一个世界观（软件需求与功能） 2. 安排好故事脉络和主角（主要的数据结构与程序架构） 3. 不断的填充细节（代码实现） 4. 根据写作的过程不断的修正、改写（代码重构） 5. 文法的..."
+      },
+      {
+        "date": "2017-05-22",
+        "title": "新日志系统恢复的备忘录",
+        "url": "/2017/05/22/memo_org_log.html",
+        "excerpt": "旧的系统被荒废了很长一段时间，最近的一条记录貌似也在2015年了。旧系统内还存了不少记录和想法，看样子还得后续慢慢整理整理。 恢复日志系统这个事情一直说要弄没有弄，结果活生生拖了这么长时间。回头看自己之前的系统，有些东西搞得太复杂了，新手就是这个风格，恨不得一口吃成一个胖子，有什么功能都往里加。 写代码同理，代码搞得非常复杂，调用一层层的，回头看着就心..."
+      },
+      {
+        "date": "2017-01-08",
+        "title": "我对创新的理解",
+        "url": "/2017/01/08/innovation.html",
+        "excerpt": "前同事的一篇读书笔记 http://lpan1010.com/2016/07/27/%e5%88%9b%e6%96%b0%e8%80%85%e7%9a%84%e7%aa%98%e5%a2%83/ 于是我决定也写一些自己对创新的理解. 当然, 这个决定做的很早, 只是现在终于开始实施了…果然是动力不足. 以上是今年一月份的开篇，然后，直到现在，我又开始继..."
+      },
+      {
+        "date": "2016-08-25",
+        "title": "Coding与知识构建",
+        "url": "/2016/08/25/whatscoding.html",
+        "excerpt": "之前突然蹦出来新想法. 编码的过程就是知识构建的过程. 写代码的过程其实只是程序员学习的过程, 一个项目的形成过程, 就是程序员的知识体系的构建过程. 这样的话, 可以解释很多问题. 1. 为毛重构 因为我们是在不断学习的. 我们的知识体系是随着自己的学习的过程不断变化的, 变得范围更大, 更加系统化. 代码只是我们知识体系的映射, 一旦知识体系发生了..."
+      },
+      {
+        "date": "2016-07-26",
+        "title": "神经网络与决策树的分类能力等价的思考",
+        "url": "/2016/07/26/nn_and_dt.html",
+        "excerpt": "最近的观察和理解表明，神经网络即使只限制在分类任务上（据我所知目前决策树似乎还不能应用在其他种类的任务上），也具有不亚于决策树的表达能力。 1. 决策树的表达能力 我们已知决策树是通过二分法进行分类的一种方法，不断的选择属性进行划分，具有非常好的非线性的分类能力。因为每一步一般都是针对一个属性进行划分，我们决策树分类的平面图像化后都是一个个方块型的组成..."
+      },
+      {
+        "date": "2016-01-11",
+        "title": "书们",
+        "url": "/2016/01/11/books_of_2015.html",
+        "excerpt": "1. 自私的基因 2. 高频交易员 3. 神的九十亿个名字 4. 神们自己 5. 三体 6. 代码的未来 7. 数学-牛津通识读本 8. The Millionaire Fastlane 9. Ruby元编程 10. 非理性繁荣(第二版) 11. 程序员的呐喊 12. 从0到1 13. 从一到无穷大 14. 时寒冰说：未来二十年，经济大趋势（现实篇）..."
+      },
+      {
+        "date": "2014-09-04",
+        "title": "Python yield",
+        "url": "/2014/09/04/pythong_yield.html",
+        "excerpt": "1. 说明 原文： http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/ 原文的代码格式都用下划线替代了，打下划线把我的指头都打抽了….. 2. 学习Python：\"yield\"和Generator的解释 在开新课程前，我..."
+      },
+      {
+        "date": "2013-11-05",
+        "title": "编写可读代码的艺术",
+        "url": "/2013/11/05/clean_code.html",
+        "excerpt": "前言 妈蛋,这书自己的可读性就坑爹,部分内容的标题按照字体大小区分,没有缩进和编号 周末读了一半，最近到年底了又赶上开大会，查得紧，该填的坑都得填了，刚挖的就更得这样。最近我就被查了一次水表，392，4块钱一吨水。看着心里都打哆嗦，就那水也好意思这么贵。其中还有污水处理费，这我就搞不懂了，我喝了你的水，转成尿，怎么也得我管你收污水处理费吧，我这还高大上..."
+      },
+      {
+        "date": "2013-09-22",
+        "title": "Emacs 配置",
+        "url": "/2013/09/22/emacs_configs.html",
+        "excerpt": "My Emacs Configs from Qin Jian"
+      },
+      {
+        "date": "2013-08-16",
+        "title": "重新整UI,升级jekyll",
+        "url": "/2013/08/16/new_jekyll.html",
+        "excerpt": "1. A 想着自己的jekyll版本放那都一年没动过了，于是跑jekyll的页面上看了下。勾起了我的升级强迫症，实在是不应该手贱点链接啊。 于是就先把gem里面的jekyll升级了，话说我的gem除了装jekyll就没用过其他。新建了个项目看了下，不淡定了，最近中Minimalism的毒比较深，看着jekyll默认模板，心中对之前jekyll boot..."
+      },
+      {
+        "date": "2013-07-03",
+        "title": "减肥菜谱little scheme",
+        "url": "/2013/07/03/little_scheme.html",
+        "excerpt": "1. 前言 花了大概一天的时间看完了The little scheme。全书前前后后加起来不过200多页。起码这点上这书算得上little，当然，要是算上姊妹篇，算了，还是别算了，算上就是huge了，看完一定就恶心了。 作者么，王垠大大的老师。身为王大脑残粉，这本书现在才来看已经是应该被油炸了，以弥补自己没有做到基本的脑残粉的指责啊。 一般来说，剧透都..."
+      },
+      {
+        "date": "2013-04-27",
+        "title": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
+        "url": "/2013/04/27/wtfpl.html",
+        "excerpt": "1. 说明 无意中更新switch-window插件，在代码里发现这样的一个金矿，里面的版权声明如下： Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/ 当然，以我的验货无数的火眼金睛，立马发现了该licence的反常，心中立马补了一句“wtf”，立马就点进去了。 2. 内容..."
+      },
+      {
+        "date": "2013-04-16",
+        "title": "clojure与FP",
+        "url": "/2013/04/16/clojure.html",
+        "excerpt": "1. Clojure 初体验 1.1. 说明与动机 自己也是初学，介绍不深入，很简单。 没有大局观，不系统，小例子。 内容分散。 引用为主。 内容与Clojure相关性不大。 Progamming Language课程的学习。 1.2. 可能具有的一些特点 1.2.1. 不变数据与副作用 无变量，数据是不变的。性能上的问题， 应该是 通过写时复制与重用..."
+      },
+      {
+        "date": "2013-04-16",
+        "title": "Why *nix ?",
+        "url": "/2013/04/16/why_nix.html",
+        "excerpt": "这个问题实在是，蛋疼，充满争议，打标签被动式之王复数形式之一，起码曾经是。不过最近云计算什么什么的玩意突然把这个问题给消除了，现在，没用过*nix，你都不好意思说出口。简历上怎么也得贴一个，熟悉*nix环境，以显示或者说标榜自己的Geek、程序员的一面。 不过（为什么我要用“不过”这个词呢？）按照我自己那点微不足道的经验来看，使用*nix的作用还是很大..."
+      },
+      {
+        "date": "2013-02-26",
+        "title": "Unit Test in Clojure",
+        "url": "/2013/02/26/clojure_unit_test.html",
+        "excerpt": "其实语言显然也是有 用户友好 一说的……比如说,包管理呀,测试框架呀,调试支持呀,外围库呀等等思密达,让我严密的想一想: 1. 包管理、名字空间 没有这个东西显然是不可能的,不过用起来是不是方便还是稍微有点区别.动态语言的特别重要，因为没有编译过程，最好可以随时导入包、库什么的，特别是repl上，代码有变动了就可以立即再重新导入，而且不会遇上诡异问题。..."
+      },
+      {
+        "date": "2013-02-20",
+        "title": "org-mode中文导出latex解决方法",
+        "url": "/2013/02/20/chinese_latex_in_org_mode.html",
+        "excerpt": "为什么折腾这个?因为自己看文章看烦了.具体解决方法很简单,因为英文的导出org-mode一点问题都没有. 1. tex的中文支持 因为xelatex的中文支持没有问题了,所以只要按照xelatex的要求,在tex文件里面加一句,就可以: % 这里是tex文件思密达 \\setmainfont {SimSun} 里面的字体使用系统中的字体名字就可以,命令:..."
+      },
+      {
+        "date": "2013-01-11",
+        "title": "Java Class File Format",
+        "url": "/2013/01/11/java_class_file.html",
+        "excerpt": "1. Reference http://en.wikipedia.org/wiki/Java_class_file Java Specification Request-202 Chapter 4 2. 文件头 struct Class_File_Format { u4 magic_number ; u2 minor_version ; u2 majo..."
+      },
+      {
+        "date": "2012-12-21",
+        "title": "4clojure's elementary and easy solutions",
+        "url": "/2012/12/21/4clojure_solutions.html",
+        "excerpt": "学clojure玩,就跌跌撞撞把4clojure上的elementary和easy的题目都写完了,没错,柿子就是要捡软的捏,目前依然任重道远……做这个才真正知道什么叫做行百里者半九十.如今我还在以龟速出门中… 很多代码屎一般,因为实在不熟悉语言.自己除了括号就知道map和reduce两个东西.看着别人高富帅的代码顿时自己缩小了一万倍.性能什么的都不在考..."
+      },
+      {
+        "date": "2012-12-10",
+        "title": "lambda和邱奇编码",
+        "url": "/2012/12/10/Lambda.html",
+        "excerpt": ""
+      },
+      {
+        "date": "2012-12-06",
+        "title": "无聊的时候",
+        "url": "/2012/12/06/solidot_famous.html",
+        "excerpt": "本科刚开始就开看solidot了，多么有乐趣的一个网站，虽然一直潜水或者做懦夫以至于自己的账号都忘记了，自己估计应该已经有5年的读龄了。但是，这几天，她改版了。十分想吐槽那个界面，人家slashdot也没有变那么大呢。而且默认的那个屎蓝色的颜色，好丑好丑啊！！！我还是喜欢原来的那个她。。。。于是，这里的于是不代表逻辑联系，我就无聊的刷下面的名言看了。后..."
+      },
+      {
+        "date": "2012-12-02",
+        "title": "How to Get More From Life",
+        "url": "/2012/12/02/how_to_get_more_from_life.html",
+        "excerpt": "1. 说明： 来自于Scott Young的博客的一个PDF文件。Scott Young 就是那个一年学了一堆MIT在线课程的人。地址 http://www.scotthyoung.com/blog/ 。 2. 内容摘要 2.1. C1 Life is a work in Progress 没什么实质内容，讨论下价值观人生观，全世界各有各的不同。 2...."
+      },
+      {
+        "date": "2012-08-28",
+        "title": "Org-mode笔记",
+        "url": "/2012/08/28/org_mode_notes.html",
+        "excerpt": "考虑到现在开始用org-mode写东西,干脆再稍微记录下org-mode的东西,虽说平时使用没有什么问题,但是某些自己不常用的记录下来也没有错. 以下内容为2012-08-28 1. TODO-list的用法 1.1. DONE 变更状态 shift+左/右 状态的变化 shift+上/下 优先级的变化 1.2. DONE 记录完成时间 (setq o..."
+      },
+      {
+        "date": "2012-08-19",
+        "title": "改个地方",
+        "url": "/2012/08/19/to_here.html",
+        "excerpt": "自己实在是个折腾不止的人,发现blogger上传的org-mode格式不太好看,竟然自己就换到github上来了,其实也是自己的早就想弄个静态的玩下,之前nodejs试了下,果然js还是太可怕. 1. 步骤上 github建立项目,然后自己完全删除了里面的内容 把Jekyll-bootstrap clone了过来,手动拷贝内容到自己的github项目里..."
+      },
+      {
+        "date": "2012-04-28",
+        "title": "我的未来技术观",
+        "url": "/2012/04/28/future_of_tech.html",
+        "excerpt": "从目前来看，IT程序员或者是软件工程师的数量依然需求明显。特别是所谓的\"码农\"，本应该是创造性的工作，正在变得机械化。程序设计的未来应该是什么样子？计算机在未来世界中会承担一个什么样子的角色呢？ 随着自然语言处理和人工智能的发展，语音识别正在变得越来越通用。语音输入已经在Chome、Apple的设备上实现了应用。特别是Siri在语义上的进步。这里，显然..."
+      },
+      {
+        "date": "2012-03-17",
+        "title": "亲身体验",
+        "url": "/2012/03/17/experience_by_self.html",
+        "excerpt": "总是面对别人对我们说，应该应该如何，如果不那样，就会如何。就像代码中掺入了太多的if-else，这样的结构总是让人感觉丑陋的。往往，迷惘也就产生于此，因为迷惘不是什么都不知道，也不是什么都知道，恰恰是雾里看花时，迷惘才出现。 当if-else出现太多时，代码的可读性往往直线下降，因为逻辑关系上的分支太多了，普通人对于任何事情的上下文的记忆都是有限制的，..."
+      },
+      {
+        "date": "2012-02-19",
+        "title": "有关选择",
+        "url": "/2012/02/19/about_your_choices.html",
+        "excerpt": "自己在面对选择的时候，总是那么犹豫，或者说是恐惧。面对这样的情况，自己总是希望能够找到自己这样的原因。或许是，因为自己一直生活在如同计划经济的世界里，无需更多的选择，或者说是没有更多的选择，而渐渐地，生活进入了选择的阶段而不再是原先那样的线性系统，一步步总是会有固定的反馈。面对这么多的因素，如同混沌理论那样，让自己再也没法用原来的处理仅仅的几个已知量的..."
+      }
+    ]
+  },
+  {
+    "name": "读书 / 个人思考",
+    "slug": "reading-notes",
+    "description": "读书、影视、个人选择、技术观和长期自我记录。",
+    "count": 11,
+    "articles": [
+      {
+        "date": "2018-10-24",
+        "title": "节日快乐",
+        "url": "/bit_ass/2018-10-24-%E8%8A%82%E6%97%A5%E5%BF%AB%E4%B9%90.html",
+        "excerpt": "有节日就要庆祝一下......不矫情。 老模型，新数据。 验证集，20 epochs："
+      },
+      {
+        "date": "2018-08-24",
+        "title": "利用未标注视频的民科脑洞",
+        "url": "/bit_ass/2018-08-24-%E5%88%A9%E7%94%A8%E6%9C%AA%E6%A0%87%E6%B3%A8%E8%A7%86%E9%A2%91%E7%9A%84%E6%B0%91%E7%A7%91%E8%84%91%E6%B4%9E.html",
+        "excerpt": "一般情况下，未标注数据肯定会远远大于标注数据。 攒的满满的一盘视频，是否能够利用起来优化网络显然就是一个值得考虑的东西。毕竟这些数据相比数据增强的方法，都是实实在在的真实数据，而且，也可以再用数据增强啊。 自己的一个民科脑洞就是：类似训练语言模型的方法，让网络训练N-gram的视频模型。 1. **网络需要预训练好，否则八成八会训练成只关注底层像素级的..."
+      },
+      {
+        "date": "2016-02-05",
+        "title": "君士坦丁堡的陷落",
+        "url": "/2016/02/05/fall_of_constantinople.html",
+        "excerpt": "已经是半月之前读的了。 看完之后应该是一种压抑的感觉，即使半个月后回想当时的感觉。或许是书本的文字，或许是作者字里行间的那份感情，或许就是这个事件本身，给我带来这样的感觉。当然，这里首先要感谢的是译者的贡献。从头一路读下来没有什么这本书是翻译作品的感觉，可见译者耗费了多少心力. 书中应该从拜占庭本身的衰落说起，之后是守城之战，其实也是最精彩的地方，后续..."
+      },
+      {
+        "date": "2014-09-15",
+        "title": "Torch7 and ConvNet",
+        "url": "/2014/09/15/torch_convnet.html",
+        "excerpt": "Torch7 and ConvNet from Qin Jian"
+      },
+      {
+        "date": "2014-05-20",
+        "title": "《明朝那些事》与《万历十五年》",
+        "url": "/2014/05/20/bfs_and_dfs.html",
+        "excerpt": "最近又重新看了一遍《明朝那些事儿》，事隔多年，上次还是几年前在学校断断续续的看的。简直要了亲命，看的眼睛都看东西都花的。之前又看过了《万历十五年》，这么一比较倒是很明显，《明》是借鉴了《万》的写法的。 第二次看，同时又是七本集中在一起看，再看《明》反倒不觉得这么书有第一次看时感觉的那么好，可以当作稍微严肃点的《演义》看，而且确实如网上说，不合适小孩第一..."
+      },
+      {
+        "date": "2013-11-04",
+        "title": "Two kinds of judgement by Paul Graham",
+        "url": "/2013/11/04/two_kinds_of_judgement.html",
+        "excerpt": "1. nil 之前挖的坑，终于填了一个。看了一半，不知道放那里多长时间了，单位还是月，再看看那些单位按年算得，罄竹难书、惨绝人寰、满目疮痍的那青春期的脸。 Paul Graham的旧文。 2. Two kinds of judgement April 2007 别人评价你的时候都会存在两种方法。一种确实是为了对你有一个客观的评价，但是更多情况都是另一种..."
+      },
+      {
+        "date": "2013-03-28",
+        "title": "Overnight talking.",
+        "url": "/2013/03/28/overnight_talking.html",
+        "excerpt": "1. 1 和某人又一次进行了彻夜长聊，很奇怪啊，每次能够滿足彻夜长聊标准的，也只有某人你了……这对于我这样一个正常状态下超级不爱废话的人实在是，反常。当然，以至于早上真的起不来，预计白天要靠咖啡度日才勉强扛住了。 所以吃饭要趁热，按照我习惯，这句应该是吃屎要趁热的，显然，要严肃认真一点。对于我这样一个具有情商硬伤的人，至今还活在聊天历史记录的理解中，其..."
+      },
+      {
+        "date": "2013-02-20",
+        "title": "回归问题",
+        "url": "/2013/02/20/regression.html",
+        "excerpt": "有关回归的杂东西. 超级初始版本，以后慢慢改思密达。 1. 回归是什么? 将多个点X映射为一个函数f(x)来表示.但是由于不一定所有的点已经能够准确在f(x)上,所以存在误差问题,将误差最小化自然 拟合 的比较好,于是就是个最优化问题. 有关误差函数,其实可以随便定义,不过平方误差用的比较多: \\(\\sum_{i} \\left(y_i - f(x_i)..."
+      },
+      {
+        "date": "2012-12-08",
+        "title": "自控力笔记",
+        "url": "/2012/12/08/willpower.html",
+        "excerpt": "看日期是9.03到手的。到上上周为止看了几遍，虽然这本书其实不是一本需要读很多遍的书吧，基本也算是一快餐书。而且设计的不错，每章节后面都有一个表格总结一下内容，再看的时候看看后面的表格就可以了。 全书基本说的就是如何抵制诱惑。一般都会先介绍理论性的东西，然后配合一个“意志力实验”来通过实践解决问题。 1. C1 神经学原理就是低级脑和高级脑的矛盾,里面..."
+      },
+      {
+        "date": "2012-04-05",
+        "title": "个人之于群体-BlackMirrorS01E02",
+        "url": "/2012/04/05/black_mirror_s01e02.html",
+        "excerpt": "一曲单纯的恋歌，却被群体的酱缸埋葬。 1. 败于众手 本以为自己的歌声能够给自己带来理想的实现，可是当来到达人秀中，面对群体的压力，最终放弃抵抗，成为了一个自己不想成为的人。逼良为娼，不仅仅是施加暴力的人，也包括如鸭子般在旁边看热闹的群体们，他们才是构成这样一个大背景的主体。而群体的暴力更是在被挑逗后暴露出人类最本性的恶。当女主角最终说出了同意，对那群..."
+      },
+      {
+        "date": "2012-02-26",
+        "title": "不确定性之于预测和机会",
+        "url": "/2012/02/26/possibility.html",
+        "excerpt": "我们总是认为经济大潮已经过去，一代的荣光属于那样的一个时代，但是这是不是我们自己的历史的局限性带来的，我们总是站在历史的角度来看待曾经的时代，却总是没有能力看到自己的时代。其实这一代的荣光也属于自己的这样的一个时代，经济大潮往往总是存在的，或许\"大萧条\"那样的时代真的没有经济的大潮，但是其他的时间段里，经济总是保持着自己的增长，或许很快或许很慢，但是总..."
+      }
+    ]
+  }
+]

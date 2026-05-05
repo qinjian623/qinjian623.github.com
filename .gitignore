@@ -1,6 +1,10 @@
-_site
+_site/
+.jekyll-cache/
 .jekyll-metadata
+__pycache__/
 *~
 .#*
 .DS_Store
-_posts/
+_posts/.markdown-preview.html
+# Invalid legacy filename; the matching source remains under _orgs.
+_posts/2017-03-31_python_tips.html

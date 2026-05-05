@@ -5,7 +5,7 @@ layout: default
 
  [*Link:*](https://zhuanlan.zhihu.com/p/197965267)
 
-自己的玩具训练要弄个distiller，于是 Google 了下，反正是第一条： 
+自己的玩具训练要弄个distiller，于是 Google 了下，反正是第一条：
 
 [https://github.com/peterliht/knowledge-distillation-pytorch](https://github.com/peterliht/knowledge-distillation-pytorch)用自己的模型放进去测了一下，看着似乎也没问题，于是先把 Loss 的计算那块挪到自己的代码里面。随后多次训练总是感觉很诡异，于是才进去看了这个项目的代码。
 
@@ -22,14 +22,14 @@ layout: default
 
 这就回到“奇效”的两个问题上来：
 
-### A.数据增强带来的 bug  
+### A.数据增强带来的 bug
 每次 augmentation 虽然变化了，但是即使不用 distillation，label 也是固定的，所以，可以认为这个bug的效果是：teacher 针对数据集生成了 logits 的 label，而且不论这个图像经过了如何变换，student 都应该与这个 label 保持一致。
 
 没毛病，就是一个针对模型输出的 constrain，可以有增加泛化的潜力。由于图像变化不会对这 teacher output 有影响，所以会强迫 student 学习对图像变化的抗干扰能力。
 
 所以，如果 teacher output 是按照测试时的预处理设定获得的结果，会不会反而有奇效？
 
-### B. 数据集 shuffle 的 bug  
+### B. 数据集 shuffle 的 bug
 这个bug的效果就是：每次用一个完全无厘头的随机数据对 student 的输出做限制。这也是实际训练中展示出来的效果。
 
 当然，我这里测试的结果是略微的负面效果。
@@ -43,20 +43,22 @@ layout: default
 1. 难以回测，一个大点的模型训下来，都是按小时、按天计数。改改代码，要回测的话，又得相同时间来确认。
 2. 错误无法暴露，代码上稀里糊涂出点问题模型也能正常训练，甚至看不出反常。
 
-  
 
 
-后来我找到的另外的一个实现其实也有小问题： 
+
+后来我找到的另外的一个实现其实也有小问题：
 
 [https://github.com/moskomule/distillation.pytorch/blob/bfc92600092c12dac42c9fc5d4c199c60a5987f5/hinton/utils.py#L37](https://github.com/moskomule/distillation.pytorch/blob/bfc92600092c12dac42c9fc5d4c199c60a5987f5/hinton/utils.py#L37)这里没有 CELoss 的加权，不过问题不大。
 
-应该正确的实现： 
+应该正确的实现：
 
 [https://github.com/NervanaSystems/distiller/blob/94af2955f99de8222bd83c1fc46f4000b3ecb130/distiller/knowledge\_distillation.py#L149-L164](https://github.com/NervanaSystems/distiller/blob/94af2955f99de8222bd83c1fc46f4000b3ecb130/distiller/knowledge\_distillation.py#L149-L164)还是商业公司的产品好啊。
 
 我自己也实现了一版， 不想一个小玩具还要引入一堆依赖：
 
-[https://github.com/qinjian623/pytorch\_toys/blob/master/loss/distill.py](https://github.com/qinjian623/pytorch\_toys/blob/master/loss/distill.py)## Ref:  
+[https://github.com/qinjian623/pytorch\_toys/blob/master/loss/distill.py](https://github.com/qinjian623/pytorch\_toys/blob/master/loss/distill.py)
+
+## Ref:
 1. TopK KD: [https://arxiv.org/pdf/2002.03532.pdf](https://arxiv.org/pdf/2002.03532.pdf)
 2. The State Of Knowledge Distillation For Classification Tasks: [https://arxiv.org/pdf/1912.10850.pdf](https://arxiv.org/pdf/1912.10850.pdf)的加权
 3. Original: [https://arxiv.org/pdf/1503.02531.pdf](https://arxiv.org/pdf/1503.02531.pdf)

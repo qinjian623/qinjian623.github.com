@@ -1,7 +1,15 @@
 ---
 layout: default
 ---
+{% assign should_load_math = page.math %}
+{% if should_load_math == nil %}
+{% if content contains "$$" or content contains "\\(" or content contains "\\[" %}
+{% assign should_load_math = true %}
+{% endif %}
+{% endif %}
+{% if should_load_math %}
 {% include math %}
+{% endif %}
 {% include highlight %}
 <h2>{{ page.title }}</h2>
 {% if page.date %}
@@ -10,8 +18,10 @@ layout: default
 <div class="post">
   {{ content }}
   <div class="footer"></div>
+  {% if page.comments == true %}
   <br />
   <div>
     {% include comments %}
   </div>
+  {% endif %}
 </div>
