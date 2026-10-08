@@ -13,4 +13,10 @@ layout: default
 [Captain Jack：近期 Tesla BEV 的一些验证工作](https://zhuanlan.zhihu.com/p/443500115)  
 
 
-[https://www.zhihu.com/video/1457819204620062720](https://www.zhihu.com/video/1457819204620062720)[https://www.zhihu.com/video/1457819246084890624](https://www.zhihu.com/video/1457819246084890624)
+[https://www.zhihu.com/video/1457819204620062720](https://www.zhihu.com/video/1457819204620062720)
+
+<video controls preload="metadata" src="2021-12-25-D_Space_路面重建_Demo/video-1457819204620062720.mp4" style="max-width: 100%;"></video>
+
+[https://www.zhihu.com/video/1457819246084890624](https://www.zhihu.com/video/1457819246084890624)
+
+<video controls preload="metadata" src="2021-12-25-D_Space_路面重建_Demo/video-1457819246084890624.mp4" style="max-width: 100%;"></video>

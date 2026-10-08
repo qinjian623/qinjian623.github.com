@@ -52,3 +52,5 @@ layout: default
 结果视频，测试集，类别我懒得对了，应该就是 红、黄、绿、关。我没把原始结果去重，评测的时候我用Opencv的groupRectangle去重了，简单粗暴。
 
 [https://www.zhihu.com/video/1012712214515392512](https://www.zhihu.com/video/1012712214515392512)
+
+<video controls preload="metadata" src="2018-08-14-Small_object_fast_detection/video-1012712214515392512.mp4" style="max-width: 100%;"></video>

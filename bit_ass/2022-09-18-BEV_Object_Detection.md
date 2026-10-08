@@ -10,3 +10,5 @@ layout: default
 [Captain Jack：最近一年自动驾驶工作的总结与流水账](https://zhuanlan.zhihu.com/p/548605928)模型推理结果加了一个自己临时写的Low版NMS。行人数据没有准备好，只是减量的车辆数据训练的。
 
 [https://www.zhihu.com/video/1554934227308929024](https://www.zhihu.com/video/1554934227308929024)
+
+<video controls preload="metadata" src="2022-09-18-BEV_Object_Detection/video-1554934227308929024.mp4" style="max-width: 100%;"></video>
