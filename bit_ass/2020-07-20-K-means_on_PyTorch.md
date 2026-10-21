@@ -15,7 +15,7 @@ layout: default
 
 一次模拟测试结果，看着 ( 应该？)没问题（数据量多了太恶心，宛如四只草履虫）：
 
-![](2020-07-20-K-means_on_PyTorch/v2-5233c98876a06822188dbba191a5e670_1440w.jpg)  
+![PyTorch K-means 在二维样本上得到的聚类与聚类中心](2020-07-20-K-means_on_PyTorch/v2-5233c98876a06822188dbba191a5e670_1440w.jpg)  
 代码位置： 
 
 [https://github.com/qinjian623/pytorch\_toys/blob/master/cluster/kmeans.py](https://github.com/qinjian623/pytorch\_toys/blob/master/cluster/kmeans.py)使用： 

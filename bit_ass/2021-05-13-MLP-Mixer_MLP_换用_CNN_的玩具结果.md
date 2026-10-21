@@ -32,8 +32,8 @@ Best acc = 70.7680 @ Epoch 81
 ## 可视化  
 第一层 projector 的可视化
 
-![](2021-05-13-MLP-Mixer_MLP_换用_CNN_的玩具结果/v2-adf7e22d675c875969f414b9cb096981_1440w.jpg)  
+![使用 CNN 替代 MLP-Mixer 后第一层投影器的特征可视化](2021-05-13-MLP-Mixer_MLP_换用_CNN_的玩具结果/v2-adf7e22d675c875969f414b9cb096981_1440w.jpg)  
   
 作为对比的 Res18 的 7x7（非 torchvision 官方）
 
-![](2021-05-13-MLP-Mixer_MLP_换用_CNN_的玩具结果/v2-a40ad34912a54e25ca1d6dbd68ed7a7a_1440w.png)  
+![作为对照的 ResNet18 七乘七卷积核可视化](2021-05-13-MLP-Mixer_MLP_换用_CNN_的玩具结果/v2-a40ad34912a54e25ca1d6dbd68ed7a7a_1440w.png)  

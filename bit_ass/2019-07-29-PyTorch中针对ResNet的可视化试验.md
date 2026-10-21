@@ -15,7 +15,7 @@ ResNet在distill.pub的原文中就已经说了效果不佳，为毛线我要选
 ## 1.部分结果  
 这应该是针对比较高层的优化结果： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-7a4eaf659cf49a1b990f0ec100db2c0e_1440w.jpg)  
+![优化输入得到的 ResNet 高层特征可视化](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-7a4eaf659cf49a1b990f0ec100db2c0e_1440w.jpg)  
 可以看出来是有一定的模式，但是显然没有deep dream或者distill上其他模型的效果明显，看不出太多有意义的东西。 
 
   
@@ -23,22 +23,22 @@ ResNet在distill.pub的原文中就已经说了效果不佳，为毛线我要选
 
 同时自己也针对网络不同层次进行了优化： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-9d117248ba7e9c604c1d09d6aa317231_1440w.jpg)  
+![加入 MaxPool 后 ResNet 底层颜色和纹理特征的可视化](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-9d117248ba7e9c604c1d09d6aa317231_1440w.jpg)  
 以上是针对比较底层的优化效果，可以看到有比较底层的色彩和纹理特征。这里我应该是用了一个比较大stride的MaxPool接在原始网络层后面，原因是用MaxPool降低空间上的频率，否则一个filter会在空间中过于高频产生交互影响。
 
 如果不加MaxPool，结果会接近下面这张图： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-923c10b9c872906817fbc8d2a61a2a3e_1440w.jpg)  
+![不加入 MaxPool 时出现的高频重复特征](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-923c10b9c872906817fbc8d2a61a2a3e_1440w.jpg)  
   
 后面再抽象一层的结果就没有加大stride的MaxPool，带来的结果就是密度更高（密恐预警）： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-94279d68bac9ee1a88db0683390c909f_1440w.jpg)  
+![ResNet 更深层特征在未降低空间频率时的密集纹理](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-94279d68bac9ee1a88db0683390c909f_1440w.jpg)  
 后续就是随着网络层次原来越抽象的几个优化结果（这些图片仅仅针对 featuremap 中间位置），可以看到随着网络层越深，conv的感受野也越来越大，当然，最中间的一小块是特征最明显的部分，人眼是可以看出来会有一些莫名其妙的模式的： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-d300afdb5a70e8e8898fff7b3dab5799_1440w.jpg)  
+![不同网络层中间位置特征的感受野可视化](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-d300afdb5a70e8e8898fff7b3dab5799_1440w.jpg)  
 附送一个调整了初始分布的优化结果，颜色会更加明显点： 
 
-![](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-7eec10cb47f38156eb68452db3d4f4ab_1440w.jpg)  
+![调整输入初始分布后得到的 ResNet 特征可视化](2019-07-29-PyTorch中针对ResNet的可视化试验/v2-7eec10cb47f38156eb68452db3d4f4ab_1440w.jpg)  
   
 
 

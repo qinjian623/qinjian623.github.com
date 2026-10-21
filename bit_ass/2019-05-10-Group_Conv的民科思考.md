@@ -26,7 +26,7 @@ Filter本身的参数并不是每个都很重要，以128 channel作为输入的
 
 在Group的开山作AlexNet里面，filter可视化图像可以看到，两个group的conv，一个倾向边缘特征，一个倾向色彩： 
 
-![](2019-05-10-Group_Conv的民科思考/v2-a47d3453b1c07c6d760d10cb08057302_1440w.jpg)  
+![AlexNet 卷积核学习到的方向、边缘和颜色特征](2019-05-10-Group_Conv的民科思考/v2-a47d3453b1c07c6d760d10cb08057302_1440w.jpg)  
 
 
 AlexNet
@@ -60,12 +60,12 @@ Gconv 的极端化就是每个 filter 都只负责一个特征，也就变成了
 
 但是，**会带来一个问题**：如果整个网络都这样设计，最终就是几个非常窄的网络并行预测。 
 
-![](2019-05-10-Group_Conv的民科思考/v2-10ff4b2e1a088e9ecf0b2ac599cf0249_1440w.jpg)  
+![连续分组卷积中各通道组相互独立的信息传递](2019-05-10-Group_Conv的民科思考/v2-10ff4b2e1a088e9ecf0b2ac599cf0249_1440w.jpg)  
 这几个窄网络之间并没有任何交互，我们需要让不同的窄网络中间产出的特征可以互相交互。换做我，简单的就是在中间一些位置上再加没有group的1x1 filter，这样当然也可以实现几个网络之间的交互。
 
 ShuffleNet的方法更加直接粗暴节省算力： 
 
-![](2019-05-10-Group_Conv的民科思考/v2-fe5bc47c37c9a0a5f5e0e8784d8ff240_1440w.jpg)  
+![Channel Shuffle 在分组卷积之间交换通道信息](2019-05-10-Group_Conv的民科思考/v2-fe5bc47c37c9a0a5f5e0e8784d8ff240_1440w.jpg)  
 
 
 ShuffleNet 对 1x1 Gconv 的补救措施

@@ -19,7 +19,7 @@ Refs:
 
 附赠一个失败的SGD的路线图：
 
-![](2018-06-04-Naive_gradient_descent/v2-6ef34d3ed2e8a1bb0d53730258b7653d_1440w.jpg)  
+![SGD 在三维损失曲面上的一次失败优化轨迹](2018-06-04-Naive_gradient_descent/v2-6ef34d3ed2e8a1bb0d53730258b7653d_1440w.jpg)  
 
 ```
 import math

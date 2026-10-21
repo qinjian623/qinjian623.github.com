@@ -16,4 +16,4 @@ layout: default
 
 这是用ImageNet三个类别的150张图片做 Activation 量化的对比结果：
 
-![](2019-09-16-Pytorch_Post_Training_Quantization/v2-4dbe13db3021f1966de810fcbc458979_1440w.jpg)  
+![ResNet 浮点模型与权重、激活量化后的准确率对比](2019-09-16-Pytorch_Post_Training_Quantization/v2-4dbe13db3021f1966de810fcbc458979_1440w.jpg)  

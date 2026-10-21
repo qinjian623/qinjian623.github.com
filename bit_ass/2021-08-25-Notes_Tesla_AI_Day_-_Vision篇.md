@@ -22,7 +22,7 @@ Tesla AI day 当天看了直播（感谢 hacknews 上有人贴了链接让我看
 
 Tesla 本身自己搞这块才3、4年时间，做出这个成就，惊为天人。简直是成功的弯道超车典范，或许 Musk 喜欢的第一原则的思考方式对这方面有很大的助益。依靠 trick or 某一项技术妄想弯道超车本身就不是踏实的路线，想弯道超车还是要从战略思路和技术路线层面上来实现，我本人对 Tesla 是真的佩服。
 
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-b3a5df84095eacecd05857bdc2f9fbcb_1440w.jpg)  
+![Tesla AI Day 视觉笔记目录：输入、HydraNet、多相机融合与时序记忆](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-b3a5df84095eacecd05857bdc2f9fbcb_1440w.jpg)  
 
 
 ---
@@ -53,7 +53,7 @@ Tesla 本身自己搞这块才3、4年时间，做出这个成就，惊为天人
 
 > one-stage, yolo-like
 
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-edfcb35285e3e53954bd9f396b5c542d_1440w.jpg)  
+![HydraNet 共享骨干、特征缓存与多任务预测头结构](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-edfcb35285e3e53954bd9f396b5c542d_1440w.jpg)  
 提了一个 feature sharing，infer 的时候省算力，训练的时候可以直接用这些保存下来的feature 训练 head， 一样可以省算力，各分任务也可以隔离开，并行发布版本。
 
 这些也算是常规做法，尤其是在 infer 的时候用一个共享的 backbone。
@@ -120,7 +120,7 @@ backbone 评估一般可以用一个类似 Imagenet 的分类任务数据集，�
 
 
 ### Multi-cam fusion :  
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-68b7a3655ab0626dd00ecfa5613f6af3_1440w.jpg)  
+![利用虚拟相机统一相机参数并校正图像的网络示意图](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-68b7a3655ab0626dd00ecfa5613f6af3_1440w.jpg)  
 基本思路还是之前 Andrej 说的，但是补充了不少细节。主要的两个技术：
 
 ***Tech 0 - Learning where to look.(image->BEV + multi-cam fusion)***基本流程：
@@ -165,7 +165,7 @@ Tesla 这里的做法是通过标定，重新调整所有的车辆的摄像头�
 ---
 
 ### 3.2 Memory （时序融合）  
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-d913ed718651ab2ac9bf3a2771d74f85_1440w.jpg)  
+![Video Module 保存多相机历史特征、自车运动和位置编码的特征队列](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-d913ed718651ab2ac9bf3a2771d74f85_1440w.jpg)  
 开始第二点，时序融合。为什么要做这个就不多啰嗦了，实际做过 AD 感知的都知道纯粹的单帧结果没有任何意义。很多状态无法识别，比如：
 
 * 速度
@@ -192,7 +192,7 @@ Andrej 给这个模块起的名字是 Video Module：
 
 * **Spatial RNN （map）**
 
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-968f81ca896e7cd028c56ccc9029214b_1440w.jpg)  
+![Spatial RNN 融合多相机图像并更新鸟瞰空间记忆](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-968f81ca896e7cd028c56ccc9029214b_1440w.jpg)  
 1. 先建立一个 BEV 的大图，譬如 1000x1000，车辆的感知范围可能是 30x40。
 2. BEV 视角下的每一个像素点（or pillar，如果搞激光的话）都用一个 RNN 来维持状态。
 3. 只要感知范围覆盖了，就用对应特征跑一步RNN。
@@ -204,7 +204,7 @@ Andrej 本身也提了，这个可以通过车队来组类似 HD map 的东西�
 
 * **时序融合优点展示**
 
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-27937eea5fbf61d480674ae0cfdf9756_1440w.jpg)  
+![视频时序信息对深度和速度估计结果的影响](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-27937eea5fbf61d480674ae0cfdf9756_1440w.jpg)  
 1. 对于临时遮挡目标有了记忆能力、
 2. Velocity/Depth 的预测基本做到 Radar 级别，尤其是对速度的估计，比单帧效果稳定了很多（这个结论也合正常逻辑）
 
@@ -212,7 +212,7 @@ Andrej 本身也提了，这个可以通过车队来组类似 HD map 的东西�
 
 
 ## 4 总结  
-![](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-8ff0e15a9a7edfb5c18d9773a626c382_1440w.jpg)  
+![Tesla 视觉网络的空间、时序融合与多任务输出示意图](2021-08-25-Notes_Tesla_AI_Day_-_Vision篇/v2-8ff0e15a9a7edfb5c18d9773a626c382_1440w.jpg)  
 Andrej 说了下他们可能的工作方向：
 
 

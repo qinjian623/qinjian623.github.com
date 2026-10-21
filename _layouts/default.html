@@ -12,7 +12,8 @@
 {%- endif -%}
 {%- endfor -%}
 {%- assign resolved_description = page.description | default: current_article.excerpt | default: site.description -%}
-{%- assign resolved_url = page.url | absolute_url -%}
+{%- assign resolved_path = current_article.url | default: page.url -%}
+{%- assign resolved_url = resolved_path | absolute_url -%}
 <!DOCTYPE html>
 <html>
     <head>

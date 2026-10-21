@@ -55,7 +55,7 @@ $b^\prime = (b - mean)\sqrt{var}*\beta +\gamma  $
 
 在我的笔记本上的测试，CPU版本应该是同步的吧，否则这个结果也是不靠谱的，当然这个结果也不是严肃结果，没平均，没热机。不过能定性说明问题就OK，单位是秒。
 
-![](2020-05-27-PyTorch_卷积与BatchNorm的融合/v2-a7ef316be95e547d602344401cbcb1ae_1440w.jpg)  
+![融合卷积与 BatchNorm 前后的 ResNet 推理耗时对比](2020-05-27-PyTorch_卷积与BatchNorm的融合/v2-a7ef316be95e547d602344401cbcb1ae_1440w.jpg)  
   
 
 

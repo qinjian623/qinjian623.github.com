@@ -14,7 +14,7 @@ layout: default
 
 **工艺流程（咦，为什么我要用这个词）：**
 
-![](2019-04-02-RePr_Improved_Training_of_Convolutional_Filters笔记/v2-863dbfd82bd66ab1e9cb901ae13974c4_1440w.jpg)  
+![RePr 交替训练、筛选和重新初始化卷积核的算法流程](2019-04-02-RePr_Improved_Training_of_Convolutional_Filters笔记/v2-863dbfd82bd66ab1e9cb901ae13974c4_1440w.jpg)  
 
 
 ---

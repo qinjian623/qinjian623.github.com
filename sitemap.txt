@@ -3,6 +3,7 @@
 title : Sitemap
 ---
 {% for page in site.pages %}
-{{site.production_url}}{{ page.url }}{% endfor %}
+{% assign article = site.data.article_index | where: "source_path", page.path | first %}
+{{site.production_url}}{{ article.url | default: page.url }}{% endfor %}
 {% for post in site.posts %}
 {{site.production_url}}{{ post.url }}{% endfor %}

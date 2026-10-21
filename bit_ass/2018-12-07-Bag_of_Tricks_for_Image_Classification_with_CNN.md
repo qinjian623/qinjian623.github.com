@@ -46,7 +46,7 @@ Large batch size
 ## 试验结果  
 以上所有都用上，速度快很多，精度还能高那么一点点。
 
-![](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-e8f4360d820d9d3734fc9f407d5f7279_1440w.jpg)  
+![改进训练方法与基准模型的训练耗时和准确率对比](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-e8f4360d820d9d3734fc9f407d5f7279_1440w.jpg)  
 可以看到这里的提升，大概是Res50为0.3+的百分点。不知道如果batch size不变的话，这些都用上，会有多大提升（其实就是初始化和正则这两项）。
 
 
@@ -54,7 +54,7 @@ Large batch size
 ---
 
 ## 结构变化  
-![](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-97ef529bc0e151256d76e44fbc3545a8_1440w.jpg)  
+![ResNet-B、ResNet-C 与 ResNet-D 的结构调整](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-97ef529bc0e151256d76e44fbc3545a8_1440w.jpg)  
 * **ResNet-B**
 
  原始的bottleneck里面直接用了1x1 stride 2的卷积在降分辨率，所以换成在后面的那个3x3的卷积上用stride 2。
@@ -77,7 +77,7 @@ Large batch size
 
 由于都是针对ResNet的改进，其他的网络没有这个收益。
 
-![](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-5b23f5ccc17f5ef204fbbae60be20582_1440w.jpg)  
+![ResNet50 结构改动前后的参数量、FLOPs 和分类准确率](2018-12-07-Bag_of_Tricks_for_Image_Classification_with_CNN/v2-5b23f5ccc17f5ef204fbbae60be20582_1440w.jpg)  
 作为对比，torchvision的官方精度验证集Top-1是76.15。
 
 

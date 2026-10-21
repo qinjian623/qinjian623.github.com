@@ -191,6 +191,7 @@ def original_url(text: str) -> str | None:
 
 
 def choose_topic(title: str, source_path: str, text: str) -> dict:
+    text = re.sub(r"!\[[^\]]*\](?=\()", "![]", text)
     haystack = " ".join([title, source_path, text[:4000]])
     for topic in TOPICS:
         if topic["pattern"].search(haystack):
